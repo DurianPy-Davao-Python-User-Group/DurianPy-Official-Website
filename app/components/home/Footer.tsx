@@ -8,7 +8,7 @@ export function Footer() {
           <div>
             <h3 className="text-white font-bold mb-4">DurianPy</h3>
             <p className="text-green-100">
-              Accelerating Davao&apos;s Tech Growth with Python
+              Accelerating Davao&apos;s Tech Growth with PHP
             </p>
           </div>
 
