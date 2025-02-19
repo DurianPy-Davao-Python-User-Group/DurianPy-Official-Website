@@ -1,3 +1,4 @@
+// tailwind.config.js
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
@@ -11,9 +12,15 @@ const config: Config = {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
+        midoriGreen: '#3EB372',
+        centerStage: '#FFC201',
+      },
+      fontFamily: {
+        sans: ['var(--font-montserrat)', 'sans-serif'],
       },
     },
   },
   plugins: [],
 };
+
 export default config;
