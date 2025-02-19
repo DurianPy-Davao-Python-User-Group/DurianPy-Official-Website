@@ -4,18 +4,22 @@ export function StatsAndReviews() {
   return (
     <section className="bg-green-900 py-16">
       <Container>
-        <div className="flex flex-col items-center px-8">
+        <div className="flex flex-col items-center px-8  xl:px-[320px]">
           {/* Section Title */}
-          <div className="flex flex-col items-center text-3xl font-bold text-white pb-7">
-            <div className="flex">
+          <div className=" text-center text-3xl xl:text-7xl font-bold xl:leading-none text-white pb-7">
+            {/* <div className="flex xl:pb-10">
               <h2 className="pr-2">Statistics</h2>
               <h2 className="text-midoriGreen">&</h2>
             </div>
-            <h2 className="text-centerStage">Reviews</h2>
+            <h2 className="text-centerStage">Reviews</h2> */}
+            <h2 className="">
+              Statistics <span className="text-midoriGreen">&</span> <br />{' '}
+              <span className="text-centerStage">Reviews</span>
+            </h2>
           </div>
 
           {/* Section Description */}
-          <div className="flex justify-center text-center pb-7 px-2">
+          <div className="flex justify-center text-center pb-7 xl:pb-[121px] px-2 xl:px-32">
             <p>
               <span className="font-bold">DurianPy</span> is a community for
               Python enthusiasts to learn, share, and connect through monthly
