@@ -6,6 +6,8 @@ import {
   CarouselPrevious,
 } from '../components/ui/carousel';
 
+import { Button } from '../components/ui/button';
+
 export default function TestCarousel() {
   return (
     <div className="flex justify-center">
@@ -20,6 +22,8 @@ export default function TestCarousel() {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
+
+      <Button>hello</Button>
     </div>
   );
 }
