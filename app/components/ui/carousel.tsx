@@ -251,9 +251,6 @@ const CarouselNext = React.forwardRef<
   );
 });
 CarouselNext.displayName = 'CarouselNext';
-  )
-})
-CarouselNext.displayName = "CarouselNext"
 
 export {
   type CarouselApi,
@@ -263,4 +260,3 @@ export {
   CarouselPrevious,
   CarouselNext,
 };
-}
