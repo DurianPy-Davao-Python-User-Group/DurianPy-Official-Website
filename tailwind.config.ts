@@ -46,7 +46,6 @@ const config: Config = {
           'linear-gradient(to bottom, rgba(62, 179, 115, 0), #00833A)',
         'gradient-utd-green-transparent': //linear fading gradient
           'linear-gradient(180deg, rgba(17,32,24,0.8) ,rgba(0,64,28,1))',
-
       },
     },
   },
