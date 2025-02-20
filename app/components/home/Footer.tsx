@@ -5,6 +5,7 @@ import logo from '../../assets/images/logo.svg';
 export function Footer() {
   return (
     <div className="bg-dark-green">
+      <p>durian</p>
       <footer className="bg-gradient-utd-saturatedGreen-transparent rounded-t-[100px] pt-16 ">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-[25%_40%_30%] gap-8 mb-12 border-b border-primary ">
