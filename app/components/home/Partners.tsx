@@ -1,7 +1,7 @@
 import { Container } from '../ui/Container';
 import dynamic from 'next/dynamic';
-const PartnersDesktop = dynamic(() => import('../home/PartnersDesktop')) 
-const PartnersMobile = dynamic(() => import('../home/PartnersMobile'))
+const PartnersDesktop = dynamic(() => import('../home/PartnersDesktop'));
+const PartnersMobile = dynamic(() => import('../home/PartnersMobile'));
 
 interface PartnersProps {
   name: string;
@@ -18,11 +18,11 @@ export function Partners() {
   return (
     <section className="bg-green-800 py-16">
       <Container>
-        <section className='hidden xl:block'>
+        <section className="hidden xl:block">
           <PartnersDesktop partners={partners} />
         </section>
-        <section className='xl:hidden'>
-          <PartnersMobile partners={partners}/>
+        <section className="xl:hidden">
+          <PartnersMobile partners={partners} />
         </section>
       </Container>
     </section>

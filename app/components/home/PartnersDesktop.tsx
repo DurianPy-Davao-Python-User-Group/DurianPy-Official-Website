@@ -1,15 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-interface PartnersProps { 
+interface PartnersProps {
   name: string;
-  logo: string
+  logo: string;
 }
 
-const PartnersDesktop = ( { partners }: { partners: PartnersProps[]}) => {
-  console.log(partners)
-  return (
-    <div>PartnersDesktop</div>
-  )
-}
+const PartnersDesktop = ({ partners }: { partners: PartnersProps[] }) => {
+  console.log(partners);
+  return <div>PartnersDesktop</div>;
+};
 
-export default PartnersDesktop
+export default PartnersDesktop;
