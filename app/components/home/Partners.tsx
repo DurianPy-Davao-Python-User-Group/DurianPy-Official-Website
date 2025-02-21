@@ -1,4 +1,4 @@
-import { Container } from '../ui/container'; 
+import { Container } from '../ui/container';
 import dynamic from 'next/dynamic';
 const PartnersDesktop = dynamic(() => import('../home/PartnersDesktop'));
 const PartnersMobile = dynamic(() => import('../home/PartnersMobile'));
