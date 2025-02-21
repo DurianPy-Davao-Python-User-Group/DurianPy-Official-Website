@@ -10,9 +10,9 @@ interface PartnersProps {
 const PartnersMobile = ({ partners }: { partners: PartnersProps[] }) => {
   return (
     <>
-      <div className="text-center text-2xl font-semibold mb-2 text-[#ffc200]">
+      <h1 className="text-center text-2xl font-semibold mb-2 text-[#ffc200]">
         Partners
-      </div>
+      </h1>
       <p className="text-center text-xs mb-6 text-white max-w-[31ch] mx-auto">
         We collaborate with like-minded organizations to{' '}
         <span className="text-[#417659]">
