@@ -5,7 +5,7 @@ export function Hero() {
     <section className="relative bg-gradient-to-b from-green-900 to-green-800 min-h-[600px]">
       <Container>
         <div className="flex flex-col items-center justify-center pt-20 pb-16 text-center">
-          <h1 className="text-4xl sm:text-6xl font-bold text-white mb-6">
+          <h1 className="text-4xl sm:text-6xl font-bold text-white mb-6 sm:text-red-900">
             DurianPy
           </h1>
           <p className="text-xl text-green-100 mb-8">

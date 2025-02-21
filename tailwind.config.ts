@@ -19,6 +19,14 @@ const config: Config = {
         'medium-dark-green': '#1A3E2A',
         'black-30-opacity': 'rgba(0, 0, 0, 0.3)',
       },
+      fontSize: {
+        'web-title-font': 'var(--web-title-font)',
+        'web-medium-font': 'var(--web-medium-font)',
+        'web-body-font': 'var(--web-body-font)',
+        'tabs-navbar': 'var(--tabs-navbar)',
+        'button-default': 'var(--button-default)',
+        'button-hovered': 'var(--button-hovered)',
+      },
       backgroundImage: {
         'gradient-ltr-lightgreen-transparent':
           'linear-gradient(to right, #36FF90,rgba(115, 115, 115, 0))',
