@@ -6,7 +6,6 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --font-montserrat: 'Montserrat', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,7 +18,6 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-montserrat);
 }
 
 @layer utilities {
