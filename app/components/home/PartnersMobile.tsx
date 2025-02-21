@@ -13,14 +13,14 @@ const PartnersMobile = ({ partners }: { partners: PartnersProps[] }) => {
       <div className="text-center text-2xl font-semibold mb-2 text-[#ffc200]">
         Partners
       </div>
-      <div className="text-center text-xs mb-6 text-white max-w-[173px] mx-auto">
+      <p className="text-center text-xs mb-6 text-white max-w-[31ch] mx-auto">
         We collaborate with like-minded organizations to{' '}
         <span className="text-[#417659]">
           foster creativity, innovation, and growth.
         </span>
         Explore our partnerships and see how we create meaningful impact
         together.
-      </div>
+      </p>
 
       <section className="py-6">
         <div className="flex flex-wrap justify-center gap-10">
