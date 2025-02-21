@@ -1,4 +1,4 @@
-import { Container } from '../ui/Container';
+import { Container } from '../ui/container'; 
 import dynamic from 'next/dynamic';
 const PartnersDesktop = dynamic(() => import('../home/PartnersDesktop'));
 const PartnersMobile = dynamic(() => import('../home/PartnersMobile'));
@@ -38,7 +38,7 @@ export function Partners() {
     },
     {
       name: 'CSSEC',
-      logo: '/partner-logos/cssec-logo.png',
+      logo: '/partner-logos/cssec-logo.PNG',
       desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid quasi fuga est illum vero sapiente facere? Quas itaque harum praesentium a ut nobis',
     },
     {
@@ -58,7 +58,7 @@ export function Partners() {
     },
     {
       name: 'SPARCS',
-      logo: '/partner-logos/sparcs-logo.png',
+      logo: '/partner-logos/sparcs-logo.PNG',
       desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid quasi fuga est illum vero sapiente facere? Quas itaque harum praesentium a ut nobis',
     },
   ];
