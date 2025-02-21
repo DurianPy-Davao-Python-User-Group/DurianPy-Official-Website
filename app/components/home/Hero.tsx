@@ -1,6 +1,12 @@
+"use client";
+
 import { Container } from '../ui/Container';
 import Image from 'next/image';
 import { useMemo } from 'react';
+
+function redirectTo(url: string) {
+  window.open(url, '_blank');
+}
 
 export function Hero() {
   const numCircles = 4;
@@ -80,16 +86,16 @@ export function Hero() {
               <div className="mx-auto">
                 <Image src="/image/durianpy-logo.svg" height={400} width={300} alt="Durianpy Logo" className="lg:scale-150" />
               </div>
-              <p className="text-xl md:text-3xl mb-8 px-10 md:w-[90%] mx-auto">
+              <p className="font-montserrat text-xl md:text-3xl mb-8 px-10 md:w-[90%] mx-auto class">
                 Accelerating <span className="text-primary">Davao&apos;s</span> Tech Growth with Python
               </p>
             </div>
 
-            <div className="flex flex-col gap-4 lg:pb-12">
-              <button className="bg-[#112018] text-[#3EB372] font-semibold py-2 px-8 rounded-full opacity-90 shadow-md hover:scale-105 transition-transform duration-300">
+            <div onClick={() => redirectTo('https://www.meetup.com/durianpy/')} className="flex flex-col gap-4 lg:pb-12">
+              <button className="bg-[#112018] text-[#3EB372] font-semibold py-2 px-8 rounded-full opacity-90 shadow-md hover:scale-105 transition-transform duration-200">
                 Attend an Event
               </button>
-              <button className="border-[1px] border-dark-green text-[#112018] font-normal py-2 px-4 rounded-full opacity-90 w-36 mx-auto shadow-md hover:scale-105 transition-transform duration-300">
+              <button onClick={() => redirectTo('https://forms.gle/x2cc6CrRhbhDeaxe9')} className="border-[1px] border-dark-green text-[#112018] font-normal py-2 px-4 rounded-full opacity-90 w-36 mx-auto shadow-md hover:scale-105 transition-transform duration-200">
                 Give a Talk
               </button>
             </div>
