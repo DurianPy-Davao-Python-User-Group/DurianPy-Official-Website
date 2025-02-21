@@ -1,22 +1,22 @@
-"use client";
-
+'use client';
 import { Container } from '../ui/Container';
 import Image from 'next/image';
-import { useMemo } from 'react';
 
-function redirectTo(url: string) {
-  window.open(url, '_blank');
-}
+const numCircles = 4;
+const minDuration = 3;
+const maxDuration = 7;
+const durations = Array.from(
+  { length: numCircles },
+  (_, i) =>
+    ((i / numCircles) * (maxDuration - minDuration) + minDuration).toFixed(2) // Ensures consistent values
+);
 
 export function Hero() {
-  const numCircles = 4;
-  const minDuration = 3; // Min animation duration (seconds)
-  const maxDuration = 7; // Max animation duration (seconds)
-  const durations = useMemo(() => 
-    Array.from({ length: numCircles }, () => 
-      (Math.random() * (maxDuration - minDuration) + minDuration).toFixed(2)
-    ), 
-  []);
+  const handleRedirect = (url: string) => {
+    if (typeof window !== 'undefined') {
+      window.open(url, '_blank');
+    }
+  };
 
   const circles = [
     { left: '8%', top: '10%', size: 70 },
@@ -27,9 +27,11 @@ export function Hero() {
 
   return (
     <>
-    {/* css styles for the pulsing circles */}
+      {/* css styles for the pulsing circles */}
       <style>
-        {circles.map((_, index) => `
+        {circles
+          .map(
+            (_, index) => `
           @keyframes smooth-light-${index} {
             0% { opacity: 0; }
             50% { opacity: 1; }
@@ -38,20 +40,26 @@ export function Hero() {
           .animate-smooth-light-${index} {
             animation: smooth-light-${index} ${durations[index]}s ease-in-out infinite;
           }
-        `).join('\n')}
+        `
+          )
+          .join('\n')}
       </style>
 
-      <section className="relative bg-dark-green overflow-clip">
+      <section className="relative bg-dark-green min-h-screen overflow-clip">
         {/* Background elements */}
         <div>
-          <Image src="/image/ellipse.svg" height={375} width={500} alt="" className="absolute bottom-0 scale-x-[2.5] scale-y-[3.5] md:scale-x-[4] md:scale-y-[3] md:translate-x-[70%] lg:translate-x-full md:translate-y-1/2 blur-sm"/>
-          <Image src="/image/blender.svg" height={1080} width={3020} alt="" className="absolute bottom-0 scale-y-[110%] translate-y-[30%]"/>
-          <Image src="/image/gear.svg" height={600} width={600} alt="" className="absolute translate-x-[-80%] top-0 scale-[135%] md:translate-x-[-65%] md:translate-y-[15%] -rotate-12 blur-sm"/>
-          <Image src="/image/gear-2.svg" height={600} width={600} alt="" className="absolute scale-125 right-0 bottom-0 translate-x-[75%] -translate-y-[15%] md:translate-x-[60%] md:translate-y-[60%] blur-sm"/>
+          <div className="absolute inset-0 bg-[url('/image/rectangle.svg')] bg-cover bg-center h-1/3 scale-x-[1.5] top-[35%] opacity-30 md:h-1/2 md:opacity-65 md:top-[45%] blur-lg" />
+          <div className="absolute w-full h-full bg-[url('/image/ellipse.svg')] bg-no-repeat bg-cover bg-center md:bg-contain top-[50%] lg:scale-x-[120%]" />
+          <div className="absolute inset-0 bg-[url('/image/blender.svg')] bg-no-repeat blur-md scale-x-125 h-1/2 translate-y-[135%] scale-y-50" />
+          <Image src="/image/gear.svg" height={600} width={600} alt="a" priority
+            className="absolute translate-x-[-80%] top-0 scale-[135%] md:translate-x-[-65%] md:translate-y-[15%] -rotate-12 blur-sm w-auto h-auto"
+          />
+          <Image src="/image/gear.svg" height={600} width={600} alt="a" priority
+            className="absolute translate-x-[80%] top-1/2 scale-[120%] md:scale-100 rotate-180 md:rotate-[210deg] blur-sm w-auto h-auto lg:right-[10%]" />
         </div>
 
         {/* Animated Pulsing Circles */}
-        <div className="hidden lg:block">
+        <div className="hidden md:block">
           {circles.map(({ left, top, size }, index) => (
             <svg
               key={index}
@@ -67,11 +75,26 @@ export function Hero() {
                 <circle cx="45.7231" cy="45.7231" r="22.7231" fill="#FFC201" />
               </g>
               <defs>
-                <filter id="filter0_f_514_198" x="0.0474129" y="0.0474129" width="91.3512" height="91.3513"
-                  filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                <filter
+                  id="filter0_f_514_198"
+                  x="0.0474129"
+                  y="0.0474129"
+                  width="91.3512"
+                  height="91.3513"
+                  filterUnits="userSpaceOnUse"
+                  colorInterpolationFilters="sRGB"
+                >
                   <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                  <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                  <feGaussianBlur stdDeviation="11.4763" result="effect1_foregroundBlur_514_198" />
+                  <feBlend
+                    mode="normal"
+                    in="SourceGraphic"
+                    in2="BackgroundImageFix"
+                    result="shape"
+                  />
+                  <feGaussianBlur
+                    stdDeviation="11.4763"
+                    result="effect1_foregroundBlur_514_198"
+                  />
                 </filter>
               </defs>
             </svg>
@@ -79,23 +102,39 @@ export function Hero() {
         </div>
 
         {/* Hero section */}
-        <Container className="h-screen justify-center flex items-center">
+        <Container className="justify-center flex items-center min-h-screen">
           <div className="relative flex flex-col items-center justify-center pt-20 pb-16 text-center gap-8 lg:gap-0">
-
             <div className="flex flex-col gap-6 lg:gap-10 lg:mb-8">
               <div className="mx-auto">
-                <Image src="/image/durianpy-logo.svg" height={400} width={300} alt="Durianpy Logo" className="lg:scale-150" />
+                <Image
+                  src="/image/durianpy-logo.png"
+                  height={400}
+                  width={300}
+                  alt="Durianpy Logo"
+                  className="md:scale-150 w-auto h-auto"
+                  priority={true}
+                />
               </div>
-              <p className="font-montserrat text-xl md:text-3xl mb-8 px-10 md:w-[90%] mx-auto class">
-                Accelerating <span className="text-primary">Davao&apos;s</span> Tech Growth with Python
+              <p className="font-montserrat text-xl md:text-2xl mb-8 px-10 md:w-[90%] mx-auto tracking-wider">
+                Accelerating <span className="text-primary">Davao&apos;s</span>{' '}Tech Growth with Python
               </p>
             </div>
 
-            <div onClick={() => redirectTo('https://www.meetup.com/durianpy/')} className="flex flex-col gap-4 lg:pb-12">
-              <button className="bg-[#112018] text-[#3EB372] font-semibold py-2 px-8 rounded-full opacity-90 shadow-md hover:scale-105 transition-transform duration-200">
+            <div className="flex flex-col gap-4 lg:pb-12">
+              <button
+                onClick={() =>
+                  handleRedirect('https://www.meetup.com/durianpy/')
+                }
+                className="bg-[#112018] text-[#3EB372] font-semibold py-2 px-8 rounded-full opacity-90 shadow-md hover:scale-105 transition-transform duration-300"
+              >
                 Attend an Event
               </button>
-              <button onClick={() => redirectTo('https://forms.gle/x2cc6CrRhbhDeaxe9')} className="border-[1px] border-dark-green text-[#112018] font-normal py-2 px-4 rounded-full opacity-90 w-36 mx-auto shadow-md hover:scale-105 transition-transform duration-200">
+              <button
+                onClick={() =>
+                  handleRedirect('https://forms.gle/x2cc6CrRhbhDeaxe9')
+                }
+                className="border-[1px] border-dark-green text-[#112018] font-normal py-2 px-4 rounded-full opacity-90 w-36 mx-auto shadow-md hover:scale-105 transition-transform duration-200"
+              >
                 Give a Talk
               </button>
             </div>
