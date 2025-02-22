@@ -46,6 +46,8 @@ const config: Config = {
           'linear-gradient(to right, #1A3E2A,rgba(26, 62, 42, 0))',
         'gradient-utd-saturatedGreen-transparent':
           'linear-gradient(to bottom, rgba(62, 179, 115, 0), #00833A)',
+        'gradient-utd-nav-transparent':
+          'linear-gradient(to bottom, rgba(62,179,114,0.63), rgba(166,255,205,0.63))',
         'gradient-utd-green-transparent':
           'linear-gradient(180deg, rgba(17,32,24,0.8) ,rgba(0,64,28,1))',
       },

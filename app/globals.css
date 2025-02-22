@@ -1,22 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Montserrat', Arial, sans-serif;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
-
 }
 
 @layer base {
   :root {
     --radius: 0.5rem;
-    font-size: 16px;
+    /* font-size: 16px; */
     --web-title-font: 5rem;
     --web-medium-font: 2.5rem;
     --web-body-font: 1.25rem;
@@ -25,7 +25,7 @@ body {
     --button-hovered: 1.625rem;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1023px) {
     :root {
       --web-title-font: 1.5rem;
       --web-medium-font: 0.875rem;
@@ -35,4 +35,4 @@ body {
       --button-hovered: 0.875rem;
     }
   }
- }
+}
