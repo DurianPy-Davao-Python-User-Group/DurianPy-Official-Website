@@ -3,6 +3,7 @@ import React from 'react';
 interface PartnersProps {
   name: string;
   logo: string;
+  desc: string;
 }
 
 const PartnersMobile = ({ partners }: { partners: PartnersProps[] }) => {
