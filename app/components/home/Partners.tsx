@@ -65,10 +65,10 @@ export function Partners() {
   return (
     <section className="bg-green-800 py-16">
       <Container>
-        <section className="hidden xl:block">
+        <section className="hidden lg:block">
           <PartnersDesktop partners={partners} />
         </section>
-        <section className="xl:hidden">
+        <section className="lg:hidden">
           <PartnersMobile partners={partners} />
         </section>
       </Container>
