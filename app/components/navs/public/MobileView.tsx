@@ -12,6 +12,13 @@ import {
   SheetTrigger,
 } from '@/app/components/ui/sheet';
 
+import {
+  Accordion,
+  AccordionTrigger,
+  AccordionContent,
+  AccordionItem,
+} from '@/app/components/ui/accordion';
+
 interface redirectProps {
   href: string;
 }
@@ -53,9 +60,18 @@ export default function MobileView() {
             >
               Events
             </Button>
-            <Button variant={'navLinkMobile'}>
-              Support Us <ChevronDown strokeWidth={3} />
-            </Button>
+            <Accordion type="single" collapsible>
+              <AccordionItem value="item-1">
+                <AccordionTrigger>
+                  <Button variant={'navLinkMobile'}>Support Us</Button>
+                </AccordionTrigger>
+                <AccordionContent className="flex flex-col justify-center items-center">
+                  <Button variant={'accordion-dropdown'}>Sponsors</Button>
+                  <Button variant={'accordion-dropdown'}>Host Us</Button>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+
             <Button
               variant={'navLinkMobile'}
               onClick={() => router.push('/404')}

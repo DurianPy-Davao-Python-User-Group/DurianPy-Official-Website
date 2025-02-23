@@ -28,6 +28,7 @@ const buttonVariants = cva(
           'p-[10px] border-[1px] rounded-[50px] border-transparent hover:text-primary hover:border-primary active:bg-primary active:text-dark-green',
         'dropdown-item':
           'h-full w-full bg-primary text-dark-green rounded-[0px] p-[10px] hover:bg-[#FFC20120] hover:text-primary',
+        'accordion-dropdown': 'bg-none text-[16px] text-dark-green p-[10px]',
       },
       size: {
         default: '',
