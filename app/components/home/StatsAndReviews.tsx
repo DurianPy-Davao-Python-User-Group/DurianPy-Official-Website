@@ -55,7 +55,7 @@ export function StatsAndReviews() {
           {/* Section Statistics */}
           <div className="text-white grid grid-cols-2 grid-rows-2 gap-4 h-52 2xl:h-max mt-12 sm:mt-5 md:mt-5 lg:mt-5 xl:-mt-14">
             {/* Active Members */}
-            <div className="bg-green-900 p-4 border border-white rounded-lg grid place-content-center">
+            <div className="bg-green-900 p-4 border border-white rounded-lg grid place-content-center hover:bg-mintBliss/20 hover:border-mintBliss hover:text-mintBliss transition-colors duration-300">
               <div className="text-center">
                 <span className="text-4xl font-bold">
                   {isVisible && <CountUp start={0} end={12} duration={3} />}+
@@ -66,9 +66,9 @@ export function StatsAndReviews() {
             </div>
 
             {/* Monthly Meetup Attendees */}
-            <div className="row-span-2 bg-green-900 p-6 border border-white rounded-lg grid place-content-center">
+            <div className="row-span-2 bg-green-900 p-6 border border-white rounded-lg grid place-content-center hover:bg-mintBliss/20 hover:border-mintBliss hover:text-mintBliss transition-colors duration-300">
               <div className="text-center">
-                <span className="text-4xl font-bold text-white">
+                <span className="text-4xl font-bold">
                   {isVisible && <CountUp start={0} end={20} duration={3} />}+
                 </span>
                 <br />
@@ -77,9 +77,9 @@ export function StatsAndReviews() {
             </div>
 
             {/* Events Hosted */}
-            <div className="bg-green-900 p-6 border border-white rounded-lg grid place-content-center">
+            <div className="bg-green-900 p-6 border border-white rounded-lg grid place-content-center hover:bg-mintBliss/20 hover:border-mintBliss hover:text-mintBliss transition-colors duration-300">
               <div className="text-center">
-                <span className="text-4xl font-bold text-white">
+                <span className="text-4xl font-bold">
                   {isVisible && <CountUp start={0} end={12} duration={3} />}
                 </span>
                 <br />

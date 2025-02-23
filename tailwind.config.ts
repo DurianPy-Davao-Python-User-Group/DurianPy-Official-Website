@@ -12,6 +12,8 @@ const config: Config = {
       colors: {
         midoriGreen: '#36FF90',
         centerStage: '#FFC200',
+        mizukazeGreen: '#1A3E2A',
+        mintBliss: '#8AFFBE',
         background: 'var(--background)',
         foreground: 'var(--foreground)',
         primary: '#FFC200',
