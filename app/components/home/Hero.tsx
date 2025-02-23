@@ -115,7 +115,7 @@ export function Hero() {
                   priority={true}
                 />
               </div>
-              <p className="font-montserrat text-xl md:text-2xl mb-8 px-10 md:w-[90%] mx-auto tracking-wider">
+              <p className="font-montserrat text-xl md:text-3xl mb-7 px-10 md:w-[90%] mx-auto tracking-wider">
                 Accelerating <span className="text-primary">Davao&apos;s</span>{' '}Tech Growth with Python
               </p>
             </div>
