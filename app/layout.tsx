@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { Montserrat } from 'next/font/google';
 import './globals.css';
+import Navbar from '@/app/components/navs/public/Navbar';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -35,6 +36,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} antialiased`}
       >
+        <Navbar />
         {children}
       </body>
     </html>
