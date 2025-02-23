@@ -1,6 +1,5 @@
-import { Container } from '../ui/container';
 'use client';
-import { Container } from '../ui/Container';
+import { Container } from '../ui/container';
 import Image from 'next/image';
 
 const numCircles = 4;
@@ -116,7 +115,7 @@ export function Hero() {
                   priority={true}
                 />
               </div>
-              <p className="font-montserrat text-xl md:text-3xl mb-7 px-10 md:w-[90%] mx-auto tracking-wider">
+              <p className="font-montserrat text-xl md:text-3xl mb-7 px-10 md:w-[90%] mx-auto tracking-wider text-white">
                 Accelerating <span className="text-primary">Davao&apos;s</span>{' '}Tech Growth with Python
               </p>
             </div>
