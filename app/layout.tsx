@@ -17,7 +17,7 @@ const geistMono = localFont({
 
 const montserrat = Montserrat({
   subsets: ['latin'],
-  variable: '--font-monstserrat'
+  variable: '--font-monstserrat',
 });
 
 export const metadata: Metadata = {

@@ -47,7 +47,7 @@ export function PartnersDescriptionCarousel({
     if (api) {
       plugin.current.play();
     }
-  }
+  };
 
   return (
     <div className="w-full">
@@ -81,7 +81,7 @@ export function PartnersDescriptionCarousel({
             className={cn(
               'w-5 h-5 rounded-full transition-transform duration-300',
               current === index + 1 ? 'bg-primary' : 'bg-[#B7B7B7]',
-              current >= 5 && index === 4 && 'bg-primary',
+              current >= 5 && index === 4 && 'bg-primary'
             )}
           ></div>
         ))}
