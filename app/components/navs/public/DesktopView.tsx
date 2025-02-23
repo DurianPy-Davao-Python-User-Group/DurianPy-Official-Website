@@ -2,6 +2,13 @@
 
 import { useRouter } from 'next/navigation';
 import { Button } from '../../ui/button';
+import { ChevronDown } from 'lucide-react';
+
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+} from '@/app/components/ui/dropdown-menu';
 
 interface redirectProps {
   href: string;
@@ -25,7 +32,6 @@ export default function DesktopView() {
       >
         About
       </Button>
-      <Button variant={'dropdown'}>Support Us</Button>
       <Button
         variant={'navLink'}
         onClick={() =>
@@ -34,6 +40,21 @@ export default function DesktopView() {
       >
         Events
       </Button>
+      <DropdownMenu>
+        <DropdownMenuTrigger className="flex justify-center items-center outline-none focus:outline-none">
+          <Button variant={'dropdown'}>
+            Support Us <ChevronDown strokeWidth={2} />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className="max-w-[144px] rounded-[20px] border-[1px] border-primary p-0 bg-transparent backdrop-blur-sm">
+          <Button variant={'dropdown-item'} onClick={() => router.push('/404')}>
+            Sponsors
+          </Button>
+          <Button variant={'dropdown-item'} onClick={() => router.push('/404')}>
+            Host Us
+          </Button>
+        </DropdownMenuContent>
+      </DropdownMenu>
       <Button
         variant={'navLink'}
         onClick={() =>
@@ -41,6 +62,9 @@ export default function DesktopView() {
         }
       >
         Speak
+      </Button>
+      <Button variant={'navLink'} onClick={() => router.push('/404')}>
+        SIGs
       </Button>
       <Button
         variant={'navLink'}

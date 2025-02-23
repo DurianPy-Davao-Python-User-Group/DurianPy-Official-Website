@@ -18,6 +18,7 @@ const config: Config = {
         'light-dark-green': '#00401C',
         'medium-dark-green': '#1A3E2A',
         'black-30-opacity': 'rgba(0, 0, 0, 0.3)',
+        'saturated-light-green-opacity-50': '#36FF9050',
       },
       fontSize: {
         'web-title-font': 'var(--web-title-font)',

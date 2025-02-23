@@ -23,9 +23,11 @@ const buttonVariants = cva(
         navLink:
           'p-[10px] border-[1px] hover:bg-transparent border-transparent rounded-[50px] text-tabs-navbar text-white hover:text-primary active:text-primary active:border-primary',
         navLinkMobile:
-          'w-full font-semibold max-h-[96px] h-full rounded-[0px] hover:bg-[#11201840] text-tabs-navbar',
+          'w-full !text-dark-green font-semibold max-h-[96px] h-full rounded-[0px] hover:bg-saturated-light-green-opacity-50 hover:shadow-md text-tabs-navbar',
         dropdown:
           'p-[10px] border-[1px] rounded-[50px] border-transparent hover:text-primary hover:border-primary active:bg-primary active:text-dark-green',
+        'dropdown-item':
+          'h-full w-full bg-primary text-dark-green rounded-[0px] p-[10px] hover:bg-[#FFC20120] hover:text-primary',
       },
       size: {
         default: '',

@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { Menu } from 'lucide-react';
+import { Menu, ChevronDown } from 'lucide-react';
 import { Button } from '@/app/components/ui/button';
 import {
   Sheet,
@@ -31,7 +31,7 @@ export default function MobileView() {
         </SheetTrigger>
         <SheetContent
           side={'right'}
-          className="bg-gradient-utd-nav-transparent border-l-0 rounded-l-[50px] backdrop-blur-sm flex flex-col justify-center items-center !max-w-[256px] p-0"
+          className="bg-gradient-utd-nav-transparent border-l-0 rounded-l-[50px] backdrop-blur-sm flex flex-col justify-center items-center !max-w-[256px] p-0 overflow-hidden"
         >
           <div className="flex flex-col justify-center items-center w-full h-full">
             <Button variant={'navLinkMobile'} onClick={() => router.push('/')}>
@@ -45,7 +45,6 @@ export default function MobileView() {
             >
               About
             </Button>
-            <Button variant={'navLinkMobile'}>Support Us</Button>
             <Button
               variant={'navLinkMobile'}
               onClick={() =>
@@ -53,6 +52,15 @@ export default function MobileView() {
               }
             >
               Events
+            </Button>
+            <Button variant={'navLinkMobile'}>
+              Support Us <ChevronDown strokeWidth={3} />
+            </Button>
+            <Button
+              variant={'navLinkMobile'}
+              onClick={() => router.push('/404')}
+            >
+              SIGs
             </Button>
             <Button
               variant={'navLinkMobile'}
