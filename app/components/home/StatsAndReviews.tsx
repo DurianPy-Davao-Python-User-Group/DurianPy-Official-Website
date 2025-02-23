@@ -1,7 +1,7 @@
-"use client";
-import { useState, useEffect, useRef } from "react";
-import { Container } from "../ui/Container";
-import CountUp from "react-countup";
+'use client';
+import { useState, useEffect, useRef } from 'react';
+import { Container } from '../ui/Container';
+import CountUp from 'react-countup';
 
 export function StatsAndReviews() {
   const [isVisible, setIsVisible] = useState(false);
@@ -38,15 +38,19 @@ export function StatsAndReviews() {
             </div>
 
             {/* Section Description */}
-            <div className="text-center 2xl:text-left pb-7 xl:pb-[121px] sm:px-10 md:px-16 
-                lg:px-32 xl:px-10 2xl:px-5 lg:pr-99 2xl:pr-72">
+            <div
+              className="text-center 2xl:text-left pb-7 xl:pb-[121px] sm:px-10 md:px-16 
+                lg:px-32 xl:px-10 2xl:px-5 lg:pr-99 2xl:pr-72"
+            >
               <p>
-                <span className="font-bold">DurianPy</span> is a community for Python enthusiasts to learn, 
-                share, and connect through monthly meetups, workshops, and events. We collaborate with 
-                organizations to bring valuable learning experiences to developers of all levels.
+                <span className="font-bold">DurianPy</span> is a community for
+                Python enthusiasts to learn, share, and connect through monthly
+                meetups, workshops, and events. We collaborate with
+                organizations to bring valuable learning experiences to
+                developers of all levels.
               </p>
             </div>
-            </div>
+          </div>
 
           {/* Section Statistics */}
           <div className="grid grid-cols-2 grid-rows-2 gap-4 h-52 2xl:h-max mt-12 sm:mt-5 md:mt-5 lg:mt-5 xl:-mt-14">

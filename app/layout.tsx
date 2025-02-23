@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { Montserrat } from 'next/font/google';
 import './globals.css';
+import Navbar from '@/app/components/navs/public/Navbar';
 // Import and configure local fonts
 const montserrat = Montserrat({
   variable: '--font-montserrat',
