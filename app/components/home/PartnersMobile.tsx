@@ -1,6 +1,7 @@
-'use client';
+"use client";
+
 import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
 interface PartnersProps {
@@ -11,6 +12,39 @@ interface PartnersProps {
 
 const PartnersMobile = ({ partners }: { partners: PartnersProps[] }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const containerRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.6, // Detect when 60% of a container is in view
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = containerRefs.current.findIndex(
+            (ref) => ref === entry.target
+          );
+          if (index !== -1) {
+            setActiveIndex(index);
+          }
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    containerRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => {
+      containerRefs.current.forEach((ref) => {
+        if (ref) observer.unobserve(ref);
+      });
+    };
+  }, []);
 
   return (
     <>
@@ -19,20 +53,28 @@ const PartnersMobile = ({ partners }: { partners: PartnersProps[] }) => {
       </h1>
       <p className="text-center text-xs mb-6 text-white max-w-[31ch] mx-auto">
         We collaborate with like-minded organizations to{" "}
-        <span className="text-[#417659]">foster creativity, innovation, and growth.</span>
-        Explore our partnerships and see how we create meaningful impact together.
+        <span className="text-[#417659]">
+          foster creativity, innovation, and growth.
+        </span>{" "}
+        Explore our partnerships and see how we create meaningful impact
+        together.
       </p>
 
-      {/* Carousel */}
-      <div className="relative w-full overflow-hidden">
-        <Carousel
-          className="overflow-x-auto scroll-smooth no-scrollbar"
-          onSlideChange={(index) => setActiveIndex(index)}
-        >
-          <CarouselContent className="flex">
+      {/* Vertical Carousel */}
+      <div className="relative w-full overflow-hidden h-[350px]">
+        <Carousel className="overflow-y-auto no-scrollbar h-full">
+          <CarouselContent className="flex flex-col items-center gap-4">
             {partners.map((partner, index) => (
-              <CarouselItem key={index} className="basis-full shrink-0 flex justify-center">
-                <div className="bg-transparent rounded-lg w-[210px] h-[315px] flex flex-col items-center border border-[#7ee4ac]">
+              <CarouselItem
+                key={index}
+                className="flex justify-center relative"
+              >
+                <div
+                  ref={(el) => (containerRefs.current[index] = el)}
+                  className={`bg-transparent rounded-lg w-[210px] h-[315px] flex flex-col items-center border border-[#7ee4ac] transition-opacity duration-300 ${
+                    activeIndex === index ? "opacity-100" : "opacity-50"
+                  }`}
+                >
                   {/* Partner Logo */}
                   <div className="w-full flex items-center justify-center h-[110px] mt-4">
                     <Image
@@ -53,7 +95,9 @@ const PartnersMobile = ({ partners }: { partners: PartnersProps[] }) => {
                     <p className="relative text-lg font-bold leading-none mt-8 mb-2">
                       {partner.name}
                     </p>
-                    <p className="relative text-white text-xs mt-1 px-4">{partner.desc}</p>
+                    <p className="relative text-white text-xs mt-1 px-4">
+                      {partner.desc}
+                    </p>
                   </div>
                 </div>
               </CarouselItem>
@@ -62,11 +106,11 @@ const PartnersMobile = ({ partners }: { partners: PartnersProps[] }) => {
         </Carousel>
 
         {/* Dot Indicators */}
-        <div className="flex justify-center mt-3">
+        <div className="flex flex-col items-center mt-3 space-y-1">
           {partners.map((_, index) => (
             <span
               key={index}
-              className={`w-2 h-2 mx-1 rounded-full transition-all duration-300 ${
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
                 activeIndex === index ? "bg-[#ffc200]" : "bg-gray-500 opacity-50"
               }`}
             />
@@ -77,16 +121,21 @@ const PartnersMobile = ({ partners }: { partners: PartnersProps[] }) => {
       {/* Show All Button */}
       <div
         className="bg-[#ffc200] w-[130px] py-[4px] flex justify-center items-center text-black text-sm font-semibold rounded-2xl mx-auto cursor-pointer mt-4"
-        onClick={() => document.getElementById("all-partners")?.scrollIntoView({ behavior: "smooth" })}
+        onClick={() =>
+          document.getElementById("all-partners")?.scrollIntoView({ behavior: "smooth" })
+        }
       >
         Show all
       </div>
 
       {/* All Partners Section (Initially Hidden) */}
-      <section id="all-partners" className="hidden overflow-x-auto whitespace-nowrap py-6">
-        <div className="flex gap-4">
+      <section id="all-partners" className="hidden overflow-y-auto whitespace-nowrap py-6">
+        <div className="flex flex-col items-center gap-4">
           {partners.map((partner, index) => (
-            <div key={index} className="bg-transparent rounded-lg w-[210px] h-[315px] flex flex-col items-center border border-[#7ee4ac]">
+            <div
+              key={index}
+              className="bg-transparent rounded-lg w-[210px] h-[315px] flex flex-col items-center border border-[#7ee4ac]"
+            >
               {/* Partner Logo */}
               <div className="w-full flex items-center justify-center h-[110px] mt-4">
                 <Image
@@ -107,7 +156,9 @@ const PartnersMobile = ({ partners }: { partners: PartnersProps[] }) => {
                 <p className="relative text-lg font-bold leading-none mt-8 mb-2">
                   {partner.name}
                 </p>
-                <p className="relative text-white text-xs mt-1 px-4">{partner.desc}</p>
+                <p className="relative text-white text-xs mt-1 px-4">
+                  {partner.desc}
+                </p>
               </div>
             </div>
           ))}
