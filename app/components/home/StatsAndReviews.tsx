@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
-import { Container } from '../ui/Container';
+import { Container } from '../ui/container';
 import CountUp from 'react-countup';
 
 export function StatsAndReviews() {
@@ -21,11 +21,11 @@ export function StatsAndReviews() {
       observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect(); // Cleanup on unmount
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-green-900 py-16">
+    <section ref={sectionRef} className="bg-green-900 py-16 text-white">
       <Container>
         <div className="flex flex-col items-center px-8 xl:px-[320px] 2xl:flex-row 2xl:px-0 2xl:justify-between">
           <div className="w-full">
@@ -42,7 +42,7 @@ export function StatsAndReviews() {
               className="text-center 2xl:text-left pb-7 xl:pb-[121px] sm:px-10 md:px-16 
                 lg:px-32 xl:px-10 2xl:px-5 lg:pr-99 2xl:pr-72"
             >
-              <p>
+              <p className="text-white">
                 <span className="font-bold">DurianPy</span> is a community for
                 Python enthusiasts to learn, share, and connect through monthly
                 meetups, workshops, and events. We collaborate with
@@ -53,11 +53,11 @@ export function StatsAndReviews() {
           </div>
 
           {/* Section Statistics */}
-          <div className="grid grid-cols-2 grid-rows-2 gap-4 h-52 2xl:h-max mt-12 sm:mt-5 md:mt-5 lg:mt-5 xl:-mt-14">
+          <div className="text-white grid grid-cols-2 grid-rows-2 gap-4 h-52 2xl:h-max mt-12 sm:mt-5 md:mt-5 lg:mt-5 xl:-mt-14">
             {/* Active Members */}
             <div className="bg-green-900 p-4 border border-white rounded-lg grid place-content-center">
               <div className="text-center">
-                <span className="text-4xl font-bold text-white">
+                <span className="text-4xl font-bold">
                   {isVisible && <CountUp start={0} end={12} duration={3} />}+
                 </span>
                 <br />

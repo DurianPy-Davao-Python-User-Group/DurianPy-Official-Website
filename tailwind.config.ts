@@ -10,6 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        midoriGreen: '#36FF90',
+        centerStage: '#FFC200',
         background: 'var(--background)',
         foreground: 'var(--foreground)',
         primary: '#FFC200',
@@ -80,7 +82,9 @@ const config: Config = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
-      fontFamily: {},
+      fontFamily: {
+        monsterrat: ['var(--font-montserrat)', 'sans-serif'],
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],

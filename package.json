@@ -24,6 +24,7 @@
     "next": "14.2.18",
     "odometer": "^0.4.8",
     "react": "^18",
+    "react-countup": "^6.5.3",
     "react-dom": "^18",
     "tailwind-merge": "^3.0.1",
     "tailwindcss-animate": "^1.0.7"
