@@ -1,3 +1,4 @@
+import { Container } from '../ui/container';
 'use client';
 import { Container } from '../ui/Container';
 import Image from 'next/image';
