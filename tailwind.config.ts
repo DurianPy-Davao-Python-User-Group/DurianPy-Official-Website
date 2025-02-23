@@ -1,9 +1,9 @@
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
+  darkMode: ['class'],
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
@@ -11,10 +11,8 @@ const config: Config = {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
-        //Solid Colors
-
-        primary: '#FFC200', //Yellow
-        'dark-green': '#112018', //Dark Green (used for bg)
+        primary: '#FFC200',
+        'dark-green': '#112018',
         white: '#FFFFFF',
         'saturated-light-green': '#00FF00', //light green
         'light-dark-green': '#00401C', //light green (used in outline)
@@ -57,8 +55,13 @@ const config: Config = {
         'gradient-utd-green-transparent':
           'linear-gradient(180deg, rgba(17,32,24,0.8) ,rgba(0,64,28,1))',
       },
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
+      },
     },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-animate')],
 };
 export default config;
