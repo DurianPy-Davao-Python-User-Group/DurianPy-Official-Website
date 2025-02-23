@@ -15,6 +15,7 @@ const config: Config = {
         midoriGreen: '#3EB372',
         centerStage: '#FFC201',
       },
+      fontFamily: {},
     },
   },
   plugins: [],
