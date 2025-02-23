@@ -50,10 +50,21 @@ export function Hero() {
         <div>
           <div className="absolute inset-0 bg-[url('/image/rectangle.svg')] bg-cover bg-center h-1/3 scale-x-[1.5] top-[35%] opacity-30 md:h-1/2 md:opacity-65 md:top-[45%] blur-lg" />
           <div className="absolute w-full h-full bg-[url('/image/ellipse.svg')] bg-no-repeat bg-cover bg-center md:bg-contain top-[50%] md:top-[40%] lg:top-[50%] lg:scale-x-[120%]" />
-          <Image src="/image/gear.svg" height={600} width={600} alt="a" priority
-            className="absolute translate-x-[80%] top-1/2 scale-[120%] md:scale-100 md:right-[15%] rotate-180 md:rotate-[210deg] blur-sm w-auto h-auto lg:right-[10%]" />
+          <Image
+            src="/image/gear.svg"
+            height={600}
+            width={600}
+            alt="a"
+            priority
+            className="absolute translate-x-[80%] top-1/2 scale-[120%] md:scale-100 md:right-[15%] rotate-180 md:rotate-[210deg] blur-sm w-auto h-auto lg:right-[10%]"
+          />
           <div className="absolute inset-0 bg-[url('/image/blender.svg')] bg-no-repeat blur-md scale-x-125 h-1/2 translate-y-[135%] scale-y-50" />
-          <Image src="/image/gear.svg" height={600} width={600} alt="a" priority
+          <Image
+            src="/image/gear.svg"
+            height={600}
+            width={600}
+            alt="a"
+            priority
             className="absolute translate-x-[-80%] top-0 scale-[135%] md:scale-[105%] md:translate-x-[-65%] md:translate-y-[15%] lg:scale-[135%] -rotate-12 blur-sm w-auto h-auto"
           />
         </div>
@@ -116,7 +127,8 @@ export function Hero() {
                 />
               </div>
               <p className="font-montserrat text-xl md:text-3xl mb-7 px-10 md:w-[90%] mx-auto tracking-wider text-white">
-                Accelerating <span className="text-primary">Davao&apos;s</span>{' '}Tech Growth with Python
+                Accelerating <span className="text-primary">Davao&apos;s</span>{' '}
+                Tech Growth with Python
               </p>
             </div>
 
