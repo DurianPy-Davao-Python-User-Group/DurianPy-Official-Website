@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { Menu, ChevronDown } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { Button } from '@/app/components/ui/button';
 import {
   Sheet,
@@ -38,9 +38,9 @@ export default function MobileView() {
         </SheetTrigger>
         <SheetContent
           side={'right'}
-          className="bg-gradient-utd-nav-transparent border-l-0 rounded-l-[50px] backdrop-blur-sm flex flex-col justify-center items-center !max-w-[256px] p-0 overflow-hidden"
+          className="bg-gradient-utd-nav-transparent border-l-0 rounded-l-[50px] backdrop-blur-sm flex flex-col justify-center items-center !max-w-[256px] px-0 overflow-hidden py-[64px]"
         >
-          <div className="flex flex-col justify-center items-center w-full h-full">
+          <div className="flex flex-col justify-start items-center w-full max-h-[calc(100vh - 64px)] overflow-y-auto">
             <Button variant={'navLinkMobile'} onClick={() => router.push('/')}>
               Home
             </Button>
@@ -60,14 +60,27 @@ export default function MobileView() {
             >
               Events
             </Button>
-            <Accordion type="single" collapsible>
-              <AccordionItem value="item-1">
-                <AccordionTrigger>
-                  <Button variant={'navLinkMobile'}>Support Us</Button>
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem
+                value="item-1"
+                className="w-full [&[data-state=open]]:bg-saturated-light-green-opacity-50 [&[data-state=open]]:shadow-md p-0"
+              >
+                <AccordionTrigger className="w-full !text-dark-green font-semibold py-[min(36px,3vh)] rounded-[0px] hover:bg-saturated-light-green-opacity-50 [&[data-state=open]]:hover:shadow-none hover:shadow-md text-tabs-navbar">
+                  Support Us
                 </AccordionTrigger>
-                <AccordionContent className="flex flex-col justify-center items-center">
-                  <Button variant={'accordion-dropdown'}>Sponsors</Button>
-                  <Button variant={'accordion-dropdown'}>Host Us</Button>
+                <AccordionContent className="flex flex-col justify-center items-center !p-0">
+                  <Button
+                    variant={'accordion-dropdown'}
+                    onClick={() => router.push('/404')}
+                  >
+                    Sponsors
+                  </Button>
+                  <Button
+                    variant={'accordion-dropdown'}
+                    onClick={() => router.push('/404')}
+                  >
+                    Host Us
+                  </Button>
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
