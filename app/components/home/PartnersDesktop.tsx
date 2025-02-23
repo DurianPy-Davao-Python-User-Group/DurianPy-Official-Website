@@ -1,4 +1,5 @@
 import React from 'react';
+import { PartnersDescriptionCarousel } from './PartnersDescriptionCarousel';
 
 interface PartnersProps {
   name: string;
@@ -9,9 +10,9 @@ interface PartnersProps {
 const PartnersDesktop = ({ partners }: { partners: PartnersProps[] }) => {
   console.log(partners);
   return (
-    <div className="xl:grid grid-cols-3">
+    <div className="xl:grid grid-cols-3 text-white">
       {/* Description Section */}
-      <div className="space-y-10">
+      <div className="space-y-16">
         <div className="space-y-6 max-w-[365px] mx-auto xl:mx-0">
           <h1 className="text-primary text-[80px] font-bold">Partners</h1>
           <p className="text-xl text-left">
@@ -24,7 +25,7 @@ const PartnersDesktop = ({ partners }: { partners: PartnersProps[] }) => {
           </p>
         </div>
 
-        <div>Description</div>
+        <PartnersDescriptionCarousel partners={partners} />
       </div>
 
       <div className="col-span-2">Logos</div>

@@ -63,7 +63,7 @@ export function Partners() {
     },
   ];
   return (
-    <section className="bg-green-900 py-16 font-montserrat">
+    <section className="bg-[#112018] py-16 font-montserrat">
       <Container>
         <section className="hidden lg:block">
           <PartnersDesktop partners={partners} />
