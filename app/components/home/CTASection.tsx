@@ -8,7 +8,7 @@ export function CTASection() {
           {/* Since tailwind does not directly support gradient transitions, use position absolute and manipulate opacity to mimic transition effect. */}
           <a
             href="https://www.meetup.com/durianpy/"
-            className="h-96 group rounded-2xl relative"
+            className="h-96 group rounded-2xl relative transition delay-50 duration-300 ease-in-out hover:scale-105"
           >
             {/* Dark green backgroun */}
             <div className="w-full h-full bg-gradient-to-b from-[#1a3d29] to-[#133120] absolute group-hover:opacity-0 duration-300 rounded-2xl z-10"></div>
@@ -51,7 +51,7 @@ export function CTASection() {
 
           <a
             href="https://www.meetup.com/durianpy/events/"
-            className="h-96 group rounded-2xl relative"
+            className="h-96 group rounded-2xl relative transition delay-50 duration-300 ease-in-out hover:scale-105"
           >
             {/* Dark green backgroun */}
             <div className="w-full h-full bg-gradient-to-b from-[#1a3d29] to-[#133120] absolute group-hover:opacity-0 duration-300 rounded-2xl z-10"></div>
@@ -96,7 +96,7 @@ export function CTASection() {
 
           <a
             href="https://forms.gle/x2cc6CrRhbhDeaxe9"
-            className="h-96 group rounded-2xl relative"
+            className="h-96 group rounded-2xl relative transition delay-50 duration-300 ease-in-out hover:scale-105"
           >
             {/* Dark green backgroun */}
             <div className="w-full h-full bg-gradient-to-b from-[#1a3d29] to-[#133120] absolute group-hover:opacity-0 duration-300 rounded-2xl z-10"></div>
