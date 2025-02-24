@@ -50,7 +50,7 @@ type StatisticsSectionProps = {
 
 function StatisticsSection({ isVisible }: StatisticsSectionProps) {
   return (
-    <div className="text-white grid grid-cols-2 grid-rows-2 gap-4 h-52 2xl:h-max mt-12 sm:mt-5 md:mt-5 lg:mt-5 xl:-mt-14">
+    <div className="text-white grid grid-cols-2 grid-rows-2 gap-4 h-58 2xl:h-max mt-12 sm:mt-5 md:mt-5 lg:mt-5 xl:-mt-14">
       {statistics.map((stat) => (
         <StatsCard
           key={stat.id}
@@ -88,10 +88,10 @@ export function StatsAndReviews() {
   return (
     <section ref={sectionRef} className="bg-green-900 py-16 text-white">
       <Container>
-        <div className="flex flex-col items-center px-8 xl:px-14 lg:flex-row 2xl:px-0 2xl:justify-between">
+        <div className="flex flex-col items-center px-8 xl:px-14 xl:flex-row 2xl:px-0 2xl:justify-between">
           <div className="w-full">
             {/* Section Title */}
-            <div className="text-center 2xl:text-left text-3xl lg:text-5xl font-bold xl:leading-none text-white pb-7 px-2 sm:px-10 md:px-16 lg:px-10 xl:px-20 2xl:px-5">
+            <div className="text-center xl:text-left text-3xl lg:text-5xl font-bold xl:leading-none text-white pb-7 sm:space-x-10 md:space-x-16 lg:space-x-10 xl:space-x-20 2xl:space-x-5">
               <h2>
                 Statistics <span className="text-midoriGreen">&</span> <br />
                 <span className="text-centerStage">Reviews</span>
@@ -99,7 +99,7 @@ export function StatsAndReviews() {
             </div>
 
             {/* Section Description */}
-            <div className="text-center 2xl:text-left pb-7 xl:pb-[121px] sm:px-10 md:px-16 lg:px-12 xl:px-10 2xl:px-5 lg:pr-99 2xl:pr-72">
+            <div className="text-center xl:text-left sm:space-x-13 pb-12 md:space-x-14 lg:space-x-10 xl:space-x-15 2xl:space-x-10">
               <p className="text-white">
                 <span className="font-bold">DurianPy</span> is a community for
                 Python enthusiasts to learn, share, and connect through monthly
