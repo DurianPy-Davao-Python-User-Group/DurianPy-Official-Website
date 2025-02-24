@@ -5,7 +5,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300',
+  'flex items-center justify-center gap-2 whitespace-nowrap rounded-md ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300',
   {
     variants: {
       variant: {
@@ -22,9 +22,19 @@ const buttonVariants = cva(
         link: 'text-neutral-900 underline-offset-4 hover:underline dark:text-neutral-50',
         footer:
           'bg-primary rounded-[44.65px] font-semibold text-lg hover:bg-primary/90 shadow-lg shadow-black/40',
+        navLink:
+          'p-[10px] border-[1px] hover:bg-transparent border-transparent rounded-[50px] text-tabs-navbar text-white hover:text-primary active:text-primary active:border-primary',
+        navLinkMobile:
+          'w-full !text-dark-green font-semibold py-[min(36px,3vh)] rounded-[0px] hover:bg-saturated-light-green-opacity-50 hover:shadow-md text-tabs-navbar',
+        dropdown:
+          'p-[10px] border-[1px] rounded-[50px] border-transparent hover:text-primary hover:border-primary active:bg-primary active:text-dark-green',
+        'dropdown-item':
+          'h-full w-full bg-primary text-dark-green rounded-[0px] p-[10px] hover:bg-[#FFC20120] hover:text-primary',
+        'accordion-dropdown':
+          'hover:bg-saturated-light-green-opacity-50 w-full text-[16px] rounded-[0px] text-dark-green p-[16px]',
       },
       size: {
-        default: 'h-10 px-4 py-2',
+        default: '',
         sm: 'h-9 rounded-md px-3',
         lg: 'h-11 rounded-md px-8',
         icon: 'h-10 w-10',

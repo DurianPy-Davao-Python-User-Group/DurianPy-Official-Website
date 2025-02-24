@@ -18,6 +18,15 @@ const config: Config = {
         'light-dark-green': '#00401C', //light green (used in outline)
         'medium-dark-green': '#1A3E2A', //medium dark green
         'black-30-opacity': 'rgba(0, 0, 0, 0.3)', //Use for overlay in pictures to darken
+        'saturated-light-green-opacity-50': '#36FF9050',
+      },
+      fontSize: {
+        'web-title-font': 'var(--web-title-font)',
+        'web-medium-font': 'var(--web-medium-font)',
+        'web-body-font': 'var(--web-body-font)',
+        'tabs-navbar': 'var(--tabs-navbar)',
+        'button-default': 'var(--button-default)',
+        'button-hovered': 'var(--button-hovered)',
       },
       backgroundImage: {
         // Always double-check if opacity adjustments were applied to the gradient or overall color appearance.
@@ -52,6 +61,8 @@ const config: Config = {
         'gradient-utd-saturatedGreen-transparent':
           'linear-gradient(to bottom, rgba(62, 179, 115, 0.5), #00833A)',
         //linear fading gradient
+        'gradient-utd-nav-transparent':
+          'linear-gradient(to bottom, rgba(62,179,114,0.63), rgba(166,255,205,0.63))',
         'gradient-utd-green-transparent':
           'linear-gradient(180deg, rgba(17,32,24,0.8) ,rgba(0,64,28,1))',
       },
@@ -59,6 +70,28 @@ const config: Config = {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+      },
+      keyframes: {
+        'accordion-down': {
+          from: {
+            height: '0',
+          },
+          to: {
+            height: 'var(--radix-accordion-content-height)',
+          },
+        },
+        'accordion-up': {
+          from: {
+            height: 'var(--radix-accordion-content-height)',
+          },
+          to: {
+            height: '0',
+          },
+        },
+      },
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
       },
     },
   },
