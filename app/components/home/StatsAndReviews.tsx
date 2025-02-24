@@ -72,7 +72,9 @@ export function StatsAndReviews() {
                   {isVisible && <CountUp start={0} end={150} duration={3} />}+
                 </span>
                 <br />
-                <span className="text-xs">Participants at PyConf Mini Davao 2024</span>
+                <span className="text-xs">
+                  Participants at PyConf Mini Davao 2024
+                </span>
               </div>
             </div>
 
