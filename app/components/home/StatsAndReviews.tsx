@@ -88,7 +88,7 @@ export function StatsAndReviews() {
   return (
     <section ref={sectionRef} className="bg-green-900 py-16 text-white">
       <Container>
-        <div className="flex flex-col items-center px-8 xl:px-[320px] lg:flex-row 2xl:px-0 2xl:justify-between">
+        <div className="flex flex-col items-center px-8 xl:px-14 lg:flex-row 2xl:px-0 2xl:justify-between">
           <div className="w-full">
             {/* Section Title */}
             <div className="text-center 2xl:text-left text-3xl lg:text-5xl font-bold xl:leading-none text-white pb-7 px-2 sm:px-10 md:px-16 lg:px-10 xl:px-20 2xl:px-5">
