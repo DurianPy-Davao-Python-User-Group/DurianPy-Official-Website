@@ -88,10 +88,10 @@ export function StatsAndReviews() {
   return (
     <section ref={sectionRef} className="bg-green-900 py-16 text-white">
       <Container>
-        <div className="flex flex-col items-center px-8 xl:px-[320px] 2xl:flex-row 2xl:px-0 2xl:justify-between">
+        <div className="flex flex-col items-center px-8 xl:px-[320px] lg:flex-row 2xl:px-0 2xl:justify-between">
           <div className="w-full">
             {/* Section Title */}
-            <div className="text-center 2xl:text-left text-3xl xl:text-7xl font-bold xl:leading-none text-white pb-7 px-2 sm:px-10 md:px-16 lg:px-10 xl:px-20 2xl:px-5">
+            <div className="text-center 2xl:text-left text-3xl lg:text-5xl font-bold xl:leading-none text-white pb-7 px-2 sm:px-10 md:px-16 lg:px-10 xl:px-20 2xl:px-5">
               <h2>
                 Statistics <span className="text-midoriGreen">&</span> <br />
                 <span className="text-centerStage">Reviews</span>
@@ -99,7 +99,7 @@ export function StatsAndReviews() {
             </div>
 
             {/* Section Description */}
-            <div className="text-center 2xl:text-left pb-7 xl:pb-[121px] sm:px-10 md:px-16 lg:px-32 xl:px-10 2xl:px-5 lg:pr-99 2xl:pr-72">
+            <div className="text-center 2xl:text-left pb-7 xl:pb-[121px] sm:px-10 md:px-16 lg:px-12 xl:px-10 2xl:px-5 lg:pr-99 2xl:pr-72">
               <p className="text-white">
                 <span className="font-bold">DurianPy</span> is a community for
                 Python enthusiasts to learn, share, and connect through monthly
