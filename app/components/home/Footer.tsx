@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Container } from '../ui/container';
 import Image from 'next/image';
-import logo from '../../assets/images/logo.svg';
+import logo from '../../../public/assets/logo.svg';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Checkbox } from '../ui/checkbox';
@@ -18,8 +18,8 @@ export function Footer() {
   }, [email]);
 
   return (
-    <div className="bg-dark-green">
-      <footer className="bg-gradient-utd-saturatedGreen-transparent rounded-t-[100px] pt-16 ">
+    <div className="">
+      <footer className="bg-gradient-utd-saturatedGreen-transparent rounded-t-[100px] pt-4 ">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-[25%_1px_40%_1px_30%] gap-6 md:gap-8 mb-10 p-6 md:p-8 border-b border-primary items-start">
             {/* Logo & CTA Section */}
@@ -28,10 +28,10 @@ export function Footer() {
                 src={logo}
                 alt="DurianPy Logo"
                 width={250}
-                className="mx-auto md:mx-0 w-[70%] sm:w-[75%] md:w-[220px] max-w-[250px]"
+                className="mx-auto md:mx-0 w-[70%] sm:w-[75%] md:w-[190px] lg:w-[230px] max-w-[250px]"
                 loading="lazy"
               />
-              <p className="text-white text-md px-4 md:px-0 mt-2 font-normal">
+              <p className="text-white text-md px-4 md:px-0 -mt-4 font-normal">
                 Accelerating <span className="text-primary">Davao&apos;s </span>
                 Tech Growth with Python
               </p>
@@ -50,7 +50,7 @@ export function Footer() {
 
             {/* Newsletter Section */}
             <div className="text-center md:text-left mt-12">
-              <h4 className="text-primary text-xl font-black mb-4">
+              <h4 className="text-primary text-xl font-bold mb-4">
                 Newsletter
               </h4>
               <Input
