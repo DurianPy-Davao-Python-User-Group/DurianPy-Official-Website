@@ -3,9 +3,70 @@ import { useState, useEffect, useRef } from 'react';
 import { Container } from '../ui/container';
 import CountUp from 'react-countup';
 
+type Statistic = {
+  id: number;
+  value: number;
+  label: string;
+  large?: boolean;
+};
+
+const statistics: Statistic[] = [
+  { id: 1, value: 350, label: 'Active Members' },
+  {
+    id: 2,
+    value: 150,
+    label: 'Participants at PyConf Mini Davao 2024',
+    large: true,
+  },
+  { id: 3, value: 20, label: 'Monthly Meetups' },
+];
+
+type StatsCardProps = {
+  value: number;
+  label: string;
+  isVisible: boolean;
+  large?: boolean;
+};
+
+function StatsCard({ value, label, isVisible, large }: StatsCardProps) {
+  return (
+    <div
+      className={`bg-green-900 p-4 border border-white rounded-lg grid place-content-center hover:bg-mintBliss/20 hover:border-mintBliss hover:text-mintBliss transition-colors duration-300 ${large ? 'row-span-2 p-6' : ''}`}
+    >
+      <div className="text-center">
+        <span className="text-4xl font-bold">
+          {isVisible && <CountUp start={0} end={value} duration={3} />}+
+        </span>
+        <br />
+        <span className="text-xs">{label}</span>
+      </div>
+    </div>
+  );
+}
+
+type StatisticsSectionProps = {
+  isVisible: boolean;
+};
+
+function StatisticsSection({ isVisible }: StatisticsSectionProps) {
+  return (
+    <div className="text-white grid grid-cols-2 grid-rows-2 gap-4 h-52 2xl:h-max mt-12 sm:mt-5 md:mt-5 lg:mt-5 xl:-mt-14">
+      {statistics.map((stat) => (
+        <StatsCard
+          key={stat.id}
+          value={stat.value}
+          label={stat.label}
+          isVisible={isVisible}
+          large={stat.large}
+        />
+      ))}
+    </div>
+  );
+}
+
 export function StatsAndReviews() {
   const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -38,10 +99,7 @@ export function StatsAndReviews() {
             </div>
 
             {/* Section Description */}
-            <div
-              className="text-center 2xl:text-left pb-7 xl:pb-[121px] sm:px-10 md:px-16 
-                lg:px-32 xl:px-10 2xl:px-5 lg:pr-99 2xl:pr-72"
-            >
+            <div className="text-center 2xl:text-left pb-7 xl:pb-[121px] sm:px-10 md:px-16 lg:px-32 xl:px-10 2xl:px-5 lg:pr-99 2xl:pr-72">
               <p className="text-white">
                 <span className="font-bold">DurianPy</span> is a community for
                 Python enthusiasts to learn, share, and connect through monthly
@@ -53,42 +111,7 @@ export function StatsAndReviews() {
           </div>
 
           {/* Section Statistics */}
-          <div className="text-white grid grid-cols-2 grid-rows-2 gap-4 h-52 2xl:h-max mt-12 sm:mt-5 md:mt-5 lg:mt-5 xl:-mt-14">
-            {/* Active Members */}
-            <div className="bg-green-900 p-4 border border-white rounded-lg grid place-content-center hover:bg-mintBliss/20 hover:border-mintBliss hover:text-mintBliss transition-colors duration-300">
-              <div className="text-center">
-                <span className="text-4xl font-bold">
-                  {isVisible && <CountUp start={0} end={350} duration={3} />}+
-                </span>
-                <br />
-                <span className="text-xs">Active Members</span>
-              </div>
-            </div>
-
-            {/* Monthly Meetup Attendees */}
-            <div className="row-span-2 bg-green-900 p-6 border border-white rounded-lg grid place-content-center hover:bg-mintBliss/20 hover:border-mintBliss hover:text-mintBliss transition-colors duration-300">
-              <div className="text-center">
-                <span className="text-4xl font-bold">
-                  {isVisible && <CountUp start={0} end={150} duration={3} />}+
-                </span>
-                <br />
-                <span className="text-xs">
-                  Participants at PyConf Mini Davao 2024
-                </span>
-              </div>
-            </div>
-
-            {/* Events Hosted */}
-            <div className="bg-green-900 p-6 border border-white rounded-lg grid place-content-center hover:bg-mintBliss/20 hover:border-mintBliss hover:text-mintBliss transition-colors duration-300">
-              <div className="text-center">
-                <span className="text-4xl font-bold">
-                  {isVisible && <CountUp start={0} end={20} duration={3} />}+
-                </span>
-                <br />
-                <span className="text-xs">Monthly Meetups</span>
-              </div>
-            </div>
-          </div>
+          <StatisticsSection isVisible={isVisible} />
         </div>
       </Container>
     </section>
