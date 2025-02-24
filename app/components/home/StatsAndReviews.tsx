@@ -58,7 +58,7 @@ export function StatsAndReviews() {
             <div className="bg-green-900 p-4 border border-white rounded-lg grid place-content-center hover:bg-mintBliss/20 hover:border-mintBliss hover:text-mintBliss transition-colors duration-300">
               <div className="text-center">
                 <span className="text-4xl font-bold">
-                  {isVisible && <CountUp start={0} end={12} duration={3} />}+
+                  {isVisible && <CountUp start={0} end={350} duration={3} />}+
                 </span>
                 <br />
                 <span className="text-xs">Active Members</span>
@@ -69,10 +69,10 @@ export function StatsAndReviews() {
             <div className="row-span-2 bg-green-900 p-6 border border-white rounded-lg grid place-content-center hover:bg-mintBliss/20 hover:border-mintBliss hover:text-mintBliss transition-colors duration-300">
               <div className="text-center">
                 <span className="text-4xl font-bold">
-                  {isVisible && <CountUp start={0} end={20} duration={3} />}+
+                  {isVisible && <CountUp start={0} end={150} duration={3} />}+
                 </span>
                 <br />
-                <span className="text-xs">Monthly Meetup Attendees</span>
+                <span className="text-xs">Participants at PyConf Mini Davao 2024</span>
               </div>
             </div>
 
@@ -80,10 +80,10 @@ export function StatsAndReviews() {
             <div className="bg-green-900 p-6 border border-white rounded-lg grid place-content-center hover:bg-mintBliss/20 hover:border-mintBliss hover:text-mintBliss transition-colors duration-300">
               <div className="text-center">
                 <span className="text-4xl font-bold">
-                  {isVisible && <CountUp start={0} end={12} duration={3} />}
+                  {isVisible && <CountUp start={0} end={20} duration={3} />}+
                 </span>
                 <br />
-                <span className="text-xs">Events Hosted</span>
+                <span className="text-xs">Monthly Meetups</span>
               </div>
             </div>
           </div>
