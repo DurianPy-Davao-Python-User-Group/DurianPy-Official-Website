@@ -21,7 +21,7 @@ const buttonVariants = cva(
           'hover:bg-neutral-100 hover:text-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-neutral-50',
         link: 'text-neutral-900 underline-offset-4 hover:underline dark:text-neutral-50',
         footer:
-          'bg-primary rounded-[44.65px] font-semibold text-lg hover:bg-primary/90 shadow-lg shadow-black/40',
+          'bg-primary rounded-[44.65px] font-semibold text-lg hover:bg-primary/90 shadow-lg shadow-black/40 transition-all duration-300 hover:scale-105',
         navLink:
           'p-[10px] border-[1px] hover:bg-transparent border-transparent rounded-[50px] text-tabs-navbar text-white hover:text-primary active:text-primary active:border-primary',
         navLinkMobile:

@@ -2,10 +2,55 @@
 import { useState, useEffect } from 'react';
 import { Container } from '../ui/container';
 import Image from 'next/image';
+import Link from 'next/link';
 import logo from '../../../public/assets/logo.svg';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Checkbox } from '../ui/checkbox';
+import { Facebook, Instagram, Youtube, Github, Linkedin } from 'lucide-react';
+import { DiscordIcon } from '../../../lib/icons/discord'; // Discord not included in lucide icons
+
+const socialLinks = [
+  { name: 'Facebook', icon: Facebook, href: 'http://facebook.com/durianpy/' },
+  {
+    name: 'Instagram',
+    icon: Instagram,
+    href: 'https://instagram.com/durianpy.dvo',
+  },
+  { name: 'YouTube', icon: Youtube, href: 'https://www.youtube.com/@DurianPy' },
+  {
+    name: 'GitHub',
+    icon: Github,
+    href: 'https://github.com/DurianPy-Davao-Python-User-Group',
+  },
+  {
+    name: 'LinkedIn',
+    icon: Linkedin,
+    href: 'https://linkedin.com/company/durianpy',
+  },
+];
+
+const links = [
+  { label: 'Home', href: '/' },
+  { label: 'SIGs', href: '/sigs' },
+  { label: 'About', href: 'https://www.meetup.com/durianpy/', external: true },
+  {
+    label: 'Speak',
+    href: 'https://forms.gle/x2cc6CrRhbhDeaxe9',
+    external: true,
+  },
+  {
+    label: 'Events',
+    href: 'https://www.meetup.com/durianpy/events/',
+    external: true,
+  },
+  {
+    label: 'Contact Us',
+    href: 'https://www.facebook.com/durianpy',
+    external: true,
+  },
+  { label: 'Support Us', href: '/sponsors' },
+];
 
 export function Footer() {
   const [email, setEmail] = useState('');
@@ -36,7 +81,7 @@ export function Footer() {
                 Tech Growth with Python
               </p>
               <div className="flex flex-col space-y-4 mt-4 w-full md:w-auto">
-                <Button variant="footer" className="w-full md:w-[175px]">
+                <Button variant="footer" className="w-full md:w-[175px] ">
                   Attend an Event
                 </Button>
                 <Button variant="footer" className="w-full md:w-[124px]">
@@ -102,83 +147,38 @@ export function Footer() {
                 Navigation
               </h4>
               <div className="grid grid-cols-2 gap-4">
-                <ul className="space-y-2 text-lg">
-                  <li>
-                    <a
-                      href="/"
-                      className="text-white hover:text-primary hover:underline"
-                    >
-                      Home
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://www.meetup.com/durianpy/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white hover:text-primary hover:underline"
-                    >
-                      About
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/sponsors"
-                      className="text-white hover:text-primary hover:underline"
-                    >
-                      Support Us
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://www.meetup.com/durianpy/events/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white hover:text-primary hover:underline"
-                    >
-                      Events
-                    </a>
-                  </li>
-                </ul>
-                <ul className="space-y-2 text-lg">
-                  <li>
-                    <a
-                      href="/sigs"
-                      className="text-white hover:text-primary hover:underline"
-                    >
-                      SIGs
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://forms.gle/x2cc6CrRhbhDeaxe9"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white hover:text-primary hover:underline"
-                    >
-                      Speak
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://www.facebook.com/durianpy"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white hover:text-primary hover:underline"
-                    >
-                      Contact Us
-                    </a>
-                  </li>
-                </ul>
+                {links.map(({ label, href, external }) => (
+                  <Link
+                    key={label}
+                    href={href}
+                    className="text-white hover:text-primary hover:underline"
+                    {...(external && {
+                      target: '_blank',
+                      rel: 'noopener noreferrer',
+                    })}
+                  >
+                    {label}
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
 
           {/* Social Media Links */}
-          <div className="border-t border-green-700 pt-4">
-            <p className="text-center text-green-100 text-sm">
-              © {new Date().getFullYear()} DurianPy. All rights reserved.
-            </p>
+          <div className="flex flex-row items-center justify-center border-t border-green-700 pb-16 -mt-4 gap-10">
+            <Link href="https://discord.gg/T7sTQRHFFy" target="_blank">
+              <DiscordIcon className="w-[34px] h-[34px] fill-primary stroke-primary hover:stroke-primary transition-all duration-300 hover:scale-105 " />
+            </Link>
+            {socialLinks.map(({ name, icon: Icon, href }) => (
+              <Link
+                key={name}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon className="w-[34px] h-[34px] stroke-primary hover:stroke-primary transition-all duration-300 hover:scale-105" />
+              </Link>
+            ))}
           </div>
         </Container>
       </footer>
