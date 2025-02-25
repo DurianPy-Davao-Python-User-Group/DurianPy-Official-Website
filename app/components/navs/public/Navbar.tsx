@@ -18,7 +18,7 @@ export default function Navbar() {
           height={44.72}
         />
         <div className="flex justify-between items-center w-full">
-          {width < 1024 ? <MobileView /> : <DesktopView />}
+          {width > 0 && (width < 1024 ? <MobileView /> : <DesktopView />)}
         </div>
       </div>
     </nav>

@@ -1,4 +1,5 @@
 import { Container } from '../ui/container';
+import Image from 'next/image';
 
 export function Partners() {
   const partners = [
@@ -19,9 +20,11 @@ export function Partners() {
               key={partner.name}
               className="bg-green-700 p-6 rounded-lg flex items-center justify-center"
             >
-              <img
+              <Image
                 src={partner.logo}
                 alt={partner.name}
+                width={100}
+                height={100}
                 className="h-12 w-auto"
               />
             </div>
