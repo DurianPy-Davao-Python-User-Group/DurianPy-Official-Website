@@ -22,7 +22,12 @@ export function Carousel() {
       <Container>
         <div className="relative overflow-hidden z-10">
           {/* CAROUSEL */}
-          <CarouselContainer className="w-full bg-blue-500">
+          <CarouselContainer
+            opts={{ loop: true }}
+            autoplay={true}
+            autoplayInterval={3000}
+            className="w-full bg-blue-500"
+          >
             <CarouselContent>
               {photos.map((photo, idx) => (
                 <CarouselItem
