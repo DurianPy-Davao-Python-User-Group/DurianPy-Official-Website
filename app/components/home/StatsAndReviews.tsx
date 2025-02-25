@@ -99,7 +99,7 @@ export function StatsAndReviews() {
             </div>
 
             {/* Section Description */}
-            <div className="text-center lg:text-left sm:space-x-13 pb-12 md:space-x-15 lg:mr-10 lg:space-x-10 xl:space-x-15 2xl:space-x-10">
+            <div className="text-center lg:text-left xl:text-xl sm:space-x-13 pb-12 md:space-x-15 lg:mr-10 lg:space-x-10 xl:space-x-15 2xl:space-x-10">
               <p className="text-white">
                 <span className="font-bold">DurianPy</span> is a community for
                 Python enthusiasts to learn, share, and connect through monthly
