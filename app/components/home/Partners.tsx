@@ -1,4 +1,5 @@
 import { Container } from '../ui/container';
+<<<<<<< HEAD
 import dynamic from 'next/dynamic';
 const PartnersDesktop = dynamic(() => import('../home/PartnersDesktop'));
 const PartnersMobile = dynamic(() => import('../home/PartnersMobile'));
@@ -8,6 +9,9 @@ interface PartnersProps {
   logo: string;
   desc: string;
 }
+=======
+import Image from 'next/image';
+>>>>>>> 4d150cc7eeeb2571bd6404fe8aab2a22eaf54cae
 
 export function Partners() {
   const partners: PartnersProps[] = [
@@ -66,12 +70,34 @@ export function Partners() {
   return (
     <section className="bg-[#102018] py-16">
       <Container>
+<<<<<<< HEAD
         <section className="hidden xl:block">
           <PartnersDesktop partners={partners} />
         </section>
         <section className="xl:hidden">
           <PartnersMobile partners={partners} />
         </section>
+=======
+        <h2 className="text-3xl font-bold text-white mb-8 text-center">
+          Partners
+        </h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {partners.map((partner) => (
+            <div
+              key={partner.name}
+              className="bg-green-700 p-6 rounded-lg flex items-center justify-center"
+            >
+              <Image
+                src={partner.logo}
+                alt={partner.name}
+                width={100}
+                height={100}
+                className="h-12 w-auto"
+              />
+            </div>
+          ))}
+        </div>
+>>>>>>> 4d150cc7eeeb2571bd6404fe8aab2a22eaf54cae
       </Container>
     </section>
   );

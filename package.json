@@ -21,7 +21,11 @@
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.5.2",
     "lucide-react": "^0.475.0",
+<<<<<<< HEAD
     "next": "^14.2.24",
+=======
+    "next": "14.2.21",
+>>>>>>> 4d150cc7eeeb2571bd6404fe8aab2a22eaf54cae
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^3.0.1",
