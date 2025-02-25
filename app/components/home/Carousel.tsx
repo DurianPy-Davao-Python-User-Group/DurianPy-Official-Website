@@ -49,8 +49,8 @@ export function Carousel() {
           </CarouselContainer>
 
           {/* TEXT OVERLAY */}
-          <div className="w-full absolute top-0 left-0 text-center text-white mt-10">
-            <h2 className="text-3xl font-bold">
+          <div className="w-full absolute top-1/2 left-0 -translate-y-1/2 text-center text-white pointer-events-none">
+            <h2 className="text-8xl font-bold">
               Davao <span className="text-primary">Python</span> Community
             </h2>
             <p>
