@@ -117,8 +117,8 @@ export function Hero() {
         </div>
 
         {/* Hero section */}
-        <Container className="justify-center flex items-center min-h-screen md:min-h-[600px] lg:min-h-screen">
-          <div className="relative flex flex-col items-center justify-center pt-20 pb-16 text-center gap-8 lg:gap-0">
+        <Container className="justify-center flex items-center min-h-screen md:min-h-[600px] lg:min-h-screen height-1080:min-h-[600px]">
+          <div className="relative flex flex-col items-center justify-center pt-20 pb-16 text-center gap-4 lg:gap-0">
             <div className="flex flex-col lg:gap-4 lg:mb-8">
               <div className="mx-auto">
                 <Image

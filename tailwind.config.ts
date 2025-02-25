@@ -82,6 +82,9 @@ const config: Config = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
+      screens: {
+        'height-1080': { raw: '(min-height: 1080px)' },
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],
