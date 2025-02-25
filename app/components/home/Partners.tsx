@@ -1,17 +1,5 @@
 import { Container } from '../ui/container';
-<<<<<<< HEAD
-import dynamic from 'next/dynamic';
-const PartnersDesktop = dynamic(() => import('../home/PartnersDesktop'));
-const PartnersMobile = dynamic(() => import('../home/PartnersMobile'));
-
-interface PartnersProps {
-  name: string;
-  logo: string;
-  desc: string;
-}
-=======
 import Image from 'next/image';
->>>>>>> 4d150cc7eeeb2571bd6404fe8aab2a22eaf54cae
 
 export function Partners() {
   const partners: PartnersProps[] = [
@@ -70,14 +58,6 @@ export function Partners() {
   return (
     <section className="bg-[#102018] py-16">
       <Container>
-<<<<<<< HEAD
-        <section className="hidden xl:block">
-          <PartnersDesktop partners={partners} />
-        </section>
-        <section className="xl:hidden">
-          <PartnersMobile partners={partners} />
-        </section>
-=======
         <h2 className="text-3xl font-bold text-white mb-8 text-center">
           Partners
         </h2>
@@ -97,7 +77,6 @@ export function Partners() {
             </div>
           ))}
         </div>
->>>>>>> 4d150cc7eeeb2571bd6404fe8aab2a22eaf54cae
       </Container>
     </section>
   );
