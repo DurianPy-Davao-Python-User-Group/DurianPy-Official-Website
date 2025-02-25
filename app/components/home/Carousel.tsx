@@ -6,6 +6,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  CarouselDots,
 } from '../ui/carousel';
 
 export function Carousel() {
@@ -35,11 +36,12 @@ export function Carousel() {
                   <img
                     src={photo.image}
                     alt={photo.name}
-                    className="obkect-cover"
+                    className="object-cover"
                   />
                 </CarouselItem>
               ))}
             </CarouselContent>
+            <CarouselDots className="absolute bottom-4 left-1/2 -translate-x-1/2 text-2xl py-4 text" />
 
             <CarouselPrevious className="ml-[10%]" />
             <CarouselNext className="mr-[10%]" />
