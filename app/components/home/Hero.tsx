@@ -2,8 +2,11 @@
 import { Container } from '../ui/container';
 import Image from 'next/image';
 import { Button } from '../ui/button';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(useGSAP);
 
 const circles = [
   { left: '8%', top: '10%', size: 70 },
@@ -21,28 +24,24 @@ const handleRedirect = (url: string) => {
 export function Hero() {
   const circleRefs = useRef<(SVGSVGElement | null)[]>([]);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      circleRefs.current.forEach((circle, index) => {
-        if (circle) {
-          gsap.fromTo(
-            circle,
-            { opacity: 0, scale: 0.8 },
-            {
-              opacity: 1,
-              scale: 1.2,
-              duration: 2 + index * 0.5, // Different timing per circle
-              repeat: -1,
-              yoyo: true,
-              ease: 'power1.inOut',
-            }
-          );
-        }
-      });
+  useGSAP(() => {
+    circleRefs.current.forEach((circle, index) => {
+      if (circle) {
+        gsap.fromTo(
+          circle,
+          { opacity: 0, scale: 0.8 },
+          {
+            opacity: 1,
+            scale: 1.2,
+            duration: 2 + index * 0.5, // Different timing per circle
+            repeat: -1,
+            yoyo: true,
+            ease: 'power1.inOut',
+          }
+        );
+      }
     });
-
-    return () => ctx.revert(); // Cleanup animation on unmount
-  }, []);
+  },);
 
   return (
     <>
