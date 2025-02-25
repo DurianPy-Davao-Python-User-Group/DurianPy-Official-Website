@@ -21,13 +21,8 @@
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.5.2",
     "lucide-react": "^0.475.0",
-<<<<<<< HEAD
     "next": "14.2.21",
     "odometer": "^0.4.8",
-=======
-    "odometer": "^0.4.8",
-    "next": "14.2.21",
->>>>>>> 3e6e32de893263600649458b3902bc5aac6181ae
     "react": "^18",
     "react-countup": "^6.5.3",
     "react-dom": "^18",
