@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
+import { Carousel, CarouselContent, CarouselItem } from '../ui/carousel';
+import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 interface PartnersProps {
   name: string;
@@ -17,7 +17,7 @@ const PartnersMobile = ({ partners }: { partners: PartnersProps[] }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const container = document.getElementById("carousel-container");
+      const container = document.getElementById('carousel-container');
       if (!container) return;
 
       const cardHeight = 320;
@@ -25,14 +25,14 @@ const PartnersMobile = ({ partners }: { partners: PartnersProps[] }) => {
       setActiveIndex(index);
     };
 
-    const container = document.getElementById("carousel-container");
+    const container = document.getElementById('carousel-container');
     if (container) {
-      container.addEventListener("scroll", handleScroll);
+      container.addEventListener('scroll', handleScroll);
     }
 
     return () => {
       if (container) {
-        container.removeEventListener("scroll", handleScroll);
+        container.removeEventListener('scroll', handleScroll);
       }
     };
   }, []);
@@ -43,19 +43,21 @@ const PartnersMobile = ({ partners }: { partners: PartnersProps[] }) => {
         Partners
       </h1>
       <p className="text-center text-xs mb-6 text-white max-w-[31ch] mx-auto">
-        We collaborate with like-minded organizations to{" "}
+        We collaborate with like-minded organizations to{' '}
         <span className="text-[#36FF90]">
           foster creativity, innovation, and growth.
-        </span>{" "}
+        </span>{' '}
         Explore our partnerships and see how we create meaningful impact
         together.
       </p>
 
       {/* Carousel or Full View */}
-      <div className={`relative w-full overflow-hidden transition-all ${showAll ? "h-auto" : "h-[350px]"}`}>
+      <div
+        className={`relative w-full overflow-hidden transition-all ${showAll ? 'h-auto' : 'h-[350px]'}`}
+      >
         <div
           id="carousel-container"
-          className={`overflow-y-auto no-scrollbar ${showAll ? "flex flex-col gap-4" : "h-full"}`}
+          className={`overflow-y-auto no-scrollbar ${showAll ? 'flex flex-col gap-4' : 'h-full'}`}
         >
           <Carousel className="h-full">
             <CarouselContent className="flex flex-col items-center gap-4">
@@ -63,12 +65,18 @@ const PartnersMobile = ({ partners }: { partners: PartnersProps[] }) => {
                 <CarouselItem key={index} className="flex justify-center">
                   <div
                     className={`bg-transparent rounded-lg w-[210px] h-[315px] flex flex-col items-center border border-[#7ee4ac] transition-opacity duration-300 ${
-                      showAll || activeIndex === index ? "opacity-100" : "opacity-50"
+                      showAll || activeIndex === index
+                        ? 'opacity-100'
+                        : 'opacity-50'
                     }`}
                   >
                     {/* Partner Logo */}
                     <div className="w-full flex items-center justify-center h-[110px] mt-4">
-                      <a href={partner.link} target="_blank" rel="noopener noreferrer">
+                      <a
+                        href={partner.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <Image
                           src={partner.logo}
                           alt={partner.name}
@@ -106,7 +114,9 @@ const PartnersMobile = ({ partners }: { partners: PartnersProps[] }) => {
               <span
                 key={index}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  activeIndex === index ? "bg-[#ffc200]" : "bg-gray-500 opacity-50"
+                  activeIndex === index
+                    ? 'bg-[#ffc200]'
+                    : 'bg-gray-500 opacity-50'
                 }`}
               />
             ))}
@@ -119,7 +129,7 @@ const PartnersMobile = ({ partners }: { partners: PartnersProps[] }) => {
         className="bg-[#ffc200] w-[130px] py-[4px] flex justify-center items-center text-black text-sm font-semibold rounded-2xl mx-auto cursor-pointer mt-4"
         onClick={() => setShowAll(!showAll)}
       >
-        {showAll ? "Collapse" : "Show all"}
+        {showAll ? 'Collapse' : 'Show all'}
       </div>
     </>
   );
