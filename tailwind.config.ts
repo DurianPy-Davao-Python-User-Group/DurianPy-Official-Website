@@ -83,7 +83,8 @@ const config: Config = {
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
       screens: {
-        'height-1080': { raw: '(min-height: 1080px)' },
+        'height-1000': { raw: '(min-height: 1000px)' },
+        'width-1912': { raw: '(min-width: 1912px)' },
       },
     },
   },

@@ -9,10 +9,10 @@ import { useGSAP } from '@gsap/react';
 gsap.registerPlugin(useGSAP);
 
 const circles = [
-  { left: '8%', top: '10%', size: 70 },
-  { left: '15%', top: '45%', size: 70 },
-  { left: '75%', top: '30%', size: 70 },
-  { left: '90%', top: '40%', size: 70 },
+  { left: '8%', top: '10%' },
+  { left: '15%', top: '45%' },
+  { left: '75%', top: '30%' },
+  { left: '90%', top: '40%' },
 ];
 
 const handleRedirect = (url: string) => {
@@ -41,48 +41,53 @@ export function Hero() {
         );
       }
     });
-  },);
+  });
 
   return (
     <>
       <section className="relative bg-dark-green overflow-clip">
         {/* Background elements */}
         <div>
-          <div className="absolute inset-0 bg-[url('/image/rectangle.svg')] bg-cover bg-center h-1/3 scale-x-[1.5] top-[35%] opacity-30 md:h-1/2 md:opacity-65 md:top-[45%] blur-lg" />
-          <div className="absolute w-full h-full bg-[url('/image/ellipse.svg')] bg-no-repeat bg-cover bg-center md:bg-contain top-[50%] md:top-[40%] lg:top-[50%] lg:scale-x-[120%]" />
+          <div className="absolute inset-0 bg-[url('/image/rectangle.svg')] bg-cover bg-no-repeat bg-center top-[45%] blur-md scale-x-[2] md:scale-y-[1.3]" />
+          <div className="absolute inset-0 bg-[url('/image/ellipse.svg')] bg-no-repeat bg-contain bg-center scale-x-[1.8] scale-y-[2.4] top-[72%] md:top-[73%] md:bg-contain md:scale-x-[3.5]" />
           <Image
             src="/image/gear.svg"
             height={600}
             width={600}
             alt="a"
             priority
-            className="absolute translate-x-[80%] top-1/2 scale-[120%] md:scale-100 md:right-[15%] rotate-180 md:rotate-[210deg] blur-sm w-auto h-auto lg:right-[10%]"
+            className="absolute right-[90%] top-[30%] scale-[135%] md:scale-[105%] lg:scale-[120%] md:hidden lg:block lg:top-[5%] lg:right-[80%] -rotate-12 blur-sm w-auto h-auto xl:scale-[140%] xl:right-0 xl:left-[-28%] xl:top-[10%] width-1912:left-[-20%]"
           />
-          <div className="absolute inset-0 bg-[url('/image/blender.svg')] bg-no-repeat blur-md scale-x-125 h-1/2 translate-y-[135%] scale-y-50" />
           <Image
             src="/image/gear.svg"
             height={600}
             width={600}
             alt="a"
             priority
-            className="absolute translate-x-[-80%] top-0 scale-[135%] md:scale-[105%] md:translate-x-[-65%] md:translate-y-[15%] lg:scale-[135%] -rotate-12 blur-sm w-auto h-auto"
+            className="absolute left-[70%] top-[50%] right-[6%] scale-[115%] md:scale-100 md:right-[15%] rotate-180 md:rotate-[200deg] blur-sm w-auto h-auto md:hidden lg:block xl:top-[50%] xl:left-[80%] xl:scale-[130%] width-1912:left-[85%] width-1912:scale-150"
+          />
+          <div
+            className="absolute inset-0 h-[30%] w-full top-[80%] md:top-[82%] blur-sm scale-x-[2]"
+            style={{
+              background: `linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.67) 36.9%, #FFF 65.4%, rgba(255, 255, 255, 0.00) 100%)`,
+            }}
           />
         </div>
 
         {/* Animated Pulsing Circles */}
-        <div className="hidden md:block">
-          {circles.map(({ left, top, size }, index) => (
+        <div>
+          {circles.map(({ left, top }, index) => (
             <svg
               key={index}
               ref={(el) => {
                 circleRefs.current[index] = el;
               }} // Assign ref
               xmlns="http://www.w3.org/2000/svg"
-              width={size}
-              height={size}
+              width={32}
+              height={32}
               viewBox="0 0 92 92"
               fill="none"
-              className="absolute"
+              className="absolute w-auto h-8 md:h-14"
               style={{ left, top }}
             >
               <g filter="url(#filter0_f_514_198)">
@@ -116,40 +121,40 @@ export function Hero() {
         </div>
 
         {/* Hero section */}
-        <Container className="justify-center flex items-center min-h-screen md:min-h-[600px] lg:min-h-screen height-1080:min-h-[600px]">
-          <div className="relative flex flex-col items-center justify-center pt-20 pb-16 text-center gap-4 lg:gap-0">
-            <div className="flex flex-col lg:gap-4 lg:mb-8">
-              <div className="mx-auto">
-                <Image
-                  src="/assets/logo.svg"
-                  height={300}
-                  width={300}
-                  className="md:scale-150"
-                  alt="Durianpy Logo"
-                  priority={true}
-                />
-              </div>
-              <p className="font-montserrat text-xl md:text-3xl mb-7 px-8 md:w-[90%] mx-auto tracking-wider text-white">
+        <Container className="justify-center flex items-center min-h-screen height-1000:min-h-[600px]">
+          <div className="relative flex flex-col place-items-center justify-center text-center gap-8">
+            <div className="flex flex-col">
+              <Image
+                src="/assets/logo.svg"
+                height={64}
+                width={64}
+                className="w-auto h-32 md:h-44"
+                alt="Durianpy Logo"
+                priority={true}
+              />
+              <p className="font-montserrat text-sm scale-[1.20] w-[80%] md:scale-[1.25] md:text-xl mb-7 md:w-full mx-auto tracking-wider text-white">
                 Accelerating <span className="text-primary">Davao&apos;s</span>{' '}
-                Tech Growth with Python
+                Tech Growth with <br /> <span>Python</span>
               </p>
             </div>
 
-            <div className="flex flex-col gap-4 lg:pb-12">
+            <div className="flex flex-col md:gap-4 lg:pb-12">
               <Button
-                variant={'hero-primary'}
+                variant={'hero-outline'}
                 size={'default'}
                 onClick={() =>
                   handleRedirect('https://www.meetup.com/durianpy/')
                 }
+                className="scale-[80%] w-48 md:scale-100"
               >
                 Attend an Event
               </Button>
               <Button
-                variant={'hero-secondary'}
+                variant={'hero-outline'}
                 onClick={() =>
                   handleRedirect('https://forms.gle/x2cc6CrRhbhDeaxe9')
                 }
+                className="scale-[80%] w-32 md:scale-100"
               >
                 Give a Talk
               </Button>
