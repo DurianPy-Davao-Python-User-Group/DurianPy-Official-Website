@@ -18,7 +18,7 @@ export function Carousel() {
   return (
     <section className="">
       <div className='max-w-7xl mx-auto px-0'>
-        <div className="relative bg-blue-200">
+        <div className="relative">
           {/* CAROUSEL */}
           <CarouselContainer
             opts={{ loop: true }}
