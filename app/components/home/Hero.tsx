@@ -1,6 +1,7 @@
 'use client';
 import { Container } from '../ui/container';
 import Image from 'next/image';
+import { Button } from '../ui/button';
 
 const numCircles = 4;
 const minDuration = 3;
@@ -11,19 +12,20 @@ const durations = Array.from(
     ((i / numCircles) * (maxDuration - minDuration) + minDuration).toFixed(2) // Ensures consistent values
 );
 
+const circles = [
+  { left: '8%', top: '10%', size: 70 },
+  { left: '15%', top: '45%', size: 70 },
+  { left: '75%', top: '30%', size: 70 },
+  { left: '90%', top: '40%', size: 70 },
+];
+
+
 export function Hero() {
   const handleRedirect = (url: string) => {
     if (typeof window !== 'undefined') {
       window.open(url, '_blank');
     }
   };
-
-  const circles = [
-    { left: '8%', top: '10%', size: 70 },
-    { left: '15%', top: '45%', size: 70 },
-    { left: '75%', top: '30%', size: 70 },
-    { left: '90%', top: '40%', size: 70 },
-  ];
 
   return (
     <>
@@ -115,40 +117,30 @@ export function Hero() {
         {/* Hero section */}
         <Container className="justify-center flex items-center min-h-screen md:min-h-[600px] lg:min-h-screen">
           <div className="relative flex flex-col items-center justify-center pt-20 pb-16 text-center gap-8 lg:gap-0">
-            <div className="flex flex-col gap-6 lg:gap-10 lg:mb-8">
+            <div className="flex flex-col lg:gap-4 lg:mb-8">
               <div className="mx-auto">
                 <Image
-                  src="/image/durianpy-logo.png"
-                  height={400}
+                  src="/assets/logo.svg"
+                  height={300}
                   width={300}
+                  className='md:scale-150'
                   alt="Durianpy Logo"
-                  className="md:scale-150 w-auto h-auto"
                   priority={true}
                 />
               </div>
-              <p className="font-montserrat text-xl md:text-3xl mb-7 px-10 md:w-[90%] mx-auto tracking-wider text-white">
+              <p className="font-montserrat text-xl md:text-3xl mb-7 px-8 md:w-[90%] mx-auto tracking-wider text-white">
                 Accelerating <span className="text-primary">Davao&apos;s</span>{' '}
                 Tech Growth with Python
               </p>
             </div>
 
             <div className="flex flex-col gap-4 lg:pb-12">
-              <button
-                onClick={() =>
-                  handleRedirect('https://www.meetup.com/durianpy/')
-                }
-                className="bg-[#112018] text-[#3EB372] font-semibold py-2 px-8 rounded-full opacity-90 shadow-md hover:scale-105 transition-transform duration-300"
-              >
+              <Button variant={'hero-primary'} size={'default'} onClick={() => handleRedirect('https://www.meetup.com/durianpy/')}>
                 Attend an Event
-              </button>
-              <button
-                onClick={() =>
-                  handleRedirect('https://forms.gle/x2cc6CrRhbhDeaxe9')
-                }
-                className="border-[1px] border-dark-green text-[#112018] font-normal py-2 px-4 rounded-full opacity-90 w-36 mx-auto shadow-md hover:scale-105 transition-transform duration-200"
-              >
+              </Button>
+              <Button variant={'hero-secondary'} onClick={() => handleRedirect('https://forms.gle/x2cc6CrRhbhDeaxe9')}>
                 Give a Talk
-              </button>
+              </Button>
             </div>
           </div>
         </Container>

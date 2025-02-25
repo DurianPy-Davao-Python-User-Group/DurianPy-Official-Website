@@ -30,6 +30,10 @@ const buttonVariants = cva(
           'h-full w-full bg-primary text-dark-green rounded-[0px] p-[10px] hover:bg-[#FFC20120] hover:text-primary',
         'accordion-dropdown':
           'hover:bg-saturated-light-green-opacity-50 w-full text-[16px] rounded-[0px] text-dark-green p-[16px]',
+        'hero-primary':
+          'bg-[#112018] text-[#3EB372] font-semibold py-2 px-8 rounded-full opacity-90 shadow-md hover:scale-105 transition-transform duration-300',
+        'hero-secondary':
+          'border-[1px] border-dark-green text-[#112018] font-normal py-2 px-4 rounded-full opacity-90 w-36 mx-auto shadow-md hover:scale-105 transition-transform duration-200',
       },
       size: {
         default: '',
