@@ -22,8 +22,8 @@ export function Carousel() {
           {/* CAROUSEL */}
           <CarouselContainer
             opts={{ loop: true }}
-            // autoplay={true}
-            // autoplayInterval={3000}
+            autoplay={true}
+            autoplayInterval={3000}
           >
             <CarouselContent>
               {photos.map((photo, idx) => (
