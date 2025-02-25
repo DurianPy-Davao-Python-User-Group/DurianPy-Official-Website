@@ -31,7 +31,7 @@ type StatsCardProps = {
 function StatsCard({ value, label, isVisible, large }: StatsCardProps) {
   return (
     <div
-      className={`bg-green-900 p-4 border border-white rounded-lg grid place-content-center hover:bg-mintBliss/20 hover:border-mintBliss hover:text-mintBliss transition-colors duration-300 ${large ? 'row-span-2 p-6' : ''}`}
+      className={`p-4 border border-white rounded-lg grid place-content-center hover:bg-mintBliss/20 hover:border-mintBliss hover:text-mintBliss transition-colors duration-300 ${large ? 'row-span-2 p-6' : ''}`}
     >
       <div className="text-center">
         <span className="text-4xl xl:text-7xl font-bold">
@@ -86,7 +86,10 @@ export function StatsAndReviews() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-dark-green py-16 text-white">
+    <section
+      ref={sectionRef}
+      className="bg-dark-green py-16 text-white h-screen"
+    >
       <Container>
         <div className="flex flex-col items-center px-8 xl:px-14 lg:flex-row 2xl:px-0 2xl:justify-between">
           <div className="w-full">
