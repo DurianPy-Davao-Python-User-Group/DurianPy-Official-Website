@@ -7,27 +7,34 @@ import logo from '../../../public/assets/logo.svg';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Checkbox } from '../ui/checkbox';
-import { Facebook, Instagram, Youtube, Github, Linkedin } from 'lucide-react';
-import { DiscordIcon } from '../../../lib/icons/discord'; // Discord not included in lucide icons
+import {
+  Accordion,
+  AccordionTrigger,
+  AccordionContent,
+  AccordionItem,
+} from '@/app/components/ui/accordion';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faFacebook,
+  faDiscord,
+  faInstagram,
+  faLinkedin,
+  faGithub,
+  faMeetup,
+  faMediumM,
+  faYoutube,
+} from '@fortawesome/free-brands-svg-icons';
 
 const socialLinks = [
-  { name: 'Facebook', icon: Facebook, href: 'http://facebook.com/durianpy/' },
-  {
-    name: 'Instagram',
-    icon: Instagram,
-    href: 'https://instagram.com/durianpy.dvo',
-  },
-  { name: 'YouTube', icon: Youtube, href: 'https://www.youtube.com/@DurianPy' },
-  {
-    name: 'GitHub',
-    icon: Github,
-    href: 'https://github.com/DurianPy-Davao-Python-User-Group',
-  },
-  {
-    name: 'LinkedIn',
-    icon: Linkedin,
-    href: 'https://linkedin.com/company/durianpy',
-  },
+  { href: 'https://www.facebook.com/durianpy', icon: faFacebook },
+  { href: 'https://discord.gg/T7sTQRHFFy', icon: faDiscord },
+  { href: 'https://instagram.com/durianpy', icon: faInstagram },
+  { href: 'https://www.linkedin.com/company/durianpy', icon: faLinkedin },
+  { href: 'https://github.com/durianpy', icon: faGithub },
+  { href: 'https://youtube.com/durianpy', icon: faYoutube },
+  { href: 'https://www.meetup.com/durianpy', icon: faMeetup },
+  { href: 'https://medium.com/@durianpy.davao', icon: faMediumM },
 ];
 
 const links = [
@@ -49,7 +56,6 @@ const links = [
     href: 'https://www.facebook.com/durianpy',
     external: true,
   },
-  { label: 'Support Us', href: '/sponsors' },
 ];
 
 export function Footer() {
@@ -80,10 +86,10 @@ export function Footer() {
               Tech Growth with Python
             </p>
             <div className="flex flex-col space-y-4 mt-4 w-full md:w-auto">
-              <Button variant="footer" className="w-full md:w-[175px] ">
+              <Button variant="footer" className="w-full md:w-[150px] ">
                 Attend an Event
               </Button>
-              <Button variant="footer" className="w-full md:w-[124px]">
+              <Button variant="footer" className="w-full md:w-[100px]">
                 Give a Talk
               </Button>
             </div>
@@ -150,26 +156,44 @@ export function Footer() {
                   {label}
                 </Link>
               ))}
+
+              <Accordion
+                type="single"
+                collapsible
+                className="text-white hover:text-primary hover:underline"
+              >
+                <AccordionItem value="item-1">
+                  <AccordionTrigger className="mb-[5px]">
+                    Support Us
+                  </AccordionTrigger>
+
+                  <AccordionContent className="flex flex-col gap-1 text-[12px]">
+                    <a href="">Sponsors</a>
+                    <a href="">Host Us</a>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             </div>
           </div>
         </div>
 
         {/* Social Media Links */}
-        <div className="flex flex-row items-center justify-center border-t border-green-700 pb-16 -mt-4 gap-10">
-          <Link href="https://discord.gg/T7sTQRHFFy" target="_blank">
-            <DiscordIcon className="w-[34px] h-[34px] fill-primary stroke-primary hover:stroke-primary transition-all duration-300 hover:scale-105 " />
-          </Link>
-          {socialLinks.map(({ name, icon: Icon, href }) => (
-            <Link
-              key={name}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Icon className="w-[34px] h-[34px] stroke-primary hover:stroke-primary transition-all duration-300 hover:scale-105" />
-            </Link>
-          ))}
-        </div>
+        {/* <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--> */}
+        {socialLinks.map(({ href, icon }, index) => (
+          <a
+            key={index}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group"
+          >
+            <FontAwesomeIcon
+              icon={icon}
+              size="2x"
+              className="text-primary group-hover:text-[#FBFF00] transition-transform duration-300 group-hover:scale-110"
+            />
+          </a>
+        ))}
       </Container>
     </footer>
   );
