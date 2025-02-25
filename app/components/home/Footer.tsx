@@ -117,13 +117,16 @@ export function Footer() {
                 />
                 <span className="text-white text-sm">
                   I accept the{' '}
-                  <a href="/privacy-policy" className="text-primary underline">
+                  <Link
+                    href="/privacy-policy"
+                    className="text-primary underline"
+                  >
                     Privacy Policy
-                  </a>{' '}
+                  </Link>{' '}
                   and{' '}
-                  <a href="/terms" className="text-primary underline">
+                  <Link href="/terms" className="text-primary underline">
                     Terms and Conditions
-                  </a>
+                  </Link>
                 </span>
               </label>
               <Button
@@ -157,43 +160,47 @@ export function Footer() {
                 </Link>
               ))}
 
-              <Accordion
-                type="single"
-                collapsible
-                className="text-white hover:text-primary hover:underline"
-              >
-                <AccordionItem value="item-1">
-                  <AccordionTrigger className="mb-[5px]">
-                    Support Us
-                  </AccordionTrigger>
-
-                  <AccordionContent className="flex flex-col gap-1 text-[12px]">
-                    <a href="">Sponsors</a>
-                    <a href="">Host Us</a>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
+              <div className="col-span-2 flex justify-center md:justify-start ">
+                <Accordion
+                  type="single"
+                  collapsible
+                  className="text-white hover:text-primary hover:underline "
+                >
+                  <AccordionItem value="item-1">
+                    <AccordionTrigger className="mb-[5px]">
+                      Support Us
+                    </AccordionTrigger>
+                    <AccordionContent className="flex flex-col text-[12px] text-left">
+                      <Link href="">Sponsors</Link>
+                      <Link href="" className="mr-2">
+                        Host Us
+                      </Link>
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Social Media Links */}
-        {/* <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--> */}
-        {socialLinks.map(({ href, icon }, index) => (
-          <a
-            key={index}
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group"
-          >
-            <FontAwesomeIcon
-              icon={icon}
-              size="2x"
-              className="text-primary group-hover:text-[#FBFF00] transition-transform duration-300 group-hover:scale-110"
-            />
-          </a>
-        ))}
+        <div className="flex flex-row items-center gap-4 md:w-full md:gap-6 justify-center -mt-4 pb-4">
+          {socialLinks.map(({ href, icon }, index) => (
+            <Link
+              key={index}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group"
+            >
+              <FontAwesomeIcon
+                icon={icon}
+                className="text-primary group-hover:text-[#FBFF00] transition-transform duration-300 group-hover:scale-110 
+             text-xl sm:text-2xl md:w-10 md:text-3xl md:h-10"
+              />
+            </Link>
+          ))}
+        </div>
       </Container>
     </footer>
   );
