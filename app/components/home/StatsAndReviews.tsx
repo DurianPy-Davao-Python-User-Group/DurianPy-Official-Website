@@ -88,7 +88,7 @@ export function StatsAndReviews() {
   return (
     <section ref={sectionRef} className="bg-green-900 py-16 text-white">
       <Container>
-        <div className="flex flex-col items-center px-8 xl:px-14 xl:flex-row 2xl:px-0 2xl:justify-between">
+        <div className="flex flex-col items-center px-8 xl:px-14 lg:flex-row 2xl:px-0 2xl:justify-between">
           <div className="w-full">
             {/* Section Title */}
             <div className="text-center xl:text-left text-3xl lg:text-5xl font-bold xl:leading-none text-white pb-7 sm:space-x-10 md:space-x-16 lg:space-x-10 xl:space-x-20 2xl:space-x-5">
@@ -99,7 +99,7 @@ export function StatsAndReviews() {
             </div>
 
             {/* Section Description */}
-            <div className="text-center xl:text-left sm:space-x-13 pb-12 md:space-x-15 lg:space-x-10 xl:space-x-15 2xl:space-x-10">
+            <div className="text-center xl:text-left sm:space-x-13 pb-12 md:space-x-15 lg:mr-10 lg:space-x-10 xl:space-x-15 2xl:space-x-10">
               <p className="text-white">
                 <span className="font-bold">DurianPy</span> is a community for
                 Python enthusiasts to learn, share, and connect through monthly
