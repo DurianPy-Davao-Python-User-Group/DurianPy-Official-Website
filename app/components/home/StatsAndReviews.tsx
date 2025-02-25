@@ -86,7 +86,7 @@ export function StatsAndReviews() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-green-900 py-16 text-white">
+    <section ref={sectionRef} className="bg-dark-green py-16 text-white">
       <Container>
         <div className="flex flex-col items-center px-8 xl:px-14 lg:flex-row 2xl:px-0 2xl:justify-between">
           <div className="w-full">
