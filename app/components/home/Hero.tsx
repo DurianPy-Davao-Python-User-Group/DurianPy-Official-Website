@@ -2,15 +2,8 @@
 import { Container } from '../ui/container';
 import Image from 'next/image';
 import { Button } from '../ui/button';
-
-const numCircles = 4;
-const minDuration = 3;
-const maxDuration = 7;
-const durations = Array.from(
-  { length: numCircles },
-  (_, i) =>
-    ((i / numCircles) * (maxDuration - minDuration) + minDuration).toFixed(2) // Ensures consistent values
-);
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
 
 const circles = [
   { left: '8%', top: '10%', size: 70 },
@@ -19,34 +12,40 @@ const circles = [
   { left: '90%', top: '40%', size: 70 },
 ];
 
+const handleRedirect = (url: string) => {
+  if (typeof window !== 'undefined') {
+    window.open(url, '_blank');
+  }
+};
 
 export function Hero() {
-  const handleRedirect = (url: string) => {
-    if (typeof window !== 'undefined') {
-      window.open(url, '_blank');
-    }
-  };
+  const circleRefs = useRef<(SVGSVGElement | null)[]>([]);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      circleRefs.current.forEach((circle, index) => {
+        if (circle) {
+          gsap.fromTo(
+            circle,
+            { opacity: 0, scale: 0.8 },
+            {
+              opacity: 1,
+              scale: 1.2,
+              duration: 2 + index * 0.5, // Different timing per circle
+              repeat: -1,
+              yoyo: true,
+              ease: 'power1.inOut',
+            }
+          );
+        }
+      });
+    });
+
+    return () => ctx.revert(); // Cleanup animation on unmount
+  }, []);
 
   return (
     <>
-      {/* css styles for the pulsing circles */}
-      <style>
-        {circles
-          .map(
-            (_, index) => `
-          @keyframes smooth-light-${index} {
-            0% { opacity: 0; }
-            50% { opacity: 1; }
-            100% { opacity: 0; }
-          }
-          .animate-smooth-light-${index} {
-            animation: smooth-light-${index} ${durations[index]}s ease-in-out infinite;
-          }
-        `
-          )
-          .join('\n')}
-      </style>
-
       <section className="relative bg-dark-green overflow-clip">
         {/* Background elements */}
         <div>
@@ -76,12 +75,15 @@ export function Hero() {
           {circles.map(({ left, top, size }, index) => (
             <svg
               key={index}
+              ref={(el) => {
+                circleRefs.current[index] = el;
+              }} // Assign ref
               xmlns="http://www.w3.org/2000/svg"
               width={size}
               height={size}
               viewBox="0 0 92 92"
               fill="none"
-              className={`absolute animate-smooth-light-${index}`}
+              className="absolute"
               style={{ left, top }}
             >
               <g filter="url(#filter0_f_514_198)">
@@ -123,7 +125,7 @@ export function Hero() {
                   src="/assets/logo.svg"
                   height={300}
                   width={300}
-                  className='md:scale-150'
+                  className="md:scale-150"
                   alt="Durianpy Logo"
                   priority={true}
                 />
@@ -135,10 +137,21 @@ export function Hero() {
             </div>
 
             <div className="flex flex-col gap-4 lg:pb-12">
-              <Button variant={'hero-primary'} size={'default'} onClick={() => handleRedirect('https://www.meetup.com/durianpy/')}>
+              <Button
+                variant={'hero-primary'}
+                size={'default'}
+                onClick={() =>
+                  handleRedirect('https://www.meetup.com/durianpy/')
+                }
+              >
                 Attend an Event
               </Button>
-              <Button variant={'hero-secondary'} onClick={() => handleRedirect('https://forms.gle/x2cc6CrRhbhDeaxe9')}>
+              <Button
+                variant={'hero-secondary'}
+                onClick={() =>
+                  handleRedirect('https://forms.gle/x2cc6CrRhbhDeaxe9')
+                }
+              >
                 Give a Talk
               </Button>
             </div>
