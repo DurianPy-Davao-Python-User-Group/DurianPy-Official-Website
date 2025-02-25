@@ -1,5 +1,3 @@
-import { Container } from '../ui/container';
-
 import {
   Carousel as CarouselContainer,
   CarouselContent,
@@ -18,26 +16,25 @@ export function Carousel() {
   ];
 
   return (
-    <section className="bg-green-800 py-16">
-      <Container>
-        <div className="relative overflow-hidden z-10">
+    <section className="">
+      <div className='max-w-7xl mx-auto px-0'>
+        <div className="relative bg-blue-200">
           {/* CAROUSEL */}
           <CarouselContainer
             opts={{ loop: true }}
-            autoplay={true}
-            autoplayInterval={3000}
-            className="w-full bg-blue-500"
+            // autoplay={true}
+            // autoplayInterval={3000}
           >
             <CarouselContent>
               {photos.map((photo, idx) => (
                 <CarouselItem
                   key={idx}
-                  className="bg-green-700 p-6 rounded-lg flex items-center justify-center w-full"
+                  className="flex items-center justify-center"
                 >
                   <img
                     src={'assets/carousel/' + photo.image}
                     alt={photo.name}
-                    className="object-cover"
+                    className="object-cover w-full h-full"
                   />
                 </CarouselItem>
               ))}
@@ -59,7 +56,7 @@ export function Carousel() {
             </p>
           </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }
