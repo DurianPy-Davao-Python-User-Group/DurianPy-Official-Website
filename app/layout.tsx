@@ -21,10 +21,19 @@ export const metadata: Metadata = {
     template: `%s | ${head.title}`,
     default: head.title,
   },
+  keywords: ['Python', 'Python Philippines', 'Python Davao'],
   description: head.description,
   metadataBase: new URL('https://durianpy.org'),
   alternates: {
     canonical: './',
+  },
+  openGraph: {
+    siteName: head.title,
+    ...head,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    ...head,
   },
 };
 
