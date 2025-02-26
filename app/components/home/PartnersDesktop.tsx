@@ -101,13 +101,12 @@ const PartnersDesktop = ({ partners }: { partners: PartnersProps[] }) => {
             </Carousel>
           </div>
           <div className="flex gap-4 mt-7 justify-center items-center">
-            {Array.from({ length: count > 4 ? 4 : count }).map((_, index) => (
+            {Array.from({ length: count }).map((_, index) => (
               <div
                 key={index}
                 className={cn(
-                  'w-5 h-5 rounded-full transition-transform duration-300',
-                  current === index + 1 ? 'bg-primary' : 'bg-[#B7B7B7]',
-                  current >= 4 && index === 3 && 'bg-primary'
+                  'w-3 h-3 rounded-full transition-transform duration-300',
+                  current === index + 1 ? 'bg-primary' : 'bg-[#B7B7B7]', 
                 )}
               ></div>
             ))}
