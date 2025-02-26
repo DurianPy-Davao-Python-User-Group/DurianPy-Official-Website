@@ -136,7 +136,7 @@ const Carousel = React.forwardRef<
         clearInterval(intervalId);
         intervalId = setInterval(() => {
           api.scrollNext();
-          if (api.selectedScrollSnap() === api.scrollSnapList().length - 1) {
+          if (api.selectedScrollSnap() === api.scrollSnapList().length) {
             api.scrollTo(0);
           }
         }, autoplayInterval);
