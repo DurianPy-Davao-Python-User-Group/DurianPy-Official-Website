@@ -34,16 +34,22 @@ export function Carousel() {
                 alt={photo.name}
                 className="object-cover w-full h-full"
               />
-              {/* DARK OVERLAY*/}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#112019E6] via-[#11201999] via-[80%] to-white to-[100%] transition-opacity duration-500 group-hover:opacity-40" />
+
+              <div className="absolute inset-0 bg-gradient-to-r from-[#1A3E2A]/60 to-transparent duration-500 group-hover:opacity-20" />
+
+              <div className="absolute inset-0 bg-gradient-to-r from-[#1A3E2A]/60 to-transparent transform scale-x-[-1] duration-500 group-hover:opacity-20" />
+
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent opacity-50 duration-500 group-hover:opacity-20" />
             </CarouselItem>
           ))}
         </CarouselContent>
+
         <CarouselDots className="absolute bottom-4 left-1/2 -translate-x-1/2 text-2xl py-4 text" />
 
         <CarouselPrevious className="ml-[10%]" />
         <CarouselNext className="mr-[10%]" />
       </CarouselContainer>
+      <div className="absolute top-[-90px] left-0 w-full h-[300px] bg-gradient-to-b from-transparent via-white/100 via-[30%] to-transparent" />
 
       {/* TEXT OVERLAY */}
       <div className="w-full absolute top-1/2 left-0 -translate-y-1/2 text-center text-white pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
