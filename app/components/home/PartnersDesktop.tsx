@@ -56,7 +56,7 @@ const PartnersDesktop = ({ partners }: { partners: PartnersProps[] }) => {
     }
 
     plugin.current.stop();
-  }
+  };
 
   return (
     <div className="xl:grid xl:grid-cols-3 lg:flex lg:flex-col lg:h-auto text-white gap-x-4">
