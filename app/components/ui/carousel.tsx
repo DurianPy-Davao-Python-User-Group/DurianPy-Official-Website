@@ -124,20 +124,36 @@ const Carousel = React.forwardRef<
       };
     }, [api, onSelect]);
 
+    // Autoplay
     React.useEffect(() => {
       if (!autoplay || !api) {
         return;
       }
 
-      const intervalId = setInterval(() => {
-        api.scrollNext();
-        if (api.selectedScrollSnap() === api.scrollSnapList().length - 1) {
-          api.scrollTo(0);
-        }
-      }, autoplayInterval); // Use the autoplayInterval prop
+      let intervalId: NodeJS.Timeout;
+
+      const startAutoplay = () => {
+        clearInterval(intervalId);
+        intervalId = setInterval(() => {
+          api.scrollNext();
+          if (api.selectedScrollSnap() === api.scrollSnapList().length - 1) {
+            api.scrollTo(0);
+          }
+        }, autoplayInterval);
+      };
+
+      startAutoplay();
+
+      // listen for manual interactions (button/dot clicks)
+      const handleInteraction = () => {
+        startAutoplay();
+      };
+
+      api.on('select', handleInteraction);
 
       return () => {
         clearInterval(intervalId);
+        api.off('select', handleInteraction); // Cleanup
       };
     }, [autoplay, api, autoplayInterval]);
 
