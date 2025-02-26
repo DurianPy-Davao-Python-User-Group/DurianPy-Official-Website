@@ -106,7 +106,7 @@ const PartnersDesktop = ({ partners }: { partners: PartnersProps[] }) => {
                 key={index}
                 className={cn(
                   'w-3 h-3 rounded-full transition-transform duration-300',
-                  current === index + 1 ? 'bg-primary' : 'bg-[#B7B7B7]', 
+                  current === index + 1 ? 'bg-primary' : 'bg-[#B7B7B7]'
                 )}
               ></div>
             ))}
