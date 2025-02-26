@@ -141,9 +141,9 @@ export function Footer() {
           <div className="hidden md:block w-[1px] bg-primary h-3/4 mt-10"></div>
 
           {/* Navigation Links */}
-          <div className="text-center md:text-left mt-12">
+          <div className="text-center md:text-left mt-12 md:w-[75%]">
             <h4 className="text-primary text-xl font-bold mb-4">Navigation</h4>
-            <div className="grid grid-cols-2 md:w-[80%] md:text-sm gap-4">
+            <div className="grid grid-cols-2  md:text-sm gap-4">
               {links.map(({ label, href, external }) => (
                 <Link
                   key={label}
