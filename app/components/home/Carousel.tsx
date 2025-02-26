@@ -27,13 +27,15 @@ export function Carousel() {
           {photos.map((photo, idx) => (
             <CarouselItem
               key={idx}
-              className="flex items-center justify-center"
+              className="relative flex items-center justify-center"
             >
               <img
                 src={'assets/carousel/' + photo.image}
                 alt={photo.name}
                 className="object-cover w-full h-full"
               />
+              {/* DARK OVERLAY*/}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#112019E6] via-[#11201999] via-[80%] to-white to-[100%] transition-opacity duration-500 group-hover:opacity-40" />
             </CarouselItem>
           ))}
         </CarouselContent>
