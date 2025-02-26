@@ -87,7 +87,7 @@ const PartnersMobile = ({ partners }: { partners: PartnersProps[] }) => {
           {/* Carousel or Full View */}
           <div
             className={`relative w-full overflow-hidden transition-all duration-500 ${
-              showAll ? 'h-auto' : 'h-[520px]'
+              showAll ? 'h-auto' : 'h-[540px]'
             }`}
           >
             <div
@@ -101,7 +101,7 @@ const PartnersMobile = ({ partners }: { partners: PartnersProps[] }) => {
             >
               <Carousel className="h-full">
                 <CarouselContent
-                  className={`flex flex-col items-center ${showAll ? 'gap-4 mb-2' : 'gap-8 mt-4 mb-6'}`}
+                  className={`flex flex-col items-center ${showAll ? 'gap-4 mb-2' : 'gap-4 mt-4 mb-6'}`}
                 >
                   {partners.map((partner, index) => {
                     const isActive = activeIndex === index;
@@ -110,49 +110,50 @@ const PartnersMobile = ({ partners }: { partners: PartnersProps[] }) => {
                     const scaleSize = shouldScale ? 'scale-110' : 'scale-100';
 
                     return (
-                      <CarouselItem key={index} className="flex justify-center">
-                        <Link
-                          href={partner.url}
-                          target="_blank"
-                          passHref
-                          key={index}
-                          className="w-[190px] h-[230px] cursor-pointer"
+                      <CarouselItem
+                        key={index}
+                        className="flex justify-center w-[190px]"
+                      >
+                        <div
+                          className={`bg-transparent mt-2 mb-2 rounded-lg w-[190px] h-[240px] flex flex-col items-center border border-[#7ee4ac] transition-all duration-500 ${
+                            showAll
+                              ? 'opacity-100 scale-100'
+                              : shouldScale
+                                ? `opacity-100 ${scaleSize}`
+                                : 'opacity-50'
+                          }`}
                         >
-                          <div
-                            className={`bg-transparent mt-2 mb-2 rounded-lg w-full h-full flex flex-col items-center border border-[#7ee4ac] transition-all duration-500 ${
-                              showAll
-                                ? 'opacity-100 scale-100'
-                                : shouldScale
-                                  ? `opacity-100 ${scaleSize}`
-                                  : 'opacity-50'
-                            }`}
-                          >
-                            {/* Partner Logo */}
-                            <div className="w-full flex items-center justify-center h-[100px] mt-2">
+                          {/* Partner Logo */}
+                          <div className="w-full flex items-center justify-center h-[100px] mt-2">
+                            <a
+                              href={partner.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
                               <Image
                                 src={partner.logoMobile}
                                 alt={partner.name}
                                 width={100}
                                 height={100}
-                                className="max-h-[100px] w-auto object-contain"
+                                className="max-h-[100px] w-auto object-contain cursor-pointer"
                               />
-                            </div>
-
-                            {/* Separator Line */}
-                            <div className="w-full border-t border-[1.5px] border-[#97ffc6] mt-2"></div>
-
-                            {/* Partner Name and Description */}
-                            <div className="relative w-full text-center flex flex-col justify-center py-2 px-3 text-[#ffc200] rounded-b-lg h-[120px]">
-                              <div className="absolute inset-0 bg-gradient-to-b from-[#4c8d69e3] to-[#10201885] opacity-50 rounded-b-lg h-[90px]"></div>
-                              <p className="relative text-[15px] leading-none mt-[-8px] mb-1">
-                                {partner.name}
-                              </p>
-                              <p className="relative text-white text-[9px] mt-[1px] px-4 leading-tight text-left max-h-[90px] overflow-hidden">
-                                {partner.desc}
-                              </p>
-                            </div>
+                            </a>
                           </div>
-                        </Link>
+
+                          {/* Separator Line */}
+                          <div className="w-full border-t border-[1.5px] border-[#97ffc6] mt-2"></div>
+
+                          {/* Partner Name and Description */}
+                          <div className="relative w-full text-center flex flex-col justify-center py-2 px-3 text-[#ffc200] rounded-b-lg h-[120px]">
+                            <div className="absolute inset-0 bg-gradient-to-b from-[#4c8d69e3] to-[#10201885] opacity-50 rounded-b-lg h-[90px]"></div>
+                            <p className="relative text-[15px] leading-none mt-[-8px] mb-1">
+                              {partner.name}
+                            </p>
+                            <p className="relative text-white text-[9px] mt-[1px] px-4 leading-tight text-left max-h-[90px] overflow-hidden">
+                              {partner.desc}
+                            </p>
+                          </div>
+                        </div>
                       </CarouselItem>
                     );
                   })}
@@ -167,7 +168,7 @@ const PartnersMobile = ({ partners }: { partners: PartnersProps[] }) => {
               {partners.map((_, index) => (
                 <span
                   key={index}
-                  className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                  className={`w-[5px] h-[5px] rounded-full transition-all duration-300 ${
                     activeIndex === index
                       ? 'bg-[#ffc200]'
                       : 'bg-gray-500 opacity-50'
