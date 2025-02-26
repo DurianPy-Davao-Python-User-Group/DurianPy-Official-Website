@@ -125,7 +125,7 @@ const PartnersMobile = ({ partners }: { partners: PartnersProps[] }) => {
                         >
                           {/* Partner Logo */}
                           <div className="w-full flex items-center justify-center h-[100px] mt-2">
-                            <a
+                            <Link
                               href={partner.url}
                               target="_blank"
                               rel="noopener noreferrer"
@@ -137,7 +137,7 @@ const PartnersMobile = ({ partners }: { partners: PartnersProps[] }) => {
                                 height={100}
                                 className="max-h-[100px] w-auto object-contain cursor-pointer"
                               />
-                            </a>
+                            </Link>
                           </div>
 
                           {/* Separator Line */}

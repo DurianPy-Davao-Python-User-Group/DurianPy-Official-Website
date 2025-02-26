@@ -134,8 +134,8 @@ const PartnersDesktop = ({ partners }: { partners: PartnersProps[] }) => {
                 <Image
                   src={partner.logo}
                   alt={partner.name}
-                  layout="fill"
                   loading="lazy"
+                  fill
                   className={`${index === 0 ? 'object-cover' : 'object-contain'} hover:scale-105 transition-transform duration-300`}
                   onMouseEnter={() => onMouseEnter(index)}
                   onMouseLeave={() => onMouseLeave()}
