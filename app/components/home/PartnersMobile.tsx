@@ -83,91 +83,109 @@ const PartnersMobile = ({ partners }: { partners: PartnersProps[] }) => {
           together.
         </p>
 
-        {/* Carousel or Full View */}
-        <div
-          className={`relative w-full overflow-hidden transition-all duration-500 ${
-            showAll ? 'h-auto' : 'h-[520px]'
-          }`}
-        >
+        <div className="relative">
+          {/* Carousel or Full View */}
           <div
-            id="carousel-container"
-            className={`overflow-y-auto no-scrollbar transition-all duration-500 ${
-              showAll ? 'flex flex-col gap-1' : 'h-full'
+            className={`relative w-full overflow-hidden transition-all duration-500 ${
+              showAll ? 'h-auto' : 'h-[520px]'
             }`}
-            style={{
-              paddingBottom: showAll ? '20px' : '100px',
-            }}
           >
-            <Carousel className="h-full">
-              <CarouselContent
-                className={`flex flex-col items-center ${showAll ? 'gap-4 mb-2' : 'gap-8 mt-4 mb-6'}`}
-              >
-                {partners.map((partner, index) => {
-                  const isActive = activeIndex === index;
-                  const shouldScale =
-                    index === 0 ? isVisible && isActive : isActive;
-                  const scaleSize = shouldScale ? 'scale-110' : 'scale-100';
+            <div
+              id="carousel-container"
+              className={`overflow-y-auto no-scrollbar transition-all duration-500 ${
+                showAll ? 'flex flex-col gap-1' : 'h-full'
+              }`}
+              style={{
+                paddingBottom: showAll ? '20px' : '100px',
+              }}
+            >
+              <Carousel className="h-full">
+                <CarouselContent
+                  className={`flex flex-col items-center ${showAll ? 'gap-4 mb-2' : 'gap-8 mt-4 mb-6'}`}
+                >
+                  {partners.map((partner, index) => {
+                    const isActive = activeIndex === index;
+                    const shouldScale =
+                      index === 0 ? isVisible && isActive : isActive;
+                    const scaleSize = shouldScale ? 'scale-110' : 'scale-100';
 
-                  return (
-                    <CarouselItem key={index} className="flex justify-center">
-                      <Link
-                        href={partner.url}
-                        target="_blank"
-                        passHref
-                        key={index}
-                        className="w-[190px] h-[230px] cursor-pointer"
-                      >
-                        <div
-                          className={`bg-transparent mt-2 mb-2 rounded-lg w-full h-full flex flex-col items-center border border-[#7ee4ac] transition-all duration-500 ${
-                            showAll
-                              ? 'opacity-100 scale-100'
-                              : shouldScale
-                                ? `opacity-100 ${scaleSize}`
-                                : 'opacity-50'
-                          }`}
+                    return (
+                      <CarouselItem key={index} className="flex justify-center">
+                        <Link
+                          href={partner.url}
+                          target="_blank"
+                          passHref
+                          key={index}
+                          className="w-[190px] h-[230px] cursor-pointer"
                         >
-                          {/* Partner Logo */}
-                          <div className="w-full flex items-center justify-center h-[100px] mt-2">
-                            <Image
-                              src={partner.logoMobile}
-                              alt={partner.name}
-                              width={100}
-                              height={100}
-                              className="max-h-[100px] w-auto object-contain"
-                            />
-                          </div>
+                          <div
+                            className={`bg-transparent mt-2 mb-2 rounded-lg w-full h-full flex flex-col items-center border border-[#7ee4ac] transition-all duration-500 ${
+                              showAll
+                                ? 'opacity-100 scale-100'
+                                : shouldScale
+                                  ? `opacity-100 ${scaleSize}`
+                                  : 'opacity-50'
+                            }`}
+                          >
+                            {/* Partner Logo */}
+                            <div className="w-full flex items-center justify-center h-[100px] mt-2">
+                              <Image
+                                src={partner.logoMobile}
+                                alt={partner.name}
+                                width={100}
+                                height={100}
+                                className="max-h-[100px] w-auto object-contain"
+                              />
+                            </div>
 
-                          {/* Separator Line */}
-                          <div className="w-full border-t border-[1.5px] border-[#97ffc6] mt-2"></div>
+                            {/* Separator Line */}
+                            <div className="w-full border-t border-[1.5px] border-[#97ffc6] mt-2"></div>
 
-                          {/* Partner Name and Description */}
-                          <div className="relative w-full text-center flex flex-col justify-center py-2 px-3 text-[#ffc200] rounded-b-lg h-[120px]">
-                            <div className="absolute inset-0 bg-gradient-to-b from-[#4c8d69e3] to-[#10201885] opacity-50 rounded-b-lg h-[90px]"></div>
-                            <p className="relative text-[15px] leading-none mt-[-8px] mb-1">
-                              {partner.name}
-                            </p>
-                            <p className="relative text-white text-[9px] mt-[1px] px-4 leading-tight text-left max-h-[90px] overflow-hidden">
-                              {partner.desc}
-                            </p>
+                            {/* Partner Name and Description */}
+                            <div className="relative w-full text-center flex flex-col justify-center py-2 px-3 text-[#ffc200] rounded-b-lg h-[120px]">
+                              <div className="absolute inset-0 bg-gradient-to-b from-[#4c8d69e3] to-[#10201885] opacity-50 rounded-b-lg h-[90px]"></div>
+                              <p className="relative text-[15px] leading-none mt-[-8px] mb-1">
+                                {partner.name}
+                              </p>
+                              <p className="relative text-white text-[9px] mt-[1px] px-4 leading-tight text-left max-h-[90px] overflow-hidden">
+                                {partner.desc}
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                      </Link>
-                    </CarouselItem>
-                  );
-                })}
-              </CarouselContent>
-            </Carousel>
+                        </Link>
+                      </CarouselItem>
+                    );
+                  })}
+                </CarouselContent>
+              </Carousel>
+            </div>
           </div>
-        </div>
 
-        {/* Show All Button */}
-        <div
-          className={`bg-[#ffc200] w-[130px] py-[4px] flex justify-center items-center text-black text-sm font-semibold rounded-2xl mx-auto cursor-pointer mt-8 transition-all duration-500 ${
-            showAll ? 'scale-105' : 'scale-100'
-          }`}
-          onClick={() => setShowAll(!showAll)}
-        >
-          {showAll ? 'Collapse' : 'Show all'}
+          {/* Dot Indicators (VERTICALLY ON THE LEFT) */}
+          {!showAll && (
+            <div className="absolute top-1/2 left-2 transform -translate-y-1/2 flex flex-col space-y-2">
+              {partners.map((_, index) => (
+                <span
+                  key={index}
+                  className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                    activeIndex === index
+                      ? 'bg-[#ffc200]'
+                      : 'bg-gray-500 opacity-50'
+                  }`}
+                />
+              ))}
+            </div>
+          )}
+
+          {/* Show All Button */}
+          <div
+            className={`bg-[#ffc200] w-[130px] py-[4px] flex justify-center items-center text-black text-sm font-semibold rounded-2xl mx-auto cursor-pointer mt-8 transition-all duration-500 ${
+              showAll ? 'scale-105' : 'scale-100'
+            }`}
+            onClick={() => setShowAll(!showAll)}
+          >
+            {showAll ? 'Collapse' : 'Show all'}
+          </div>
         </div>
       </div>
     </>
