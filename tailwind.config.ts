@@ -1,3 +1,4 @@
+// tailwind.config.js
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
@@ -12,6 +13,8 @@ const config: Config = {
         montserrat: ['var(--font-montserrat)', 'sans-serif'],
       },
       colors: {
+        'midori-green': '#3eb372',
+        'mint-bliss': '#8AFFBE',
         background: 'var(--background)',
         foreground: 'var(--foreground)',
         primary: '#FFC200',
@@ -53,7 +56,7 @@ const config: Config = {
         'gradient-utd-nav-transparent':
           'linear-gradient(to bottom, rgba(62,179,114,0.63), rgba(166,255,205,0.63))',
         'gradient-utd-green-transparent':
-          'linear-gradient(180deg, rgba(17,32,24,0.8) ,rgba(0,64,28,1))',
+          'linear-gradient(180deg, rgba(0,64,28,1), rgba(17,32,24,0.8))',
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -85,9 +88,11 @@ const config: Config = {
       screens: {
         'height-1000': { raw: '(min-height: 1000px)' },
         'width-1912': { raw: '(min-width: 1912px)' },
+        'width-1440': { raw: '(min-width: 1440px)' },
       },
     },
   },
   plugins: [require('tailwindcss-animate')],
 };
+
 export default config;

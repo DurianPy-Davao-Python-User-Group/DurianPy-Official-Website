@@ -24,7 +24,9 @@
     "gsap": "^3.12.7",
     "lucide-react": "^0.475.0",
     "next": "14.2.21",
+    "odometer": "^0.4.8",
     "react": "^18",
+    "react-countup": "^6.5.3",
     "react-dom": "^18",
     "tailwind-merge": "^3.0.1",
     "tailwindcss-animate": "^1.0.7"
