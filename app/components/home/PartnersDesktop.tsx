@@ -120,7 +120,7 @@ const PartnersDesktop = ({ partners }: { partners: PartnersProps[] }) => {
           {partners.map((partner, index) => (
             <Link
               href={partner.url}
-              target='_blank'
+              target="_blank"
               key={index}
               className={cn(
                 'border border-[#36FF90] rounded-lg relative xl:px-6 xl:py-4 lg:p-6',
