@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 interface PartnersProps {
   name: string;
-  logo: string;
+  logoMobile: string;
   desc: string;
   link: string;
 }
@@ -126,7 +126,7 @@ const PartnersMobile = ({ partners }: { partners: PartnersProps[] }) => {
                             rel="noopener noreferrer"
                           >
                             <Image
-                              src={partner.logo}
+                              src={partner.logoMobile}
                               alt={partner.name}
                               width={100}
                               height={100}
