@@ -30,10 +30,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: './',
   },
-  openGraph: {
-    siteName: head.title,
-    ...head,
-  },
   twitter: {
     card: 'summary_large_image',
     ...head,
