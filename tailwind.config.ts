@@ -9,6 +9,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        montserrat: ['var(--font-montserrat)', 'sans-serif'],
+      },
       colors: {
         midoriGreen: '#36FF90',
         centerStage: '#FFC200',
@@ -84,8 +87,9 @@ const config: Config = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
-      fontFamily: {
-        monsterrat: ['var(--font-montserrat)', 'sans-serif'],
+      screens: {
+        'height-1000': { raw: '(min-height: 1000px)' },
+        'width-1912': { raw: '(min-width: 1912px)' },
       },
     },
   },
