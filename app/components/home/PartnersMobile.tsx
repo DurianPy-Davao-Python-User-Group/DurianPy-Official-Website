@@ -144,7 +144,7 @@ const PartnersMobile = ({ partners }: { partners: PartnersProps[] }) => {
                           <p className="relative text-[15px] leading-none mt-[-8px] mb-1">
                             {partner.name}
                           </p>
-                          <p className="relative text-white text-[9px] mt-[1px] px-4 leading-tight text-left">
+                          <p className="relative text-white text-[9px] mt-[1px] px-4 leading-tight text-left max-h-[90px] overflow-hidden">
                             {partner.desc}
                           </p>
                         </div>
