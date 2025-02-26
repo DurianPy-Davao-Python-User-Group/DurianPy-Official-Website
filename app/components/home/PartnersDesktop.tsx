@@ -123,7 +123,7 @@ const PartnersDesktop = ({ partners }: { partners: PartnersProps[] }) => {
               target='_blank'
               key={index}
               className={cn(
-                'border border-[#36FF90] rounded-lg relative xl:px-6 xl:py-4 lg:p-4 min-h-[155px]',
+                'border border-[#36FF90] rounded-lg relative xl:px-6 xl:py-4 lg:p-6',
                 index === 0 && 'col-span-10 row-span-2',
                 [1, 5].includes(index) && 'col-span-3 row-span-3',
                 index === 2 && 'col-span-4 row-span-4',
@@ -131,7 +131,7 @@ const PartnersDesktop = ({ partners }: { partners: PartnersProps[] }) => {
                 index === 6 && 'col-span-7 row-span-2'
               )}
             >
-              <div className="w-full h-full relative">
+              <div className="w-full h-full min-h-[155px] relative">
                 <Image
                   src={partner.logo}
                   alt={partner.name}
