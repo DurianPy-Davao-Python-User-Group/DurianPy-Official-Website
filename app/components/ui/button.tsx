@@ -30,6 +30,8 @@ const buttonVariants = cva(
           'h-full w-full bg-primary text-dark-green rounded-[0px] p-[10px] hover:bg-[#FFC20120] hover:text-primary',
         'accordion-dropdown':
           'hover:bg-saturated-light-green-opacity-50 w-full text-[16px] rounded-[0px] text-dark-green p-[16px]',
+        transparent:
+          'bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0', // like ghost but no hover effect, no focus ring
       },
       size: {
         default: '',
