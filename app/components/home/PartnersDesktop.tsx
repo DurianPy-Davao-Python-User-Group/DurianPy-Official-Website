@@ -10,11 +10,13 @@ import {
   CarouselItem,
 } from '../ui/carousel';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface PartnersProps {
   name: string;
   logo: string;
   desc: string;
+  url: string;
 }
 
 const PartnersDesktop = ({ partners }: { partners: PartnersProps[] }) => {
@@ -116,7 +118,9 @@ const PartnersDesktop = ({ partners }: { partners: PartnersProps[] }) => {
       <div className="xl:col-span-2 lg:flex-1 lg:h-auto flex">
         <div className="grid grid-cols-10 grid-rows-8 gap-x-4 gap-y-2 p-6 w-full xl:h-full">
           {partners.map((partner, index) => (
-            <div
+            <Link
+              href={partner.url}
+              target='_blank'
               key={index}
               className={cn(
                 'border border-[#36FF90] rounded-lg relative xl:px-6 xl:py-4 lg:p-4 min-h-[155px]',
@@ -138,7 +142,7 @@ const PartnersDesktop = ({ partners }: { partners: PartnersProps[] }) => {
                   onMouseLeave={() => onMouseLeave()}
                 />
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
