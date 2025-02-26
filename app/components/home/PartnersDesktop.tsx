@@ -130,7 +130,7 @@ const PartnersDesktop = ({ partners }: { partners: PartnersProps[] }) => {
                 index === 6 && 'col-span-7 row-span-2'
               )}
             >
-              <div className="w-full h-full min-h-[155px] relative">
+              <div className="w-full h-full xl:min-h-0 lg:min-h-[155px] relative">
                 <Image
                   src={partner.logo}
                   alt={partner.name}
