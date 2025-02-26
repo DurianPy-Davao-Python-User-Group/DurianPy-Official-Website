@@ -140,7 +140,7 @@ export function Hero() {
 
             <div className="flex flex-col md:gap-4 lg:pb-12">
               <Button
-                variant={'hero-button'}
+                variant={'hero-primary'}
                 size={'default'}
                 onClick={() =>
                   handleRedirect('https://www.meetup.com/durianpy/')
@@ -150,7 +150,7 @@ export function Hero() {
                 Attend an Event
               </Button>
               <Button
-                variant={'hero-button'}
+                variant={'hero-secondary'}
                 onClick={() =>
                   handleRedirect('https://forms.gle/x2cc6CrRhbhDeaxe9')
                 }
