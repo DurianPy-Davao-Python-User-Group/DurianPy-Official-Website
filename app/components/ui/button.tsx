@@ -30,10 +30,8 @@ const buttonVariants = cva(
           'h-full w-full bg-primary text-dark-green rounded-[0px] p-[10px] hover:bg-[#FFC20120] hover:text-primary',
         'accordion-dropdown':
           'hover:bg-saturated-light-green-opacity-50 w-full text-[16px] rounded-[0px] text-dark-green p-[16px]',
-        'hero-primary':
-          'text-[14px] bg-dark-green text-[#36FF90] font-bold md:font-normal py-3 px-4 rounded-full opacity-90 w-36 mx-auto shadow-md hover:scale-105 hover:bg-[#1A3E2A] hover:text-[#36FF90] transition-all duration-300 ease-out',
-        'hero-secondary':
-          'border-[1px] border-dark-green text-[14px] text-dark-green font-bold md:font-normal py-3 px-4 rounded-full opacity-90 w-36 mx-auto shadow-md hover:scale-105 transition-all duration-300 ease-out',
+        transparent:
+          'bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0', // like ghost but no hover effect, no focus ring
       },
       size: {
         default: '',
