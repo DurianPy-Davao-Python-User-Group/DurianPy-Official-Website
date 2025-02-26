@@ -48,7 +48,7 @@ export function Hero() {
       <section className="relative bg-dark-green overflow-clip">
         {/* Background elements */}
         <div>
-          <div className="absolute inset-0 bg-[url('/image/rectangle.svg')] bg-cover bg-no-repeat bg-center top-[45%] blur-md scale-x-[2] md:scale-y-[1.3]" />
+          <div className="absolute inset-0 bg-[url('/image/rectangle.svg')] bg-cover bg-no-repeat bg-center top-[45%] blur-md scale-x-[2] md:scale-y-[1.3] lg:top-[65%] lg:scale-y-[1.7]" />
           <div className="absolute inset-0 bg-[url('/image/ellipse.svg')] bg-no-repeat bg-contain bg-center scale-x-[1.8] scale-y-[2.4] top-[72%] md:top-[73%] md:bg-contain md:scale-x-[3.5]" />
           <Image
             src="/image/gear.svg"
@@ -140,7 +140,7 @@ export function Hero() {
 
             <div className="flex flex-col md:gap-4 lg:pb-12">
               <Button
-                variant={'hero-outline'}
+                variant={'hero-button'}
                 size={'default'}
                 onClick={() =>
                   handleRedirect('https://www.meetup.com/durianpy/')
@@ -150,7 +150,7 @@ export function Hero() {
                 Attend an Event
               </Button>
               <Button
-                variant={'hero-outline'}
+                variant={'hero-button'}
                 onClick={() =>
                   handleRedirect('https://forms.gle/x2cc6CrRhbhDeaxe9')
                 }
