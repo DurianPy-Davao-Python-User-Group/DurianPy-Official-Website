@@ -14,7 +14,10 @@ const geistMono = localFont({
   weight: '100 900',
 });
 
-const head = { title: 'DurianPy', description: 'description' };
+const head = {
+  title: 'DurianPy',
+  description: `Accelerating Davao's Tech Growth with Python`,
+};
 
 export const metadata: Metadata = {
   title: {
