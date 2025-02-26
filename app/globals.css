@@ -25,7 +25,7 @@ body {
     --button-hovered: 1.625rem;
   }
 
-  @media (max-width: 1023px) {
+  @media (max-width: 767px) {
     :root {
       --web-title-font: 1.5rem;
       --web-medium-font: 0.875rem;
