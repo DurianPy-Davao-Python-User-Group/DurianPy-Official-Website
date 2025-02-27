@@ -38,15 +38,8 @@ export const metadata: Metadata = {
     'DurianPy - Davao Python User Group',
   ],
   description: head.description,
-  metadataBase: new URL('https://durianpy.org'),
   alternates: {
-    canonical: './',
-  },
-  openGraph: {
-    ...head,
-    siteName: head.title,
-    type: 'website',
-    images: '/og-image.jpg',
+    canonical: 'https://durianpy.org',
   },
   twitter: {
     card: 'summary_large_image',
