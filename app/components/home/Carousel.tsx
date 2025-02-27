@@ -55,16 +55,7 @@ export function Carousel() {
       </CarouselContainer>
 
       {/* WHITE GRADIENT */}
-      <div className="absolute top-[-90px] left-0 w-full h-[300px] bg-gradient-to-b from-transparent via-white/100 via-[30%] to-transparent" />
-
-      {/* 
-      <div
-        className="absolute inset-0 h-[30%] w-full top-[-150px] blur-sm scale-x-[2]"
-        style={{
-          background: `linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 36.9%, #FFF 65.4%, rgba(255, 255, 255, 0.00) 100%)`,
-          transform: 'scaleY(-1)',
-        }}
-      /> */}
+      <div className="absolute top-[-90px] left-0 w-full h-[200px] bg-gradient-to-b from-[#f7f8f7] via-[#f7f8f7]/100 via-[50%] to-transparent" />
 
       {/* TEXT OVERLAY */}
       <div className="w-full flex flex-col items-center absolute top-1/2 left-0 -translate-y-1/2 text-center text-white pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
