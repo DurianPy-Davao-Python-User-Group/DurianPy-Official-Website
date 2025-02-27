@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { Menu } from 'lucide-react';
 import { Button } from '@/app/components/ui/button';
+import { ChevronDown } from 'lucide-react';
 import {
   Sheet,
   SheetContent,
@@ -67,6 +68,7 @@ export default function MobileView() {
               >
                 <AccordionTrigger className="w-full !text-dark-green font-semibold py-[min(36px,3vh)] rounded-[0px] hover:bg-saturated-light-green-opacity-50 [&[data-state=open]]:hover:shadow-none hover:shadow-md text-tabs-navbar">
                   Support Us
+                  <ChevronDown className="h-8 w-8 shrink-50 transition-transform duration-200" />
                 </AccordionTrigger>
                 <AccordionContent className="flex flex-col justify-center items-center !p-0">
                   <Button
