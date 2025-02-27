@@ -65,12 +65,15 @@ export function Partners() {
   ];
 
   return (
-    <section className="bg-[#112018] py-16 font-montserrat">
+    <section className="bg-[#112018] py-16 font-montserrat lg:mb-[-90px] md:mb-[-70px] sm:mb-0">
       <Container>
-        <section className="hidden lg:block">
+        {/* Desktop View (768px and up) */}
+        <section className="hidden md:block">
           <PartnersDesktop partners={partners} />
         </section>
-        <section className="lg:hidden">
+
+        {/* Mobile View (Below 768px) */}
+        <section className="md:hidden">
           <PartnersMobile partners={partners} />
         </section>
       </Container>

@@ -105,7 +105,7 @@ const PartnersDesktop = ({ partners }: { partners: PartnersProps[] }) => {
               <div
                 key={index}
                 className={cn(
-                  'w-3 h-3 rounded-full transition-transform duration-300',
+                  'w-3 h-3 rounded-full transition-transform duration-300 mb-10',
                   current === index + 1 ? 'bg-primary' : 'bg-[#B7B7B7]'
                 )}
               ></div>
@@ -115,7 +115,13 @@ const PartnersDesktop = ({ partners }: { partners: PartnersProps[] }) => {
       </div>
 
       <div className="xl:col-span-2 lg:flex-1 lg:h-auto flex">
-        <div className="grid grid-cols-10 grid-rows-8 gap-x-4 gap-y-2 p-6 w-full xl:h-full">
+        <div
+          className="grid grid-cols-10 grid-rows-8 gap-x-4 gap-y-2 p-6 w-full xl:h-full"
+          style={{
+            transform: 'scale(0.85)',
+            transformOrigin: 'top center',
+          }}
+        >
           {partners.map((partner, index) => (
             <Link
               href={partner.url}
@@ -130,13 +136,17 @@ const PartnersDesktop = ({ partners }: { partners: PartnersProps[] }) => {
                 index === 6 && 'col-span-7 row-span-2'
               )}
             >
-              <div className="w-full h-full xl:min-h-0 lg:min-h-[155px] relative">
+              <div className="w-full h-full xl:min-h-0 lg:min-h-[200px] md:min-h-[160px] relative">
                 <Image
                   src={partner.logo}
                   alt={partner.name}
                   loading="lazy"
                   fill
-                  className={`${index === 0 ? 'object-cover' : 'object-contain'} hover:scale-105 transition-transform duration-300`}
+                  className={cn(
+                    `${index === 0 ? 'object-cover' : 'object-contain'} 
+                     lg:hover:scale-105 transition-transform duration-300 
+                     md:scale-[0.80] lg:scale-100`
+                  )}
                   onMouseEnter={() => onMouseEnter(index)}
                   onMouseLeave={() => onMouseLeave()}
                 />
