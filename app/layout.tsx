@@ -27,7 +27,7 @@ const head = {
 };
 
 // Get the base URL from environment variables
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://durianpy.org'; 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://durianpy.org';
 
 export const metadata: Metadata = {
   title: {
