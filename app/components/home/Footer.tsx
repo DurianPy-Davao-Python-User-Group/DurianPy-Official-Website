@@ -1,12 +1,13 @@
 'use client';
+
 import { useState, useEffect } from 'react';
-import { Container } from '../ui/container';
+import { Container } from '@/app/components/ui/container';
 import Image from 'next/image';
 import Link from 'next/link';
-import logo from '../../../public/assets/logo.svg';
-import { Button } from '../ui/button';
-import { Input } from '../ui/input';
-import { Checkbox } from '../ui/checkbox';
+import logo from '@/public/assets/logo.svg';
+import { Button } from '@/app/components/ui/button';
+import { Input } from '@/app/components/ui/input';
+import { Checkbox } from '@/app/components/ui/checkbox';
 import { ChevronDown } from 'lucide-react';
 import {
   Accordion,
@@ -71,7 +72,7 @@ export function Footer() {
   }, [email]);
 
   return (
-    <footer className="bg-gradient-utd-saturatedGreen-transparent rounded-t-[100px] pt-4 ">
+    <footer className="bg-gradient-utd-saturatedGreen-transparent pt-4 ">
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-[25%_1px_40%_1px_30%] gap-6 md:gap-8 mb-10 p-6 md:p-8 border-b border-primary items-start">
           {/* Logo & CTA Section */}
@@ -115,7 +116,9 @@ export function Footer() {
               <label className="flex items-center space-x-2 cursor-pointer">
                 <Checkbox
                   checked={isChecked}
-                  onCheckedChange={(checked) => setIsChecked(checked === true)}
+                  onCheckedChange={(checked: boolean) =>
+                    setIsChecked(checked === true)
+                  }
                 />
                 <span className="text-white text-sm">
                   I accept the{' '}
