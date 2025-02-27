@@ -26,6 +26,11 @@ const head = {
   description: `Accelerating Davao's Tech Growth with Python`,
 };
 
+// Get the base URL from environment variables
+const baseUrl = process.env.VERCEL_URL 
+  ? `https://${process.env.VERCEL_URL}` 
+  : 'https://durianpy.org'; // Fallback URL
+
 export const metadata: Metadata = {
   title: {
     template: `%s | ${head.title}`,
@@ -39,11 +44,19 @@ export const metadata: Metadata = {
   ],
   description: head.description,
   alternates: {
-    canonical: 'https://durianpy.org',
+    canonical: baseUrl,
   },
   twitter: {
     card: 'summary_large_image',
     ...head,
+  },
+  openGraph: {
+    ...head,
+    images: [
+      {
+        url: `${baseUrl}/opengraph-image.jpg`,
+      },
+    ],
   },
 };
 
