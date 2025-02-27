@@ -31,7 +31,12 @@ export const metadata: Metadata = {
     template: `%s | ${head.title}`,
     default: head.title,
   },
-  keywords: ['Python', 'Python Philippines', 'Python Davao'],
+  keywords: [
+    'Python Davao',
+    'DurianPy',
+    'Davao Python User Group',
+    'DurianPy - Davao Python User Group',
+  ],
   description: head.description,
   metadataBase: new URL('https://durianpy.org'),
   alternates: {
