@@ -42,6 +42,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: './',
   },
+  openGraph: {
+    ...head,
+    siteName: head.title,
+    type: 'website',
+    images: '/og-image.jpg',
+  },
   twitter: {
     card: 'summary_large_image',
     ...head,
