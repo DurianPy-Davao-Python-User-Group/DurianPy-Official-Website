@@ -30,6 +30,7 @@ const head = {
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://durianpy.org';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl),
   title: {
     template: `%s | ${head.title}`,
     default: head.title,
@@ -47,14 +48,6 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     ...head,
-  },
-  openGraph: {
-    ...head,
-    images: [
-      {
-        url: `${baseUrl}/opengraph-image.jpg`,
-      },
-    ],
   },
 };
 
