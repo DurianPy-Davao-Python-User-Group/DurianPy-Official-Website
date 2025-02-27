@@ -27,8 +27,8 @@ const head = {
 };
 
 // Get the base URL from environment variables
-const baseUrl = process.env.VERCEL_URL 
-  ? `https://${process.env.VERCEL_URL}` 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL 
+  ? `https://${process.env.NEXT_PUBLIC_SITE_URL}` 
   : 'https://durianpy.org'; // Fallback URL
 
 export const metadata: Metadata = {
