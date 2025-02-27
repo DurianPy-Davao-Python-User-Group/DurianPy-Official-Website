@@ -90,9 +90,9 @@ export function StatsAndReviews() {
     <section ref={sectionRef} className="text-white py-[64px]">
       <Container>
         <div className="flex flex-col justify-center items-center width-1440:flex-row gap-[29px]">
-          <div className="w-full flex flex-col gap-[16px] width-1440:gap-[52px]">
+          <div className="width-1440:w-full flex flex-col gap-[16px] width-1440:gap-[52px]">
             {/* Section Title */}
-            <div className="text-center width-1440:text-left text-web-title-font font-bold md:leading-[98px]">
+            <div className="text-center md:max-w-[630px] md:text-left text-web-title-font font-bold md:leading-[98px]">
               <h2>
                 Statistics <span className="text-midori-green">&</span> <br />
                 <span className="text-primary">Reviews</span>
@@ -100,7 +100,7 @@ export function StatsAndReviews() {
             </div>
 
             {/* Section Description */}
-            <div className="text-white text-web-body-font mx-auto text-center width-1440:text-left width-1440:mx-0 max-w-[300px] md:max-w-[485px]">
+            <div className="text-white text-web-body-font mx-auto text-center md:text-left width-1440:mx-0 max-w-[300px] md:max-w-[630px] width-1440:max-w-[485px]">
               <p>
                 <span className="font-bold">DurianPy</span> is a community for
                 Python enthusiasts to learn, share, and connect through monthly

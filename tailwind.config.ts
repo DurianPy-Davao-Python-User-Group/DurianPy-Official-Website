@@ -13,7 +13,7 @@ const config: Config = {
         montserrat: ['var(--font-montserrat)', 'sans-serif'],
       },
       colors: {
-        'midori-green': '#3eb372',
+        'midori-green': '#36FF90',
         'mint-bliss': '#8AFFBE',
         background: 'var(--background)',
         foreground: 'var(--foreground)',
