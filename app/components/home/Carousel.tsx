@@ -39,6 +39,10 @@ export function Carousel() {
                 width={1960}
                 height={1280}
               />
+
+              <div className="absolute inset-y-0 right-0 bg-gradient-ltr-lightgreen-transparent w-[20%] opacity-15 scale-x-[-1]" />
+
+              <div className="absolute inset-0 bg-gradient-ltr-lightgreen-transparent w-[20%] opacity-15" />
             </CarouselItem>
           ))}
         </CarouselContent>
@@ -47,6 +51,7 @@ export function Carousel() {
         <div className="absolute bottom-[-125px] w-full h-[200px] bg-gradient-to-t from-[#102019] via-[#102019]/100 via-[70%]  to-transparent " />
 
         {/* LEFT AND RIGHT */}
+
         <div className="absolute inset-0 bg-gradient-to-tr w-full from-[#102019]/90  via-transparent to-transparent" />
 
         <div className="absolute inset-0 bg-gradient-to-tl w-full from-[#102019]/90 via-transparent to-transparent" />
