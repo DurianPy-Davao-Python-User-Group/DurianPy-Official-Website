@@ -7,6 +7,8 @@ import {
   CarouselDots,
 } from '../ui/carousel';
 
+import Image from 'next/image';
+
 export function Carousel() {
   const photos = [
     { name: 'pyconf 2024', image: '1.png' },
@@ -30,10 +32,12 @@ export function Carousel() {
               key={idx}
               className="relative flex items-center justify-center"
             >
-              <img
-                src={'assets/carousel/' + photo.image}
+              <Image
+                src={'/assets/carousel/' + photo.image}
                 alt={photo.name}
                 className="object-cover w-screen max-h-[80vh]"
+                width={1960}
+                height={1280}
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#1A3E2A]/60 to-transparent duration-500 group-hover:opacity-20" />
               <div className="absolute inset-0 bg-gradient-to-r from-[#1A3E2A]/60 to-transparent transform scale-x-[-1] duration-500 group-hover:opacity-20" />

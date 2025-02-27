@@ -236,13 +236,13 @@ CarouselItem.displayName = 'CarouselItem';
 const CarouselPrevious = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
->(({ className, variant = 'ghost', size = 'icon', ...props }, ref) => {
+>(({ className, variant = 'transparent', size = 'icon', ...props }, ref) => {
   const { orientation, scrollPrev, canScrollPrev } = useCarousel();
 
   return (
     <Button
       ref={ref}
-      variant="transparent"
+      variant={variant}
       size={size}
       className={cn(
         'absolute',
@@ -265,13 +265,13 @@ CarouselPrevious.displayName = 'CarouselPrevious';
 const CarouselNext = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
->(({ className, variant = 'ghost', size = 'icon', ...props }, ref) => {
+>(({ className, variant = 'transparent', size = 'icon', ...props }, ref) => {
   const { orientation, scrollNext, canScrollNext } = useCarousel();
 
   return (
     <Button
       ref={ref}
-      variant="transparent"
+      variant={variant}
       size={size}
       className={cn(
         'absolute',
@@ -296,23 +296,23 @@ const CarouselDots = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement>
 >((props, ref) => {
   const { api } = useCarousel();
-  const [updateState, setUpdateState] = React.useState(false);
-  const toggleUpdateState = React.useCallback(
-    () => setUpdateState((prevState) => !prevState),
-    []
-  );
+  const [, forceUpdate] = React.useReducer((x) => x + 1, 0);
+
+  const toggleForceUpdate = React.useCallback(() => {
+    forceUpdate(); // This will trigger a re-render
+  }, []);
 
   React.useEffect(() => {
     if (api) {
-      api.on('select', toggleUpdateState);
-      api.on('reInit', toggleUpdateState);
+      api.on('select', toggleForceUpdate);
+      api.on('reInit', toggleForceUpdate);
 
       return () => {
-        api.off('select', toggleUpdateState);
-        api.off('reInit', toggleUpdateState);
+        api.off('select', toggleForceUpdate);
+        api.off('reInit', toggleForceUpdate);
       };
     }
-  }, [api, toggleUpdateState]);
+  }, [api, toggleForceUpdate]);
 
   const numberOfSlides = api?.scrollSnapList().length || 0;
   const currentSlide = api?.selectedScrollSnap() || 0;
