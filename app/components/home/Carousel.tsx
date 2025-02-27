@@ -39,9 +39,6 @@ export function Carousel() {
                 width={1960}
                 height={1280}
               />
-              {/* LEFT AND RIGHT GRADIENT */}
-              <div className="absolute left-[-20px] inset-y-0 bg-gradient-to-r from-[#1A3E2A]/20 to-transparent duration-500" />
-              <div className="absolute right-[-20px] inset-y-0 bg-gradient-to-r from-[#1A3E2A]/20 to-transparent -scale-x-100 duration-500" />
             </CarouselItem>
           ))}
         </CarouselContent>
@@ -49,6 +46,12 @@ export function Carousel() {
         {/* DARK GREEN GRADIENT */}
         <div className="absolute bottom-[-125px] w-full h-[200px] bg-gradient-to-t from-[#102019] via-[#102019]/100 via-[70%]  to-transparent " />
 
+        {/* LEFT AND RIGHT */}
+        <div className="absolute inset-0 bg-gradient-to-tr w-full from-[#102019]/90  via-transparent to-transparent" />
+
+        <div className="absolute inset-0 bg-gradient-to-tl w-full from-[#102019]/90 via-transparent to-transparent" />
+
+        {/* CAROUSEL INDICATORS */}
         <CarouselDots className="absolute bottom-4 left-1/2 -translate-x-1/2 text-2xl py-4 text" />
 
         <CarouselPrevious className="ml-[5%] h-16 w-16 sm:w-20 sm:h-20" />
