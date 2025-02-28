@@ -89,12 +89,16 @@ export function Footer() {
               Tech Growth with Python
             </p>
             <div className="flex flex-col space-y-4 mt-4 w-full md:w-auto">
-              <Button variant="footer" className="w-full md:w-[150px] ">
-                Attend an Event
-              </Button>
-              <Button variant="footer" className="w-full md:w-[100px]">
-                Give a Talk
-              </Button>
+              <Link href="https://www.meetup.com/durianpy/" target="_blank">
+                <Button variant="footer" className="w-full md:w-[150px] ">
+                  Attend an Event
+                </Button>
+              </Link>
+              <Link href="https://forms.gle/x2cc6CrRhbhDeaxe9" target="_blank">
+                <Button variant="footer" className="w-full md:w-[100px]">
+                  Give a Talk
+                </Button>
+              </Link>
             </div>
           </div>
 
