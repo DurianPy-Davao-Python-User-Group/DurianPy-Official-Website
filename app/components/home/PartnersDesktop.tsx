@@ -118,17 +118,15 @@ const PartnersDesktop = ({ partners }: { partners: PartnersProps[] }) => {
         <div
           className="grid grid-cols-10 grid-rows-8 gap-x-4 gap-y-2 p-6 w-full xl:h-full"
           style={{
-            transform: 'scale(0.85)',
+            transform: 'scale(0.80)',
             transformOrigin: 'top center',
           }}
         >
           {partners.map((partner, index) => (
-            <Link
-              href={partner.url}
-              target="_blank"
+            <div
               key={index}
               className={cn(
-                'border border-[#36FF90] rounded-lg relative xl:px-6 xl:py-4 lg:p-6',
+                'relative group transition-all duration-500 ease-in-out',
                 index === 0 && 'col-span-10 row-span-2',
                 [1, 5].includes(index) && 'col-span-3 row-span-3',
                 index === 2 && 'col-span-4 row-span-4',
@@ -136,22 +134,36 @@ const PartnersDesktop = ({ partners }: { partners: PartnersProps[] }) => {
                 index === 6 && 'col-span-7 row-span-2'
               )}
             >
-              <div className="w-full h-full xl:min-h-0 lg:min-h-[200px] md:min-h-[160px] relative">
-                <Image
-                  src={partner.logo}
-                  alt={partner.name}
-                  loading="lazy"
-                  fill
-                  className={cn(
-                    `${index === 0 ? 'object-cover' : 'object-contain'} 
-                     lg:hover:scale-105 transition-transform duration-300 
-                     md:scale-[0.80] lg:scale-100`
-                  )}
-                  onMouseEnter={() => onMouseEnter(index)}
-                  onMouseLeave={() => onMouseLeave()}
-                />
-              </div>
-            </Link>
+              {/* Gradient Overlay (Covers the full box now) */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#00833A] to-[rgba(62,179,114,0)] opacity-0 transition-opacity duration-500 rounded-lg group-hover:opacity-100"></div>
+
+              <Link
+                href={partner.url}
+                target="_blank"
+                className="border border-[#36FF90] rounded-lg xl:px-6 xl:py-4 lg:p-6 w-full h-full flex justify-center items-center"
+              >
+                {/* Logo Container */}
+                <div className="w-full h-full xl:min-h-0 lg:min-h-[200px] md:min-h-[160px] relative flex justify-center items-center transition-transform duration-500 ease-in-out hover:scale-105">
+                  <Image
+                    src={partner.logo}
+                    alt={partner.name}
+                    loading="lazy"
+                    fill
+                    className={cn(
+                      'object-contain',
+                      partner.name === 'PizzaPy'
+                        ? 'object-cover'
+                        : 'object-contain',
+                      'w-full h-full',
+                      'md:scale-[0.80]',
+                      'lg:scale-100'
+                    )}
+                    onMouseEnter={() => onMouseEnter(index)}
+                    onMouseLeave={() => onMouseLeave()}
+                  />
+                </div>
+              </Link>
+            </div>
           ))}
         </div>
       </div>
