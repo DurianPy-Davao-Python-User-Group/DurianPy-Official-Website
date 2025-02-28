@@ -5,17 +5,9 @@ import gradient from '@/public/assets/ctaIcons/gradient.svg';
 
 export function PythonFoundation() {
   return (
-    <section className="bg-dark-green py-16 relative overflow-hidden min-h-screen flex items-center justify-center">
-      <div
-        className="absolute inset-0 w-full h-full bg-no-repeat opacity-100"
-        style={{
-          backgroundImage: `url(${gradient.src})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      ></div>
-
-      <Container>
+    <section className="bg-dark-green py-16 relative overflow-y-visible flex min-h-screen items-center justify-center">
+      <Image src={gradient} alt="bg" className='w-screen' />
+      <Container className="absolute">
         <div className="text-center relative z-10">
           <h2 className="text-3xl font-bold text-[#FFC201] mb-8">
             Recognized by
