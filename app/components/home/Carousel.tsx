@@ -35,7 +35,7 @@ export function Carousel() {
               <Image
                 src={'/assets/carousel/' + photo.image}
                 alt={photo.name}
-                className="object-cover w-screen max-h-[80vh]"
+                className="object-cover w-full h-full"
                 width={1960}
                 height={1280}
               />
