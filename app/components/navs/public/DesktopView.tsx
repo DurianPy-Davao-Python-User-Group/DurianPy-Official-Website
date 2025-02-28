@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { Button } from '../../ui/button';
 import { ChevronDown } from 'lucide-react';
 
@@ -21,14 +21,21 @@ function redirectTo({ href }: redirectProps) {
 export default function DesktopView() {
   const router = useRouter();
 
+  const pathname = usePathname();
+
   return (
     <div className="flex justify-between items-center text-tabs-navbar text-white w-full">
-      <Button variant={'navLink'} onClick={() => router.push('/')}>
+      <Button
+        variant={'navLink'}
+        onClick={() => router.push('/')}
+        className={`${pathname === '/' ? 'text-primary border-primary' : ''}`}
+      >
         Home
       </Button>
       <Button
         variant={'navLink'}
         onClick={() => redirectTo({ href: 'https://www.meetup.com/durianpy/' })}
+        className={`${pathname === '/about' ? 'text-primary border-primary' : ''}`}
       >
         About
       </Button>
@@ -37,11 +44,14 @@ export default function DesktopView() {
         onClick={() =>
           redirectTo({ href: 'https://www.meetup.com/durianpy/events/' })
         }
+        className={`${pathname === '/events' ? 'text-primary border-primary' : ''}`}
       >
         Events
       </Button>
       <DropdownMenu>
-        <DropdownMenuTrigger className="flex [&[data-state=open]]:bg-primary [&[data-state=open]]:text-dark-green justify-center items-center outline-none gap-[10px] focus:outline-none p-[10px] border-[1px] rounded-[50px] border-transparent hover:text-primary hover:border-primary active:bg-primary active:text-dark-green">
+        <DropdownMenuTrigger
+          className={`${pathname === '/sponsors' || pathname === '/host' ? 'text-primary border-primary' : ''} flex [&[data-state=open]]:bg-primary [&[data-state=open]]:text-dark-green justify-center items-center outline-none gap-[10px] focus:outline-none p-[10px] border-[1px] rounded-[50px] border-transparent hover:text-primary active:border-primary active:bg-primary active:text-dark-green`}
+        >
           Support Us{' '}
           <ChevronDown strokeWidth={1.5} className="h-6 w-6 shrink-0" />
         </DropdownMenuTrigger>
@@ -59,10 +69,15 @@ export default function DesktopView() {
         onClick={() =>
           redirectTo({ href: 'https://forms.gle/x2cc6CrRhbhDeaxe9' })
         }
+        className={`${pathname === '/speak' ? 'text-primary border-primary' : ''}`}
       >
         Speak
       </Button>
-      <Button variant={'navLink'} onClick={() => router.push('/404')}>
+      <Button
+        variant={'navLink'}
+        onClick={() => router.push('/404')}
+        className={`${pathname === '/sigs' ? 'text-primary border-primary' : ''}`}
+      >
         SIGs
       </Button>
       <Button
@@ -70,6 +85,7 @@ export default function DesktopView() {
         onClick={() =>
           redirectTo({ href: 'https://www.facebook.com/durianpy' })
         }
+        className={`${pathname === '/contact' ? 'text-primary border-primary' : ''}`}
       >
         Contact Us
       </Button>
