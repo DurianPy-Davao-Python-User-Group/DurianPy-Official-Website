@@ -54,7 +54,7 @@ export function Carousel() {
         <CarouselNext className="z-10 peer mr-[5%] h-16 w-16 sm:w-20 sm:h-20" />
 
         {/* TEXT OVERLAY */}
-        <div className="peer z-10 select-none w-full flex flex-col items-center absolute top-1/2 left-0 -translate-y-1/2 text-center text-white transition-opacity duration-1000 peer-hover:opacity-0 hover:opacity-0">
+        <div className="peer z-[5] w-full flex flex-col items-center absolute top-1/2 left-0 -translate-y-1/2 text-center text-white transition-opacity duration-500 peer-hover:opacity-0 hover:opacity-0">
           <h2 className="w-[90%] text-3xl sm:text-5xl md:text-6xl xl:text-[5rem] font-bold">
             Davao <span className="text-primary">Python</span> Community
           </h2>
@@ -65,7 +65,7 @@ export function Carousel() {
         </div>
 
         {/* OVERLAY GRADIENT */}
-        <div className="absolute inset-0 w-full bg-gradient-to-b from-transparent via-black/[0.18] to-black transition-opacity duration-1000 opacity-65 peer-hover:opacity-0" />
+        <div className="absolute inset-0 w-full bg-gradient-to-b from-transparent via-black/[0.18] to-black transition-opacity duration-500 opacity-65 peer-hover:opacity-0" />
         {/* WHITE GRADIENT (top) */}
         <div className="absolute top-[-90px] left-0 w-full h-[200px] bg-gradient-to-b from-[#f7f8f7] via-[#f7f8f7]/100 via-[50%] to-transparent" />
         {/* DARK GREEN GRADIENT (bottom) */}
