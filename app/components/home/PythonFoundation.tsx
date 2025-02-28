@@ -6,19 +6,16 @@ export function PythonFoundation() {
     <section className="bg-green-900 py-16">
       <Container>
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-white mb-8">Recognized by</h2>
+          <h2 className="text-primary text-[80px] font-bold text-[#FFC201] mb-8">Recognized by</h2>
           <div className="flex justify-center items-center">
-            <div className="bg-white p-8 rounded-lg">
+            <div className="w-[800px] h-[300px] p-8 rounded-lg relative">
               <Image
-                src="/python-logo.svg"
+                src="/image/psf-logo.png"
                 alt="Python Software Foundation"
-                width={100}
-                height={100}
-                className="h-16 w-auto"
+                loading="lazy"
+                fill
+                className="h-2 w-auto relative object-contain"
               />
-              <p className="mt-4 text-green-900 font-medium">
-                Python Software Foundation
-              </p>
             </div>
           </div>
         </div>
