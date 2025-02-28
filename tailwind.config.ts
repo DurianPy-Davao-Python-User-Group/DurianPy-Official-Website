@@ -90,6 +90,7 @@ const config: Config = {
         'width-1912': { raw: '(min-width: 1912px)' },
         'width-1440': { raw: '(min-width: 1440px)' },
       },
+      backgroundImage: {},
     },
   },
   plugins: [require('tailwindcss-animate')],
