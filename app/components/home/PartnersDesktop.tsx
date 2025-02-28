@@ -134,7 +134,7 @@ const PartnersDesktop = ({ partners }: { partners: PartnersProps[] }) => {
                 index === 6 && 'col-span-7 row-span-2'
               )}
             >
-              {/* Gradient Overlay (Covers the full box now) */}
+              {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#00833A] to-[rgba(62,179,114,0)] opacity-0 transition-opacity duration-500 rounded-lg group-hover:opacity-100"></div>
 
               <Link
