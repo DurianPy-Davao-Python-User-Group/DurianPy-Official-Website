@@ -50,8 +50,8 @@ export function Carousel() {
         {/* CAROUSEL INDICATORS */}
         <CarouselDots className="z-10 peer absolute bottom-4 left-1/2 -translate-x-1/2 text-2xl py-4 text" />
 
-        <CarouselPrevious className="z-10 peer ml-[5%] h-16 w-16 sm:w-20 sm:h-20" />
-        <CarouselNext className="z-10 peer mr-[5%] h-16 w-16 sm:w-20 sm:h-20" />
+        <CarouselPrevious className="z-10 peer ml-[32px] lg:ml-[48px] xl:ml-[64px] h-16 w-16 sm:w-20 sm:h-20" />
+        <CarouselNext className="z-10 peer mr-[32px] lg:mr-[48px] xl:mr-[64px] h-16 w-16 sm:w-20 sm:h-20" />
 
         {/* TEXT OVERLAY */}
         <div className="peer z-[5] w-full select-none flex flex-col items-center absolute top-1/2 left-0 -translate-y-1/2 text-center text-white transition-opacity duration-500 peer-hover:opacity-0 hover:opacity-0">
