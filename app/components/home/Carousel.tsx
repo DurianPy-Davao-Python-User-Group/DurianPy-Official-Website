@@ -18,7 +18,7 @@ export function Carousel() {
   ];
 
   return (
-    <section className="group relative w-screen overflow-clip">
+    <section className="group relative w-full overflow-clip">
       {/* CAROUSEL */}
       <CarouselContainer
         opts={{ loop: true }}
