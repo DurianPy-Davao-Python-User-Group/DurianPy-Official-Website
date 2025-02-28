@@ -54,7 +54,7 @@ export function Carousel() {
         <CarouselNext className="z-10 peer mr-[5%] h-16 w-16 sm:w-20 sm:h-20" />
 
         {/* TEXT OVERLAY */}
-        <div className="peer z-[5] w-full flex flex-col items-center absolute top-1/2 left-0 -translate-y-1/2 text-center text-white transition-opacity duration-500 peer-hover:opacity-0 hover:opacity-0">
+        <div className="peer z-[5] w-full select-none flex flex-col items-center absolute top-1/2 left-0 -translate-y-1/2 text-center text-white transition-opacity duration-500 peer-hover:opacity-0 hover:opacity-0">
           <h2 className="w-[90%] text-3xl sm:text-5xl md:text-6xl xl:text-[5rem] font-bold">
             Davao <span className="text-primary">Python</span> Community
           </h2>
