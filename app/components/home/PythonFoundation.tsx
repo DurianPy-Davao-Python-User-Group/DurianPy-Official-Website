@@ -5,10 +5,10 @@ import gradient from '@/public/assets/ctaIcons/gradient.svg';
 
 export function PythonFoundation() {
   return (
-    <section className="bg-dark-green py-16 relative overflow-y-visible flex min-h-screen items-center justify-center">
-      <Image src={gradient} alt="bg" className='w-screen' />
-      <Container className="absolute">
-        <div className="text-center relative z-10">
+    <section className="bg-dark-green relative min-h-[70vh] lg:min-h-screen flex items-center justify-center">
+      <Image src={gradient} alt="bg" className='w-full absolute' />
+      <Container className='justify-center items-center w-full h-full z-10'>
+        <div className="text-center z-10">
           <h2 className="text-3xl font-bold text-[#FFC201] mb-8">
             Recognized by
           </h2>
