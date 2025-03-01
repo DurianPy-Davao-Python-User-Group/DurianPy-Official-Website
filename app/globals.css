@@ -14,6 +14,22 @@ body {
 }
 
 @layer base {
+  ::-webkit-scrollbar {
+    @apply w-[7px];
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary rounded-[6px];
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-opacity-50;
+  }
+
   :root {
     --radius: 0.5rem;
     /* font-size: 16px; */
