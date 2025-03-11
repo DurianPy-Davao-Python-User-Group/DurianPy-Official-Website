@@ -87,6 +87,7 @@ const config: Config = {
       },
       screens: {
         'height-1000': { raw: '(min-height: 1000px)' },
+        'height-1024': { raw: '(min-height: 1024px)' },
         'width-1912': { raw: '(min-width: 1912px)' },
         'width-1440': { raw: '(min-width: 1440px)' },
       },
