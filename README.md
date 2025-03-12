@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Github Workflow
 
-## Getting Started
+### Table of contents
 
-First, run the development server:
+- [Work w/ tickets!](#work-w-tickets)
+- [Pushing your changes](#pushing-your-changes)
+- [Branch behind? do rebase!](#branch-behind-do-rebase)
+- [Still in staging branch?](#still-in-staging-branch)
+- [Merge to staging (for reviewers)](#merge-to-staging-for-reviewers)
+
+## Work w/ tickets!
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git checkout -b DY-<ticket number> origin/staging
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Go to projects kanban board
+2. Locate your ticket
+3. Right sidebar scroll down to development
+4. Connect your ticket
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Pushing your changes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+_Please refer to [Conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) for the format of your commit messages_
 
-## Learn More
+```bash
+git add .
+git commit -m "your message here"
+git push origin <current branch name>
+```
 
-To learn more about Next.js, take a look at the following resources:
+1. Create a PR (Pull Request)
+2. Move the ticket to "For review" column
+3. In case of errors:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+git push origin <current branch name> --force
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Branch behind? do rebase!
 
-## Deploy on Vercel
+_Do this first before pushing your changes if you are behind!_
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+git fetch origin staging
+git rebase origin/staging
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+_Stash if you can't rebase_
+
+```bash
+git stash
+git fetch origin staging
+git rebase origin/staging
+git stash pop
+```
+
+**_Fix possible merge conflicts_**
+
+## Still in staging branch?
+
+_Move to a remote branch_
+
+```bash
+git checkout -b DY-<ticket number> origin/staging
+```
+
+_If you can't move, stash!_
+
+```bash
+git stash
+git checkout -b DY-<ticket number> origin/staging
+git stash pop
+```
+
+## Merge to staging (for reviewers)
+
+1. Do not merge!
+2. Press the dropdown beside merge button
+3. Click rebase & merge
+
+**_If you have problems with the workflow never hesitate to ask questions_**
+
+**_1 ticket 1 branch rule, make sure to only have 1 branch for each ticket for easier monitoring and reviews_**
+
+_Workflow by Sam Dacara_
