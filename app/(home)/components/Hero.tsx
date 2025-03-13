@@ -48,15 +48,15 @@ export function Hero() {
       <section className="relative bg-dark-green overflow-clip">
         {/* Background elements */}
         <div>
-          <div className="absolute inset-0 bg-[url('/image/rectangle.svg')] bg-cover bg-no-repeat bg-center top-[45%] blur-md scale-x-[2] md:scale-y-[1.3] lg:top-[65%] lg:scale-y-[1.7]" />
-          <div className="absolute inset-0 bg-[url('/image/ellipse.svg')] bg-no-repeat bg-contain bg-center scale-x-[1.8] scale-y-[2.4] top-[72%] md:top-[73%] md:bg-contain md:scale-x-[3.5]" />
+          <div className="absolute inset-0 bg-[url('/image/rectangle.svg')] bg-cover bg-no-repeat bg-center top-[45%] blur-md scale-x-[2] md:scale-y-[1.3] lg:top-[65%] lg:scale-y-[1.7] height-1000:top-[50%]" />
+          <div className="absolute inset-0 bg-[url('/image/ellipse.svg')] bg-no-repeat bg-contain bg-center scale-x-[1.8] scale-y-[2.4] top-[72%] md:top-[73%] md:bg-contain md:scale-x-[3.5] height-1000:top-[71%]" />
           <Image
             src="/image/gear.svg"
             height={600}
             width={600}
             alt="a"
             priority
-            className="absolute right-[90%] top-[30%] scale-[135%] md:scale-[105%] lg:scale-[120%] md:hidden lg:block lg:top-[5%] lg:right-[80%] -rotate-12 blur-sm w-auto h-auto xl:scale-[140%] xl:right-0 xl:left-[-28%] xl:top-[10%] width-1912:left-[-20%]"
+            className="absolute right-[90%] top-[30%] scale-[135%] md:scale-[105%] lg:scale-[120%] md:hidden lg:block lg:top-[5%] lg:right-[80%] -rotate-12 blur-sm w-auto h-auto xl:scale-[140%] xl:right-0 xl:left-[-28%] xl:top-[10%] width-1912:left-[-22%]"
           />
           <Image
             src="/image/gear.svg"
@@ -64,7 +64,7 @@ export function Hero() {
             width={600}
             alt="a"
             priority
-            className="absolute left-[70%] top-[50%] right-[6%] scale-[115%] md:scale-100 md:right-[15%] rotate-180 md:rotate-[200deg] blur-sm w-auto h-auto md:hidden lg:block xl:top-[50%] xl:left-[80%] xl:scale-[130%] width-1912:left-[85%] width-1912:scale-150"
+            className="absolute left-[70%] top-[50%] right-[6%] scale-[115%] md:scale-100 md:right-[15%] rotate-180 md:rotate-[200deg] blur-sm w-auto h-auto md:hidden lg:block xl:top-[50%] xl:left-[80%] xl:scale-[130%] width-1912:left-[80%] width-1912:scale-150 height-1000:top-[70%]"
           />
           <div
             className="absolute inset-0 h-[30%] w-full top-[80%] md:top-[82%] blur-sm scale-x-[2]"
@@ -121,7 +121,7 @@ export function Hero() {
         </div>
 
         {/* Hero section */}
-        <Container className="justify-center flex items-center min-h-screen height-1000:min-h-[600px]">
+        <Container className="justify-center flex items-center min-h-screen">
           <div className="relative flex flex-col place-items-center justify-center text-center gap-8">
             <div className="flex flex-col">
               <Image
