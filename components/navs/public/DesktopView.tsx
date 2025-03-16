@@ -1,14 +1,14 @@
 'use client';
 
 import { useRouter, usePathname } from 'next/navigation';
-import { Button } from '../../ui/button';
+import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
 
 import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
-} from '@/app/components/ui/dropdown-menu';
+} from '@/components/ui/dropdown-menu';
 
 interface redirectProps {
   href: string;
@@ -82,9 +82,7 @@ export default function DesktopView() {
       </Button>
       <Button
         variant={'navLink'}
-        onClick={() =>
-          redirectTo({ href: 'https://www.facebook.com/durianpy' })
-        }
+        onClick={() => router.push('/contact')}
         className={`${pathname === '/contact' ? 'text-primary border-primary' : ''}`}
       >
         Contact Us

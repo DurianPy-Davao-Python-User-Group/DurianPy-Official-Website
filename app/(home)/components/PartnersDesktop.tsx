@@ -8,7 +8,7 @@ import {
   CarouselApi,
   CarouselContent,
   CarouselItem,
-} from '../ui/carousel';
+} from '@/components/ui/carousel';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -53,7 +53,6 @@ const PartnersDesktop = ({ partners }: { partners: PartnersProps[] }) => {
     }
 
     if (index != null) {
-      console.log('Moving to index:', index);
       api.scrollTo(index);
     }
 

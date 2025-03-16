@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { Menu } from 'lucide-react';
-import { Button } from '@/app/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
 import {
   Sheet,
@@ -11,14 +11,14 @@ import {
   // SheetHeader,
   // SheetTitle,
   SheetTrigger,
-} from '@/app/components/ui/sheet';
+} from '@/components/ui/sheet';
 
 import {
   Accordion,
   AccordionTrigger,
   AccordionContent,
   AccordionItem,
-} from '@/app/components/ui/accordion';
+} from '@/components/ui/accordion';
 
 interface redirectProps {
   href: string;
@@ -103,9 +103,7 @@ export default function MobileView() {
             </Button>
             <Button
               variant={'navLinkMobile'}
-              onClick={() =>
-                redirectTo({ href: 'https://www.facebook.com/durianpy' })
-              }
+              onClick={() => router.push('/contact')}
             >
               Contact Us
             </Button>

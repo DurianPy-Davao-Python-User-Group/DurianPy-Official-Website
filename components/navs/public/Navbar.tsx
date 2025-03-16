@@ -1,6 +1,6 @@
 'use client';
 
-import useWindowWidth from '@/app/components/csr/useWindowWidth';
+import useWindowWidth from '@/components/csr/useWindowWidth';
 import DesktopView from './DesktopView';
 import MobileView from './MobileView';
 import Image from 'next/image';

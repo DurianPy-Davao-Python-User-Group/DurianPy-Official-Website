@@ -1,20 +1,20 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Container } from '@/app/components/ui/container';
+import { Container } from '@/components/ui/container';
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from '@/public/assets/logo.svg';
-import { Button } from '@/app/components/ui/button';
-import { Input } from '@/app/components/ui/input';
-import { Checkbox } from '@/app/components/ui/checkbox';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Checkbox } from '@/components/ui/checkbox';
 import { ChevronDown } from 'lucide-react';
 import {
   Accordion,
   AccordionTrigger,
   AccordionContent,
   AccordionItem,
-} from '@/app/components/ui/accordion';
+} from '@/components/ui/accordion';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
