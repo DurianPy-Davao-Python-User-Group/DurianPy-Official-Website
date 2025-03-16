@@ -1,4 +1,4 @@
-import { Container } from '../ui/container';
+import { Container } from '@/components/ui/container';
 import Image from 'next/image';
 import logo from '@/public/assets/ctaIcons/psf-logo.svg';
 import gradient from '@/public/assets/ctaIcons/gradient.svg';

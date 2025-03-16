@@ -1,7 +1,7 @@
-import { Container } from '../ui/container';
+import { Container } from '@/components/ui/container';
 import dynamic from 'next/dynamic';
-const PartnersDesktop = dynamic(() => import('../home/PartnersDesktop'));
-const PartnersMobile = dynamic(() => import('../home/PartnersMobile'));
+const PartnersDesktop = dynamic(() => import('./PartnersDesktop'));
+const PartnersMobile = dynamic(() => import('./PartnersMobile'));
 
 interface PartnersProps {
   name: string;

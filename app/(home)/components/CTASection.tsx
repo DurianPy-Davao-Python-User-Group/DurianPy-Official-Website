@@ -1,4 +1,4 @@
-import { Container } from '../ui/container';
+import { Container } from '@/components/ui/container';
 import Image from 'next/image';
 import joinOurCommunityIcon from '@/public/assets/ctaIcons/join-our-community.svg';
 import attendEventsIcon from '@/public/assets/ctaIcons/attend-events.svg';

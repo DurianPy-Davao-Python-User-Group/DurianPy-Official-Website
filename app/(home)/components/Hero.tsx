@@ -1,7 +1,7 @@
 'use client';
-import { Container } from '../ui/container';
+import { Container } from '@/components/ui/container';
 import Image from 'next/image';
-import { Button } from '../ui/button';
+import { Button } from '@/components/ui/button';
 import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';

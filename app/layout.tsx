@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import './globals.css';
-import Navbar from '@/app/components/navs/public/Navbar';
+import '@/styles/globals.css';
+import Navbar from '@/components/navs/public/Navbar';
 import { ReactLenis } from 'lenis/react';
 
 const head = {

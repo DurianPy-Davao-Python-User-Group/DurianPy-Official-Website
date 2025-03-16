@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
-import { Container } from '../ui/container';
+import { Container } from '@/components/ui/container';
 import CountUp from 'react-countup';
 
 type Statistic = {

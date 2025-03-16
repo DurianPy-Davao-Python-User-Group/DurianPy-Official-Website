@@ -5,7 +5,7 @@ import {
   CarouselNext,
   CarouselPrevious,
   CarouselDots,
-} from '../ui/carousel';
+} from '@/components/ui/carousel';
 
 import Image from 'next/image';
 
