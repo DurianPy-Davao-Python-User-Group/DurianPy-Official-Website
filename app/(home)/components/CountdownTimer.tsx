@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useState } from "react";
-import { formatDistanceStrict } from "date-fns";
+import { useEffect, useState } from 'react';
+import { formatDistanceStrict } from 'date-fns';
 
 interface CountdownTimerProps {
   eventDate: string;
@@ -9,7 +9,7 @@ interface CountdownTimerProps {
 
 const CountdownTimer: React.FC<CountdownTimerProps> = ({ eventDate }) => {
   const targetDate = new Date(eventDate).getTime();
-  const [timeLeft, setTimeLeft] = useState("");
+  const [timeLeft, setTimeLeft] = useState('');
 
   useEffect(() => {
     const updateCountdown = () => {
