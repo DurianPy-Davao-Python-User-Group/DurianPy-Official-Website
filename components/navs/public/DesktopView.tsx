@@ -75,7 +75,7 @@ export default function DesktopView() {
       </Button>
       {/* <Button
         variant={'navLink'}
-        onClick={() => router.push('/404')}
+        onClick={() => redirectTo({ href: '/sigs' })}
         className={`${pathname === '/sigs' ? 'text-primary border-primary' : ''}`}
       >
         SIGs
