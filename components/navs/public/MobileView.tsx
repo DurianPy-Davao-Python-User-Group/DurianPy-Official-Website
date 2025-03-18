@@ -89,7 +89,7 @@ export default function MobileView() {
 
             <Button
               variant={'navLinkMobile'}
-              onClick={() => router.push('/404')}
+              onClick={() => redirectTo({ href: 'sigs' })}
             >
               SIGs
             </Button>
