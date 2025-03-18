@@ -95,7 +95,7 @@ export default function MobileView() {
             </Button> */}
             <Button
               variant={'navLinkMobile'}
-              onClick={() => router.push('/code-of-conduct')}
+              onClick={() => redirectTo({ href: 'sigs' })}
             >
               Code of Conduct
             </Button>
