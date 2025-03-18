@@ -15,7 +15,7 @@ interface redirectProps {
 }
 
 function redirectTo({ href }: redirectProps) {
-  window.open(href, '_blank', 'noopener,noreferrer');
+  window.location.href = href;
 }
 
 export default function DesktopView() {

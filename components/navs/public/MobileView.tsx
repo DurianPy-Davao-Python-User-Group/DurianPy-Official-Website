@@ -25,7 +25,7 @@ interface redirectProps {
 }
 
 function redirectTo({ href }: redirectProps) {
-  window.open(href, '_blank', 'noopener,noreferrer');
+  window.location.href = href;
 }
 
 export default function MobileView() {
@@ -89,7 +89,7 @@ export default function MobileView() {
 
             <Button
               variant={'navLinkMobile'}
-              onClick={() => redirectTo({ href: 'sigs' })}
+              onClick={() => redirectTo({ href: '/sigs' })}
             >
               SIGs
             </Button>
