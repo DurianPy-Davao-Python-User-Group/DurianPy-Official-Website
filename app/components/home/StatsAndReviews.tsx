@@ -31,14 +31,15 @@ type StatsCardProps = {
 function StatsCard({ value, label, isVisible, large }: StatsCardProps) {
   return (
     <div
-      className={`p-4 border border-white rounded-lg grid place-content-center lg:w-55 hover:bg-mintBliss/20 hover:border-mintBliss hover:text-mintBliss transition-colors duration-300 ${large ? 'row-span-2 p-6' : ''}`}
+      className={`p-4 border border-white rounded-lg flex justify-center items-center lg:w-55 hover:bg-mint-bliss/20 hover:border-mint-bliss hover:text-mint-bliss transition-colors duration-300 ${large ? 'row-span-2 p-6' : ''}`}
     >
-      <div className="text-center">
-        <span className="text-4xl xl:text-7xl font-bold">
+      <div className="text-center flex flex-col">
+        <p className="text-[2.563rem] md:text-[5rem] width-1440:text-[4.313rem] font-bold">
           {isVisible && <CountUp start={0} end={value} duration={3} />}+
-        </span>
-        <br />
-        <span className="text-xs xl:text-lg">{label}</span>
+        </p>
+        <p className="text-[0.625rem] md:text-[1.375rem] width-1440:text-[1.4rem] leading-[13px] md:leading-[27px] width-1440:leading-[22px]">
+          {label}
+        </p>
       </div>
     </div>
   );
@@ -50,7 +51,7 @@ type StatisticsSectionProps = {
 
 function StatisticsSection({ isVisible }: StatisticsSectionProps) {
   return (
-    <div className="text-white grid grid-cols-2 grid-rows-2 gap-4 h-58 2xl:h-max mt-12 sm:mt-5 md:mt-5 lg:mt-5">
+    <div className="text-white grid grid-cols-2 grid-rows-2 gap-4 max-w-[311px] md:max-w-[630px] w-full max-h-[205px] md:max-h-[416px] width-1440:h-[346px] !h-full select-none">
       {statistics.map((stat) => (
         <StatsCard
           key={stat.id}
@@ -86,21 +87,21 @@ export function StatsAndReviews() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-dark-green text-white h-screen">
+    <section ref={sectionRef} className="text-white py-[64px]">
       <Container>
-        <div className="flex flex-col items-center px-8 xl:px-14 2xl:flex-row 2xl:px-10 2xl:justify-between">
-          <div className="w-full">
+        <div className="flex flex-col justify-center items-center width-1440:flex-row gap-[29px]">
+          <div className="w-full flex flex-col gap-[16px] width-1440:gap-[52px]">
             {/* Section Title */}
-            <div className="text-center 2xl:text-left text-3xl lg:text-5xl xl:text-7xl font-bold xl:leading-none text-white pb-7 sm:space-x-10 md:space-x-16 lg:space-x-10 xl:space-x-20 2xl:space-x-5">
+            <div className="text-center width-1440:text-left text-web-title-font font-bold md:leading-[98px]">
               <h2>
-                Statistics <span className="text-midoriGreen">&</span> <br />
-                <span className="text-centerStage">Reviews</span>
+                Statistics <span className="text-midori-green">&</span> <br />
+                <span className="text-primary">Reviews</span>
               </h2>
             </div>
 
             {/* Section Description */}
-            <div className="text-center 2xl:text-left xl:text-xl sm:space-x-13 pb-12 md:space-x-15 md:mx-36 lg:mx-60 xl:mx-64 2xl:mx-0 2xl:mr-32 lg:space-x-10 xl:space-x-15 2xl:space-x-10">
-              <p className="text-white">
+            <div className="text-white text-web-body-font mx-auto text-center width-1440:text-left width-1440:mx-0 max-w-[300px] md:max-w-[485px]">
+              <p>
                 <span className="font-bold">DurianPy</span> is a community for
                 Python enthusiasts to learn, share, and connect through monthly
                 meetups, workshops, and events. We collaborate with
