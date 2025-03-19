@@ -8,7 +8,7 @@ interface CardProps {
 
 export default function Card({ image, title }: CardProps) {
   return (
-    <div className="rounded-lg bg-emerald-800 p-4 w-44 h-44 flex flex-col items-center justify-center shadow-md hover:shadow-lg transition-shadow">
+    <div className="rounded-lg bg-gradient-to-b from-[rgba(62,179,114,0.2)] to-[rgba(25,113,64,0.2)] p-4 w-44 h-44 flex flex-col items-center justify-center border-t-2 border-midori-green">
       {/* Image Rendering */}
       <div className="text-yellow-400 mb-2">
         {typeof image === 'string' ? (
