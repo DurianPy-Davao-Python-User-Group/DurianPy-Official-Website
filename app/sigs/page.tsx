@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Card from './components/card';
 
@@ -29,8 +31,13 @@ export default function Sigs() {
           collaboration.
         </p>
 
-        <button className="my-6 md:my-8 lg:my-10 mx-auto block bg-primary text-[8px] md:text-xl leading-3 md:leading-none font-bold rounded-xl px-2 md:px-4 lg:px-8 py-1 md:py-2 lg:py-4">
-          Join a SIG today
+        <button
+          className="my-6 md:my-8 lg:my-10 mx-auto block bg-primary text-[8px] md:text-xl leading-3 md:leading-none font-bold rounded-xl px-2 md:px-4 lg:px-8 py-1 md:py-2 lg:py-4 hover:scale-105 duration-300"
+          onClick={() =>
+            (window.location.href = 'https://forms.gle/XxDJZebqbJB6tJo27')
+          }
+        >
+          Form a SIG today
         </button>
       </div>
 
@@ -39,7 +46,7 @@ export default function Sigs() {
           CURRENT <span className="text-white">SIGs</span>
         </p>
 
-        <div className="flex flex-wrap justify-center gap-3 mt-6">
+        <div className="flex flex-wrap justify-center gap-3 md:gap-8 xl:gap-20 mt-6">
           {sigsData.map((sig, index) => (
             <Card key={index} image={sig.image} title={sig.title} />
           ))}
