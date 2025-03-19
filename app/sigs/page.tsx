@@ -16,12 +16,12 @@ export default function Sigs() {
         </p>
 
         <p className="text-white text-xs text-center mt-4 mx-auto w-[85%]">
-          DurianPy’s{' '}
+          DurianPy&rsquo;s{' '}
           <span className="text-primary font-bold">
             Special Interest Groups
           </span>{' '}
           (SIGs) are focused communities within our user group that allow Python
-          enthusiasts to dive deeper into specific topics. Whether you're
+          enthusiasts to dive deeper into specific topics. Whether you&rsquo;re
           passionate about{' '}
           <span className="text-primary font-bold">data science</span> or{' '}
           <span className="text-primary font-bold">data science</span> or{' '}
