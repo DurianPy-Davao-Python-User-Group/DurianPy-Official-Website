@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from './components/card';
 
 export default function Sigs() {
   return (
@@ -17,9 +18,9 @@ export default function Sigs() {
           (SIGs) are focused communities within our user group that allow Python
           enthusiasts to dive deeper into specific topics. Whether you're
           passionate about{' '}
-          <span className="text-primary font-bold">data science</span> or{' '}
+          <span className="text-primary font-bold">data science</span> or
           <span className="text-primary font-bold">backend development</span>,
-          our SIGs providea space for hands-on learning, networking, and
+          our SIGs provide a space for hands-on learning, networking, and
           collaboration.
         </p>
 
@@ -32,6 +33,9 @@ export default function Sigs() {
         <p className="text-primary text-[32px] leading-9 font-black text-center">
           CURRENT <span className="text-white">SIGs</span>
         </p>
+
+        <Card image="/assets/sigsIcons/Group125.png" title="Data" />
+        <Card image="/assets/sigsIcons/Group122.png" title="Backend" />
       </div>
 
       <div className="mt-16">
