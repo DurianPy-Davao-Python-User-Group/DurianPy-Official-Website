@@ -46,7 +46,7 @@ export function Hero() {
   return (
     <>
       <section className="relative bg-dark-green overflow-clip">
-        {/* Background elements */}
+        {/* All Background elements */}
         <div>
           <div className="absolute inset-0 bg-[url('/image/rectangle.svg')] bg-cover bg-no-repeat bg-center top-[45%] blur-md scale-x-[2] md:scale-y-[1.3] lg:top-[65%] lg:scale-y-[1.7] height-1000:top-[50%]" />
           <div className="absolute inset-0 bg-[url('/image/ellipse.svg')] bg-no-repeat bg-contain bg-center scale-x-[1.8] scale-y-[2.4] top-[72%] md:top-[73%] md:bg-contain md:scale-x-[3.5] height-1000:top-[71%]" />
