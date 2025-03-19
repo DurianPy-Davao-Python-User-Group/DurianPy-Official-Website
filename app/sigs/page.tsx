@@ -1,6 +1,11 @@
 import React from 'react';
 import Card from './components/card';
 
+const sigsData = [
+  { image: '/assets/sigsIcons/Group125.png', title: 'Data' },
+  { image: '/assets/sigsIcons/Group122.png', title: 'Backend' },
+];
+
 export default function Sigs() {
   return (
     <main className="flex flex-col justify-center mt-28">
@@ -18,7 +23,7 @@ export default function Sigs() {
           (SIGs) are focused communities within our user group that allow Python
           enthusiasts to dive deeper into specific topics. Whether you're
           passionate about{' '}
-          <span className="text-primary font-bold">data science</span> or
+          <span className="text-primary font-bold">data science</span> or{' '}
           <span className="text-primary font-bold">backend development</span>,
           our SIGs provide a space for hands-on learning, networking, and
           collaboration.
@@ -34,8 +39,11 @@ export default function Sigs() {
           CURRENT <span className="text-white">SIGs</span>
         </p>
 
-        <Card image="/assets/sigsIcons/Group125.png" title="Data" />
-        <Card image="/assets/sigsIcons/Group122.png" title="Backend" />
+        <div className="flex flex-wrap justify-center gap-6 mt-6">
+          {sigsData.map((sig, index) => (
+            <Card key={index} image={sig.image} title={sig.title} />
+          ))}
+        </div>
       </div>
 
       <div className="mt-16">
