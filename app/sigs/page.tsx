@@ -15,7 +15,7 @@ export default function Sigs() {
           <span className="text-white">INTEREST</span> GROUPS
         </p>
 
-        <p className="text-white text-xs md:text-xl text-center mt-4 mx-auto w-[85%]">
+        <p className="text-white text-xs md:text-xl text-center mt-4 mx-auto w-[85%] 2xl:w-[55%]">
           DurianPy&rsquo;s{' '}
           <span className="text-primary font-bold">
             Special Interest Groups
@@ -34,7 +34,7 @@ export default function Sigs() {
         </button>
       </div>
 
-      <div>
+      <div className="mt-6 md:mt-12 lg:mt-16">
         <p className="text-primary text-[32px] md:text-[70px] leading-9 md:leading-none font-black text-center">
           CURRENT <span className="text-white">SIGs</span>
         </p>
