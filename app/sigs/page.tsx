@@ -14,7 +14,7 @@ export default function Sigs() {
       <div>
         <p className="text-primary text-[32px] md:text-[70px] leading-9 md:leading-none font-black text-center">
           SPECIAL <br />
-          <span className="text-white">INTEREST</span> GROUPS
+          <span className="text-white">INTEREST GROUPS</span>
         </p>
 
         <p className="text-white text-xs md:text-xl text-center mt-4 mx-auto w-[85%] 2xl:w-[55%]">
