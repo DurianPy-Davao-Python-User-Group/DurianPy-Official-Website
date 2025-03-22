@@ -50,7 +50,7 @@ export default function MobileView() {
               onClick={() =>
                 redirectTo({ href: 'https://www.meetup.com/durianpy/' })
               }
-            >
+            > 
               About
             </Button>
             <Button
@@ -96,7 +96,7 @@ export default function MobileView() {
             <Button
               variant={'navLinkMobile'}
               onClick={() =>
-                redirectTo({ href: 'https://forms.gle/x2cc6CrRhbhDeaxe9' })
+                redirectTo({ href: '/speak' })
               }
             >
               Speak
