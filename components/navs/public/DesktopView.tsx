@@ -66,7 +66,9 @@ export default function DesktopView() {
       </DropdownMenu>
       <Button
         variant={'navLink'}
-        onClick={() => redirectTo({ href: '/speak' })}
+        onClick={() =>
+          redirectTo({ href: '/speak' })
+        }
         className={`${pathname === '/speak' ? 'text-primary border-primary' : ''}`}
       >
         Speak
