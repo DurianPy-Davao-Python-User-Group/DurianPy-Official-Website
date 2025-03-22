@@ -67,7 +67,7 @@ export default function DesktopView() {
       <Button
         variant={'navLink'}
         onClick={() =>
-          redirectTo({ href: 'https://forms.gle/x2cc6CrRhbhDeaxe9' })
+          redirectTo({ href: '/speak' })
         }
         className={`${pathname === '/speak' ? 'text-primary border-primary' : ''}`}
       >
