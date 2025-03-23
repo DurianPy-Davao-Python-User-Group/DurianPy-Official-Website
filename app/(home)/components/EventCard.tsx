@@ -15,17 +15,18 @@ export default function EventCard({
 
   return (
     <div
-      className={`p-2 rounded-lg ${
+      className={`p-2 rounded-lg lg:text-left text-center ${
         isMainEvent
           ? 'text-white bg-none'
           : 'bg-[#1A3E2A] border-[0.96px] border-[#36FF90] text-white'
       }`}
     >
-      <h2 className={`font-medium ${isMainEvent ? 'text-[40px]' : 'text-xl'}`}>
+      <h2 className={`font-semibold lg:font-medium ${isMainEvent ? `text-[25px] sm:text-[32px] md:text-[40px] lg:text-[35px] xl:text-[42px] leading-tight` : 'text-xl leading-snug'}`}>
         {title}
       </h2>
+
       <p
-        className={`mt-[0.3rem] ${isMainEvent ? 'text-lg' : 'text-sm font-normal'}`}
+        className={`mt-[0.8rem] ${isMainEvent ? 'text-[13px] md:text-[18px] lg:text-[18px]' : 'text-sm font-normal'}`}
       >
         {date} <br /> {location}
       </p>

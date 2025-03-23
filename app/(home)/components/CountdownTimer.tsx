@@ -34,22 +34,28 @@ export default function CountdownTimer({ eventDate }: CountdownTimerProps) {
 
   return (
     <div className="flex flex-col items-center bg-none text-[#36FF90] p-2 w-[100%] md:w-auto">
-      <h2 className="text-[1.75rem] font-bold mb-2">COMING SOON</h2>
+      {/* Change Title Based on Screen Size */}
+      <h2 className="text-[1.75rem] font-bold mb-2 hidden lg:block">
+        COMING SOON
+      </h2>
+      <h2 className="text-[1.5rem] font-bold mb-2 lg:hidden">
+        PYCON COUNTDOWN
+      </h2>
       <div className="flex justify-center space-x-8 text-center font-light">
         <div>
-          <p className="text-[3.25rem] w-[70px] text-center tabular-nums tracking-[-0.05em]">{`${timeLeft.days}`}</p>
-          <p className="text-md">DAYS</p>
+        <p className="text-[3.25rem] md:text-[3.15rem] sm:text-[2.7rem] xs:text-[2rem] w-[70px] text-center tabular-nums tracking-[-0.05em]">{`${timeLeft.days}`}</p>
+        <p className="text-md">DAYS</p>
         </div>
         <div>
-          <p className="text-[3.25rem] w-[70px] text-center tabular-nums tracking-[-0.05em]">{`${timeLeft.hours}`}</p>
+          <p className="text-[3.25rem] md:text-[3.15rem] sm:text-[2.7rem] xs:text-[2rem] w-[70px] text-center tabular-nums tracking-[-0.05em]">{`${timeLeft.hours}`}</p>
           <p className="text-md">HRS</p>
         </div>
         <div>
-          <p className="text-[3.25rem] w-[70px] text-center tabular-nums tracking-[-0.05em]">{`${timeLeft.minutes}`}</p>
+          <p className="text-[3.25rem] md:text-[3.15rem] sm:text-[2.7rem] xs:text-[2rem] w-[70px] text-center tabular-nums tracking-[-0.05em]">{`${timeLeft.minutes}`}</p>
           <p className="text-md">MIN</p>
         </div>
         <div>
-          <p className="text-[3.25rem] w-[70px] text-center tabular-nums tracking-[-0.05em]">{`${timeLeft.seconds}`}</p>
+          <p className="text-[3.25rem] md:text-[3.15rem] sm:text-[2.7rem] xs:text-[2rem] w-[70px] text-center tabular-nums tracking-[-0.05em]">{`${timeLeft.seconds}`}</p>
           <p className="text-md">SEC</p>
         </div>
       </div>
