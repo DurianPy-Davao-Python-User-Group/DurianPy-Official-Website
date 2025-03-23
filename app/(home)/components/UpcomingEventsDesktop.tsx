@@ -32,8 +32,10 @@ export function UpcomingEventsDesktop() {
 
       {/* Countdown Timer */}
       <div className="w-full md:w-[54%] p-6 flex justify-center items-center relative">
-        <div className="absolute xl:left-0 lg:left-[-1.05rem] top-1/2 transform -translate-y-1/2 
-            w-1.5 h-[85%] bg-[#36FF90] rounded-full"></div>
+        <div
+          className="absolute xl:left-0 lg:left-[-1.05rem] top-1/2 transform -translate-y-1/2 
+            w-1.5 h-[85%] bg-[#36FF90] rounded-full"
+        ></div>
         <CountdownTimer eventDate="2025-06-20T00:00:00Z" />
       </div>
     </div>

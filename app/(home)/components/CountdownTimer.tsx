@@ -43,8 +43,8 @@ export default function CountdownTimer({ eventDate }: CountdownTimerProps) {
       </h2>
       <div className="flex justify-center space-x-8 text-center font-light">
         <div>
-        <p className="text-[3.25rem] md:text-[3.15rem] sm:text-[2.7rem] xs:text-[2rem] w-[70px] text-center tabular-nums tracking-[-0.05em]">{`${timeLeft.days}`}</p>
-        <p className="text-md">DAYS</p>
+          <p className="text-[3.25rem] md:text-[3.15rem] sm:text-[2.7rem] xs:text-[2rem] w-[70px] text-center tabular-nums tracking-[-0.05em]">{`${timeLeft.days}`}</p>
+          <p className="text-md">DAYS</p>
         </div>
         <div>
           <p className="text-[3.25rem] md:text-[3.15rem] sm:text-[2.7rem] xs:text-[2rem] w-[70px] text-center tabular-nums tracking-[-0.05em]">{`${timeLeft.hours}`}</p>

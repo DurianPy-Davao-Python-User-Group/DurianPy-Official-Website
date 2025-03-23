@@ -6,21 +6,23 @@ import CountdownTimer from './CountdownTimer';
 export function UpcomingEventsMobile() {
   return (
     <div className="flex flex-col items-center w-full max-w-[90%] mx-auto">
-      <h2 className="text-white font-bold text-center mb-4 lg:hidden
-        text-[30px] md:text-4xl sm:text-[24px] leading-tight">
+      <h2
+        className="text-white font-bold text-center mb-4 lg:hidden
+        text-[30px] md:text-4xl sm:text-[24px] leading-tight"
+      >
         Upcoming <span className="text-yellow-500">Events</span>
       </h2>
       {/* Main Event Card */}
       <div className="bg-gradient-to-r from-[#1A3E2A] to-[#3EB372] p-4 rounded-lg border-[#36FF90] border-[0.96px] w-[310px] md:w-[500px] sm:w-[70%]">
         <div className="md:mt-2">
-        <EventCard
-          title="Pycon Mini Davao"
-          date="Date"
-          location="Location"
-          variant="main"
-        />
+          <EventCard
+            title="Pycon Mini Davao"
+            date="Date"
+            location="Location"
+            variant="main"
+          />
         </div>
-        
+
         {/* Button inside for iPad (>=768px) */}
         <div className="mt-4 mb-[28px] sm:flex justify-center hidden">
           <button

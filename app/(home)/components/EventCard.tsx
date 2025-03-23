@@ -21,7 +21,9 @@ export default function EventCard({
           : 'bg-[#1A3E2A] border-[0.96px] border-[#36FF90] text-white'
       }`}
     >
-      <h2 className={`font-semibold lg:font-medium ${isMainEvent ? `text-[25px] sm:text-[32px] md:text-[40px] lg:text-[35px] xl:text-[42px] leading-tight` : 'text-xl leading-snug'}`}>
+      <h2
+        className={`font-semibold lg:font-medium ${isMainEvent ? `text-[25px] sm:text-[32px] md:text-[40px] lg:text-[35px] xl:text-[42px] leading-tight` : 'text-xl leading-snug'}`}
+      >
         {title}
       </h2>
 

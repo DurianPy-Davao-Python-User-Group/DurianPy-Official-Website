@@ -20,9 +20,11 @@ export function UpcomingEvents() {
     <section className="bg-[#112018] py-12 font-montserrat flex justify-center mb-10">
       <Container>
         {/* Section Title */}
-        <h2 className="text-white font-bold text-[30px] md:text-[40px] lg:text-[60px] leading-tight
+        <h2
+          className="text-white font-bold text-[30px] md:text-[40px] lg:text-[60px] leading-tight
           text-center md:text-left mb-[20px] 
-          hidden lg:block md:hidden">
+          hidden lg:block md:hidden"
+        >
           Upcoming <span className="text-yellow-500">Events</span>
         </h2>
 
