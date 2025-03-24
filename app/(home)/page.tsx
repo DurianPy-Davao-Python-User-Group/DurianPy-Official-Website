@@ -4,8 +4,8 @@ import { CTASection } from './components/CTASection';
 import { StatsAndReviews } from './components/StatsAndReviews';
 import { PythonFoundation } from './components//PythonFoundation';
 import { Partners } from './components//Partners';
-import { UpcomingEvents } from './components//UpcomingEvents';
 import { Footer } from './components//Footer';
+import UpcomingEvents from './components/UpcomingEvents';
 
 export default function HomePage() {
   return (

@@ -1,43 +1,67 @@
-'use client';
-
-import { useEffect, useState } from 'react';
 import { Container } from '@/components/ui/container';
-import { UpcomingEventsDesktop } from './UpcomingEventsDesktop';
-import { UpcomingEventsMobile } from './UpcomingEventsMobile';
+import React from 'react';
 import EventCard from './EventCard';
+import CountdownTimer from './CountdownTimer';
 
-export function UpcomingEvents() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 1024);
-    handleResize(); // Check on mount
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  return (
-    <section className="bg-[#112018] py-12 font-montserrat flex justify-center mb-10">
-      <Container>
-        {/* Section Title */}
-        <h2
-          className="text-white font-bold text-[30px] md:text-[40px] lg:text-[60px] leading-tight
-          text-center md:text-left mb-[20px] 
-          hidden lg:block md:hidden"
-        >
-          Upcoming <span className="text-yellow-500">Events</span>
-        </h2>
-
-        {/* Render Desktop or Mobile layout */}
-        {isMobile ? <UpcomingEventsMobile /> : <UpcomingEventsDesktop />}
-
-        {/* Regular Events */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-          <EventCard title="Event 1" date="Date" location="Location" />
-          <EventCard title="Event 2" date="Date" location="Location" />
-          <EventCard title="Event 3" date="Date" location="Location" />
-        </div>
-      </Container>
-    </section>
-  );
+interface Event {
+  title: string;
+  date: string;
+  location: string;
+  variant: 'main' | 'regular';
+  link: string;
 }
+
+const EVENTS: Event[] = [
+  {
+    title: 'Pycon Mini Davao',
+    date: 'June 20, 2025',
+    location: 'Mugna Tech, Davao City',
+    variant: 'main',
+    link: '/404',
+  },
+  {
+    title: 'RAGs and DAGs',
+    date: 'June 20, 2025',
+    location: 'Mugna Tech, Davao City',
+    variant: 'regular',
+    link: '/404',
+  },
+  {
+    title: 'RAGs and DAGs',
+    date: 'June 20, 2025',
+    location: 'Mugna Tech, Davao City',
+    variant: 'regular',
+    link: '/404',
+  },
+  {
+    title: 'RAGs and DAGs',
+    date: 'June 20, 2025',
+    location: 'Mugna Tech, Davao City',
+    variant: 'regular',
+    link: '/404',
+  },
+];
+
+const UpcomingEvents = () => {
+  return (
+    <Container className="text-white space-y-4 md:space-y-8">
+      {/* Title */}
+      <h1 className="font-montserrat font-bold text-center  text-2xl lg:text-left md:text-[80px] leading-[100%] lg:leading-normal">
+        Upcoming <span className="text-primary md:block lg:inline">Events</span>
+      </h1>
+
+      {/* Featured */}
+      <EventCard event={EVENTS[0]} />
+
+      {/* Countdown Timer */}
+      <div className='lg:hidden'>
+        <CountdownTimer eventDate={new Date(EVENTS[0].date).toISOString()} />
+      </div>
+
+      {/* Other events */}
+      <div className=""></div>
+    </Container>
+  );
+};
+
+export default UpcomingEvents;
