@@ -14,33 +14,42 @@ export default function EventCard({ event }: { event: Event }) {
   return (
     <div
       className={cn(
-        'rounded-md border py-4 border-midori-green bg-gradient-ltr-darkgreen-lightgreen text-center lg:text-left md:max-w-[80%] mx-auto lg:px-14 lg:py-7 lg:flex lg:max-w-[100%] lg:justify-between',
+        'rounded-md border py-4 border-midori-green bg-medium-dark-green text-center',
         event.variant === 'main' &&
-          'bg-gradient-ltr-darkgreen-lightgreen py-8 md:py-14'
+          'bg-gradient-ltr-darkgreen-lightgreen py-8 md:py-14 md:max-w-[80%] mx-auto 2xl:text-left 2xl:px-14 2xl:py-7 2xl:flex 2xl:max-w-[100%] 2xl:justify-between'
       )}
     >
       <div>
         <h2
           className={cn(
-            'font-semibold text-sm',
-            event.variant && 'text-2xl mb-2 md:text-5xl md:mb-3'
+            'font-semibold text-sm md:text-2xl 2xl:text-[40px] 2xl:mb-2',
+            event.variant === 'main' && 'text-2xl mb-2 md:text-5xl md:mb-3'
           )}
         >
           {event.title}
         </h2>
-        <p className={cn('text-[8px]', event.variant && 'text-xs md:text-xl')}>
+        <p
+          className={cn(
+            'text-[8px] md:text-xl 2xl:text-xl space-y-1',
+            event.variant === 'main' && 'text-xs md:text-xl'
+          )}
+        >
           {event.date} <br /> {event.location}
         </p>
         {event.variant === 'main' && (
-          <Button className="mx-auto mt-5 font-semibold text-[7px] text-dark-green px-[10px] py-[6px] bg-primary rounded-full md:py-[10px] md:px-5 md:text-xs lg:mx-0 lg:text-2xl">
+          <Button className="mx-auto mt-5 font-semibold text-[7px] text-dark-green px-[10px] py-[6px] bg-primary rounded-full md:py-[10px] md:px-5 md:text-xs 2xl:mx-0 2xl:text-2xl">
             Register Here
           </Button>
         )}
       </div>
-      <div className='hidden lg:block border-4 rounded-full border-midori-green'></div>
-      <div className='hidden lg:block'>
-        <CountdownTimer eventDate={new Date(event.date).toISOString()} />
-      </div>
+      {event.variant === 'main' && (
+        <div className="hidden 2xl:block border-4 rounded-full border-midori-green"></div>
+      )}
+      {event.variant === 'main' && (
+        <div className="hidden 2xl:block">
+          <CountdownTimer eventDate={new Date(event.date).toISOString()} />
+        </div>
+      )}
     </div>
   );
 }

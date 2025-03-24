@@ -46,20 +46,25 @@ const UpcomingEvents = () => {
   return (
     <Container className="text-white space-y-4 md:space-y-8">
       {/* Title */}
-      <h1 className="font-montserrat font-bold text-center  text-2xl lg:text-left md:text-[80px] leading-[100%] lg:leading-normal">
-        Upcoming <span className="text-primary md:block lg:inline">Events</span>
+      <h1 className="font-montserrat font-bold text-center text-2xl 2xl:text-left md:text-[80px] leading-[100%] 2xl:leading-normal">
+        Upcoming{' '}
+        <span className="text-primary md:block 2xl:inline">Events</span>
       </h1>
 
       {/* Featured */}
       <EventCard event={EVENTS[0]} />
 
       {/* Countdown Timer */}
-      <div className='lg:hidden'>
+      <div className="2xl:hidden">
         <CountdownTimer eventDate={new Date(EVENTS[0].date).toISOString()} />
       </div>
 
       {/* Other events */}
-      <div className=""></div>
+      <div className="grid grid-cols-1 gap-3 max-w-[60%] md:max-w-[80%] mx-auto md:grid-cols-2 2xl:grid-cols-3 2xl:max-w-full">
+        {EVENTS.slice(1).map((event, idx) => (
+          <EventCard key={idx} event={event} />
+        ))}
+      </div>
     </Container>
   );
 };
