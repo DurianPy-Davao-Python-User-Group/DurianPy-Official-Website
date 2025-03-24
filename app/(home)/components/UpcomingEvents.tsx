@@ -2,6 +2,8 @@ import { Container } from '@/components/ui/container';
 import React from 'react';
 import EventCard from './EventCard';
 import CountdownTimer from './CountdownTimer';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 interface Event {
   title: string;
@@ -65,6 +67,11 @@ const UpcomingEvents = () => {
           <EventCard key={idx} event={event} />
         ))}
       </div>
+
+      {/* See more Events Button */}
+      <Button className="bg-primary mx-auto md:max-w-[80%] w-full py-5 text-dark-green 2xl:text-2xl 2xl:max-w-full">
+        <Link href="/404">See More Events</Link>
+      </Button>
     </Container>
   );
 };
