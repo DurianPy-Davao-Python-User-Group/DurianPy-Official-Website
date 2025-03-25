@@ -4,6 +4,7 @@ import EventCard from './EventCard';
 import CountdownTimer from './CountdownTimer';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import EventCarousel from './EventCarousel';
 
 interface Event {
   title: string;
@@ -42,6 +43,27 @@ const EVENTS: Event[] = [
     variant: 'regular',
     link: '/404',
   },
+  {
+    title: 'RAGs and DAGs 2',
+    date: 'June 20, 2025',
+    location: 'Mugna Tech, Davao City',
+    variant: 'regular',
+    link: '/404',
+  },
+  {
+    title: 'RAGs and DAGs 2',
+    date: 'June 20, 2025',
+    location: 'Mugna Tech, Davao City',
+    variant: 'regular',
+    link: '/404',
+  },
+  {
+    title: 'RAGs and DAGs 2',
+    date: 'June 20, 2025',
+    location: 'Mugna Tech, Davao City',
+    variant: 'regular',
+    link: '/404',
+  },
 ];
 
 const UpcomingEvents = () => {
@@ -62,11 +84,9 @@ const UpcomingEvents = () => {
       </div>
 
       {/* Other events */}
-      <div className="grid grid-cols-1 gap-3 max-w-[60%] md:max-w-[80%] mx-auto md:grid-cols-2 2xl:grid-cols-3 2xl:max-w-full">
-        {EVENTS.slice(1).map((event, idx) => (
-          <EventCard key={idx} event={event} />
-        ))}
-      </div>
+      <EventCarousel
+        events={EVENTS.filter((item) => item.variant === 'regular')}
+      />
 
       {/* See more Events Button */}
       <Button className="bg-primary mx-auto md:max-w-[80%] w-full py-5 text-dark-green 2xl:text-2xl 2xl:max-w-full">
