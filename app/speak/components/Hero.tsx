@@ -124,8 +124,8 @@ const HeroSection: React.FC = () => {
           </h1>
           <div className="text-gray-300 my-8">
             <p>
-              Please fill out the Google Form for the Call for Speakers, providing
-              your bio, topic, and relevant experience.{' '}
+              Please fill out the Google Form for the Call for Speakers,
+              providing your bio, topic, and relevant experience.{' '}
             </p>{' '}
             <span> We look forward to reviewing your application </span>
           </div>
