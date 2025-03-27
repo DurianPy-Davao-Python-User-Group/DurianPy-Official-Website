@@ -4,7 +4,6 @@ import EventCard from './EventCard';
 import CountdownTimer from './CountdownTimer';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import EventCarousel from './EventCarousel';
 
 interface Event {
   title: string;
@@ -23,42 +22,21 @@ const EVENTS: Event[] = [
     link: '/404',
   },
   {
-    title: 'RAGs and DAGs',
+    title: 'RAGs & DAGs',
     date: 'June 20, 2025',
     location: 'Mugna Tech, Davao City',
     variant: 'regular',
     link: '/404',
   },
   {
-    title: 'RAGs and DAGs',
+    title: 'RAGs & DAGs',
     date: 'June 20, 2025',
     location: 'Mugna Tech, Davao City',
     variant: 'regular',
     link: '/404',
   },
   {
-    title: 'RAGs and DAGs',
-    date: 'June 20, 2025',
-    location: 'Mugna Tech, Davao City',
-    variant: 'regular',
-    link: '/404',
-  },
-  {
-    title: 'RAGs and DAGs 2',
-    date: 'June 20, 2025',
-    location: 'Mugna Tech, Davao City',
-    variant: 'regular',
-    link: '/404',
-  },
-  {
-    title: 'RAGs and DAGs 2',
-    date: 'June 20, 2025',
-    location: 'Mugna Tech, Davao City',
-    variant: 'regular',
-    link: '/404',
-  },
-  {
-    title: 'RAGs and DAGs 2',
+    title: 'RAGs & DAGs',
     date: 'June 20, 2025',
     location: 'Mugna Tech, Davao City',
     variant: 'regular',
@@ -79,14 +57,16 @@ const UpcomingEvents = () => {
       <EventCard event={EVENTS[0]} />
 
       {/* Countdown Timer */}
-      <div className="2xl:hidden">
+      <div className="block md:block lg:hidden">
         <CountdownTimer eventDate={new Date(EVENTS[0].date).toISOString()} />
       </div>
 
       {/* Other events */}
-      <EventCarousel
-        events={EVENTS.filter((item) => item.variant === 'regular')}
-      />
+      <div className="grid grid-cols-1 gap-3 max-w-[40%] md:max-w-[80%] mx-auto md:grid-cols-3 2xl:grid-cols-3 2xl:max-w-[80%]">
+        {EVENTS.slice(1).map((event, idx) => (
+          <EventCard key={idx} event={event} />
+        ))}
+      </div>
 
       {/* See more Events Button */}
       <Button className="bg-primary mx-auto md:max-w-[80%] w-full py-5 text-dark-green 2xl:text-2xl 2xl:max-w-full">
