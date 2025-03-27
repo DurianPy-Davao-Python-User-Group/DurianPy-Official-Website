@@ -30,10 +30,7 @@ export default function CountdownTimer({ eventDate }: CountdownTimerProps) {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
-
-  const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1280;
-  const textColor = isDesktop ? '#36FF90' : '#8AFFBE';
+  }, [calculateTimeLeft]);
 
   return (
     <div className="bg-none p-2 w-full text-[#36FF90] md:w-auto">
