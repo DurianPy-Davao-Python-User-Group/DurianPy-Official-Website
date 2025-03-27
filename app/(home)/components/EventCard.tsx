@@ -34,9 +34,7 @@ export default function EventCard({ event }: { event: Event }) {
           <p
             className={cn(
               'text-[8px] md:text-[11px] 2xl:text-xl space-y-1',
-              event.variant === 'main'
-                ? 'text-xs md:text-xl'
-                : 'mt-1'
+              event.variant === 'main' ? 'text-xs md:text-xl' : 'mt-1'
             )}
           >
             {event.date} <br /> {event.location}
@@ -54,7 +52,9 @@ export default function EventCard({ event }: { event: Event }) {
         <div className="hidden lg:flex w-full items-center justify-between bg-gradient-ltr-darkgreen-lightgreen px-6 my-[-20px] rounded-md 2xl:px-10 2xl:py-7">
           {/* Left Section: Event Details */}
           <div className="flex-1 flex flex-col text-left px-4">
-            <h2 className="font-medium text-2xl md:text-[43px] md:mb-3">{event.title}</h2>
+            <h2 className="font-medium text-2xl md:text-[43px] md:mb-3">
+              {event.title}
+            </h2>
             <p className="mt-2 text-xs md:text-xl">
               {event.date} <br /> {event.location}
             </p>
@@ -74,7 +74,9 @@ export default function EventCard({ event }: { event: Event }) {
       ) : (
         <div className="hidden lg:block p-6">
           <h2 className="font-medium text-2xl md:text-[28px]">{event.title}</h2>
-          <p className="text-sm md:text-lg">{event.date} <br /> {event.location}</p>
+          <p className="text-sm md:text-lg">
+            {event.date} <br /> {event.location}
+          </p>
         </div>
       )}
     </div>
