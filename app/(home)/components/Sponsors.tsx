@@ -52,7 +52,7 @@ export function Sponsors() {
       testimonial:
         'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, quas possimus. Vitae, officia quia. Doloribus saepe, ex tempora distinctio laboriosam modi voluptatibus rem vitae quam, molestias impedit ducimus eos pariatur!',
       url: 'https://stace.com',
-    }
+    },
   ];
 
   return (
