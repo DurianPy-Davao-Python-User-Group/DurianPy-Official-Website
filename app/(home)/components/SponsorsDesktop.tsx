@@ -8,6 +8,8 @@ import {
   CarouselApi,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from '@/components/ui/carousel';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -78,14 +80,14 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
   };
 
   return (
-    <div className="xl:grid xl:grid-cols-2 lg:flex lg:flex-col lg:h-auto text-white gap-x-4">
+    <div className="xl:grid xl:grid-cols-[1fr_2fr] lg:flex lg:flex-col lg:h-auto text-white gap-x-8 py-16">
       {/* Description Section */}
-      <div className="space-y-16 xl:mb-28 lg:flex-1 lg:h-auto">
-        <div className="space-y-6 max-w-[365px] mx-auto xl:mx-0">
-          <h1 className="text-primary text-[80px] leading-none font-bold mt-12 mb-12 ">
+      <div className="space-y-16 xl:mb-28 lg:flex-1 lg:h-auto w-[480px] mt-24">
+        <div className="space-y-9 max-w-[365px] mx-auto xl:mx-0">
+          <h1 className="text-primary text-[80px] leading-none font-bold mt-12 mb-12">
             <span className="text-white">Our</span> Sponsors
           </h1>
-          <p className="text-xl text-left">
+          <p className="text-xl text-left mb-12">
             A big thank you to our generous sponsors whose support makes our
             work possible and helps us create lasting impact.
           </p>
@@ -106,14 +108,14 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
         </div>
       </div>
 
-      <div className="pb-36 mb-36">
+      <div className="pb-36 w-[720px]">
         {/* Featured Section */}
         {featuredSponsor && (
           <div className="flex-1 h-3/4 mb-4">
             <Link
               href={featuredSponsor.url}
               target="_blank"
-              className="border border-[#36FF90] rounded-lg xl:px-6 xl:py-4 lg:p-6 w-full h-full flex flex-col justify-center items-center"
+              className="border border-[#ffffff] rounded-lg xl:px-10 xl:py-4 lg:p-6 w-full h-full flex flex-col justify-center items-center"
             >
               <div className="w-full h-[200px] relative flex justify-center items-center transition-transform duration-500 ease-in-out hover:scale-105">
                 <Image
@@ -134,7 +136,28 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
                   )}
                 />
               </div>
-              <p className="text-xl mt-6">
+              <div className="h-[50px] w-[480px] flex items-center">
+                {/* Icon */}
+                <div className="mr-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 20"
+                    fill="white"
+                    stroke="#ffffff"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-quote-icon lucide-quote text-[#ffffff] transform rotate-180 w-6 h-6"
+                  >
+                    <path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" />
+                    <path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" />
+                  </svg>
+                </div>
+                {/* Horizontal Line */}
+                <div className="w-[440px] h-[1.5px] bg-[#FFFFFF]"></div>
+              </div>
+              <p className="text-xl mt-4">
                 {featuredSponsor.testimonial}
                 <br></br>
                 <br></br>— {featuredSponsor.name}
@@ -144,7 +167,8 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
         )}
 
         {/* Carousel Section */}
-        <div className="flex-1 h-auto flex">
+        <div className="flex-1 h-auto flex relative">
+          { /*Carousel Body*/ }
           <Carousel
             className="w-full flex h-full"
             setApi={setApi}
@@ -153,6 +177,11 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
               loop: true,
             }}
           >
+
+            {/* Previous Button */}
+            <CarouselPrevious className="absolute left-[-64px] z-10 h-16 w-16 sm:w-20 sm:h-20" />
+            
+            {/* Carousel Content */}  
             <CarouselContent>
               {sponsors.map((sponsor, index) => (
                 <CarouselItem key={index} className="basis-1/3">
@@ -165,7 +194,7 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
                     {/* Gradient Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-[#00833A] to-[rgba(62,179,114,0)] opacity-0 transition-opacity duration-500 rounded-lg group-hover:opacity-100"></div>
 
-                    <div className="border border-[#36FF90] rounded-lg xl:px-6 xl:py-4 lg:p-6 w-full h-full flex justify-center items-center">
+                    <div className="border border-[#ffffff] rounded-lg xl:px-6 xl:py-4 lg:p-6 w-full h-full flex justify-center items-center">
                       {/* Logo Container */}
                       <div className="min-h-[160px] min-w-[160px] relative flex justify-center items-center transition-transform duration-500 ease-in-out hover:scale-105">
                         <div className="">
@@ -189,6 +218,9 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
                 </CarouselItem>
               ))}
             </CarouselContent>
+
+            {/* Next Button */}
+            <CarouselNext className="absolute right-[-64px] z-10 h-16 w-16 sm:w-20 sm:h-20" />
           </Carousel>
         </div>
         {/* Dots Navigation */}
