@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef} from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import Autoplay from 'embla-carousel-autoplay';
 import {
@@ -27,8 +27,9 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
   const [count, setCount] = useState(0);
 
   // State to hold the featured sponsor
-  const [featuredSponsor, setfeaturedSponsor] =
-    useState<SponsorshipProps>(sponsors[0]);
+  const [featuredSponsor, setfeaturedSponsor] = useState<SponsorshipProps>(
+    sponsors[0]
+  );
 
   useEffect(() => {
     if (!api) {
@@ -47,9 +48,7 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
     });
   }, [api]);
 
-  const plugin = useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: true })
-  );
+  const plugin = useRef(Autoplay({ delay: 5000, stopOnInteraction: true }));
 
   const autoPlayInteraction = () => {
     plugin.current.stop();
