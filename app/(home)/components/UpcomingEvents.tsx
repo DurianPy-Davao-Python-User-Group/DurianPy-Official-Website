@@ -69,7 +69,7 @@ const UpcomingEvents = () => {
       </div>
 
       {/* See more Events Button */}
-      <Button className="bg-primary mx-auto md:max-w-[80%] w-full py-5 text-dark-green 2xl:text-2xl 2xl:max-w-full">
+      <Button className="bg-primary mx-auto md:max-w-[80%] w-full py-4 text-dark-green 2xl:text-2xl 2xl:max-w-full">
         <Link href="/404">See More Events</Link>
       </Button>
     </Container>
