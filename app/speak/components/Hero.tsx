@@ -60,47 +60,57 @@ const HeroSection: React.FC = () => {
           </div>
         </div>
         <div className="container text-white mt-10 ">
-          <h1 className="text-5xl font-bold mb-12">Submission Guidelines</h1>
+          <h1 className="[@media(max-width:380px)]:text-[20px] text-[28px] sm:text-[40px] md:text-[45px] lg:text-[60px] font-bold mb-6 lg:mb-8">
+            Submission <span className="text-[#FFC201]">Guidelines </span>
+          </h1>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mr-8 md:mr-12 lg:mr-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mr-8 md:mr-12 lg:mr-20 mx-10 lg:mx-0">
             {/* Left Column */}
             <div className="space-y-8">
               {/* What to be Mindful of */}
-              <div className="relative pl-8 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-white">
-                <h2 className="text-2xl font-semibold mb-4">
+              <div className="relative pl-3 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[0.25px] before:bg-white">
+                <h2 className="[@media(max-width:380px)]:text-[16px] text-[16px] sm:text-[20px] md:text-[25px] lg:text-[28px] font-semibold mb-2">
                   What to be Mindful of
                 </h2>
-                <p className="text-gray-300">
-                  DurianPy welcomes developers of all experience levels -
+                <p className="[@media(max-width:392px)]:text-[8px] text-[8px] sm:text-[12px] md:text-[14px] lg:text-[16px] text-gray-300">
+                  DurianPy welcomes developers of <br /> all experience levels -
                   beginners to experts
                 </p>
               </div>
 
               {/* What to Avoid */}
-              <div className="relative pl-8 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-white">
-                <h2 className="text-2xl font-semibold mb-4">What to Avoid</h2>
-                <p className="text-gray-300">
-                  Too much code without explanation.{' '}
-                </p>{' '}
-                <span>Proprietary code with no open-source reference </span>
+              <div className="relative pl-3 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[0.25px] before:bg-white">
+                <h2 className="[@media(max-width:380px)]:text-[16px] text-[16px] sm:text-[20px] md:text-[25px] lg:text-[28px] font-semibold mb-2">
+                  What to Avoid
+                </h2>
+                <div className="[@media(max-width:392px)]:text-[8px] text-[8px] sm:text-[12px] md:text-[14px] lg:text-[16px]">
+                  <p className="text-gray-300">
+                    Too much code without explanation.{' '}
+                  </p>{' '}
+                  <span>Proprietary code with no open-source reference </span>
+                </div>
               </div>
             </div>
 
             {/* Right Column */}
             <div className="space-y-8">
               {/* What to Include */}
-              <div className="relative pl-8 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-white">
-                <h2 className="text-2xl font-semibold mb-4">What to Include</h2>
-                <p className="text-gray-300">How can people reach you? </p>{' '}
-                <span>Where they can find your slides or code </span>
+              <div className="relative pl-3 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[0.25px] before:bg-white">
+                <h2 className="[@media(max-width:380px)]:text-[16px] text-[16px] sm:text-[20px] md:text-[25px] lg:text-[28px] font-semibold mb-2">
+                  What to Include
+                </h2>
+                <div className="[@media(max-width:392px)]:text-[8px] text-[8px] sm:text-[12px] md:text-[14px] lg:text-[16px]">
+                  <p className=" text-gray-300">How can people reach you? </p>{' '}
+                  <span>Where they can find your slides or code </span>
+                </div>
               </div>
 
               {/* Helpful Resources */}
-              <div className="relative pl-8 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-white">
-                <h2 className="text-2xl font-semibold mb-4">
+              <div className="relative pl-3 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[0.25px] before:bg-white">
+                <h2 className="[@media(max-width:380px)]:text-[16px] text-[16px] sm:text-[20px] md:text-[25px] lg:text-[28px] font-semibold mb-2">
                   Helpful Resources
                 </h2>
-                <div className="">
+                <div className="[@media(max-width:392px)]:text-[8px] text-[8px] sm:text-[12px] md:text-[14px] lg:text-[16px]">
                   <a href="#" className="hover:underline block">
                     Great Advice for Giving Talks
                   </a>
@@ -111,31 +121,50 @@ const HeroSection: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="mt-12">
-            <button className="bg-yellow-500 text-black px-8 py-3 rounded-full font-bold hover:bg-yellow-600 transition">
-              Have questions?
+          <div className="mt-8 lg:mt-14">
+            <button className="bg-yellow-500 text-black font-medium py-2 md:py-2 lg:py-3 px-4 md:px-5 lg:px-7 [@media(max-width:320px)]:text-[6px] text-[10px] md:text-[14px] lg:text-[18px] rounded-full hover:bg-yellow-600">
+              Have Questions?
             </button>
           </div>
         </div>
 
         <div className="container text-white mt-10 lg:mt-20">
-          <h1 className="text-5xl font-bold">
+          <h1 className="[@media(max-width:380px)]:text-[20px] text-[28px] sm:text-[40px] md:text-[45px] lg:text-[60px] font-bold">
             Google <span className="text-[#FFC201]"> Forms </span>
           </h1>
-          <div className="text-gray-300 my-8">
+          <div className="[@media(max-width:392px)]:text-[8px] text-[8px] sm:text-[12px] md:text-[14px] lg:text-[16px] text-gray-300 mt-3 mb-7 lg:mb-5 ">
             <p>
               Please fill out the Google Form for the Call for Speakers,
               providing your bio, topic, and relevant experience.{' '}
             </p>{' '}
             <span> We look forward to reviewing your application </span>
           </div>
-          <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLScTPUrZ8Xkfl2hsSlUZt0qzN7tE3zKt5e30d1OcI52YOsnrQg/viewform"
-            width="100%"
-            height="800"
-            style={{ border: 'none' }}
-            allowFullScreen
-          ></iframe>
+          <div
+            className="mr-10 relative p-[5px] bg-gradient-to-l from-yellow-400 via-green-400 to-green-600"
+            style={{
+              borderTopLeftRadius: '75px',
+              borderBottomRightRadius: '75px',
+              borderTopRightRadius: '0px',
+              borderBottomLeftRadius: '0px',
+              // clipPath: 'inset(0% round 100px 0px 20px 0px)'
+            }}
+          >
+            <iframe
+              src="https://docs.google.com/forms/d/e/1FAIpQLScTPUrZ8Xkfl2hsSlUZt0qzN7tE3zKt5e30d1OcI52YOsnrQg/viewform"
+              width="100%"
+              height="550"
+              className="h-[250px] md:h-[350px] lg:h-[550px] bg-white rounded-lg"
+              style={{
+                border: 'none',
+                borderTopLeftRadius: '75px',
+                borderBottomRightRadius: '75px',
+                borderTopRightRadius: '0px',
+                borderBottomLeftRadius: '0px',
+                overflow: 'hidden',
+              }}
+              allowFullScreen
+            ></iframe>
+          </div>
         </div>
       </div>
     </section>
