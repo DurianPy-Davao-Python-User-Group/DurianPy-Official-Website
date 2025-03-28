@@ -18,7 +18,7 @@ export function Sponsors() {
       logo: '/sponsor-logos/mugna-logo.png',
       logoMobile: '/sponsor-logos/mugna-logo.png',
       testimonial:
-        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, quas possimus. Vitae, officia quia. Doloribus saepe, ex tempora distinctio laboriosam modi voluptatibus rem vitae quam, molestias impedit ducimus eos pariatur!',
+        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, quas possimus. Vitae, officia quia. Doloribus saepe',
       url: 'https://mugna.tech',
     },
     {
@@ -26,15 +26,15 @@ export function Sponsors() {
       logo: '/sponsor-logos/codev-logo.png',
       logoMobile: '/sponsor-logos/codev-logo.png',
       testimonial:
-        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, quas possimus. Vitae, officia quia. Doloribus saepe, ex tempora distinctio laboriosam modi voluptatibus rem vitae quam, molestias impedit ducimus eos pariatur!',
+        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, quas possimus. Vitae, officia quia. Doloribus saepe',
       url: 'https://codev.com',
     },
     {
       name: 'Ingenuity Software',
-      logo: '/sponsor-logos/ingenuity-logo.png',
-      logoMobile: '/sponsor-logos/ingenuity-logo.png',
+      logo: '/sponsor-logos/ingenuity-logo-mobile.png',
+      logoMobile: '/sponsor-logos/ingenuity-logo-mobile.png',
       testimonial:
-        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, quas possimus. Vitae, officia quia. Doloribus saepe, ex tempora distinctio laboriosam modi voluptatibus rem vitae quam, molestias impedit ducimus eos pariatur!',
+        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, quas possimus. Vitae, officia quia. Doloribus saepe',
       url: 'https://ingenuity.ph',
     },
     {
@@ -42,7 +42,7 @@ export function Sponsors() {
       logo: '/sponsor-logos/pythonph-logo.png',
       logoMobile: '/sponsor-logos/pythonph-logo.png',
       testimonial:
-        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, quas possimus. Vitae, officia quia. Doloribus saepe, ex tempora distinctio laboriosam modi voluptatibus rem vitae quam, molestias impedit ducimus eos pariatur!',
+        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, quas possimus. Vitae, officia quia. Doloribus saepe',
       url: 'https://python.ph',
     },
     {
@@ -50,8 +50,8 @@ export function Sponsors() {
       logo: '/sponsor-logos/stace-logo.png',
       logoMobile: '/sponsor-logos/stace-logo.png',
       testimonial:
-        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, quas possimus. Vitae, officia quia. Doloribus saepe, ex tempora distinctio laboriosam modi voluptatibus rem vitae quam, molestias impedit ducimus eos pariatur!',
-      url: 'https://stace.com',
+        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, quas possimus. Vitae, officia quia. Doloribus saepe',
+      url: 'https://www.stace.app',
     },
   ];
 

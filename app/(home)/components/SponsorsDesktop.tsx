@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import { useEffect, useState, useRef} from 'react';
 import { cn } from '@/lib/utils';
 import Autoplay from 'embla-carousel-autoplay';
 import {
@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/carousel';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 interface SponsorshipProps {
   name: string;
@@ -21,43 +22,60 @@ interface SponsorshipProps {
 }
 
 const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
-  const [api, setApi] = React.useState<CarouselApi>();
-  const [current, setCurrent] = React.useState(0);
-  const [count, setCount] = React.useState(0);
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
 
-  React.useEffect(() => {
+  // State to hold the featured sponsor
+  const [featuredSponsor, setfeaturedSponsor] =
+    useState<SponsorshipProps>(sponsors[0]);
+
+  useEffect(() => {
     if (!api) {
       return;
     }
-
     setCount(api.scrollSnapList().length);
-    setCurrent(api.selectedScrollSnap() + 1);
+
+    // Set the current index to the first item
+    api.scrollTo(2);
 
     api.on('select', () => {
-      setCurrent(api.selectedScrollSnap() + 1);
+      const currentIndex = api.selectedScrollSnap();
+      const correctedCurrentIndex = (currentIndex + 3) % sponsors.length;
+      setCurrent(correctedCurrentIndex);
+      setfeaturedSponsor(sponsors[correctedCurrentIndex]);
     });
   }, [api]);
 
-  const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true })
+  const plugin = useRef(
+    Autoplay({ delay: 5000, stopOnInteraction: true })
   );
 
-  const onMouseLeave = () => {
-    if (api) {
-      plugin.current.play();
-    }
+  const autoPlayInteraction = () => {
+    plugin.current.stop();
+    // Wait for 5 seconds before resuming autoplay but when the user clicks it cancel the autoplay
+    setTimeout(() => {
+      if (api) {
+        plugin.current.play();
+      }
+    }, 5000);
   };
 
-  const onMouseEnter = (index?: number) => {
-    if (!api) {
-      return;
-    }
+  const carouselFeaturedAnimation = (
+    sponsor: SponsorshipProps,
+    index: number
+  ) => {
+    setfeaturedSponsor(sponsor);
+    api?.scrollTo(index + 2);
+    updateButton(index);
+    autoPlayInteraction();
+  };
 
-    if (index != null) {
-      api.scrollTo(index);
-    }
-
-    plugin.current.stop();
+  const updateButton = (index: number) => {
+    setCurrent(index);
+    api?.scrollTo(index + 2);
+    setfeaturedSponsor(sponsors[index]);
+    autoPlayInteraction();
   };
 
   return (
@@ -65,13 +83,21 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
       {/* Description Section */}
       <div className="space-y-16 xl:mb-28 lg:flex-1 lg:h-auto">
         <div className="space-y-6 max-w-[365px] mx-auto xl:mx-0">
-          <h1 className="text-primary text-[80px] leading-none font-bold ">
-            <span className="text-white">Our</span> Sponsor
+          <h1 className="text-primary text-[80px] leading-none font-bold mt-12 mb-12 ">
+            <span className="text-white">Our</span> Sponsors
           </h1>
           <p className="text-xl text-left">
             A big thank you to our generous sponsors whose support makes our
             work possible and helps us create lasting impact.
           </p>
+          <Button
+            variant={'sponsor-be-our-sponsor'}
+            onClick={() => {
+              window.location.href = '/404';
+            }}
+          >
+            Be Our Sponsor
+          </Button>
         </div>
 
         <div className="max-w-[365px] mx-auto">
@@ -81,52 +107,104 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
         </div>
       </div>
 
-      <div className="flex-1 h-auto flex">
-        <Carousel
-          plugins={[plugin.current]}
-          className="w-full flex h-full"
-          onMouseEnter={plugin.current.stop}
-          onMouseLeave={() => onMouseLeave()}
-          setApi={setApi}
-        >
-          <CarouselContent>
-            {sponsors.map((sponsor, index) => (
-              <CarouselItem key={index}>
-                <div
-              key={index}
-              className="relative group transition-all duration-500 col-span-3 row-span-4 ease-in-out"
+      <div className="pb-36 mb-36">
+        {/* Featured Section */}
+        {featuredSponsor && (
+          <div className="flex-1 h-3/4 mb-4">
+            <Link
+              href={featuredSponsor.url}
+              target="_blank"
+              className="border border-[#36FF90] rounded-lg xl:px-6 xl:py-4 lg:p-6 w-full h-full flex flex-col justify-center items-center"
             >
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#00833A] to-[rgba(62,179,114,0)] opacity-0 transition-opacity duration-500 rounded-lg group-hover:opacity-100"></div>
+              <div className="w-full h-[200px] relative flex justify-center items-center transition-transform duration-500 ease-in-out hover:scale-105">
+                <Image
+                  src={featuredSponsor.logo}
+                  alt={featuredSponsor.name}
+                  loading="lazy"
+                  fill
+                  className={cn(
+                    'object-contain',
+                    featuredSponsor.name === 'Ingenuity Software' ||
+                      featuredSponsor.name === 'PythonPH' ||
+                      featuredSponsor.name === 'Stace'
+                      ? 'scale-150' // Increase the size for specific sponsors
+                      : '',
+                    'w-full',
+                    'h-full',
+                    'p-12'
+                  )}
+                />
+              </div>
+              <p className="text-xl mt-6">
+                {featuredSponsor.testimonial}
+                <br></br>
+                <br></br>— {featuredSponsor.name}
+              </p>
+            </Link>
+          </div>
+        )}
 
-              <Link
-                href={sponsor.url}
-                target="_blank"
-                className="border border-[#36FF90] rounded-lg xl:px-6 xl:py-4 lg:p-6 w-full h-full flex justify-center items-center"
-              >
-                {/* Logo Container */}
-                <div className="w-full h-full relative flex justify-center items-center transition-transform duration-500 ease-in-out hover:scale-105">
-                  <Image
-                    src={sponsor.logo}
-                    alt={sponsor.name}
-                    loading="lazy"
-                    fill
-                    className={cn(
-                      'object-contain',
-                      'w-full h-full',
-                      'md:scale-[0.80]',
-                      'lg:scale-100'
-                    )}
-                    onMouseEnter={() => onMouseEnter(index)}
-                    onMouseLeave={() => onMouseLeave()}
-                  />
-                </div>
-              </Link>
-            </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
+        {/* Carousel Section */}
+        <div className="flex-1 h-auto flex">
+          <Carousel
+            className="w-full flex h-full"
+            setApi={setApi}
+            plugins={[plugin.current]}
+            opts={{
+              loop: true,
+            }}
+          >
+            <CarouselContent>
+              {sponsors.map((sponsor, index) => (
+                <CarouselItem key={index} className="basis-1/3">
+                  <div
+                    key={index}
+                    className="relative group transition-all duration-500 col-span-3 row-span-4 ease-in-out
+                  "
+                    onClick={() => carouselFeaturedAnimation(sponsor, index)}
+                  >
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#00833A] to-[rgba(62,179,114,0)] opacity-0 transition-opacity duration-500 rounded-lg group-hover:opacity-100"></div>
+
+                    <div className="border border-[#36FF90] rounded-lg xl:px-6 xl:py-4 lg:p-6 w-full h-full flex justify-center items-center">
+                      {/* Logo Container */}
+                      <div className="min-h-[160px] min-w-[160px] relative flex justify-center items-center transition-transform duration-500 ease-in-out hover:scale-105">
+                        <div className="">
+                          <Image
+                            src={sponsor.logo}
+                            alt={sponsor.name}
+                            loading="lazy"
+                            fill
+                            className={cn(
+                              'object-contain',
+                              'w-full',
+                              'h-full',
+                              'md:scale-[0.80]',
+                              'lg:scale-100'
+                            )}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+        </div>
+        {/* Dots Navigation */}
+        <div className="flex justify-center mt-4">
+          {Array.from({ length: count }).map((_, index) => (
+            <button
+              key={index}
+              onClick={() => updateButton(index)}
+              className={cn(
+                'w-3 h-3 rounded-full mx-1',
+                current === index ? 'bg-primary' : 'bg-gray-400'
+              )}
+            ></button>
+          ))}
+        </div>
       </div>
     </div>
   );
