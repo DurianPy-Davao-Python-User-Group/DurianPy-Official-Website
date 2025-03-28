@@ -62,7 +62,7 @@ const UpcomingEvents = () => {
       </div>
 
       {/* Other events */}
-      <div className="grid grid-cols-1 gap-3 max-w-[40%] md:max-w-[80%] mx-auto md:grid-cols-3 2xl:grid-cols-3 2xl:max-w-[80%]">
+      <div className="grid grid-cols-1 gap-5 max-w-[40%] md:max-w-[80%] mx-auto md:grid-cols-3 2xl:grid-cols-3 2xl:max-w-full">
         {EVENTS.slice(1).map((event, idx) => (
           <EventCard key={idx} event={event} />
         ))}
