@@ -6,14 +6,37 @@ import {
   CarouselPrevious,
   CarouselDots,
 } from '@/components/ui/carousel';
+import Image from 'next/image';
+import testimonialCard from '@/public/assets/testimonials/testimonial-card.svg'
+import yellowStarIcon from '@/public/assets/testimonials/yellow-star.svg'
+import whiteStarIcon from '@/public/assets/testimonials/white-star.svg'
+
+// Number of Stars depending on rating.
+const Ratings = ({ rating }: { rating: number }) => {
+  const starRate = []
+
+  // Append stars
+  for (let i = 0; i < 5; i++) {
+    // If index is greater than the rating, append white star, else yellow star.
+    if (i >= rating) {
+      starRate.push(<Image src={whiteStarIcon} alt='yellow star' />)
+    } else {
+      starRate.push(<Image src={yellowStarIcon} alt='yellow star' />)
+    }
+  }
+
+  return (
+    <div className="flex space-x-3"> {starRate} </div>
+  )
+}
 
 export function Testimonials() {
   const ratings = ["test1", "test2", "test3", "test4", "test5", "test6"]
 
   return (
-    <div>
+    <div className='bg-white'>
       {/* DurianPy Ratings */}
-      <div className="bg-white">
+      <div>
         DurianPy Ratings
       </div>
       <div>
@@ -30,6 +53,12 @@ export function Testimonials() {
               </CarouselItem>
             ))}
           </CarouselContent>
+
+          <div className='relative bg-blue-300 w-fit '>
+            <Image src={testimonialCard} alt='testimonial card' priority={true} />
+            <div className="absolute bg-red-300 z-10 top-1/4 left-1/2 -translate-x-1/2">random text</div>
+            <Ratings rating={1} />
+          </div>
 
           {/* CAROUSEL INDICATORS */}
           <CarouselDots className="z-10 peer absolute bottom-4 left-1/2 -translate-x-1/2 text-2xl py-4 text" />
