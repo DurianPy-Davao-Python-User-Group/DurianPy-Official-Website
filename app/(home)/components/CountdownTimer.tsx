@@ -23,29 +23,24 @@ export default function CountdownTimer({ eventDate }: CountdownTimerProps) {
   };
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setIsClient(true);
-
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [eventDate]);
-
-  if (!isClient) return null;
+  }, [calculateTimeLeft]);
 
   return (
     <div className="bg-none p-2 w-full text-[#36FF90] md:w-auto">
-      <h2 className="text-sm font-bold mb-8 md:mb-6 xl:text-5xl text-center hidden xl:block">
+      <h2 className="text-sm font-bold mb-10 md:mb-6 md:text-4xl text-center hidden lg:block">
         COMING SOON
       </h2>
-      <h2 className="text-[1rem] font-bold mb-2 md:mb-3 lg:text-[40px] md:text-3xl text-center block lg:block xl:hidden">
+      <h2 className="text-[1rem] font-bold mb-2 md:mb-3 md:text-4xl text-center block md:block lg:hidden">
         PYCON COUNTDOWN
       </h2>
-      <div className="flex justify-center gap-4 md:space-x-8 text-center text-2xl lg:text-[75px] md:text-[55px] xl:text-[60px] leading-[100%]">
+      <div className="flex justify-center gap-4 md:space-x-8 text-center text-2xl md:text-[70px] leading-[100%]">
         <div>
           <p className="text-center tabular-nums tracking-[-0.05em]">{`${timeLeft.days}`}</p>
           <p className="text-sm md:text-xl">DAYS</p>
