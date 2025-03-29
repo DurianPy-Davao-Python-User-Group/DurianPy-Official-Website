@@ -11,32 +11,13 @@ import testimonialCard from '@/public/assets/testimonials/testimonial-card.svg'
 import yellowStarIcon from '@/public/assets/testimonials/yellow-star.svg'
 import whiteStarIcon from '@/public/assets/testimonials/white-star.svg'
 
-// Number of Stars depending on rating.
-const Ratings = ({ rating }: { rating: number }) => {
-  const starRate = []
-
-  // Append stars
-  for (let i = 0; i < 5; i++) {
-    // If index is greater than the rating, append white star, else yellow star.
-    if (i >= rating) {
-      starRate.push(<Image src={whiteStarIcon} alt='yellow star' />)
-    } else {
-      starRate.push(<Image src={yellowStarIcon} alt='yellow star' />)
-    }
-  }
-
-  return (
-    <div className="flex space-x-3"> {starRate} </div>
-  )
-}
-
 export function Testimonials() {
-  const ratings = ["test1", "test2", "test3", "test4", "test5", "test6"]
+  const ratings = ["test1", "test2", "test3", "test4", "test5"]
 
   return (
-    <div className='bg-white'>
+    <div className=''>
       {/* DurianPy Ratings */}
-      <div>
+      <div className='bg-white'>
         DurianPy Ratings
       </div>
       <div>
@@ -44,9 +25,9 @@ export function Testimonials() {
           opts={{ loop: true }}
           autoplay={true}
           autoplayInterval={3000}
-          className="mx-auto px-0"
+          className="mx-auto px-0 bg-white"
         >
-          <CarouselContent>
+          <CarouselContent className=''>
             {ratings.map((rating, index) => (
               <CarouselItem className="relative flex items-center justify-center basis-1/3" key={index} >
                 {rating}
@@ -54,10 +35,16 @@ export function Testimonials() {
             ))}
           </CarouselContent>
 
-          <div className='relative bg-blue-300 w-fit '>
+          <div className='relative w-fit '>
             <Image src={testimonialCard} alt='testimonial card' priority={true} />
-            <div className="absolute bg-red-300 z-10 top-1/4 left-1/2 -translate-x-1/2">random text</div>
-            <Ratings rating={1} />
+            <div className="absolute z-10 top-0 py-5 px-10 space-y-5 max-h-72">
+              <Ratings rate={1} />
+              <div className='relative text-white text-lg overflow-hidden text-ellipsis max-h-[150px]'>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                <div className='absolute bottom-0 z-20 bg-gradient-to-t from-medium-dark-green h-20 w-full'> </div>
+              </div>
+              <a className='text-[#B3B3B3] underline underline-offset-2 decoration-1' href='#'>Read more</a>
+            </div>
           </div>
 
           {/* CAROUSEL INDICATORS */}
@@ -68,5 +55,24 @@ export function Testimonials() {
         </CarouselContainer>
       </div>
     </div>
+  )
+}
+
+// Number of Stars depending on rating.
+const Ratings = ({ rate }: { rate: number }) => {
+  const starRate = []
+
+  // Append stars
+  for (let i = 0; i < 5; i++) {
+    // If index is greater than the rating, append white star, else yellow star.
+    if (i >= rate) {
+      starRate.push(<Image src={whiteStarIcon} alt='yellow star' />)
+    } else {
+      starRate.push(<Image src={yellowStarIcon} alt='yellow star' />)
+    }
+  }
+
+  return (
+    <div className='flex space-x-3 justify-center'>{starRate}</div>
   )
 }
