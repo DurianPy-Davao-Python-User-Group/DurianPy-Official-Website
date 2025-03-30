@@ -12,15 +12,18 @@ import Image from 'next/image';
 import testimonialCard from '@/public/assets/testimonials/testimonial-card.svg'
 import yellowStarIcon from '@/public/assets/testimonials/yellow-star.svg'
 import whiteStarIcon from '@/public/assets/testimonials/white-star.svg'
-import projectJuliene from '@/public/assets/testimonials/Project Juliene.png'
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+
 
 export function Testimonials() {
-  const ratings = ["test1", "test2", "test3", "test4", "test5"]
+  const dummyData = [
+    { name: "Lorem1", date: "1 week ago", comment: "Test 1 lorem", rate: 4, profilePic: "https://github.com/shadcn.png" }
+  ]
 
   return (
-    <div className=''>
+    <div className='pt-10 pb-40'>
       {/* DurianPy Ratings */}
-      <div className='bg-white'>
+      <div className=''>
         DurianPy Ratings
       </div>
       <div>
@@ -28,29 +31,16 @@ export function Testimonials() {
           opts={{ loop: true }}
           autoplay={true}
           autoplayInterval={3000}
-          className="mx-auto px-0 bg-white"
+          className="flex justify-center"
         >
           <CarouselContent className=''>
-            {ratings.map((rating, index) => (
-              <CarouselItem className="relative flex items-center justify-center basis-1/3" key={index} >
-                {rating}
-              </CarouselItem>
-            ))}
+            <CarouselItem className="relative flex items-center justify-center basis-1/3">
+
+            </CarouselItem>
           </CarouselContent>
 
-          {/* <div className='relative w-fit '> */}
-          {/*   <Image src={testimonialCard} alt='testimonial card' priority={true} /> */}
-          {/*   <div className="absolute z-10 top-0 py-5 px-10 space-y-5 max-h-72"> */}
-          {/*     <Ratings rate={1} /> */}
-          {/*     <div className='relative text-white text-lg overflow-hidden text-ellipsis max-h-[150px]'> */}
-          {/*       Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. */}
-          {/*       <div className='absolute bottom-0 z-20 bg-gradient-to-t from-medium-dark-green h-20 w-full'> </div> */}
-          {/*     </div> */}
-          {/*     <a className='text-[#B3B3B3] underline underline-offset-2 decoration-1' href='#'>Read more</a> */}
-          {/*   </div> */}
-          {/* </div> */}
-
-          <div className='relative w-fit '>
+          <div className='relative w-fit'>
+            {/* SPEECH BUBBLE */}
             <Image src={testimonialCard} alt='testimonial card' priority={true} />
             <div className="absolute z-10 top-0 py-5 px-10 space-y-5 h-72 w-full ">
               <Ratings rate={1} />
@@ -60,7 +50,20 @@ export function Testimonials() {
               </div>
               <a className='text-[#B3B3B3] absolute bottom-10 underline underline-offset-2 decoration-1' href='#'>Read more</a>
             </div>
+
+            {/* USER AVATAR & NAME */}
+            <div className='mt-4 ms-[70px] flex space-x-4 items-center'>
+              <Avatar className='h-16 w-16'>
+                <AvatarImage src="https://github.com/shadcn.png" />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+              <div>
+                <div className="text-white text-lg">Test name</div>
+                <div className='text-[#B3B3B3]'>Test date</div>
+              </div>
+            </div>
           </div>
+
           {/* CAROUSEL INDICATORS */}
           <CarouselDots className="z-10 peer absolute bottom-4 left-1/2 -translate-x-1/2 text-2xl py-4 text" />
 
