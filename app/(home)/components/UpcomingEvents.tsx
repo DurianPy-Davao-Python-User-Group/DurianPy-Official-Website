@@ -46,30 +46,30 @@ const EVENTS: Event[] = [
 
 const UpcomingEvents = () => {
   return (
-    <Container className="text-white space-y-4 md:space-y-8">
+    <Container className="text-white space-y-4 lg:space-y-8">
       {/* Title */}
-      <h1 className="font-montserrat font-bold text-center text-2xl 2xl:text-left md:text-[80px] leading-[100%] 2xl:leading-normal">
+      <h1 className="font-montserrat font-bold text-center text-2xl xl:text-left lg:text-[80px] md:text-[70px] leading-[100%] xl:leading-normal">
         Upcoming{' '}
-        <span className="text-primary md:block 2xl:inline">Events</span>
+        <span className="text-primary md:block xl:inline">Events</span>
       </h1>
 
       {/* Featured */}
       <EventCard event={EVENTS[0]} />
 
       {/* Countdown Timer */}
-      <div className="block md:block lg:hidden">
+      <div className="block lg:block xl:hidden">
         <CountdownTimer eventDate={new Date(EVENTS[0].date).toISOString()} />
       </div>
 
       {/* Other events */}
-      <div className="grid grid-cols-1 gap-5 max-w-[40%] md:max-w-[80%] mx-auto md:grid-cols-3 2xl:grid-cols-3 2xl:max-w-full">
+      <div className="grid grid-cols-1 gap-5 max-w-[40%] lg:max-w-[80%] md:max-w-[80%] mx-auto md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 xl:max-w-full">
         {EVENTS.slice(1).map((event, idx) => (
           <EventCard key={idx} event={event} />
         ))}
       </div>
 
       {/* See more Events Button */}
-      <Button className="bg-primary mx-auto md:max-w-[80%] w-full py-4 text-dark-green 2xl:text-2xl 2xl:max-w-full">
+      <Button className="bg-primary hover:bg-primary mx-auto max-w-[80%] lg:max-w-[80%] md:max-w-[80%] w-full py-4 text-dark-green xl:text-2xl xl:max-w-full">
         <Link href="/404">See More Events</Link>
       </Button>
     </Container>
