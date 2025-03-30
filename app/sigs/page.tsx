@@ -3,7 +3,6 @@
 import React from 'react';
 import Card from './components/card';
 import { Footer } from '../(home)/components/Footer';
-import Image from 'next/image';
 
 const sigsData = [
   { image: '/assets/sigsIcons/Group125.png', title: 'Data' },
