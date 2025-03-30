@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Carousel as CarouselContainer,
   CarouselContent,
@@ -10,6 +12,7 @@ import Image from 'next/image';
 import testimonialCard from '@/public/assets/testimonials/testimonial-card.svg'
 import yellowStarIcon from '@/public/assets/testimonials/yellow-star.svg'
 import whiteStarIcon from '@/public/assets/testimonials/white-star.svg'
+import projectJuliene from '@/public/assets/testimonials/Project Juliene.png'
 
 export function Testimonials() {
   const ratings = ["test1", "test2", "test3", "test4", "test5"]
@@ -35,18 +38,29 @@ export function Testimonials() {
             ))}
           </CarouselContent>
 
+          {/* <div className='relative w-fit '> */}
+          {/*   <Image src={testimonialCard} alt='testimonial card' priority={true} /> */}
+          {/*   <div className="absolute z-10 top-0 py-5 px-10 space-y-5 max-h-72"> */}
+          {/*     <Ratings rate={1} /> */}
+          {/*     <div className='relative text-white text-lg overflow-hidden text-ellipsis max-h-[150px]'> */}
+          {/*       Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. */}
+          {/*       <div className='absolute bottom-0 z-20 bg-gradient-to-t from-medium-dark-green h-20 w-full'> </div> */}
+          {/*     </div> */}
+          {/*     <a className='text-[#B3B3B3] underline underline-offset-2 decoration-1' href='#'>Read more</a> */}
+          {/*   </div> */}
+          {/* </div> */}
+
           <div className='relative w-fit '>
             <Image src={testimonialCard} alt='testimonial card' priority={true} />
-            <div className="absolute z-10 top-0 py-5 px-10 space-y-5 max-h-72">
+            <div className="absolute z-10 top-0 py-5 px-10 space-y-5 h-72 w-full ">
               <Ratings rate={1} />
-              <div className='relative text-white text-lg overflow-hidden text-ellipsis max-h-[150px]'>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              <div className='relative text-white text-lg overflow-hidden text-ellipsis h-[150px]'>
+
                 <div className='absolute bottom-0 z-20 bg-gradient-to-t from-medium-dark-green h-20 w-full'> </div>
               </div>
-              <a className='text-[#B3B3B3] underline underline-offset-2 decoration-1' href='#'>Read more</a>
+              <a className='text-[#B3B3B3] absolute bottom-10 underline underline-offset-2 decoration-1' href='#'>Read more</a>
             </div>
           </div>
-
           {/* CAROUSEL INDICATORS */}
           <CarouselDots className="z-10 peer absolute bottom-4 left-1/2 -translate-x-1/2 text-2xl py-4 text" />
 
