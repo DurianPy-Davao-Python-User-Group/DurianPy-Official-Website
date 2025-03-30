@@ -26,7 +26,8 @@ export default function EventCard({ event }: { event: Event }) {
         <h2
           className={cn(
             'font-semibold text-sm lg:text-2xl md:text-xl xl:text-[40px] xl:mb-2',
-            event.variant === 'main' && 'text-[20px] mb-2 lg:text-5xl lg:mb-3 md:text-3xl xl:text-[45px]'
+            event.variant === 'main' &&
+              'text-[20px] mb-2 lg:text-5xl lg:mb-3 md:text-3xl xl:text-[45px]'
           )}
         >
           {event.title}
@@ -34,7 +35,8 @@ export default function EventCard({ event }: { event: Event }) {
         <p
           className={cn(
             'text-[8px] lg:text-[15px] md:text-[11px] xl:text-xl space-y-1',
-            event.variant === 'main' && 'text-xs lg:text-xl md:text-[17px] md:leading-tight'
+            event.variant === 'main' &&
+              'text-xs lg:text-xl md:text-[17px] md:leading-tight'
           )}
         >
           {event.date} <br /> {event.location}
