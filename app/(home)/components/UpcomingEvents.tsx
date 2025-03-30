@@ -49,8 +49,7 @@ const UpcomingEvents = () => {
     <Container className="text-white space-y-4 lg:space-y-8">
       {/* Title */}
       <h1 className="font-montserrat font-bold text-center text-2xl xl:text-left lg:text-[80px] md:text-[70px] leading-[100%] xl:leading-normal">
-        Upcoming{' '}
-        <span className="text-primary md:block xl:inline">Events</span>
+        Upcoming <span className="text-primary md:block xl:inline">Events</span>
       </h1>
 
       {/* Featured */}
