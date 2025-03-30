@@ -115,7 +115,7 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
             <Link
               href={featuredSponsor.url}
               target="_blank"
-              className="border border-[#ffffff] rounded-lg xl:px-10 xl:py-4 lg:p-6 w-full h-full flex flex-col justify-center items-center"
+              className="border border-[#ffffff] rounded-lg xl:px-10 xl:py-4 lg:p-6 w-full h-full flex flex-col justify-center items-center overflow-hidden"
             >
               <div className="w-full h-[200px] relative flex justify-center items-center transition-transform duration-500 ease-in-out hover:scale-105">
                 <Image
@@ -168,7 +168,7 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
 
         {/* Carousel Section */}
         <div className="flex-1 h-auto flex relative">
-          { /*Carousel Body*/ }
+          {/*Carousel Body*/}
           <Carousel
             className="w-full flex h-full"
             setApi={setApi}
@@ -177,11 +177,12 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
               loop: true,
             }}
           >
-
             {/* Previous Button */}
-            <CarouselPrevious className="absolute left-[-64px] z-10 h-16 w-16 sm:w-20 sm:h-20" />
-            
-            {/* Carousel Content */}  
+            <button onClick={autoPlayInteraction}>
+              <CarouselPrevious className="absolute left-[-64px] z-10 h-16 w-16 sm:w-20 sm:h-20" />
+            </button>
+
+            {/* Carousel Content */}
             <CarouselContent>
               {sponsors.map((sponsor, index) => (
                 <CarouselItem key={index} className="basis-1/3">
@@ -220,7 +221,9 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
             </CarouselContent>
 
             {/* Next Button */}
-            <CarouselNext className="absolute right-[-64px] z-10 h-16 w-16 sm:w-20 sm:h-20" />
+            <button onClick={autoPlayInteraction}>
+              <CarouselNext className="absolute right-[-64px] z-10 h-16 w-16 sm:w-20 sm:h-20" />
+            </button>
           </Carousel>
         </div>
         {/* Dots Navigation */}
