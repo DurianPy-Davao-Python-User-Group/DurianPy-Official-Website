@@ -46,7 +46,7 @@ export default function Sigs() {
           <div className="absolute top-0 w-[50%] md:w-[80%] h-[100px] md:h-[150px] bg-[#36FF90] rounded-b-full blur-2xl md:blur-3xl opacity-10 z-[-1] -mt-5"></div>
 
           {/* Middle Gradient Glow (Now Centered) */}
-          <div className="absolute top-1/2 -translate-y-1/2 w-full md:w-[85%] h-[80%] md:h-[70%] bg-[#36FF90] rounded-full blur-[80px] md:blur-[120px] opacity-30 z-[-2]"></div>
+          <div className="absolute top-1/2 -translate-y-1/2 w-full md:w-[85%] h-[80%] md:h-[71%] bg-[#36FF90] rounded-full blur-[80px] md:blur-[120px] opacity-30 z-[-2]"></div>
 
           {/* Bottom Half-Circle */}
           <div className="absolute bottom-0 w-[50%] md:w-[80%] h-[100px] md:h-[150px] bg-[#36FF90] rounded-t-full blur-2xl md:blur-3xl opacity-10 z-[-1]"></div>
