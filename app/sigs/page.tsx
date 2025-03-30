@@ -2,6 +2,8 @@
 
 import React from 'react';
 import Card from './components/card';
+import { Footer } from '../(home)/components/Footer';
+import Image from 'next/image';
 
 const sigsData = [
   { image: '/assets/sigsIcons/Group125.png', title: 'Data' },
@@ -10,7 +12,7 @@ const sigsData = [
 
 export default function Sigs() {
   return (
-    <main className="flex flex-col justify-center mt-28">
+    <main className="relative flex flex-col justify-center mt-28">
       <div>
         <p className="text-primary text-[32px] md:text-[70px] leading-9 md:leading-none font-black text-center">
           SPECIAL <br />
@@ -33,16 +35,26 @@ export default function Sigs() {
         </p>
 
         <button
-          className="my-6 md:my-8 lg:my-10 mx-auto block bg-primary text-[8px] md:text-xl leading-3 md:leading-none font-bold rounded-xl px-2 md:px-4 lg:px-8 py-1 md:py-2 lg:py-4 hover:scale-105 duration-300"
+          className="my-6 md:my-8 lg:my-10 mx-auto block bg-primary text-[8px] md:text-xl leading-3 md:leading-none font-bold rounded-full px-2 md:px-4 lg:px-8 py-1 md:py-2 lg:py-4 hover:scale-105 duration-300"
           onClick={() =>
             (window.location.href = 'https://forms.gle/XxDJZebqbJB6tJo27')
           }
         >
-          Form a SIG today
+          Join a SIG today
         </button>
-      </div>
+        <div className="relative w-full h-[250px] md:h-[350px] -mt-20 -mb-20 flex flex-col items-center">
+          {/* Top Half-Circle */}
+          <div className="absolute top-0 w-[50%] md:w-[80%] h-[100px] md:h-[150px] bg-[#36FF90] rounded-b-full blur-2xl md:blur-3xl opacity-10 z-[-1] -mt-5"></div>
 
-      <div className="mt-6 md:mt-12 lg:mt-16">
+          {/* Middle Gradient Glow (Now Centered) */}
+          <div className="absolute top-1/2 -translate-y-1/2 w-full md:w-[85%] h-[80%] md:h-[70%] bg-[#36FF90] rounded-full blur-[80px] md:blur-[120px] opacity-30 z-[-2]"></div>
+
+          {/* Bottom Half-Circle */}
+          <div className="absolute bottom-0 w-[50%] md:w-[80%] h-[100px] md:h-[150px] bg-[#36FF90] rounded-t-full blur-2xl md:blur-3xl opacity-10 z-[-1]"></div>
+        </div>
+
+      </div>
+      <div className="sm:mt-15 md:-mt-10 lg:-mt-10">
         <p className="text-primary text-[32px] md:text-[70px] leading-9 md:leading-none font-black text-center">
           CURRENT <span className="text-white">SIGs</span>
         </p>
@@ -65,6 +77,7 @@ export default function Sigs() {
           organizers will review and respond within 48 hours.
         </p>
       </div>
+      <Footer />
     </main>
   );
 }
