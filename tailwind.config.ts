@@ -15,6 +15,7 @@ const config: Config = {
       colors: {
         'midori-green': '#36FF90',
         'mint-bliss': '#8AFFBE',
+        'mint-bliss-50': '#009643',
         background: 'var(--background)',
         foreground: 'var(--foreground)',
         primary: '#FFC200',
@@ -57,6 +58,8 @@ const config: Config = {
           'linear-gradient(to bottom, rgba(62,179,114,0.63), rgba(166,255,205,0.63))',
         'gradient-utd-green-transparent':
           'linear-gradient(180deg, rgba(0,64,28,1), rgba(17,32,24,0.8))',
+        'gradient-circle-green':
+          'radial-gradient(circle, #009643 0%, rgba(0, 150, 67, 0) 100%)',
       },
       borderRadius: {
         lg: 'var(--radius)',

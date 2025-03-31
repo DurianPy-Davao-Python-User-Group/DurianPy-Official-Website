@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import '@/styles/globals.css';
 import Navbar from '@/components/navs/public/Navbar';
 import { ReactLenis } from 'lenis/react';
+import { Footer } from './(home)/components/Footer';
 
 const head = {
   title: 'DurianPy',
@@ -43,6 +44,7 @@ export default function RootLayout({
       <body className={`antialiased bg-dark-green`}>
         <Navbar />
         <ReactLenis root>{children}</ReactLenis>
+        <Footer />
       </body>
     </html>
   );
