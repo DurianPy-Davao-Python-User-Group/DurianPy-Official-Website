@@ -31,7 +31,7 @@ export function Sponsors() {
     },
     {
       name: 'Ingenuity Software',
-      logo: '/sponsor-logos/ingenuity-logo-mobile.png',
+      logo: '/sponsor-logos/ingenuity-logo.png',
       logoMobile: '/sponsor-logos/ingenuity-logo-mobile.png',
       testimonial:
         'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, quas possimus. Vitae, officia quia. Doloribus saepe',
@@ -40,15 +40,15 @@ export function Sponsors() {
     {
       name: 'PythonPH',
       logo: '/sponsor-logos/pythonph-logo.png',
-      logoMobile: '/sponsor-logos/pythonph-logo.png',
+      logoMobile: '/sponsor-logos/pythonph-logo-mobile.png',
       testimonial:
         'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, quas possimus. Vitae, officia quia. Doloribus saepe',
       url: 'https://python.ph',
     },
     {
       name: 'Stace',
-      logo: '/sponsor-logos/stace-logo.png',
-      logoMobile: '/sponsor-logos/stace-logo.png',
+      logo: '/sponsor-logos/stace-logo.svg',
+      logoMobile: '/sponsor-logos/stace-logo.svg',
       testimonial:
         'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, quas possimus. Vitae, officia quia. Doloribus saepe',
       url: 'https://www.stace.app',

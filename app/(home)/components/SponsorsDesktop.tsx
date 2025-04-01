@@ -80,14 +80,14 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
   };
 
   return (
-    <div className="xl:grid xl:grid-cols-[1fr_2fr] lg:flex lg:flex-col lg:h-auto text-white gap-x-8 py-16">
+    <div className="xl:grid xl:grid-cols-[1fr_2fr] md:flex md:flex-col md:h-auto text-white gap-x-8 py-16 items-center ">
       {/* Description Section */}
-      <div className="space-y-16 xl:mb-28 lg:flex-1 lg:h-auto w-[480px] mt-24">
-        <div className="space-y-9 max-w-[365px] mx-auto xl:mx-0">
-          <h1 className="text-primary text-[80px] leading-none font-bold mt-12 mb-12">
+      <div className="space-y-16 xl:mb-28 lg:flex-1 lg:h-auto md:flex-1 md:h-auto w-[480px]">
+        <div className="space-y-9 xl:mx-0">
+          <h1 className="text-primary text-[80px] leading-none font-bold mb-12">
             <span className="text-white">Our</span> Sponsors
           </h1>
-          <p className="text-xl text-left mb-12">
+          <p className="text-xl text-left mb-12 min-w-10">
             A big thank you to our generous sponsors whose support makes our
             work possible and helps us create lasting impact.
           </p>
@@ -108,10 +108,10 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
         </div>
       </div>
 
-      <div className="pb-36 w-[720px]">
+      <div className="pb-36 w-[633px] xl:ml-16">
         {/* Featured Section */}
         {featuredSponsor && (
-          <div className="flex-1 h-3/4 mb-4">
+          <div className="flex-1 h-[418px] mb-4">
             <Link
               href={featuredSponsor.url}
               target="_blank"
@@ -125,9 +125,7 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
                   fill
                   className={cn(
                     'object-contain',
-                    featuredSponsor.name === 'Ingenuity Software' ||
-                      featuredSponsor.name === 'PythonPH' ||
-                      featuredSponsor.name === 'Stace'
+                    featuredSponsor.name === 'PythonPH'
                       ? 'scale-150' // Increase the size for specific sponsors
                       : '',
                     'w-full',
@@ -157,7 +155,7 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
                 {/* Horizontal Line */}
                 <div className="w-[440px] h-[1.5px] bg-[#FFFFFF]"></div>
               </div>
-              <p className="text-xl mt-4">
+              <p className="lg:text-xl mt-4 text-[12px] max-md:m-5">
                 {featuredSponsor.testimonial}
                 <br></br>
                 <br></br>— {featuredSponsor.name}
@@ -188,7 +186,7 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
                 <CarouselItem key={index} className="basis-1/3">
                   <div
                     key={index}
-                    className="relative group transition-all duration-500 col-span-3 row-span-4 ease-in-out
+                    className="relative group transition-all duration-500 col-span-3 row-span-4 ease-in-out h-[166px] w-[200px]
                   "
                     onClick={() => carouselFeaturedAnimation(sponsor, index)}
                   >
@@ -200,16 +198,17 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
                       <div className="min-h-[160px] min-w-[160px] relative flex justify-center items-center transition-transform duration-500 ease-in-out hover:scale-105">
                         <div className="">
                           <Image
-                            src={sponsor.logo}
+                            src={sponsor.logoMobile}
                             alt={sponsor.name}
                             loading="lazy"
                             fill
                             className={cn(
                               'object-contain',
+                              sponsor.name === 'PythonPH'
+                                ? 'scale-75'
+                                : 'scale-100',
                               'w-full',
-                              'h-full',
-                              'md:scale-[0.80]',
-                              'lg:scale-100'
+                              'h-full'
                             )}
                           />
                         </div>
