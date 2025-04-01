@@ -2,6 +2,13 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+
+const handleRedirect = (url: string) => {
+  if (typeof window !== 'undefined') {
+    window.open(url, '_blank');
+  }
+};
 
 const HeroSection: React.FC = () => {
   return (
@@ -21,7 +28,7 @@ const HeroSection: React.FC = () => {
                   alt="DurianPy"
                   width={0}
                   height={0}
-                  className="mt-1 sm:mt-3 md:mt-2 w-auto [@media(max-width:380px)]:h-6 h-8 sm:h-10 md:h-16 lg:h-20"
+                  className="mt-1 sm:mt-1 md:mt-1 w-auto [@media(max-width:380px)]:h-6 h-9 sm:h-14 md:h-16 lg:h-20"
                 />
               </div>
             </h1>
@@ -29,14 +36,19 @@ const HeroSection: React.FC = () => {
               We are excited to have you as a speaker. <br />
               <span>Help inspire the Python community in Davao.</span>
             </p>
-            <button className="bg-yellow-500 text-black font-medium py-2 md:py-2 lg:py-3 px-4 md:px-5 lg:px-7 [@media(max-width:320px)]:text-[6px] text-[10px] md:text-[14px] lg:text-[18px] rounded-full hover:bg-yellow-600">
+            <Button
+              onClick={() =>
+                handleRedirect('https://forms.gle/x2cc6CrRhbhDeaxe9')
+              }
+              className="bg-yellow-500 text-black font-medium py-2 md:py-2 lg:py-3 px-4 md:px-5 lg:px-7 [@media(max-width:320px)]:text-[6px] text-[10px] md:text-[14px] lg:text-[18px] rounded-full hover:bg-yellow-600 transition-all duration-300 ease-out hover:scale-105"
+            >
               Submit a Talk Proposal
-            </button>
+            </Button>
           </div>
 
           {/* Right Section - Large Logo */}
           <div className="w-1/2">
-            <div className="ml-3 flex justify-end md:mt-20 lg:mt-28 relative">
+            <div className="ml-4 flex justify-end md:mt-20 lg:mt-28 relative">
               <Image
                 src="/assets/speakIcons/glowBg.svg"
                 alt="Glow BG"
@@ -60,7 +72,7 @@ const HeroSection: React.FC = () => {
           </div>
         </div>
         <div className="container text-white mt-10 ">
-          <h1 className="[@media(max-width:380px)]:text-[20px] text-[28px] sm:text-[40px] md:text-[45px] lg:text-[60px] font-bold mb-6 lg:mb-8">
+          <h1 className="[@media(max-width:380px)]:text-[20px] text-[25px] sm:text-[45px] md:text-[50px] lg:text-[60px] font-bold mb-6 lg:mb-8">
             Submission <span className="text-[#FFC201]">Guidelines </span>
           </h1>
 
@@ -122,9 +134,9 @@ const HeroSection: React.FC = () => {
             </div>
           </div>
           <div className="mt-8 lg:mt-14">
-            <button className="bg-yellow-500 text-black font-medium py-2 md:py-2 lg:py-3 px-4 md:px-5 lg:px-7 [@media(max-width:320px)]:text-[6px] text-[10px] md:text-[14px] lg:text-[18px] rounded-full hover:bg-yellow-600">
+            <Button className="bg-yellow-500 text-black font-medium py-2 md:py-2 lg:py-3 px-4 md:px-5 lg:px-7 [@media(max-width:320px)]:text-[6px] text-[10px] md:text-[14px] lg:text-[18px] rounded-full hover:bg-yellow-600 transition-all duration-300 ease-out hover:scale-105">
               Have Questions?
-            </button>
+            </Button>
           </div>
         </div>
 
@@ -146,7 +158,6 @@ const HeroSection: React.FC = () => {
               borderBottomRightRadius: '75px',
               borderTopRightRadius: '0px',
               borderBottomLeftRadius: '0px',
-              // clipPath: 'inset(0% round 100px 0px 20px 0px)'
             }}
           >
             <iframe

@@ -1,5 +1,5 @@
 import { Footer } from '../(home)/components/Footer';
-import HeroSection from './components/Hero';
+import HeroSection from './components/speak';
 
 export default function SpeakPage() {
   return (
