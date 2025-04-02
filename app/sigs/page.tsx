@@ -45,7 +45,6 @@ export default function Sigs() {
           <div className="absolute top-1/2 -translate-y-1/2 w-full md:w-[85%] h-[80%] md:h-[71%] bg-[#36FF90] rounded-full blur-[80px] md:blur-[120px] opacity-30 z-[-2]"></div>
           <div className="absolute bottom-0 w-[50%] md:w-[80%] h-[100px] md:h-[150px] bg-[#36FF90] rounded-t-full blur-2xl md:blur-3xl opacity-10 z-[-1]"></div>
         </div>
-
       </div>
       <div className="sm:mt-15 md:-mt-10 lg:-mt-10">
         <p className="text-primary text-[32px] md:text-[70px] leading-9 md:leading-none font-black text-center">
