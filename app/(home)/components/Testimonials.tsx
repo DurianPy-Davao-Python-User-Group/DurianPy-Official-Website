@@ -66,27 +66,27 @@ export function Testimonials() {
         DurianPy Ratings
       </div>
       <div className='relative'>
-        <button className='z-20 absolute left-8 bottom-1/2 bg-opacity-0' onClick={() => api?.scrollTo(current - 1)}>
-          <Image src={prevArrowIcon} alt='Prev' className='w-10' />
+        <button className='z-20 absolute left-0 md:left-8 bottom-1/2 bg-opacity-0' onClick={() => api?.scrollTo(current - 1)}>
+          <Image src={prevArrowIcon} alt='Prev' className='w-2/3' />
         </button>
         <CarouselContainer setApi={setApi}
           opts={{ loop: true }}
           autoplay={false}
           autoplayInterval={3000}
-          className="mx-auto px-24"
+          className="mx-auto px-[10%]"
         >
           {/* mx-auto max-w-[1280px] */}
           <CarouselContent className='mx-auto py-20'>
             {dummyData.map((data, index) => (
-              <CarouselItem className="relative px-5 flex justify-center lg:basis-1/3" key={index}>
-                <TestimonialCard name={data.name} date={data.date} comment={data.comment} rate={data.rate} profilePic={data.profilePic} className={current === index ? "scale-110 -mt-8" : ""} />
+              <CarouselItem className="relative px-[3%] flex justify-center lg:basis-1/3" key={index}>
+                <TestimonialCard name={data.name} date={data.date} comment={data.comment} rate={data.rate} profilePic={data.profilePic} className={current === index ? "sm:scale-110 sm:-mt-8" : ""} />
               </CarouselItem>
             ))}
           </CarouselContent>
           <CarouselDots className="z-10 absolute bottom-4 left-1/2 -translate-x-1/2 text-2xl py-4 text" />
         </CarouselContainer>
-        <button className='z-20 absolute right-8 bottom-1/2 bg-opacity-0' onClick={() => api?.scrollTo(current + 1)}>
-          <Image src={nextArrowIcon} alt='Next' className="w-10" />
+        <button className='z-20 absolute -right-3 md:right-8 bottom-1/2 bg-opacity-0' onClick={() => api?.scrollTo(current + 1)}>
+          <Image src={nextArrowIcon} alt='Next' className="w-2/3" />
         </button>
       </div>
     </section>
@@ -101,39 +101,39 @@ const Ratings = ({ rate, className }: { rate: number, className: string }) => {
   for (let i = 0; i < 5; i++) {
     // If index is greater than the rating, append white star, else yellow star.
     if (i >= rate) {
-      starRate.push(<Image src={whiteStarIcon} alt='yellow star' key={i} className='p-[1px]' />)
+      starRate.push(<Image src={whiteStarIcon} alt='yellow star' key={i} className='p-1' />)
     } else {
-      starRate.push(<Image src={yellowStarIcon} alt='yellow star' key={i} className='p-[1px]' />)
+      starRate.push(<Image src={yellowStarIcon} alt='yellow star' key={i} className='p-1' />)
     }
   }
 
   return (
-    <div className={cn('flex space-x-3 justify-center', className)}>{starRate}</div>
+    <div className={cn('flex justify-center', className)}>{starRate}</div>
   )
 }
 
 const TestimonialCard = ({ name, date, comment, rate, profilePic, className }: testimonial) => {
   return (
-    <div className={cn('transition-all duration-300 ease-in-out', className)}>
+    <div className={cn('transition-all duration-300 ease-in-out space-y-4', className)}>
       {/* SPEECH BUBBLE */}
-      <div className='relative min-w-[300px]'>
+      <div className='relative'>
         <Image src={testimonialCard} alt='testimonial card' priority={true} />
-        <Ratings rate={rate} className='absolute top-4 left-1/2 -translate-x-1/2' />
-        <div className='absolute h-1/2 top-16 px-8 text-white md:text-sm lg:text-base xl:text-lg overflow-hidden text-ellipsis xl:leading-6'>
+        <Ratings rate={rate} className='absolute top-[5%] left-1/2 -translate-x-1/2' />
+        <div className='absolute h-1/2 inset-y-1/4 px-[5%] text-white text-xs sm:text-base lg:text-base xl:text-lg overflow-hidden text-ellipsis xl:leading-6'>
           {comment}
         </div>
-        <a className="absolute bottom-16 left-0 right-2 text-[#B3B3B3] underline underline-offset-2 decoration-1 bg-gradient-to-t from-medium-dark-green from-35% pt-24 ms-8 pb-2 -mb-2"> Read More</a>
+        <a className="absolute h-fit pt-[15%] px-[4%] inset-x-1 bottom-1/4 text-[#B3B3B3] underline underline-offset-2 decoration-1 text-xs sm:text-base bg-gradient-to-t from-medium-dark-green from-50%"> Read More</a>
       </div>
 
       {/* USER AVATAR & NAME */}
-      <div className='mt-4 ms-[70px] flex space-x-4 items-center'>
-        <Avatar className='h-16 w-16'>
+      <div className='flex space-x-3 px-[17%] items-center'>
+        <Avatar className='h-full w-full max-h-14 max-w-14 sm:max-h-16 sm:max-w-16'>
           <AvatarImage src={profilePic} />
           <AvatarFallback>{name[0]}</AvatarFallback>
         </Avatar>
         <div>
-          <div className="text-white text-lg">{name}</div>
-          <div className='text-[#B3B3B3]'>{date}</div>
+          <div className="text-white text-xs sm:text-base lg:text-base xl:text-lg">{name}</div>
+          <div className='text-[#B3B3B3] text-xs xl:text-base'>{date}</div>
         </div>
       </div>
     </div>
