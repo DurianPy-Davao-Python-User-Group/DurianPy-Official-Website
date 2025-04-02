@@ -36,7 +36,8 @@ const config: Config = {
         'button-hovered': 'var(--button-hovered)',
       },
       backgroundImage: {
-        'radial-custom': 'radial-gradient(at top right, #FFC201 0%, #1A3E2A 84%)',
+        'radial-custom':
+          'radial-gradient(at top right, #FFC201 0%, #1A3E2A 84%)',
         'gradient-ltr-lightgreen-transparent':
           'linear-gradient(to right, #36FF90,rgba(115, 115, 115, 0))',
         'gradient-utd-lightgreen-darkgreen':
@@ -99,13 +100,15 @@ const config: Config = {
   },
   plugins: [
     require('tailwindcss-animate'),
-    function (pluginApi: { addUtilities: (utilities: Record<string, any>) => void }) {
+    function (pluginApi: {
+      addUtilities: (utilities: Record<string, any>) => void;
+    }) {
       const { addUtilities } = pluginApi;
       addUtilities({
-        ".text-shadow-sm": { textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)" },
-        ".text-shadow-md": { textShadow: "2px 2px 4px rgba(0, 0, 0, 0.4)" },
-        ".text-shadow-lg": { textShadow: "3px 3px 6px rgba(0, 0, 0, 0.5)" },
-        ".text-shadow-xl": { textShadow: "4px 4px 8px rgba(0, 0, 0, 0.6)" },
+        '.text-shadow-sm': { textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' },
+        '.text-shadow-md': { textShadow: '2px 2px 4px rgba(0, 0, 0, 0.4)' },
+        '.text-shadow-lg': { textShadow: '3px 3px 6px rgba(0, 0, 0, 0.5)' },
+        '.text-shadow-xl': { textShadow: '4px 4px 8px rgba(0, 0, 0, 0.6)' },
       });
     },
   ],
