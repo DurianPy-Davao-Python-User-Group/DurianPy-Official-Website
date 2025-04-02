@@ -107,7 +107,7 @@ export default function ContactPage() {
           </div>
           <div
             className={`flex gap-[28px] ${
-              width < 1024 ? 'flex-col items-center gap-[10px]' : 'flex-row'
+              width < 1024 ? 'flex-col items-center gap-[0px] ' : 'flex-row'
             }`}
           >
             <Image
@@ -118,7 +118,9 @@ export default function ContactPage() {
               className=""
             />
             <div className="flex flex-col text-white">
-              <p className="text-[#FFC201] leading-[49px] text-web-medium-font font-bold">
+              <p
+                className={`text-[#FFC201] leading-[49px] text-web-medium-font font-bold ${width < 1024 ? 'leading-[25px] mt-[5px] md:leading-[45px]' : ''}`}
+              >
                 E-mail us
               </p>
               <p className="text-web-body-font">durianpy.davao@gmail.com</p>
