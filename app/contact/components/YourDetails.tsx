@@ -59,10 +59,7 @@ export default function YourDetails() {
         />
       </div>
 
-      <Button
-        variant="footer"
-        className="max-w-[148px] text-dark-green text-web-body-font "
-      >
+      <Button variant="footer" className="max-w-[148px] text-dark-green">
         Send
       </Button>
     </div>
