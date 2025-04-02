@@ -88,30 +88,37 @@ export default function ContactPage() {
       </svg>
       <Container
         className={`relative min-h-screen justify-center items-center flex gap-[46px] ${
-          width < 1024 ? 'flex-col' : 'flex-row'
+          width < 1024 ? 'flex-col mt-[100px]' : 'flex-row'
         }`}
       >
         <div
           className={`flex flex-col gap-[80px] items-start justify-start ${
-            width < 1024 ? 'text-center w-[531px] items-center' : ''
+            width < 1024
+              ? 'text-center justify-center sw-[531px] items-center'
+              : ''
           }`}
         >
-          <div className="flex flex-col gap-[20px] text-white">
+          <div className="flex flex-col gap-[20px] text-white sm:items-center lg:items-start">
             <h1 className="text-web-title-font font-bold">Contact Us</h1>
-            <p className="text-web-body-font">
+            <p className="text-web-body-font sm:w-[300px]">
               Get in touch with us for any questions, concerns, or to learn more
               about our organization and initiatives
             </p>
           </div>
-          <div className="flex gap-[28px]">
+          <div
+            className={`flex gap-[28px] ${
+              width < 1024 ? 'flex-col items-center gap-[10px]' : 'flex-row'
+            }`}
+          >
             <Image
               src={'/assets/icons/email-us.svg'}
               width={63}
               height={63}
               alt=""
+              className=""
             />
             <div className="flex flex-col text-white">
-              <p className="text-[#FFC201] leading-[49px] text-web-medium-font font-bold text-left">
+              <p className="text-[#FFC201] leading-[49px] text-web-medium-font font-bold">
                 E-mail us
               </p>
               <p className="text-web-body-font">durianpy.davao@gmail.com</p>

@@ -10,7 +10,10 @@ export default function YourDetails() {
 
       {/* Email Input */}
       <div className="mb-4">
-        <label htmlFor="email" className="block mb-2 font-semibold">
+        <label
+          htmlFor="email"
+          className="block mb-2 font-semibold text-web-body-font "
+        >
           Email
         </label>
         <Input
@@ -24,7 +27,10 @@ export default function YourDetails() {
 
       {/* Subject Input */}
       <div className="mb-4">
-        <label htmlFor="subject" className="block mb-2 font-semibold">
+        <label
+          htmlFor="subject"
+          className="block mb-2 font-semibold text-web-body-font "
+        >
           Subject
         </label>
         <Input
@@ -38,19 +44,25 @@ export default function YourDetails() {
 
       {/* Message Textarea */}
       <div className="mb-4">
-        <label htmlFor="message" className="block mb-2 font-semibold">
+        <label
+          htmlFor="message"
+          className="block mb-2 font-semibold text-web-body-font "
+        >
           Message
         </label>
         <textarea
           id="message"
           placeholder="Your Message"
-          className="w-full p-2 bg-transparent rounded text-base focus:outline-none caret-white"
+          className="w-full p-2 bg-transparent rounded text-base focus:outline-none caret-white text-web-body-font "
           rows={4}
           style={{ resize: 'none', maxHeight: '150px' }}
         />
       </div>
 
-      <Button variant="footer" className="max-w-[148px] text-dark-green">
+      <Button
+        variant="footer"
+        className="max-w-[148px] text-dark-green text-web-body-font "
+      >
         Send
       </Button>
     </div>
