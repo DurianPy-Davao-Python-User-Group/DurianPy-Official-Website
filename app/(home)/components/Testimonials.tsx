@@ -6,14 +6,14 @@ import {
   Carousel as CarouselContainer,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
   CarouselDots,
 } from '@/components/ui/carousel';
 import Image from 'next/image';
 import testimonialCard from '@/public/assets/testimonials/testimonial-card.svg'
 import yellowStarIcon from '@/public/assets/testimonials/yellow-star.svg'
 import whiteStarIcon from '@/public/assets/testimonials/white-star.svg'
+import nextArrowIcon from '@/public/assets/testimonials/next-arrow.svg'
+import prevArrowIcon from '@/public/assets/testimonials/previous-arrow.svg'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -58,7 +58,6 @@ export function Testimonials() {
       setCurrent(api.selectedScrollSnap())
     })
   }, [api])
-  console.log(current)
 
   return (
     <section className='pt-10 pb-40 relative'>
@@ -66,32 +65,36 @@ export function Testimonials() {
       <div className=''>
         DurianPy Ratings
       </div>
-      <CarouselContainer setApi={setApi}
-        opts={{ loop: true }}
-        autoplay={false}
-        autoplayInterval={3000}
-        className="mx-auto max-w-[1280px]"
-      >
-        <CarouselContent className='py-20'>
-          {dummyData.map((data, index) => (
-            <CarouselItem className="relative flex justify-center basis-1/3" key={index}>
-              <TestimonialCard name={data.name} date={data.date} comment={data.comment} rate={data.rate} profilePic={data.profilePic} className={current === index ? "scale-110 -mt-8" : ""} />
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-
-        {/* CAROUSEL INDICATORS */}
-        <CarouselDots className="z-10 absolute bottom-4 left-1/2 -translate-x-1/2 text-2xl py-4 text" />
-
-        <CarouselPrevious className="z-10 -ml-10 h-16 w-16 sm:w-20 sm:h-20" />
-        <CarouselNext className="z-10 -mr-10 h-16 w-16 sm:w-20 sm:h-20" />
-      </CarouselContainer>
+      <div className='relative'>
+        <button className='z-20 absolute left-8 bottom-1/2 bg-opacity-0' onClick={() => api?.scrollTo(current - 1)}>
+          <Image src={prevArrowIcon} alt='Prev' className='w-10' />
+        </button>
+        <CarouselContainer setApi={setApi}
+          opts={{ loop: true }}
+          autoplay={false}
+          autoplayInterval={3000}
+          className="mx-auto px-24"
+        >
+          {/* mx-auto max-w-[1280px] */}
+          <CarouselContent className='mx-auto py-20'>
+            {dummyData.map((data, index) => (
+              <CarouselItem className="relative px-5 flex justify-center lg:basis-1/3" key={index}>
+                <TestimonialCard name={data.name} date={data.date} comment={data.comment} rate={data.rate} profilePic={data.profilePic} className={current === index ? "scale-110 -mt-8" : ""} />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselDots className="z-10 absolute bottom-4 left-1/2 -translate-x-1/2 text-2xl py-4 text" />
+        </CarouselContainer>
+        <button className='z-20 absolute right-8 bottom-1/2 bg-opacity-0' onClick={() => api?.scrollTo(current + 1)}>
+          <Image src={nextArrowIcon} alt='Next' className="w-10" />
+        </button>
+      </div>
     </section>
   )
 }
 
 // Number of Stars depending on rating.
-const Ratings = ({ rate }: { rate: number }) => {
+const Ratings = ({ rate, className }: { rate: number, className: string }) => {
   const starRate = []
 
   // Append stars
@@ -105,22 +108,21 @@ const Ratings = ({ rate }: { rate: number }) => {
   }
 
   return (
-    <div className='flex space-x-3 justify-center'>{starRate}</div>
+    <div className={cn('flex space-x-3 justify-center', className)}>{starRate}</div>
   )
 }
 
 const TestimonialCard = ({ name, date, comment, rate, profilePic, className }: testimonial) => {
   return (
-    <div className='relative w-fit'>
+    <div className={cn('transition-all duration-300 ease-in-out', className)}>
       {/* SPEECH BUBBLE */}
-      <Image src={testimonialCard} alt='testimonial card' priority={true} className={cn('transition-all duration-300 ease-in-out', className)} />
-      <div className={cn("absolute z-10 top-0 py-5 px-10 space-y-5 h-72 w-full transition-all duration-300 ease-in-out", className)}>
-        <Ratings rate={rate} />
-        <div className='relative text-white text-lg overflow-hidden text-ellipsis h-[125px] leading-6'>
+      <div className='relative min-w-[300px]'>
+        <Image src={testimonialCard} alt='testimonial card' priority={true} />
+        <Ratings rate={rate} className='absolute top-4 left-1/2 -translate-x-1/2' />
+        <div className='absolute h-1/2 top-16 px-8 text-white md:text-sm lg:text-base xl:text-lg overflow-hidden text-ellipsis xl:leading-6'>
           {comment}
-          <div className='absolute bottom-0 z-20 bg-gradient-to-t from-medium-dark-green h-20 w-full'> </div>
         </div>
-        <a className='text-[#B3B3B3] absolute bottom-14 underline underline-offset-2 decoration-1' href='#'>Read more</a>
+        <a className="absolute bottom-16 left-0 right-2 text-[#B3B3B3] underline underline-offset-2 decoration-1 bg-gradient-to-t from-medium-dark-green from-35% pt-24 ms-8 pb-2 -mb-2"> Read More</a>
       </div>
 
       {/* USER AVATAR & NAME */}
