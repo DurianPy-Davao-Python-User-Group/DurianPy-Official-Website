@@ -11,6 +11,8 @@ const inputVariants = cva(
         default:
           'border border-neutral-200 bg-white dark:bg-neutral-950 dark:border-neutral-800',
         underline: 'border-0 border-b border-neutral-200 bg-transparent ',
+        'contact-unfilled':
+          'bg-transparent border-b border-gray-300 p-0 placeholder:text-grey-300',
       },
     },
     defaultVariants: {
