@@ -1,6 +1,8 @@
 'use client';
 import React, { useState } from 'react';
 import { Input } from '@/components/ui/input';
+import gradient from '@/public/assets/jobBoard/gradient.svg';
+import Image from 'next/image';
 import { Search } from 'lucide-react';
 import { Map } from 'lucide-react';
 
@@ -11,7 +13,11 @@ export const JobBoard = () => {
     <div>
       {/* HERO SECTION */}
       {/* GRADIENT */}
-      <div className="w-full h-96 absolute -z-10 blur-xl bg-gradient-to-r from-green-300/0 via-yellow-300/40 to-yellow-400/70"></div>
+      <Image
+        src={gradient}
+        alt="bg"
+        className="absolute top-20 left-0 -z-10 w-full h-[500px] object-cover sm:h-[500px] md:h-[400px]"
+      />
 
       {/* TITLE */}
       <div className="h-[500px] flex flex-col items-center justify-center pl-3 pr-2 gap-y-1">
@@ -43,7 +49,7 @@ export const JobBoard = () => {
               />
             </div>
 
-            <div className="flex flex-row items-center gap-1 translate-x-4">
+            <div className="flex flex-row items-center gap-1 translate-x-3">
               <div className="flex items-center">
                 <div className="w-[1px] h-[18px] bg-dark-green/45"></div>
               </div>
