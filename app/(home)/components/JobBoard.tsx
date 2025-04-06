@@ -10,7 +10,7 @@ export const JobBoard = () => {
   const [placeholder, setPlaceholder] = useState('');
 
   return (
-    <div>
+    <div className="lg:h-[680px] md:h-[670px] sm:h-[300px]">
       {/* HERO SECTION */}
       {/* GRADIENT */}
       <Image
@@ -35,14 +35,14 @@ export const JobBoard = () => {
         </div>
 
         {/* DESCRIPTION */}
-        <p className="text-white text-[13px] font-medium px-4 text-center md:text-[24px] md:px-44">
+        <p className="text-white text-[13px] font-medium px-4 text-center md:text-[24px] md:w-[700px] lg:w-[700px]">
           Search and find your dream job now easier than ever, you can simply
           browse and find a job if you need it
         </p>
 
         {/* SEARCH BAR */}
-        <div className="w-[362px] md:w-[867px] h-[33px] md:h-[74px] bg-white flex flex-row items-center rounded-[64px] mt-3">
-          <div className="w-full flex flex-row justify-center gap-2 md:gap-x-60">
+        <div className="w-[362px] md:w-[867px] h-[33px] md:h-[74px] lg:w-[867px] bg-white flex flex-row items-center rounded-[64px] mt-3 p-100">
+          <div className="w-full flex flex-row justify-center gap-2 md:gap-x-60 ">
             <div className="flex flex-row items-center -ml-1 gap-x-2 md:pl-6">
               <Search className="w-[18px] md:w-[30px] md:h-[30px] h-[18px] text-medium-dark-green stroke-[4]" />
               <Input
