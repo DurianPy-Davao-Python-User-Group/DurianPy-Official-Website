@@ -155,7 +155,7 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
                 {/* Horizontal Line */}
                 <div className="w-[440px] h-[1.5px] bg-[#FFFFFF]"></div>
               </div>
-              <p className="lg:text-xl mt-4 text-[12px] max-md:m-5">
+              <p className="lg:text-xl mt-4 text-[12px] max-md:m-5 pr-3 pl-3">
                 {featuredSponsor.testimonial}
                 <br></br>
                 <br></br>— {featuredSponsor.name}

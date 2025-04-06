@@ -1,7 +1,7 @@
 import { Container } from '@/components/ui/container';
 import dynamic from 'next/dynamic';
 const SponsorsDesktop = dynamic(() => import('./SponsorsDesktop'));
-// const SponsorsMobile = dynamic(() => import("./SponsorsMobile"));
+const SponsorsMobile = dynamic(() => import("./SponsorsMobile"));
 
 interface SponsorshipProps {
   name: string;
@@ -64,9 +64,9 @@ export function Sponsors() {
         </section>
 
         {/* Mobile View (Below 768px) */}
-        {/* <section className="md:hidden">
-                    <SponsorsMobile sponsors={sponsors} />
-                </section> */}
+        <section className="md:hidden">
+          <SponsorsMobile sponsors={sponsors} />
+        </section> 
       </Container>
     </section>
   );
