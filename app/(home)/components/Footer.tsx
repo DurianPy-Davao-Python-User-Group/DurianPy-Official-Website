@@ -42,7 +42,12 @@ const socialLinks = [
 
 const links = [
   { label: 'Home', href: '/' },
-  { label: 'SIGs', href: '/sigs' },
+  // { label: 'SIGs', href: '/sigs' },
+  {
+    label: 'Code of Conduct',
+    href: '/code-of-conduct',
+    external: false,
+  },
   { label: 'About', href: 'https://www.meetup.com/durianpy/', external: true },
   {
     label: 'Speak',
