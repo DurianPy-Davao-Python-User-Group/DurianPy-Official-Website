@@ -73,16 +73,25 @@ export default function DesktopView() {
       >
         Speak
       </Button>
-      <Button
+      {/* <Button
         variant={'navLink'}
         onClick={() => router.push('/404')}
         className={`${pathname === '/sigs' ? 'text-primary border-primary' : ''}`}
       >
         SIGs
+      </Button> */}
+      <Button
+        variant={'navLink'}
+        onClick={() => router.push('/code-of-conduct')}
+        className={`${pathname === '/code-of-conduct' ? 'text-primary border-primary' : ''}`}
+      >
+        Code of Conduct
       </Button>
       <Button
         variant={'navLink'}
-        onClick={() => router.push('/contact')}
+        onClick={() =>
+          redirectTo({ href: 'https://www.facebook.com/durianpy' })
+        }
         className={`${pathname === '/contact' ? 'text-primary border-primary' : ''}`}
       >
         Contact Us
