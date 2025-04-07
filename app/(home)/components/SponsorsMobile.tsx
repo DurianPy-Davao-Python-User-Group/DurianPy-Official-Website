@@ -9,12 +9,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-
+import { cn } from '@/lib/utils';
 
 interface SponsorsProps {
   name: string;
   logoMobile: string;
-  testimonial: string;
+  description: string;
   url: string;
 }
 
@@ -81,21 +81,21 @@ const SponsorsMobile = ({ sponsors }: { sponsors: SponsorsProps[] }) => {
         <span className="text-white">Our</span> Sponsors
       </h1>
       <p className="text-center text-[12px] mb-10 text-white max-w-[31ch] mx-auto">
-        A big thank you to our generous sponsors whose support makes our
-        work possible and helps us create lasting impact.
+        A big thank you to our generous sponsors whose support makes our work
+        possible and helps us create lasting impact.
       </p>
 
-    <div className="flex justify-center items-center mb-4"> 
-      <Button
-            className="w-[150px] py-[4px] flex justify-center items-center text-sm pt-3 pb-3"
-            variant={'sponsor-be-our-sponsor'}
-            onClick={() => {
-              window.location.href = '/404';
-            }}
-          >
-            Be Our Sponsor
-      </Button>
-    </div>
+      <div className="flex justify-center items-center mb-4">
+        <Button
+          className="w-[150px] py-[4px] flex justify-center items-center text-sm pt-3 pb-3"
+          variant={'sponsor-be-our-sponsor'}
+          onClick={() => {
+            window.location.href = '/404';
+          }}
+        >
+          Be Our Sponsor
+        </Button>
+      </div>
 
       <div className="relative">
         {/* Carousel or Full View */}
@@ -135,8 +135,8 @@ const SponsorsMobile = ({ sponsors }: { sponsors: SponsorsProps[] }) => {
                           showAll
                             ? 'opacity-100 scale-100'
                             : shouldScale
-                            ? `opacity-100 ${scaleSize}`
-                            : 'opacity-50'
+                              ? `opacity-100 ${scaleSize}`
+                              : 'opacity-50'
                         }`}
                       >
                         {/* Sponsor Logo */}
@@ -151,7 +151,10 @@ const SponsorsMobile = ({ sponsors }: { sponsors: SponsorsProps[] }) => {
                               alt={sponsor.name}
                               width={100}
                               height={100}
-                              className="max-h-[100px] w-auto object-contain cursor-pointer"
+                              className={cn(
+                                'max-h-[100px] w-auto object-contain cursor-pointer',
+                                sponsor.name === 'Stace' ? 'scale-125' : ''
+                              )}
                             />
                           </Link>
                         </div>
@@ -179,9 +182,9 @@ const SponsorsMobile = ({ sponsors }: { sponsors: SponsorsProps[] }) => {
                           <div className="w-[100px] h-[1.5px] bg-[#FFFFFF]"></div>
                         </div>
 
-                        {/* Name + testimonial */}
+                        {/* Name + description */}
                         <p className="relative text-white text-[9px] mt-[1px] px-4 leading-tight text-left max-h-[90px] overflow-hidden pb-4">
-                          {sponsor.testimonial}
+                          {sponsor.description}
                           <br></br>
                           <br></br>— {sponsor.name}
                         </p>

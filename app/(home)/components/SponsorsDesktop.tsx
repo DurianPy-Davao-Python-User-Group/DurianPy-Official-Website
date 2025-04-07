@@ -19,7 +19,7 @@ interface SponsorshipProps {
   name: string;
   logo: string;
   logoMobile: string;
-  testimonial: string;
+  description: string;
   url: string;
 }
 
@@ -124,10 +124,10 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
                   loading="lazy"
                   fill
                   className={cn(
-                    'object-contain',
                     featuredSponsor.name === 'PythonPH'
-                      ? 'scale-150' // Increase the size for specific sponsors
-                      : '',
+                      ? 'scale-150'
+                      : 'scale-100',
+                    'object-contain',
                     'w-full',
                     'h-full',
                     'p-12'
@@ -156,7 +156,7 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
                 <div className="w-[440px] h-[1.5px] bg-[#FFFFFF]"></div>
               </div>
               <p className="lg:text-xl mt-4 text-[12px] max-md:m-5 pr-3 pl-3">
-                {featuredSponsor.testimonial}
+                {featuredSponsor.description}
                 <br></br>
                 <br></br>— {featuredSponsor.name}
               </p>
