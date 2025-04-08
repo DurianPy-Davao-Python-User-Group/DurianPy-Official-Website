@@ -48,7 +48,11 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
       setCurrent(correctedCurrentIndex);
       setfeaturedSponsor(sponsors[correctedCurrentIndex]);
     });
+<<<<<<< HEAD
   }, [api, sponsors]);
+=======
+  }, [api]);
+>>>>>>> db7be11 (feat: add sponsor section)
 
   const plugin = useRef(Autoplay({ delay: 5000, stopOnInteraction: true }));
 
