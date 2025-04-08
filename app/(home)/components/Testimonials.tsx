@@ -4,32 +4,25 @@ import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { Container } from '@/components/ui/container';
 import Link from 'next/link';
-import { type CarouselApi } from '@/components/ui/carousel';
-import {
-  Carousel as CarouselContainer,
-  CarouselContent,
-  CarouselItem,
-  CarouselDots,
-  CarouselNext,
-  CarouselPrevious
-} from '@/components/ui/carousel';
-import testimonialCard from '@/public/assets/testimonials/testimonial-card.svg';
-import yellowStarIcon from '@/public/assets/testimonials/yellow-star.svg';
-import whiteStarIcon from '@/public/assets/testimonials/white-star.svg';
-import nextArrowIcon from '@/public/assets/testimonials/next-arrow.svg';
-import prevArrowIcon from '@/public/assets/testimonials/previous-arrow.svg';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { CarouselDots, type CarouselApi } from '@/components/ui/carousel';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { cn } from '@/lib/utils';
+import YellowStar from '@/public/assets/testimonials/yellow-star.svg';
+import WhiteStar from '@/public/assets/testimonials/white-star.svg';
+import ChatBubble from '@/public/assets/testimonials/chat-bubble.svg';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel';
 
-type testimonial = {
-  name: string;
-  date: string;
-  comment: string;
+type TestimonialProps = {
+  text: string;
   rate: number;
-  profilePic: string;
-  className: string;
+  active: boolean;
 };
 
 export function Testimonials() {
@@ -81,7 +74,6 @@ export function Testimonials() {
     if (!api) {
       return;
     }
-
     setCurrent(api.selectedScrollSnap());
 
     api.on('select', () => {
@@ -90,37 +82,46 @@ export function Testimonials() {
   }, [api]);
 
   return (
-    <section className="relative z-10 text-white py-12 sm:py-16">
-      <Container className='space-y-6 xl:space-x-0 bg-green-300'>
+    <section className="relative z-10 text-white py-12 sm:py-16 -ms-4 lg:-ms-0 ">
+      <Container className="space-y-6 xl:space-x-0 mx-auto lg:space-y-3">
         {/* Combined container: Ratings + Button */}
-        <div className="flex flex-col space-y-5 xl:flex-row xl:items-center xl:justify-between px-[1%] 2xl:px-0">
+        <div className="flex flex-col space-y-5 xl:flex-row xl:justify-between px-[1%] 2xl:px-0 sm:pb-4 lg:flex-row lg:px-14">
           {/* Logo & Ratings */}
-          <div className="flex flex-col items-center xl:items-start xl:text-left w-full">
-            <div>
-              <div className="flex items-center gap-x-4">
+          <div className="flex flex-col items-center xl:items-start xl:text-left w-full lg:items-start">
+            <div className="-space-y-4">
+              <div className="flex items-center gap-x-2">
                 <Image
                   src="/assets/logo.svg"
                   height={64}
                   width={64}
-                  className="h-24 w-auto"
+                  className="h-16 sm:h-24 w-auto"
                   alt="Durianpy Logo"
                   priority
                 />
-                <h2 className="text-4xl font-normal">
+                <h2 className="text-2xl mt-2 sm:text-3xl sm:mt-3 font-normal">
                   Ratings
                 </h2>
               </div>
 
               {/* Star Ratings */}
-              <div className="flex sm:flex-row self items-center sm:space-x-4 -mt-5 ms-2">
-                <span className="">4.8</span>
-                <div className="flex -space-x-2 sm:-space-x-1">
+              <div className="flex text-xs sm:text-base sm:flex-row self items-center space-x-1 sm:space-x-4 -mt-5 ms-2">
+                <span className="font-semibold mt-1">4.8</span>
+                <div className="flex -space-x-3 sm:-space-x-1">
                   {[...Array(4)].map((_, i) => (
-                    <Image src={yellowStarIcon} alt="yellow star" key={i} className="p-2 sm:p-[6px]" />
+                    <Image
+                      src={YellowStar}
+                      alt="yellow star"
+                      key={i}
+                      className="p-2 sm:p-[6px]"
+                    />
                   ))}
-                  <Image src={whiteStarIcon} alt="yellow star" className="p-2 sm:p-[6px]" />
+                  <Image
+                    src={WhiteStar}
+                    alt="yellow star"
+                    className="p-2 sm:p-[6px]"
+                  />
                 </div>
-                <span className="font-light">5 reviews</span>
+                <span className="font-light mt-1">5 reviews</span>
               </div>
             </div>
           </div>
@@ -130,7 +131,7 @@ export function Testimonials() {
             <Link href="https://www.meetup.com/durianpy/" target="_blank">
               <Button
                 variant="footer"
-                className="py-1 px-4 sm:py-2 sm:px-6 text-black sm:text-lg sm:font-normal"
+                className="py-1 px-4 text-xs sm:py-1.5 sm:px-6 text-black sm:text-lg sm:font-normal lg:mt-3"
               >
                 Write a Review
               </Button>
@@ -139,60 +140,69 @@ export function Testimonials() {
         </div>
 
         {/* CAROUSEL */}
-        <div
-          className=""
-          onClick={() => setIsInteracting(true)}
-          onMouseLeave={() => setIsInteracting(false)}
-        >
-          <CarouselContainer
+        <div>
+          <Carousel
             setApi={setApi}
             opts={{ loop: true }}
             autoplay={!isInteracting}
             autoplayInterval={5000}
-            className="relative mx-auto sm:min-w-[535px] sm:w-1/2 xl:w-full bg-red-300"
+            onClick={() => setIsInteracting(true)}
+            onMouseLeave={() => setIsInteracting(false)}
+            className="max-w-96 sm:w-96 lg:max-w-full lg:w-full lg:px-5 mx-auto"
           >
-            <CarouselContent className="mx-auto sm:-ms-[4%] xl:py-[4%]">
+            <CarouselContent className="flex mx-auto sm:-ms-4 lg:-ms-0 lg:py-8">
               {dummyData.map((data, index) => (
                 <CarouselItem
-                  className="sm:px-0 sm:relative xl:px-[4%] sm:flex sm:justify-center xl:basis-1/3"
+                  className="flex-col justify-center lg:basis-1/3 lg:px-11"
                   key={index}
                 >
                   <TestimonialCard
-                    name={data.name}
-                    date={data.date}
-                    comment={data.comment}
+                    text={data.comment}
                     rate={data.rate}
-                    profilePic={data.profilePic}
-                    className={current === index ? 'xl:scale-125' : ''}
+                    active={current === index ? true : false}
                   />
+                  <div
+                    className={
+                      current === index
+                        ? 'flex justify-center items-center space-x-3 mt-4 sm:mt-2 sm:-ms-16 lg:-ms-5 lg:scale-125 lg:mt-12 transition-all duration-300 ease-in-out'
+                        : 'flex justify-center items-center space-x-3 mt-4 sm:mt-2 sm:-ms-16 lg:-ms-0 lg:mb-12 transition-all duration-300 ease-in-out'
+                    }
+                  >
+                    <Avatar className="h-16 w-16">
+                      <AvatarImage src={data.profilePic} />
+                      <AvatarFallback className="text-2xl text-[#B3B3B3]">
+                        {data.name
+                          .split(' ')
+                          .map((word) => word[0])
+                          .join('')
+                          .toUpperCase()}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div className="flex-col">
+                      <div>{data.name}</div>
+                      <div className="text-sm text-[#B3B3B3]">{data.date}</div>
+                    </div>
+                  </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-
-            <CarouselPrevious className="xl:hidden hidden sm:block sm:absolute z-20 w-28 h-28" />
-            <CarouselNext className="xl:hidden hidden sm:block sm:absolute z-20 w-28 h-28" />
-            <CarouselDots className="z-10 absolute bottom-4 left-1/2 -translate-x-1/2 text-2xl py-4 text" />
-          </CarouselContainer>
+            <CarouselPrevious
+              className="hidden sm:block absolute -left-24 h-20 w-20 -mt-[5%] lg:-left-6 lg:h-20 lg:w-20"
+              onClick={() => api?.scrollTo(current - 1)}
+            />
+            <CarouselNext
+              className="hidden sm:block absolute -right-24 h-20 w-20 -mt-[5%] lg:-right-6 lg:h-20 lg:w-20"
+              onClick={() => api?.scrollTo(current + 1)}
+            />
+            <CarouselDots className="pt-5" />
+          </Carousel>
         </div>
-        {/* <button */}
-        {/*   className="" */}
-        {/*   onClick={() => api?.scrollTo(current - 1)} */}
-        {/* > */}
-        {/*   <Image src={prevArrowIcon} alt="Prev" className="scale-150" /> */}
-        {/* </button> */}
-        {/* <button */}
-        {/*   className="" */}
-        {/*   onClick={() => api?.scrollTo(current + 1)} */}
-        {/* > */}
-        {/*   <Image src={nextArrowIcon} alt="Next" className="scale-150" /> */}
-        {/* </button> */}
       </Container>
     </section>
   );
 }
 
-// Number of Stars depending on rating.
-const Ratings = ({ rate, size, spacing, className }: { rate: number, size?: string, spacing?: string, className?: string }) => {
+export function TestimonialCard({ text, rate, active }: TestimonialProps) {
   const starRate = [];
 
   // Append stars
@@ -200,68 +210,56 @@ const Ratings = ({ rate, size, spacing, className }: { rate: number, size?: stri
     // If index is greater than the rating, append white star, else yellow star.
     if (i >= rate) {
       starRate.push(
-        <Image src={whiteStarIcon} alt="yellow star" key={i} className={cn("p-1", size)} />
+        <Image src={WhiteStar} alt="yellow star" key={i} className="lg:p-1" />
       );
     } else {
       starRate.push(
-        <Image src={yellowStarIcon} alt="yellow star" key={i} className={cn("p-1", size)} />
+        <Image src={YellowStar} alt="yellow star" key={i} className="lg:p-1" />
       );
     }
   }
 
   return (
-    <div className={cn("flex justify-center", spacing, className)}>
-      {starRate}
-    </div>
-  );
-};
-
-const TestimonialCard = ({
-  name,
-  date,
-  comment,
-  rate,
-  profilePic,
-  className,
-}: testimonial) => {
-  return (
-    <div
-      className={cn(
-        'transition-all duration-300 ease-in-out space-y-4',
-        className
-      )}
-    >
-      {/* SPEECH BUBBLE */}
-      <div className="hidden sm:block relative">
-        <Image src={testimonialCard} alt="testimonial card" priority={true} />
-        <Ratings rate={rate} size={"px-0"} spacing={"space-x-2"} className={'absolute top-[5%] left-1/2 -translate-x-1/2'} />
-        <div className="absolute h-1/2 inset-y-1/4 px-[10%] text-white text-xs sm:text-xl xl:text:base overflow-hidden text-ellipsis xl:leading-6">
-          {comment}
-        </div>
-        <div className="absolute h-fit pt-[15%] px-[9%] inset-x-1 bottom-[24%] text-[#B3B3B3] underline underline-offset-2 decoration-1 text-xs sm:text-base bg-gradient-to-t from-medium-dark-green from-50% -mt-3">
-          <a href="/404" target="_blank">
-            Read More
+    <>
+      {/* Mobile View Display */}
+      <div className="relative sm:hidden h-24 p-5 bg-medium-dark-green border border-[#36FF90] rounded-xl w-full text-clip overflow-hidden">
+        <div className="text-xs sm:text-base">{text}</div>
+        <div className="absolute bottom-0 pb-2 pt-14 bg-gradient-to-t from-medium-dark-green from-20% inset-x-5">
+          <a
+            href=""
+            target="_blank"
+            className="text-xs sm:text-base text-yellow-400 underline"
+          >
+            Read more
           </a>
         </div>
       </div>
 
-      <div className='sm:hidden bg-medium-dark-green rounded-2xl border-2 border-green-300 py-5 px-10 h-32'>
-        <div>{comment}</div>
-      </div>
-
-      {/* USER AVATAR & NAME */}
-      <div className="flex space-x-3 px-[17%] items-center">
-        <Avatar className="h-full w-full max-h-20 max-w-20 sm:max-h-16 sm:max-w-16">
-          <AvatarImage src={profilePic} />
-          <AvatarFallback>{name[0]}</AvatarFallback>
-        </Avatar>
-        <div>
-          <div className="text-white text-2xl sm:text-base lg:text-base xl:text-lg">
-            {name}
-          </div>
-          <div className="text-[#B3B3B3] text-xl sm:text-xs xl:text-base">{date}</div>
+      {/* Tablet & Laptop View Display */}
+      <div
+        className={
+          active === true
+            ? 'hidden sm:block relative transition-all duration-300 ease-in-out lg:scale-125'
+            : 'hidden sm:block relative transition-all duration-300 ease-in-out'
+        }
+      >
+        <Image src={ChatBubble} alt="chat-bubble" />
+        <div className="flex absolute top-5 inset-x-0 justify-center space-x-2.5 lg:space-x-0.5">
+          {starRate}
+        </div>
+        <div className="absolute top-16 mt-1 h-44 px-9 text-lg text-clip overflow-hidden lg:text-base lg:px-7 lg:h-1/3 xl:h-1/2">
+          {text}
+        </div>
+        <div className="absolute bottom-14 pb-2 pt-28 bg-gradient-to-t from-medium-dark-green from-25% inset-x-9 lg:inset-x-7 lg:bottom-10">
+          <a
+            href=""
+            target="_blank"
+            className="text-[#B3B3B3] underline lg:text-xs"
+          >
+            Read more
+          </a>
         </div>
       </div>
-    </div>
+    </>
   );
-};
+}
