@@ -15,7 +15,7 @@ interface redirectProps {
 }
 
 function redirectTo({ href }: redirectProps) {
-  window.open(href, '_blank', 'noopener,noreferrer');
+  window.location.href = href;
 }
 
 export default function DesktopView() {
@@ -75,7 +75,7 @@ export default function DesktopView() {
       </Button>
       {/* <Button
         variant={'navLink'}
-        onClick={() => router.push('/404')}
+        onClick={() => redirectTo({ href: '/sigs' })}
         className={`${pathname === '/sigs' ? 'text-primary border-primary' : ''}`}
       >
         SIGs
