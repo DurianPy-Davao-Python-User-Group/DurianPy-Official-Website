@@ -6,7 +6,6 @@ import { PythonFoundation } from './components//PythonFoundation';
 import { Partners } from './components//Partners';
 // import UpcomingEvents from './components//UpcomingEvents';
 import { Sponsors } from './components/Sponsors';
-import  UpcomingEvents   from './components//UpcomingEvents';
 
 import { Testimonials } from './components/Testimonials';
 
@@ -22,7 +21,6 @@ export default function HomePage() {
       <Partners />
       {/* <UpcomingEvents /> */}
       <Sponsors />
-      <UpcomingEvents/>
     </main>
   );
 }
