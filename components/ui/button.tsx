@@ -38,6 +38,8 @@ const buttonVariants = cva(
           'text-[14px] bg-dark-green text-[#36FF90] font-bold md:font-normal py-3 px-4 rounded-full opacity-90 w-36 mx-auto shadow-md hover:scale-105 hover:bg-[#1A3E2A] hover:text-[#36FF90] transition-all duration-300 ease-out',
         'hero-secondary':
           'border-[1px] border-dark-green text-[14px] text-dark-green font-bold md:font-normal py-3 px-4 rounded-full opacity-90 w-36 mx-auto shadow-md hover:scale-105 transition-all duration-300 ease-out',
+        'sponsor-be-our-sponsor':
+          'text-xl bg-primary text-black font-semibold py-3 rounded-full w-52 shadow-md hover:scale-105 transition-all duration-300 ease-out',
       },
       size: {
         default: '',
