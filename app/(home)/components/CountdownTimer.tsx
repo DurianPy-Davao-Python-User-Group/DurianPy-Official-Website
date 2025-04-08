@@ -33,7 +33,7 @@ export default function CountdownTimer({ eventDate }: CountdownTimerProps) {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [eventDate]);
+  }, [eventDate, calculateTimeLeft]);
 
   if (!isClient) return null;
 
