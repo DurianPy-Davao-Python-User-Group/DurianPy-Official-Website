@@ -158,7 +158,7 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
               <p className="lg:text-xl mt-4 text-[12px] max-md:m-5 pr-3 pl-3">
                 {featuredSponsor.description}
                 <br></br>
-                <br></br>— {featuredSponsor.name}
+                <br></br>- {featuredSponsor.name}
               </p>
             </Link>
           </div>
