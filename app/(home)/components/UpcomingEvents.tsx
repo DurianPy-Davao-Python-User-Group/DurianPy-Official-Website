@@ -68,7 +68,7 @@ const UpcomingEvents = () => {
       </div>
 
       {/* See more Events Button */}
-      <Button className="bg-primary hover:bg-primary mx-auto max-w-[80%] lg:max-w-[80%] md:max-w-[80%] w-full md:py-4 xl:py-4 md:font-medium text-dark-green py-[6px] font-semibold text-sm xl:text-2xl xl:max-w-full">
+      <Button className="bg-primary hover:bg-primary mx-auto max-w-[80%] lg:max-w-[80%] md:max-w-[80%] w-full md:py-2 xl:py-4 md:font-medium text-dark-green lg:py-4 lg:text-[15px] py-[4px] font-semibold text-[11px] xl:text-2xl xl:max-w-full">
         <Link href="/404">See More Events</Link>
       </Button>
     </Container>

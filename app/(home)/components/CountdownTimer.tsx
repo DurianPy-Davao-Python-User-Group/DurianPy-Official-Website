@@ -30,7 +30,9 @@ export default function CountdownTimer({ eventDate }: CountdownTimerProps) {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [calculateTimeLeft]);
+  }, [eventDate, calculateTimeLeft]);
+
+  if (!isClient) return null;
 
   return (
     <div className="bg-none p-2 w-full text-[#36FF90] md:w-auto">
