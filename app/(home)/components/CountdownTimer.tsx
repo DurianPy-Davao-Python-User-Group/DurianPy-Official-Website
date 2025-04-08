@@ -23,14 +23,19 @@ export default function CountdownTimer({ eventDate }: CountdownTimerProps) {
   };
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [calculateTimeLeft]);
+  }, [eventDate]);
+
+  if (!isClient) return null;
 
   return (
     <div className="bg-none p-2 w-full text-[#36FF90] md:w-auto">
