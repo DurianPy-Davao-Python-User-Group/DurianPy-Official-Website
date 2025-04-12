@@ -48,7 +48,7 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
       setCurrent(correctedCurrentIndex);
       setfeaturedSponsor(sponsors[correctedCurrentIndex]);
     });
-  }, [api]);
+  }, [api, sponsors]);
 
   const plugin = useRef(Autoplay({ delay: 5000, stopOnInteraction: true }));
 
