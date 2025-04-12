@@ -76,7 +76,7 @@ const HeroSection: React.FC = () => {
             Submission <span className="text-[#FFC201]">Guidelines </span>
           </h1>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mr-8 md:mr-12 lg:mr-20 mx-10 lg:mx-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-8 mr-8 md:mr-12 lg:mr-20 mx-10 lg:mx-0">
             {/* Left Column */}
             <div className="space-y-8">
               {/* What to be Mindful of */}
@@ -123,10 +123,22 @@ const HeroSection: React.FC = () => {
                   Helpful Resources
                 </h2>
                 <div className="[@media(max-width:392px)]:text-[8px] text-[8px] sm:text-[12px] md:text-[14px] lg:text-[16px]">
-                  <a href="#" className="hover:underline block">
+                  <a
+                    onClick={() =>
+                      handleRedirect(
+                        'https://us.pycon.org/2014/speaking/proposal_advice/'
+                      )
+                    }
+                    className="hover:underline block cursor-pointer"
+                  >
                     Great Advice for Giving Talks
                   </a>
-                  <a href="#" className="hover:underline block">
+                  <a
+                    onClick={() =>
+                      handleRedirect('https://forms.gle/x2cc6CrRhbhDeaxe9')
+                    }
+                    className="hover:underline block cursor-pointer"
+                  >
                     Submit Talk
                   </a>
                 </div>
@@ -134,7 +146,15 @@ const HeroSection: React.FC = () => {
             </div>
           </div>
           <div className="mt-8 lg:mt-14">
-            <Button className="bg-yellow-500 text-black font-medium py-2 md:py-2 lg:py-3 px-4 md:px-5 lg:px-7 [@media(max-width:320px)]:text-[6px] text-[10px] md:text-[14px] lg:text-[18px] rounded-full hover:bg-yellow-600 transition-all duration-300 ease-out hover:scale-105">
+            <Button
+              onClick={() =>
+                window.open(
+                  'https://mail.google.com/mail/?view=cm&fs=1&to=durianpy.davao@gmail.com',
+                  '_blank'
+                )
+              }
+              className="bg-yellow-500 text-black font-medium py-2 md:py-2 lg:py-3 px-4 md:px-5 lg:px-7 [@media(max-width:320px)]:text-[6px] text-[10px] md:text-[14px] lg:text-[18px] rounded-full hover:bg-yellow-600 transition-all duration-300 ease-out hover:scale-105"
+            >
               Have Questions?
             </Button>
           </div>
@@ -161,7 +181,7 @@ const HeroSection: React.FC = () => {
             }}
           >
             <iframe
-              src="https://docs.google.com/forms/d/e/1FAIpQLScTPUrZ8Xkfl2hsSlUZt0qzN7tE3zKt5e30d1OcI52YOsnrQg/viewform"
+              src="https://docs.google.com/forms/d/e/1FAIpQLScTPUrZ8Xkfl2hsSlUZt0qzN7tE3zKt5e30d1OcI52YOsnrQg/viewform?embedded=true"
               width="100%"
               height="550"
               className="h-[250px] md:h-[350px] lg:h-[550px] bg-white rounded-lg"
