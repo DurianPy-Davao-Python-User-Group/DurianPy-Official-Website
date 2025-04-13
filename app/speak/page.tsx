@@ -1,9 +1,9 @@
-import HeroSection from './components/speak';
+import SpeakDetails from './components/speak';
 
 export default function SpeakPage() {
   return (
     <main>
-      <HeroSection />
+      <SpeakDetails />
     </main>
   );
 }
