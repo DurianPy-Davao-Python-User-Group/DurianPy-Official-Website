@@ -11,14 +11,14 @@ const sigsData = [
 
 export default function Sigs() {
   return (
-    <main className="relative flex flex-col justify-center mt-28">
+    <main className="relative flex flex-col justify-center mt-28 2xl:mt-60">
       <div>
         <p className="text-primary text-[32px] md:text-[70px] leading-9 md:leading-none font-black text-center">
           SPECIAL <br />
           <span className="text-white">INTEREST GROUPS</span>
         </p>
 
-        <p className="text-white text-xs md:text-xl text-center mt-4 mx-auto w-[85%] 2xl:w-[55%]">
+        <p className="text-white text-xs md:text-xl text-center mt-4 2xl:my-14 mx-auto w-[80%] 2xl:w-[55%]">
           DurianPy&rsquo;s{' '}
           <span className="text-primary font-bold">
             Special Interest Groups
