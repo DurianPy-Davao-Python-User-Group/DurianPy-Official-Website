@@ -87,12 +87,12 @@ export default function MobileView() {
               </AccordionItem>
             </Accordion>
 
-            {/* <Button
+            <Button
               variant={'navLinkMobile'}
               onClick={() => redirectTo({ href: '/sigs' })}
             >
               SIGs
-            </Button> */}
+            </Button>
             <Button
               variant={'navLinkMobile'}
               onClick={() => redirectTo({ href: '/sigs' })}

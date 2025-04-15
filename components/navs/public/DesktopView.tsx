@@ -73,13 +73,13 @@ export default function DesktopView() {
       >
         Speak
       </Button>
-      {/* <Button
+      <Button
         variant={'navLink'}
         onClick={() => redirectTo({ href: '/sigs' })}
         className={`${pathname === '/sigs' ? 'text-primary border-primary' : ''}`}
       >
         SIGs
-      </Button> */}
+      </Button>
       <Button
         variant={'navLink'}
         onClick={() => router.push('/code-of-conduct')}

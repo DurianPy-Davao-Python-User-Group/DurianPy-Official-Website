@@ -34,7 +34,7 @@ export default function Sigs() {
         </p>
 
         <button
-          className="my-6 md:my-8 lg:my-10 mx-auto block bg-primary text-[8px] md:text-xl leading-3 md:leading-none font-bold rounded-full px-2 md:px-4 lg:px-8 py-1 md:py-2 lg:py-4 hover:scale-105 duration-300"
+          className="my-6 md:my-8 lg:my-10 mx-auto block bg-primary text-black text-[8px] md:text-xl leading-3 md:leading-none font-bold rounded-full px-2 md:px-4 lg:px-8 py-1 md:py-2 lg:py-4 border border-transparent hover:bg-opacity-50 hover:border-primary hover:text-primary transition-colors"
           onClick={() =>
             (window.location.href = 'https://forms.gle/XxDJZebqbJB6tJo27')
           }
