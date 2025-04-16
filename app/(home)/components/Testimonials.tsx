@@ -45,7 +45,7 @@ export function Testimonials() {
 
   const [api, setApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState(0)
-  // const [count, setCount] = useState(0)
+  const [isInteracting, setIsInteracting] = useState(false)
 
   useEffect(() => {
     if (!api) {
@@ -65,17 +65,18 @@ export function Testimonials() {
       <div className=''>
         DurianPy Ratings
       </div>
-      <div className='relative'>
+
+      {/* Carousel */}
+      <div className='relative' onClick={() => setIsInteracting(true)} onMouseLeave={() => setIsInteracting(false)}>
         <button className='z-20 absolute left-0 md:left-8 bottom-1/2 bg-opacity-0' onClick={() => api?.scrollTo(current - 1)}>
           <Image src={prevArrowIcon} alt='Prev' className='w-2/3' />
         </button>
         <CarouselContainer setApi={setApi}
           opts={{ loop: true }}
-          autoplay={false}
-          autoplayInterval={3000}
+          autoplay={!isInteracting}
+          autoplayInterval={5000}
           className="mx-auto px-[10%]"
         >
-          {/* mx-auto max-w-[1280px] */}
           <CarouselContent className='mx-auto py-20'>
             {dummyData.map((data, index) => (
               <CarouselItem className="relative px-[3%] flex justify-center lg:basis-1/3" key={index}>
@@ -94,7 +95,7 @@ export function Testimonials() {
 }
 
 // Number of Stars depending on rating.
-const Ratings = ({ rate, className }: { rate: number, className: string }) => {
+const Ratings = ({ rate }: { rate: number }) => {
   const starRate = []
 
   // Append stars
@@ -108,7 +109,7 @@ const Ratings = ({ rate, className }: { rate: number, className: string }) => {
   }
 
   return (
-    <div className={cn('flex justify-center', className)}>{starRate}</div>
+    <div className='flex justify-center absolute top-[5%] left-1/2 -translate-x-1/2' >{starRate}</div>
   )
 }
 
@@ -118,11 +119,11 @@ const TestimonialCard = ({ name, date, comment, rate, profilePic, className }: t
       {/* SPEECH BUBBLE */}
       <div className='relative'>
         <Image src={testimonialCard} alt='testimonial card' priority={true} />
-        <Ratings rate={rate} className='absolute top-[5%] left-1/2 -translate-x-1/2' />
+        <Ratings rate={rate} />
         <div className='absolute h-1/2 inset-y-1/4 px-[5%] text-white text-xs sm:text-base lg:text-base xl:text-lg overflow-hidden text-ellipsis xl:leading-6'>
           {comment}
         </div>
-        <a className="absolute h-fit pt-[15%] px-[4%] inset-x-1 bottom-1/4 text-[#B3B3B3] underline underline-offset-2 decoration-1 text-xs sm:text-base bg-gradient-to-t from-medium-dark-green from-50%"> Read More</a>
+        <a href='/404' target='_blank' className="absolute h-fit pt-[15%] px-[4%] inset-x-1 bottom-[24%] text-[#B3B3B3] underline underline-offset-2 decoration-1 text-xs sm:text-base bg-gradient-to-t from-medium-dark-green from-50% -mt-3"> Read More</a>
       </div>
 
       {/* USER AVATAR & NAME */}
