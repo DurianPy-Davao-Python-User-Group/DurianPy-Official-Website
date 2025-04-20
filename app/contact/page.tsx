@@ -87,7 +87,7 @@ export default function ContactPage() {
         </defs>
       </svg>
       <Container
-        className={`relative p-[64px] w-full min-h-screen justify-between max-x-7xl items-center flex gap-[46px] ${
+        className={`relative p-[64px] w-full justify-between max-x-7xl items-center flex gap-[46px] ${
           width < 1024 ? 'flex-col' : 'flex-row'
         }`}
       >
