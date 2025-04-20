@@ -109,9 +109,7 @@ export default function MobileView() {
             </Button>
             <Button
               variant={'navLinkMobile'}
-              onClick={() =>
-                redirectTo({ href: 'https://www.facebook.com/durianpy' })
-              }
+              onClick={() => router.push('/contact')}
             >
               Contact Us
             </Button>

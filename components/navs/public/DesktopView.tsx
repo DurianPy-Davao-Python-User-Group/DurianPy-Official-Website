@@ -89,9 +89,7 @@ export default function DesktopView() {
       </Button>
       <Button
         variant={'navLink'}
-        onClick={() =>
-          redirectTo({ href: 'https://www.facebook.com/durianpy' })
-        }
+        onClick={() => router.push('/contact')}
         className={`${pathname === '/contact' ? 'text-primary border-primary' : ''}`}
       >
         Contact Us
