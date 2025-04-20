@@ -36,7 +36,7 @@ const socialLinks = [
 export default function ContactPage() {
   const width = useWindowWidth();
   return (
-    <>
+    <div className="relative w-full flex align-center overflow-hidden">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="825"
@@ -87,27 +87,32 @@ export default function ContactPage() {
         </defs>
       </svg>
       <Container
-        className={`relative min-h-screen justify-center items-center flex gap-[46px] ${
-          width < 1024 ? 'flex-col mt-[100px]' : 'flex-row'
+        className={`relative p-[64px] w-full min-h-screen justify-between max-x-7xl items-center flex gap-[46px] ${
+          width < 1024 ? 'flex-col' : 'flex-row'
         }`}
       >
         <div
-          className={`flex flex-col gap-[80px] items-start justify-start ${
+          className={`flex flex-col gap-4 sm:gap-[80px] items-start justify-start ${
             width < 1024
               ? 'text-center justify-center sw-[531px] items-center'
               : ''
           }`}
         >
-          <div className="flex flex-col gap-[20px] text-white sm:items-center lg:items-start">
+          <div className="flex flex-col gap-2 sm:gap-[20px] text-white sm:items-center lg:items-start">
             <h1 className="text-web-title-font font-bold">Contact Us</h1>
-            <p className="text-web-body-font sm:w-[300px]">
+            <p className="text-web-body-font sm:max-w-[450px]">
               Get in touch with us for any questions, concerns, or to learn more
               about our organization and initiatives
             </p>
           </div>
-          <div
-            className={`flex gap-[28px] ${
-              width < 1024 ? 'flex-col items-center gap-[0px] ' : 'flex-row'
+          <a
+            href="mailto:durianpy.davao@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`flex gap-2 sm:gap-[28px] ${
+              width < 768
+                ? 'flex-col items-center gap-[0px] '
+                : 'flex-row items-center'
             }`}
           >
             <Image
@@ -115,17 +120,17 @@ export default function ContactPage() {
               width={63}
               height={63}
               alt=""
-              className=""
+              className="sm:w-[63px] sm:h-[63px] w-[40px] h-[40px]"
             />
             <div className="flex flex-col text-white">
               <p
-                className={`text-[#FFC201] leading-[49px] text-web-medium-font font-bold ${width < 1024 ? 'leading-[25px] mt-[5px] md:leading-[45px]' : ''}`}
+                className={`text-[#FFC201] leading-[49px] text-web-medium-font font-bold ${width < 1024 ? 'leading-[25px] mt-[5px] sm:leading-[45px]' : ''}`}
               >
                 E-mail us
               </p>
               <p className="text-web-body-font">durianpy.davao@gmail.com</p>
             </div>
-          </div>
+          </a>
           <div className="flex flex-col gap-[10px]">
             <p className="text-white text-button-hovered font-bold ">
               Follow our social media
@@ -142,7 +147,7 @@ export default function ContactPage() {
                   <FontAwesomeIcon
                     icon={icon}
                     className="text-primary group-hover:text-[#FBFF00] transition-transform duration-300 group-hover:scale-110 
-             text-md sm:text-xl md:w-10 md:text-2xl md:h-10"
+             text-sm sm:text-xl sm:w-10 md:text-2xl sm:h-10"
                   />
                 </Link>
               ))}
@@ -182,6 +187,6 @@ export default function ContactPage() {
         </div>
         <YourDetails />
       </Container>
-    </>
+    </div>
   );
 }

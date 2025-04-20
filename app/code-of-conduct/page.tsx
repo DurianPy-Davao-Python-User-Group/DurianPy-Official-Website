@@ -1,6 +1,6 @@
 export default function CodeOfConductPage() {
   return (
-    <main className="mt-20 bg-dark-green text-white min-h-[70vh] py-8 md:px-36 px-10 flex flex-col justify-center">
+    <main className="bg-dark-green text-white min-h-[70vh] py-8 md:px-36 px-10 flex flex-col justify-center">
       <h1 className="text-4xl md:text-6xl font-bold mb-8">
         Code of <span className="text-primary">Conduct</span>
       </h1>
