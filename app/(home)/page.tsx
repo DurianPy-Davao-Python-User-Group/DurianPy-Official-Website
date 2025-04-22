@@ -5,7 +5,6 @@ import { StatsAndReviews } from './components/StatsAndReviews';
 import { PythonFoundation } from './components//PythonFoundation';
 import { Partners } from './components//Partners';
 import UpcomingEvents from './components//UpcomingEvents';
-import { Footer } from './components//Footer';
 
 export default function HomePage() {
   return (
@@ -17,7 +16,6 @@ export default function HomePage() {
       <PythonFoundation />
       <Partners />
       <UpcomingEvents />
-      <Footer />
     </main>
   );
 }
