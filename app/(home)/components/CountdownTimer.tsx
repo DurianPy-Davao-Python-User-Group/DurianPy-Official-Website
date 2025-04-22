@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 interface CountdownTimerProps {
   eventDate: string;
@@ -9,7 +9,7 @@ interface CountdownTimerProps {
 export default function CountdownTimer({ eventDate }: CountdownTimerProps) {
   const formatNumber = (num: number) => (num < 10 ? `0${num}` : `${num}`);
 
-  const calculateTimeLeft = () => {
+  const calculateTimeLeft = useCallback(() => {
     const difference = +new Date(eventDate) - +new Date();
     if (difference > 0) {
       return {
@@ -20,7 +20,7 @@ export default function CountdownTimer({ eventDate }: CountdownTimerProps) {
       };
     }
     return { days: '00', hours: '00', minutes: '00', seconds: '00' };
-  };
+  }, [eventDate]); // Dependency array ensures the function updates when `eventDate` changes
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
   const [isClient, setIsClient] = useState(false);
@@ -33,7 +33,7 @@ export default function CountdownTimer({ eventDate }: CountdownTimerProps) {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [eventDate, calculateTimeLeft]);
+  }, [calculateTimeLeft]); // Dependency array ensures the effect re-runs if `calculateTimeLeft` changes
 
   if (!isClient) return null;
 
