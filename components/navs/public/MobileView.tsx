@@ -101,7 +101,7 @@ export default function MobileView() {
             </Button>
             <Button
               variant={'navLinkMobile'}
-              onClick={() => redirectTo({ href: '/speak' })}
+              onClick={() => router.push('/speak')}
             >
               Speak
             </Button>

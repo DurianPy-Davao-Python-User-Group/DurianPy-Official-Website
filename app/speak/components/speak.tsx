@@ -6,19 +6,19 @@ import { Button } from '@/components/ui/button';
 
 const handleRedirect = (url: string) => {
   if (typeof window !== 'undefined') {
-    window.open(url, '_blank');
-  }
+      window.open(url, '_blank');
+    }
 };
 
 const SpeakDetails: React.FC = () => {
   return (
-    <section className="py-16">
+    <section>
       <div className="flex-column max-w-7xl mx-auto pl-8 md:pl-12 lg:pl-16">
         {/* Main Container - Always Horizontal */}
-        <div className="flex flex-row items-center justify-start w-full mt-9 md:mt-5 lg:mt-0">
+        <div className="flex flex-row items-center justify-start w-full mt-8 q md:mt-10 lg:mt-10">
           {/* Left Section - Text & Small Logo */}
           <div className="w-1/2">
-            <h1 className="text-[#FFFFFF] [@media(max-width:380px)]:text-[20px] text-[28px] sm:text-[44px] md:text-[47px] lg:text-[65px] font-black leading-[1.3] mt-10">
+            <h1 className="text-[#FFFFFF] [@media(max-width:380px)]:text-[20px] text-[25px] sm:text-[44px] md:text-[47px] lg:text-[65px] font-black leading-[1.3]">
               Share Your <br />
               Knowledge <br />
               <div className="flex items-center space-x-2 md:space-x-5">
@@ -28,7 +28,7 @@ const SpeakDetails: React.FC = () => {
                   alt="DurianPy"
                   width={0}
                   height={0}
-                  className="mt-1 sm:mt-1 md:mt-1 w-auto [@media(max-width:380px)]:h-6 h-9 sm:h-14 md:h-15 lg:h-20"
+                  className="mt-1 sm:mt-1 md:mt-1 w-auto [@media(max-width:380px)]:h-6 h-8 sm:h-14 md:h-15 lg:h-20"
                 />
               </div>
             </h1>
@@ -48,13 +48,13 @@ const SpeakDetails: React.FC = () => {
 
           {/* Right Section - Large Logo */}
           <div className="w-1/2">
-            <div className="ml-4 flex justify-end md:mt-20 lg:mt-28 relative">
+            <div className="ml-4 flex justify-end md:mt-5 lg:mt-10 relative ">
               <Image
                 src="/assets/speakIcons/glowBg.svg"
                 alt="Glow BG"
                 width={0}
                 height={0}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[700px] md:h-[700px] lg:w-[800px] lg:h-[1000px] rounded-full blur-3xl"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] md:w-[700px] md:h-[700px] lg:w-[800px] lg:h-[1000px] rounded-full blur-3xl"
               />
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[185px] h-[200px] md:w-[340px] md:h-[450px] lg:w-[465px] lg:h-[500px] bg-green-800/15 rounded-full blur-3xl -z-10"></div>
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[185px] h-[150px] md:w-[300px] md:h-[350px] lg:w-[350px] lg:h-[400px] bg-green-700/20 rounded-full blur-2xl -z-10"></div>
@@ -146,17 +146,13 @@ const SpeakDetails: React.FC = () => {
             </div>
           </div>
           <div className="mt-8 lg:mt-14">
+          <a href="mailto:durianpy.davao@gmail.com">
             <Button
-              onClick={() =>
-                window.open(
-                  'https://mail.google.com/mail/?view=cm&fs=1&to=durianpy.davao@gmail.com',
-                  '_blank'
-                )
-              }
               className="bg-yellow-500 text-black font-medium py-2 md:py-2 lg:py-3 px-4 md:px-5 lg:px-7 [@media(max-width:320px)]:text-[6px] text-[10px] md:text-[14px] lg:text-[18px] rounded-full hover:bg-yellow-600 transition-all duration-300 ease-out hover:scale-105"
             >
               Have Questions?
             </Button>
+          </a>
           </div>
         </div>
 
