@@ -18,7 +18,7 @@ const SpeakDetails: React.FC = () => {
         <div className="flex flex-row items-center justify-start w-full mt-9 md:mt-5 lg:mt-0">
           {/* Left Section - Text & Small Logo */}
           <div className="w-1/2">
-            <h1 className="text-[#FFFFFF] [@media(max-width:380px)]:text-[20px] text-[28px] sm:text-[44px] md:text-[50px] lg:text-[65px] font-black leading-[1.3] mt-10">
+            <h1 className="text-[#FFFFFF] [@media(max-width:380px)]:text-[20px] text-[28px] sm:text-[44px] md:text-[47px] lg:text-[65px] font-black leading-[1.3] mt-10">
               Share Your <br />
               Knowledge <br />
               <div className="flex items-center space-x-2 md:space-x-5">
@@ -28,7 +28,7 @@ const SpeakDetails: React.FC = () => {
                   alt="DurianPy"
                   width={0}
                   height={0}
-                  className="mt-1 sm:mt-1 md:mt-1 w-auto [@media(max-width:380px)]:h-6 h-9 sm:h-14 md:h-16 lg:h-20"
+                  className="mt-1 sm:mt-1 md:mt-1 w-auto [@media(max-width:380px)]:h-6 h-9 sm:h-14 md:h-15 lg:h-20"
                 />
               </div>
             </h1>
@@ -54,7 +54,7 @@ const SpeakDetails: React.FC = () => {
                 alt="Glow BG"
                 width={0}
                 height={0}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[700px] md:h-[7000px] lg:w-[800px] lg:h-[1000px] rounded-full blur-3xl"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[700px] md:h-[700px] lg:w-[800px] lg:h-[1000px] rounded-full blur-3xl"
               />
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[185px] h-[200px] md:w-[340px] md:h-[450px] lg:w-[465px] lg:h-[500px] bg-green-800/15 rounded-full blur-3xl -z-10"></div>
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[185px] h-[150px] md:w-[300px] md:h-[350px] lg:w-[350px] lg:h-[400px] bg-green-700/20 rounded-full blur-2xl -z-10"></div>
