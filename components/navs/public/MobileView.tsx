@@ -25,7 +25,7 @@ interface redirectProps {
 }
 
 function redirectTo({ href }: redirectProps) {
-  window.open(href, '_blank', 'noopener,noreferrer');
+  window.location.href = href;
 }
 
 export default function MobileView() {
@@ -87,15 +87,15 @@ export default function MobileView() {
               </AccordionItem>
             </Accordion>
 
-            {/* <Button
-              variant={'navLinkMobile'}
-              onClick={() => router.push('/404')}
-            >
-              SIGs
-            </Button> */}
             <Button
               variant={'navLinkMobile'}
-              onClick={() => router.push('/code-of-conduct')}
+              onClick={() => redirectTo({ href: '/sigs' })}
+            >
+              SIGs
+            </Button>
+            <Button
+              variant={'navLinkMobile'}
+              onClick={() => redirectTo({ href: '/sigs' })}
             >
               Code of Conduct
             </Button>
