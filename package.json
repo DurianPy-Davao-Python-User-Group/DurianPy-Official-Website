@@ -34,7 +34,8 @@
     "react-countup": "^6.5.3",
     "react-dom": "^18",
     "tailwind-merge": "^3.0.1",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "tailwindcss-gradients": "^3.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",

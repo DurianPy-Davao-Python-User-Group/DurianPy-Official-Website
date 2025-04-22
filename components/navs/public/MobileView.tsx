@@ -87,11 +87,17 @@ export default function MobileView() {
               </AccordionItem>
             </Accordion>
 
-            <Button
+            {/* <Button
               variant={'navLinkMobile'}
               onClick={() => router.push('/404')}
             >
               SIGs
+            </Button> */}
+            <Button
+              variant={'navLinkMobile'}
+              onClick={() => router.push('/code-of-conduct')}
+            >
+              Code of Conduct
             </Button>
             <Button
               variant={'navLinkMobile'}
