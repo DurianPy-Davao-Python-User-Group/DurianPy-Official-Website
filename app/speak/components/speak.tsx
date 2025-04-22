@@ -10,7 +10,7 @@ const handleRedirect = (url: string) => {
   }
 };
 
-const HeroSection: React.FC = () => {
+const SpeakDetails: React.FC = () => {
   return (
     <section className="py-16">
       <div className="flex-column max-w-7xl mx-auto pl-8 md:pl-12 lg:pl-16">
@@ -202,4 +202,4 @@ const HeroSection: React.FC = () => {
   );
 };
 
-export default HeroSection;
+export default SpeakDetails;
