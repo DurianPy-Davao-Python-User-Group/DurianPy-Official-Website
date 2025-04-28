@@ -66,9 +66,7 @@ export default function DesktopView() {
       </DropdownMenu>
       <Button
         variant={'navLink'}
-        onClick={() =>
-          redirectTo({ href: 'https://forms.gle/x2cc6CrRhbhDeaxe9' })
-        }
+        onClick={() => router.push('/speak')}
         className={`${pathname === '/speak' ? 'text-primary border-primary' : ''}`}
       >
         Speak
