@@ -6,8 +6,8 @@ import { Button } from '@/components/ui/button';
 
 const handleRedirect = (url: string) => {
   if (typeof window !== 'undefined') {
-      window.open(url, '_blank');
-    }
+    window.open(url, '_blank');
+  }
 };
 
 const SpeakDetails: React.FC = () => {
@@ -144,13 +144,12 @@ const SpeakDetails: React.FC = () => {
             </div>
           </div>
           <div className="mt-8 lg:mt-14">
-            
-        <Button
-            onClick={() => handleRedirect('mailto:durianpy.davao@gmail.com')}
-            className="bg-yellow-500 text-black font-medium py-2 md:py-2 lg:py-3 px-4 md:px-5 lg:px-7 [@media(max-width:320px)]:text-[6px] text-[10px] md:text-[14px] lg:text-[18px] rounded-full hover:bg-yellow-600 transition-all duration-300 ease-out hover:scale-105"
-        >
-            Have Questions?
-        </Button>
+            <Button
+              onClick={() => handleRedirect('mailto:durianpy.davao@gmail.com')}
+              className="bg-yellow-500 text-black font-medium py-2 md:py-2 lg:py-3 px-4 md:px-5 lg:px-7 [@media(max-width:320px)]:text-[6px] text-[10px] md:text-[14px] lg:text-[18px] rounded-full hover:bg-yellow-600 transition-all duration-300 ease-out hover:scale-105"
+            >
+              Have Questions?
+            </Button>
           </div>
         </div>
 
