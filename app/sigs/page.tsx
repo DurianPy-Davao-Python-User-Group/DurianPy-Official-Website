@@ -1,8 +1,6 @@
 'use client';
 
-import React from 'react';
 import Card from './components/card';
-import { Footer } from '../(home)/components/Footer';
 
 const sigsData = [
   { image: '/assets/sigsIcons/Group125.png', title: 'Data' },
@@ -29,7 +27,7 @@ export default function Sigs() {
           <span className="text-primary font-bold">data science</span> or{' '}
           <span className="text-primary font-bold">data science</span> or{' '}
           <span className="text-primary font-bold">backend development</span>,
-          our SIGs providea space for hands-on learning, networking, and
+          our SIGs provide a space for hands-on learning, networking, and
           collaboration.
         </p>
 
@@ -59,7 +57,7 @@ export default function Sigs() {
         </div>
       </div>
 
-      <div className="mt-16">
+      <div className="my-32">
         <p className="text-primary text-xl md:text-4xl font-semibold text-center">
           Want to Start a SIG?
         </p>
@@ -70,7 +68,6 @@ export default function Sigs() {
           organizers will review and respond within 48 hours.
         </p>
       </div>
-      <Footer />
     </main>
   );
 }
