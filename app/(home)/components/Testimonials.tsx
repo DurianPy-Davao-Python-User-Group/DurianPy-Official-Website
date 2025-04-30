@@ -16,7 +16,7 @@ export function Testimonials() {
 
           {/* Logo & Ratings */}
           <div className="flex flex-col items-center text-center lg:items-start lg:text-left max-w-xl">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2">
               <Image
                 src="/assets/logo.svg"
                 height={64}
