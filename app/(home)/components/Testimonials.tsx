@@ -93,7 +93,6 @@ export function Testimonials() {
       <Container>
         {/* Combined container: Ratings + Button */}
         <div className="flex flex-col gap-8 sm:gap-12 lg:flex-row lg:items-center lg:justify-between">
-
           {/* Logo & Ratings */}
           <div className="flex flex-col items-center text-center lg:items-start lg:text-left max-w-xl">
             <div className="flex items-center gap-2">
@@ -136,7 +135,6 @@ export function Testimonials() {
               </Button>
             </Link>
           </div>
-
         </div>
 
         {/* CAROUSEL */}
@@ -237,10 +235,7 @@ const TestimonialCard = ({
           {comment}
         </div>
         <div className="absolute h-fit pt-[15%] px-[4%] inset-x-1 bottom-[24%] text-[#B3B3B3] underline underline-offset-2 decoration-1 text-xs sm:text-base bg-gradient-to-t from-medium-dark-green from-50% -mt-3">
-          <a
-            href="/404"
-            target="_blank"
-          >
+          <a href="/404" target="_blank">
             Read More
           </a>
         </div>

@@ -9,7 +9,6 @@ import { Sponsors } from './components/Sponsors';
 
 import { Testimonials } from './components/Testimonials';
 
-
 export default function HomePage() {
   return (
     <main>
