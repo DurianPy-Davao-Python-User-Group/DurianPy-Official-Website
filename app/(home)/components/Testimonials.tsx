@@ -139,23 +139,18 @@ export function Testimonials() {
 
         </div>
 
+        {/* CAROUSEL */}
         <div
-          className="relative"
+          className="relative sm:-ms-[1%] -ms-[5%] px-[8%] lg:px-4"
           onClick={() => setIsInteracting(true)}
           onMouseLeave={() => setIsInteracting(false)}
         >
-          <button
-            className="z-20 absolute left-0 md:left-8 bottom-1/2 bg-opacity-0"
-            onClick={() => api?.scrollTo(current - 1)}
-          >
-            <Image src={prevArrowIcon} alt="Prev" className="w-2/3" />
-          </button>
           <CarouselContainer
             setApi={setApi}
             opts={{ loop: true }}
             autoplay={!isInteracting}
             autoplayInterval={5000}
-            className="mx-auto px-[10%]"
+            className="mx-auto"
           >
             <CarouselContent className="mx-auto py-20">
               {dummyData.map((data, index) => (
@@ -176,13 +171,19 @@ export function Testimonials() {
             </CarouselContent>
             <CarouselDots className="z-10 absolute bottom-4 left-1/2 -translate-x-1/2 text-2xl py-4 text" />
           </CarouselContainer>
-          <button
-            className="z-20 absolute -right-3 md:right-8 bottom-1/2 bg-opacity-0"
-            onClick={() => api?.scrollTo(current + 1)}
-          >
-            <Image src={nextArrowIcon} alt="Next" className="w-2/3" />
-          </button>
         </div>
+        <button
+          className="z-20 absolute sm:left-6 left-0 sm:top-1/2 bottom-1/3 bg-opacity-0"
+          onClick={() => api?.scrollTo(current - 1)}
+        >
+          <Image src={prevArrowIcon} alt="Prev" className="w-2/3" />
+        </button>
+        <button
+          className="z-20 absolute sm:right-6 right-0 sm:top-1/2 bottom-1/3 bg-opacity-0"
+          onClick={() => api?.scrollTo(current + 1)}
+        >
+          <Image src={nextArrowIcon} alt="Next" className="w-2/3" />
+        </button>
       </Container>
     </section>
   );
@@ -235,14 +236,14 @@ const TestimonialCard = ({
         <div className="absolute h-1/2 inset-y-1/4 px-[5%] text-white text-xs sm:text-base lg:text-base xl:text-lg overflow-hidden text-ellipsis xl:leading-6">
           {comment}
         </div>
-        <a
-          href="/404"
-          target="_blank"
-          className="absolute h-fit pt-[15%] px-[4%] inset-x-1 bottom-[24%] text-[#B3B3B3] underline underline-offset-2 decoration-1 text-xs sm:text-base bg-gradient-to-t from-medium-dark-green from-50% -mt-3"
-        >
-          {' '}
-          Read More
-        </a>
+        <div className="absolute h-fit pt-[15%] px-[4%] inset-x-1 bottom-[24%] text-[#B3B3B3] underline underline-offset-2 decoration-1 text-xs sm:text-base bg-gradient-to-t from-medium-dark-green from-50% -mt-3">
+          <a
+            href="/404"
+            target="_blank"
+          >
+            Read More
+          </a>
+        </div>
       </div>
 
       {/* USER AVATAR & NAME */}
