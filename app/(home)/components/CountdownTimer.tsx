@@ -23,8 +23,11 @@ export default function CountdownTimer({ eventDate }: CountdownTimerProps) {
   }, [eventDate]); // Dependency array ensures the function updates when `eventDate` changes
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
