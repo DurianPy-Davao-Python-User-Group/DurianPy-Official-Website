@@ -17,8 +17,8 @@ export default function HomePage() {
       <StatsAndReviews />
       <PythonFoundation />
       <Partners />
-      <Sponsors />
       <UpcomingEvents/>
+      <Sponsors />
       <Footer />
     </main>
   );
