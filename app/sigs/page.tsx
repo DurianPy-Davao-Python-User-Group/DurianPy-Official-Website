@@ -70,7 +70,6 @@ export default function Sigs() {
           organizers will review and respond within 48 hours.
         </p>
       </div>
-      <Footer />
     </main>
   );
 }
