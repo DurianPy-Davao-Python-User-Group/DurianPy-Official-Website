@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Card from './components/card';
-import { Footer } from '../(home)/components/Footer';
 
 const sigsData = [
   { image: '/assets/sigsIcons/Group125.png', title: 'Data' },
