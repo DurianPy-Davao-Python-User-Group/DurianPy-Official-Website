@@ -1,6 +1,5 @@
 'use client';
 
-import { Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { Container } from '@/components/ui/container';
@@ -11,6 +10,8 @@ import {
   CarouselContent,
   CarouselItem,
   CarouselDots,
+  CarouselNext,
+  CarouselPrevious
 } from '@/components/ui/carousel';
 import testimonialCard from '@/public/assets/testimonials/testimonial-card.svg';
 import yellowStarIcon from '@/public/assets/testimonials/yellow-star.svg';
@@ -90,46 +91,46 @@ export function Testimonials() {
 
   return (
     <section className="relative z-10 text-white py-12 sm:py-16">
-      <Container>
+      <Container className='space-y-6 xl:space-x-0 bg-green-300'>
         {/* Combined container: Ratings + Button */}
-        <div className="flex flex-col gap-8 sm:gap-12 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex flex-col space-y-5 xl:flex-row xl:items-center xl:justify-between px-[1%] 2xl:px-0">
           {/* Logo & Ratings */}
-          <div className="flex flex-col items-center text-center lg:items-start lg:text-left max-w-xl">
-            <div className="flex items-center gap-2">
-              <Image
-                src="/assets/logo.svg"
-                height={64}
-                width={64}
-                className="h-20 md:h-24 w-auto"
-                alt="Durianpy Logo"
-                priority
-              />
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal">
-                Ratings
-              </h2>
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-center gap-2 mt-4">
-              <span className="text-xl sm:text-2xl font-bold">4.8</span>
-              <div className="flex">
-                {[...Array(4)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className="text-yellow-500 fill-yellow-500 w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8"
-                  />
-                ))}
-                <Star className="text-white fill-current w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8" />
+          <div className="flex flex-col items-center xl:items-start xl:text-left w-full">
+            <div>
+              <div className="flex items-center gap-x-4">
+                <Image
+                  src="/assets/logo.svg"
+                  height={64}
+                  width={64}
+                  className="h-24 w-auto"
+                  alt="Durianpy Logo"
+                  priority
+                />
+                <h2 className="text-4xl font-normal">
+                  Ratings
+                </h2>
               </div>
-              <span className="text-lg sm:text-xl font-light">5 reviews</span>
+
+              {/* Star Ratings */}
+              <div className="flex sm:flex-row self items-center sm:space-x-4 -mt-5 ms-2">
+                <span className="">4.8</span>
+                <div className="flex -space-x-2 sm:-space-x-1">
+                  {[...Array(4)].map((_, i) => (
+                    <Image src={yellowStarIcon} alt="yellow star" key={i} className="p-2 sm:p-[6px]" />
+                  ))}
+                  <Image src={whiteStarIcon} alt="yellow star" className="p-2 sm:p-[6px]" />
+                </div>
+                <span className="font-light">5 reviews</span>
+              </div>
             </div>
           </div>
 
           {/* Button */}
-          <div className="w-full sm:w-auto flex justify-center lg:justify-end">
+          <div className="mx-auto">
             <Link href="https://www.meetup.com/durianpy/" target="_blank">
               <Button
                 variant="footer"
-                className="w-full sm:w-[180px] md:w-[220px] h-12 sm:h-14 text-black sm:text-lg md:text-2xl"
+                className="py-1 px-4 sm:py-2 sm:px-6 text-black sm:text-lg sm:font-normal"
               >
                 Write a Review
               </Button>
@@ -139,7 +140,7 @@ export function Testimonials() {
 
         {/* CAROUSEL */}
         <div
-          className="relative sm:-ms-[1%] -ms-[5%] px-[8%] lg:px-4"
+          className=""
           onClick={() => setIsInteracting(true)}
           onMouseLeave={() => setIsInteracting(false)}
         >
@@ -148,12 +149,12 @@ export function Testimonials() {
             opts={{ loop: true }}
             autoplay={!isInteracting}
             autoplayInterval={5000}
-            className="mx-auto"
+            className="relative mx-auto sm:min-w-[535px] sm:w-1/2 xl:w-full bg-red-300"
           >
-            <CarouselContent className="mx-auto py-20">
+            <CarouselContent className="mx-auto sm:-ms-[4%] xl:py-[4%]">
               {dummyData.map((data, index) => (
                 <CarouselItem
-                  className="relative px-[3%] flex justify-center lg:basis-1/3"
+                  className="sm:px-0 sm:relative xl:px-[4%] sm:flex sm:justify-center xl:basis-1/3"
                   key={index}
                 >
                   <TestimonialCard
@@ -162,33 +163,36 @@ export function Testimonials() {
                     comment={data.comment}
                     rate={data.rate}
                     profilePic={data.profilePic}
-                    className={current === index ? 'sm:scale-110 sm:-mt-8' : ''}
+                    className={current === index ? 'xl:scale-125' : ''}
                   />
                 </CarouselItem>
               ))}
             </CarouselContent>
+
+            <CarouselPrevious className="xl:hidden hidden sm:block sm:absolute z-20 w-28 h-28" />
+            <CarouselNext className="xl:hidden hidden sm:block sm:absolute z-20 w-28 h-28" />
             <CarouselDots className="z-10 absolute bottom-4 left-1/2 -translate-x-1/2 text-2xl py-4 text" />
           </CarouselContainer>
         </div>
-        <button
-          className="z-20 absolute sm:left-6 left-0 sm:top-1/2 bottom-1/3 bg-opacity-0"
-          onClick={() => api?.scrollTo(current - 1)}
-        >
-          <Image src={prevArrowIcon} alt="Prev" className="w-2/3" />
-        </button>
-        <button
-          className="z-20 absolute sm:right-6 right-0 sm:top-1/2 bottom-1/3 bg-opacity-0"
-          onClick={() => api?.scrollTo(current + 1)}
-        >
-          <Image src={nextArrowIcon} alt="Next" className="w-2/3" />
-        </button>
+        {/* <button */}
+        {/*   className="" */}
+        {/*   onClick={() => api?.scrollTo(current - 1)} */}
+        {/* > */}
+        {/*   <Image src={prevArrowIcon} alt="Prev" className="scale-150" /> */}
+        {/* </button> */}
+        {/* <button */}
+        {/*   className="" */}
+        {/*   onClick={() => api?.scrollTo(current + 1)} */}
+        {/* > */}
+        {/*   <Image src={nextArrowIcon} alt="Next" className="scale-150" /> */}
+        {/* </button> */}
       </Container>
     </section>
   );
 }
 
 // Number of Stars depending on rating.
-const Ratings = ({ rate }: { rate: number }) => {
+const Ratings = ({ rate, size, spacing, className }: { rate: number, size?: string, spacing?: string, className?: string }) => {
   const starRate = [];
 
   // Append stars
@@ -196,17 +200,17 @@ const Ratings = ({ rate }: { rate: number }) => {
     // If index is greater than the rating, append white star, else yellow star.
     if (i >= rate) {
       starRate.push(
-        <Image src={whiteStarIcon} alt="yellow star" key={i} className="p-1" />
+        <Image src={whiteStarIcon} alt="yellow star" key={i} className={cn("p-1", size)} />
       );
     } else {
       starRate.push(
-        <Image src={yellowStarIcon} alt="yellow star" key={i} className="p-1" />
+        <Image src={yellowStarIcon} alt="yellow star" key={i} className={cn("p-1", size)} />
       );
     }
   }
 
   return (
-    <div className="flex justify-center absolute top-[5%] left-1/2 -translate-x-1/2">
+    <div className={cn("flex justify-center", spacing, className)}>
       {starRate}
     </div>
   );
@@ -228,30 +232,34 @@ const TestimonialCard = ({
       )}
     >
       {/* SPEECH BUBBLE */}
-      <div className="relative">
+      <div className="hidden sm:block relative">
         <Image src={testimonialCard} alt="testimonial card" priority={true} />
-        <Ratings rate={rate} />
-        <div className="absolute h-1/2 inset-y-1/4 px-[5%] text-white text-xs sm:text-base lg:text-base xl:text-lg overflow-hidden text-ellipsis xl:leading-6">
+        <Ratings rate={rate} size={"px-0"} spacing={"space-x-2"} className={'absolute top-[5%] left-1/2 -translate-x-1/2'} />
+        <div className="absolute h-1/2 inset-y-1/4 px-[10%] text-white text-xs sm:text-xl xl:text:base overflow-hidden text-ellipsis xl:leading-6">
           {comment}
         </div>
-        <div className="absolute h-fit pt-[15%] px-[4%] inset-x-1 bottom-[24%] text-[#B3B3B3] underline underline-offset-2 decoration-1 text-xs sm:text-base bg-gradient-to-t from-medium-dark-green from-50% -mt-3">
+        <div className="absolute h-fit pt-[15%] px-[9%] inset-x-1 bottom-[24%] text-[#B3B3B3] underline underline-offset-2 decoration-1 text-xs sm:text-base bg-gradient-to-t from-medium-dark-green from-50% -mt-3">
           <a href="/404" target="_blank">
             Read More
           </a>
         </div>
       </div>
 
+      <div className='sm:hidden bg-medium-dark-green rounded-2xl border-2 border-green-300 py-5 px-10 h-32'>
+        <div>{comment}</div>
+      </div>
+
       {/* USER AVATAR & NAME */}
       <div className="flex space-x-3 px-[17%] items-center">
-        <Avatar className="h-full w-full max-h-14 max-w-14 sm:max-h-16 sm:max-w-16">
+        <Avatar className="h-full w-full max-h-20 max-w-20 sm:max-h-16 sm:max-w-16">
           <AvatarImage src={profilePic} />
           <AvatarFallback>{name[0]}</AvatarFallback>
         </Avatar>
         <div>
-          <div className="text-white text-xs sm:text-base lg:text-base xl:text-lg">
+          <div className="text-white text-2xl sm:text-base lg:text-base xl:text-lg">
             {name}
           </div>
-          <div className="text-[#B3B3B3] text-xs xl:text-base">{date}</div>
+          <div className="text-[#B3B3B3] text-xl sm:text-xs xl:text-base">{date}</div>
         </div>
       </div>
     </div>
