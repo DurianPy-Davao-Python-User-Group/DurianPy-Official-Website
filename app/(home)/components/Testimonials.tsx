@@ -225,13 +225,13 @@ export function TestimonialCard({ text, rate, active }: TestimonialProps) {
       <div className="relative sm:hidden h-24 p-5 bg-medium-dark-green border border-[#36FF90] rounded-xl w-full text-clip overflow-hidden">
         <div className="text-xs sm:text-base">{text}</div>
         <div className="absolute bottom-0 pb-2 pt-14 bg-gradient-to-t from-medium-dark-green from-20% inset-x-5">
-          <a
-            href=""
+          <Link
+            href="/404"
             target="_blank"
             className="text-xs sm:text-base text-yellow-400 underline"
           >
             Read more
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -251,13 +251,13 @@ export function TestimonialCard({ text, rate, active }: TestimonialProps) {
           {text}
         </div>
         <div className="absolute bottom-14 pb-2 pt-28 bg-gradient-to-t from-medium-dark-green from-25% inset-x-9 lg:inset-x-7 lg:bottom-10">
-          <a
-            href=""
+          <Link
+            href="/404"
             target="_blank"
             className="text-[#B3B3B3] underline lg:text-xs"
           >
             Read more
-          </a>
+          </Link>
         </div>
       </div>
     </>
