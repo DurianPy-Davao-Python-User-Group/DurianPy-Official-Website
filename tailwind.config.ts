@@ -15,6 +15,7 @@ const config: Config = {
       colors: {
         'midori-green': '#36FF90',
         'mint-bliss': '#8AFFBE',
+        'mint-bliss-50': '#009643',
         background: 'var(--background)',
         foreground: 'var(--foreground)',
         primary: '#FFC200',
@@ -35,6 +36,8 @@ const config: Config = {
         'button-hovered': 'var(--button-hovered)',
       },
       backgroundImage: {
+        'radial-custom':
+          'radial-gradient(at top right, #FFC201 0%, #1A3E2A 84%)',
         'gradient-ltr-lightgreen-transparent':
           'linear-gradient(to right, #36FF90,rgba(115, 115, 115, 0))',
         'gradient-utd-lightgreen-darkgreen':
@@ -57,6 +60,8 @@ const config: Config = {
           'linear-gradient(to bottom, rgba(62,179,114,0.63), rgba(166,255,205,0.63))',
         'gradient-utd-green-transparent':
           'linear-gradient(180deg, rgba(0,64,28,1), rgba(17,32,24,0.8))',
+        'gradient-circle-green':
+          'radial-gradient(circle, #009643 0%, rgba(0, 150, 67, 0) 100%)',
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -93,8 +98,20 @@ const config: Config = {
       },
     },
   },
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+    require('tailwindcss-animate'),
+    function (pluginApi: {
+      addUtilities: (utilities: Record<string, any>) => void;
+    }) {
+      const { addUtilities } = pluginApi;
+      addUtilities({
+        '.text-shadow-sm': { textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' },
+        '.text-shadow-md': { textShadow: '2px 2px 4px rgba(0, 0, 0, 0.4)' },
+        '.text-shadow-lg': { textShadow: '3px 3px 6px rgba(0, 0, 0, 0.5)' },
+        '.text-shadow-xl': { textShadow: '4px 4px 8px rgba(0, 0, 0, 0.6)' },
+      });
+    },
+  ],
 };
 
 export default config;

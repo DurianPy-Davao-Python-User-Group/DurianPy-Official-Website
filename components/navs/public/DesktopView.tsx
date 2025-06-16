@@ -2,13 +2,13 @@
 
 import { useRouter, usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { ChevronDown } from 'lucide-react';
+// import { ChevronDown } from 'lucide-react';
 
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-} from '@/components/ui/dropdown-menu';
+// import {
+//   DropdownMenu,
+//   DropdownMenuTrigger,
+//   DropdownMenuContent,
+// } from '@/components/ui/dropdown-menu';
 
 interface redirectProps {
   href: string;
@@ -48,7 +48,7 @@ export default function DesktopView() {
       >
         Events
       </Button>
-      <DropdownMenu>
+      {/* <DropdownMenu>
         <DropdownMenuTrigger
           className={`${pathname === '/sponsors' || pathname === '/host' ? 'text-primary border-primary' : ''} flex [&[data-state=open]]:bg-primary [&[data-state=open]]:text-dark-green justify-center items-center outline-none gap-[10px] focus:outline-none p-[10px] border-[1px] rounded-[50px] border-transparent hover:text-primary active:border-primary active:bg-primary active:text-dark-green`}
         >
@@ -63,19 +63,17 @@ export default function DesktopView() {
             Host Us
           </Button>
         </DropdownMenuContent>
-      </DropdownMenu>
+      </DropdownMenu> */}
       <Button
         variant={'navLink'}
-        onClick={() =>
-          redirectTo({ href: 'https://forms.gle/x2cc6CrRhbhDeaxe9' })
-        }
+        onClick={() => router.push('/speak')}
         className={`${pathname === '/speak' ? 'text-primary border-primary' : ''}`}
       >
         Speak
       </Button>
       {/* <Button
         variant={'navLink'}
-        onClick={() => router.push('/404')}
+        onClick={() => router.push('/sigs')}
         className={`${pathname === '/sigs' ? 'text-primary border-primary' : ''}`}
       >
         SIGs
@@ -89,9 +87,7 @@ export default function DesktopView() {
       </Button>
       <Button
         variant={'navLink'}
-        onClick={() =>
-          redirectTo({ href: 'https://www.facebook.com/durianpy' })
-        }
+        onClick={() => router.push('/contact')}
         className={`${pathname === '/contact' ? 'text-primary border-primary' : ''}`}
       >
         Contact Us

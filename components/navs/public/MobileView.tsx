@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { ChevronDown } from 'lucide-react';
+// import { ChevronDown } from 'lucide-react';
 import {
   Sheet,
   SheetContent,
@@ -13,12 +13,12 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 
-import {
-  Accordion,
-  AccordionTrigger,
-  AccordionContent,
-  AccordionItem,
-} from '@/components/ui/accordion';
+// import {
+//   Accordion,
+//   AccordionTrigger,
+//   AccordionContent,
+//   AccordionItem,
+// } from '@/components/ui/accordion';
 
 interface redirectProps {
   href: string;
@@ -61,7 +61,7 @@ export default function MobileView() {
             >
               Events
             </Button>
-            <Accordion type="single" collapsible className="w-full">
+            {/* <Accordion type="single" collapsible className="w-full">
               <AccordionItem
                 value="item-1"
                 className="w-full [&[data-state=open]]:bg-saturated-light-green-opacity-50 [&[data-state=open]]:shadow-md p-0"
@@ -85,11 +85,11 @@ export default function MobileView() {
                   </Button>
                 </AccordionContent>
               </AccordionItem>
-            </Accordion>
+            </Accordion> */}
 
             {/* <Button
               variant={'navLinkMobile'}
-              onClick={() => router.push('/404')}
+              onClick={() => router.push('/sigs')}
             >
               SIGs
             </Button> */}
@@ -101,9 +101,7 @@ export default function MobileView() {
             </Button>
             <Button
               variant={'navLinkMobile'}
-              onClick={() =>
-                redirectTo({ href: 'https://forms.gle/x2cc6CrRhbhDeaxe9' })
-              }
+              onClick={() => router.push('/speak')}
             >
               Speak
             </Button>
