@@ -8,13 +8,13 @@ import logo from '@/public/assets/logo.svg';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
-import { ChevronDown } from 'lucide-react';
-import {
-  Accordion,
-  AccordionTrigger,
-  AccordionContent,
-  AccordionItem,
-} from '@/components/ui/accordion';
+// import { ChevronDown } from 'lucide-react';
+// import {
+//   Accordion,
+//   AccordionTrigger,
+//   AccordionContent,
+//   AccordionItem,
+// } from '@/components/ui/accordion';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -174,7 +174,7 @@ export function Footer() {
                 </Link>
               ))}
 
-              <div className="col-span-2 flex justify-center md:justify-start ">
+              {/* <div className="col-span-2 flex justify-center md:justify-start ">
                 <Accordion
                   type="single"
                   collapsible
@@ -194,7 +194,7 @@ export function Footer() {
                     </AccordionContent>
                   </AccordionItem>
                 </Accordion>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
