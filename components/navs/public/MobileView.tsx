@@ -87,11 +87,17 @@ export default function MobileView() {
               </AccordionItem>
             </Accordion>
 
-            <Button
+            {/* <Button
               variant={'navLinkMobile'}
               onClick={() => router.push('/sigs')}
             >
               SIGs
+            </Button> */}
+            <Button
+              variant={'navLinkMobile'}
+              onClick={() => router.push('/code-of-conduct')}
+            >
+              Code of Conduct
             </Button>
             <Button
               variant={'navLinkMobile'}
@@ -107,7 +113,9 @@ export default function MobileView() {
             </Button>
             <Button
               variant={'navLinkMobile'}
-              onClick={() => router.push('/contact')}
+              onClick={() =>
+                redirectTo({ href: 'https://www.facebook.com/durianpy' })
+              }
             >
               Contact Us
             </Button>
