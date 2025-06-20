@@ -5,8 +5,7 @@ import Image from 'next/image';
 import { Container } from '@/components/ui/container';
 import Link from 'next/link';
 import { CarouselDots, type CarouselApi } from '@/components/ui/carousel';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import YellowStar from '@/public/assets/testimonials/yellow-star.svg';
 import WhiteStar from '@/public/assets/testimonials/white-star.svg';
 import ChatBubble from '@/public/assets/testimonials/chat-bubble.svg';
@@ -204,6 +203,26 @@ export function Testimonials() {
 
 export function TestimonialCard({ text, rate, active }: TestimonialProps) {
   const starRate = [];
+  const textRef = useRef<HTMLDivElement>(null);
+  const [isTextOverflowing, setIsTextOverflowing] = useState(false);
+
+  // Check if text is overflowing
+  useEffect(() => {
+    const checkOverflow = () => {
+      if (textRef.current) {
+        const element = textRef.current;
+        const isOverflowing =
+          element.scrollHeight > element.clientHeight ||
+          element.scrollWidth > element.clientWidth;
+        setIsTextOverflowing(isOverflowing);
+      }
+    };
+
+    checkOverflow();
+    // Re-check on window resize
+    window.addEventListener('resize', checkOverflow);
+    return () => window.removeEventListener('resize', checkOverflow);
+  }, [text]);
 
   // Append stars
   for (let i = 0; i < 5; i++) {
@@ -224,15 +243,17 @@ export function TestimonialCard({ text, rate, active }: TestimonialProps) {
       {/* Mobile View Display */}
       <div className="relative sm:hidden h-24 p-5 bg-medium-dark-green border border-[#36FF90] rounded-xl w-full text-clip overflow-hidden">
         <div className="text-xs sm:text-base">{text}</div>
-        <div className="absolute bottom-0 pb-2 pt-14 bg-gradient-to-t from-medium-dark-green from-20% inset-x-5">
-          <Link
-            href="/404"
-            target="_blank"
-            className="text-xs sm:text-base text-yellow-400 underline"
-          >
-            Read more
-          </Link>
-        </div>
+        {isTextOverflowing && (
+          <div className="absolute bottom-0 pb-2 pt-14 bg-gradient-to-t from-medium-dark-green from-20% inset-x-5">
+            <Link
+              href="/404"
+              target="_blank"
+              className="text-xs sm:text-base text-yellow-400 underline"
+            >
+              Read more
+            </Link>
+          </div>
+        )}
       </div>
 
       {/* Tablet & Laptop View Display */}
@@ -247,18 +268,23 @@ export function TestimonialCard({ text, rate, active }: TestimonialProps) {
         <div className="flex absolute top-5 inset-x-0 justify-center space-x-2.5 lg:space-x-0.5">
           {starRate}
         </div>
-        <div className="absolute top-16 mt-1 h-44 px-9 text-lg text-clip overflow-hidden lg:text-base lg:px-7 lg:h-1/3 xl:h-1/2">
+        <div
+          ref={textRef}
+          className="absolute top-16 mt-1 h-44 px-9 text-lg text-clip overflow-hidden lg:text-base lg:px-7 lg:h-1/3 xl:h-1/2"
+        >
           {text}
         </div>
-        <div className="absolute bottom-14 pb-2 pt-28 bg-gradient-to-t from-medium-dark-green from-25% inset-x-9 lg:inset-x-7 lg:bottom-10">
-          <Link
-            href="/404"
-            target="_blank"
-            className="text-[#B3B3B3] underline lg:text-xs"
-          >
-            Read more
-          </Link>
-        </div>
+        {isTextOverflowing && (
+          <div className="absolute bottom-14 pb-2 pt-28 bg-gradient-to-t from-medium-dark-green from-25% inset-x-9 lg:inset-x-7 lg:bottom-10">
+            <Link
+              href="/404"
+              target="_blank"
+              className="text-[#B3B3B3] underline lg:text-xs"
+            >
+              Read more
+            </Link>
+          </div>
+        )}
       </div>
     </>
   );
