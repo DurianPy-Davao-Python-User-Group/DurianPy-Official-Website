@@ -15,30 +15,16 @@ interface Event {
 
 const EVENTS: Event[] = [
   {
-    title: 'Pycon Mini Davao',
-    date: 'June 20, 2025',
-    location: 'Mugna Tech, Davao City',
+    title: 'Pycon Davao',
+    date: 'October 25, 2025',
+    location: 'Ateneo de Davao University',
     variant: 'main',
     link: '/404',
   },
   {
-    title: 'RAGs & DAGs',
-    date: 'June 20, 2025',
-    location: 'Mugna Tech, Davao City',
-    variant: 'regular',
-    link: '/404',
-  },
-  {
-    title: 'RAGs & DAGs',
-    date: 'June 20, 2025',
-    location: 'Mugna Tech, Davao City',
-    variant: 'regular',
-    link: '/404',
-  },
-  {
-    title: 'RAGs & DAGs',
-    date: 'June 20, 2025',
-    location: 'Mugna Tech, Davao City',
+    title: 'Pycon Davao Day 2',
+    date: 'October 26, 2025',
+    location: 'TBA',
     variant: 'regular',
     link: '/404',
   },
