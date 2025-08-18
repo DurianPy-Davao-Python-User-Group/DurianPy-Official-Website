@@ -15,14 +15,14 @@ interface Event {
 
 const EVENTS: Event[] = [
   {
-    title: 'Pycon Davao 2025',
+    title: 'PyCon Davao 2025',
     date: 'October 25, 2025',
     location: 'Ateneo de Davao University',
     variant: 'main',
     link: '/404',
   },
   {
-    title: 'Pycon Davao Sprint Day',
+    title: 'PyCon Davao Sprint Day',
     date: 'October 26, 2025',
     location: 'TBA',
     variant: 'regular',
