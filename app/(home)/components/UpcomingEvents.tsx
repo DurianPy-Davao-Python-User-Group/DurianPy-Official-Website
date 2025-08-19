@@ -2,8 +2,8 @@ import { Container } from '@/components/ui/container';
 import React from 'react';
 import EventCard from './EventCard';
 import CountdownTimer from './CountdownTimer';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
+// import { Button } from '@/components/ui/button';
+// import Link from 'next/link';
 
 interface Event {
   title: string;
@@ -19,14 +19,14 @@ const EVENTS: Event[] = [
     date: 'October 25, 2025',
     location: 'Ateneo de Davao University',
     variant: 'main',
-    link: '/404',
+    link: '', // TODO: Update Link
   },
   {
     title: 'PyCon Davao Sprint Day',
     date: 'October 26, 2025',
     location: 'TBA',
     variant: 'regular',
-    link: '/404',
+    link: '', // TODO: Update Link
   },
 ];
 
@@ -54,9 +54,9 @@ const UpcomingEvents = () => {
       </div>
 
       {/* See more Events Button */}
-      <Button className="bg-primary hover:bg-primary mx-auto max-w-[80%] lg:max-w-[80%] md:max-w-[80%] w-full md:py-2 xl:py-4 md:font-medium text-dark-green lg:py-4 lg:text-[15px] py-[4px] font-semibold text-[11px] xl:text-2xl xl:max-w-full">
+      {/* <Button className="bg-primary hover:bg-primary mx-auto max-w-[80%] lg:max-w-[80%] md:max-w-[80%] w-full md:py-2 xl:py-4 md:font-medium text-dark-green lg:py-4 lg:text-[15px] py-[4px] font-semibold text-[11px] xl:text-2xl xl:max-w-full">
         <Link href="/404">See More Events</Link>
-      </Button>
+      </Button> */}
     </Container>
   );
 };

@@ -42,8 +42,15 @@ export default function EventCard({ event }: { event: Event }) {
           {event.date} <br /> {event.location}
         </p>
         {event.variant === 'main' && (
-          <Button className="mx-auto mt-5 text-[10px] font-medium text-dark-green px-[10px] py-[6px] bg-primary hover:scale-105 hover:bg-primary transition-transform duration-300 rounded-full md:py-[9px] md:px-5 md:text-[12px] lg:py-[12px] lg:px-6 lg:text-[16px] xl:mx-0 xl:text-2xl">
-            <Link href="/404">Register Here</Link>
+          <Button
+            disabled={!event.link}
+            className="mx-auto mt-5 text-[10px] font-medium text-dark-green px-[10px] py-[6px] bg-primary hover:scale-105 hover:bg-primary transition-transform duration-300 rounded-full md:py-[9px] md:px-5 md:text-[12px] lg:py-[12px] lg:px-6 lg:text-[16px] xl:mx-0 xl:text-2xl"
+          >
+            {event.link ? (
+              <Link href={event.link}>Register Here</Link>
+            ) : (
+              <Link href={'/#'}>Registration coming soon</Link>
+            )}
           </Button>
         )}
       </div>
