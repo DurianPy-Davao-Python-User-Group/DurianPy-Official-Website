@@ -57,7 +57,7 @@ export function Sponsors() {
 
   return (
     <section className="bg-[#112018] py-16 font-montserrat lg:mb-[-90px] md:mb-[-70px] sm:mb-0">
-      <Container>
+      <Container className="overflow-x-clip">
         {/* Desktop View (768px and up) */}
         <section className="hidden md:block">
           <SponsorsDesktop sponsors={sponsors} />
