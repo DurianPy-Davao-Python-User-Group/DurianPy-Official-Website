@@ -3,15 +3,28 @@ import { cn } from '@/lib/utils';
 import CountdownTimer from './CountdownTimer';
 import Link from 'next/link';
 
-interface Event {
+export interface Event {
   title: string;
-  date: string;
+  date: string | string[];
   location: string;
   variant: 'main' | 'regular'; // "main" for the featured event, "regular" for other events
   link: string;
 }
 
 export default function EventCard({ event }: { event: Event }) {
+  const getDisplayDate = (date: string | string[]) => {
+    if (Array.isArray(date)) {
+      if (date.length === 0) return '';
+      if (date.length === 1) return date[0];
+      return `${date[0]} - ${date[date.length - 1]}`;
+    }
+    return date;
+  };
+
+  const getFirstDateString = (date: string | string[]) => {
+    return Array.isArray(date) ? (date[0] ?? '') : date;
+  };
+
   return (
     <div
       className={cn(
@@ -39,7 +52,7 @@ export default function EventCard({ event }: { event: Event }) {
               'text-xs lg:text-xl md:text-[17px] md:leading-tight'
           )}
         >
-          {event.date} <br /> {event.location}
+          {getDisplayDate(event.date)} <br /> {event.location}
         </p>
         {event.variant === 'main' && (
           <Button
@@ -61,7 +74,7 @@ export default function EventCard({ event }: { event: Event }) {
 
       {event.variant === 'main' && (
         <div className="hidden xl:block mr-8">
-          <CountdownTimer eventDate={new Date(event.date).toISOString()} />
+          <CountdownTimer eventDate={getFirstDateString(event.date)} />
         </div>
       )}
     </div>

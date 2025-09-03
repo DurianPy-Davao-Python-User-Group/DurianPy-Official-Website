@@ -2,31 +2,17 @@ import { Container } from '@/components/ui/container';
 import React from 'react';
 import EventCard from './EventCard';
 import CountdownTimer from './CountdownTimer';
+import { type Event } from './EventCard';
 // import { Button } from '@/components/ui/button';
 // import Link from 'next/link';
-
-interface Event {
-  title: string;
-  date: string;
-  location: string;
-  variant: 'main' | 'regular';
-  link: string;
-}
 
 const EVENTS: Event[] = [
   {
     title: 'PyCon Davao 2025',
-    date: 'October 25, 2025',
+    date: ['October 25, 2025', 'October 26, 2025'],
     location: 'Ateneo de Davao University',
     variant: 'main',
-    link: 'https://techtix.durianpy.org/pycon-davao-2025', // TODO: Update Link
-  },
-  {
-    title: 'PyCon Davao Sprint Day',
-    date: 'October 26, 2025',
-    location: 'TBA',
-    variant: 'regular',
-    link: '', // TODO: Update Link
+    link: 'https://techtix.durianpy.org/pycon-davao-2025',
   },
 ];
 
@@ -43,7 +29,13 @@ const UpcomingEvents = () => {
 
       {/* Countdown Timer */}
       <div className="block lg:block xl:hidden">
-        <CountdownTimer eventDate={new Date(EVENTS[0].date).toISOString()} />
+        <CountdownTimer
+          eventDate={
+            Array.isArray(EVENTS[0].date)
+              ? (EVENTS[0].date[0] ?? '')
+              : EVENTS[0].date
+          }
+        />
       </div>
 
       {/* Other events */}
