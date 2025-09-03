@@ -19,7 +19,7 @@ const EVENTS: Event[] = [
     date: 'October 25, 2025',
     location: 'Ateneo de Davao University',
     variant: 'main',
-    link: '', // TODO: Update Link
+    link: 'https://techtix.durianpy.org/pycon-davao-2025', // TODO: Update Link
   },
   {
     title: 'PyCon Davao Sprint Day',
