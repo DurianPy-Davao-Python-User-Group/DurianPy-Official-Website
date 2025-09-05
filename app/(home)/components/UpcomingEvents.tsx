@@ -12,7 +12,7 @@ const EVENTS: Event[] = [
     date: ['October 25, 2025', 'October 26, 2025'],
     location: 'Ateneo de Davao University',
     variant: 'main',
-    link: 'https://techtix.durianpy.org/pycon-davao-2025',
+    link: 'https://techtix.durianpy.org/pycon-davao-2025/register',
   },
 ];
 
