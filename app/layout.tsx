@@ -10,7 +10,7 @@ const head = {
 };
 
 // Get the base URL from environment variables
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://durianpy.org';
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.durianpy.org';
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -27,6 +27,14 @@ export const metadata: Metadata = {
   description: head.description,
   alternates: {
     canonical: baseUrl,
+  },
+  openGraph: {
+    type: 'website',
+    url: baseUrl,
+    ...head,
+  },
+  facebook: {
+    appId: "864906083053298"
   },
   twitter: {
     card: 'summary_large_image',
