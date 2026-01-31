@@ -232,9 +232,12 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
               key={index}
               onClick={() => updateButton(index)}
               className={cn(
-                'w-3 h-3 rounded-full mx-1',
-                current === index ? 'bg-primary' : 'bg-gray-400'
+                'w-4 h-4 rounded-full mx-1 transition-colors duration-300',
+                current === index
+                  ? 'bg-primary scale-110'
+                  : 'bg-gray-400 hover:bg-gray-500'
               )}
+              aria-label={`Go to slide ${index + 1}`}
             ></button>
           ))}
         </div>
