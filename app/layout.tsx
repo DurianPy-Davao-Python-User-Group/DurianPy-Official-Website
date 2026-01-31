@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     ...head,
   },
   facebook: {
-    appId: "864906083053298"
+    appId: '864906083053298',
   },
   twitter: {
     card: 'summary_large_image',
