@@ -122,20 +122,18 @@ const SpeakDetails: React.FC = () => {
                 </h2>
                 <div className="[@media(max-width:392px)]:text-[8px] text-[8px] sm:text-[12px] md:text-[14px] lg:text-[16px]">
                   <a
-                    onClick={() =>
-                      handleRedirect(
-                        'https://us.pycon.org/2014/speaking/proposal_advice/'
-                      )
-                    }
+                    href="https://us.pycon.org/2014/speaking/proposal_advice/"
                     className="hover:underline block cursor-pointer"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Great Advice for Giving Talks
                   </a>
                   <a
-                    onClick={() =>
-                      handleRedirect('https://forms.gle/x2cc6CrRhbhDeaxe9')
-                    }
+                    href="https://forms.gle/x2cc6CrRhbhDeaxe9"
                     className="hover:underline block cursor-pointer"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Submit Talk
                   </a>
