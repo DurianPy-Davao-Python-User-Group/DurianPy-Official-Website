@@ -32,6 +32,10 @@ type CarouselContextProps = {
   canScrollNext: boolean;
 } & CarouselProps;
 
+type CarouselNavProps = {
+  customOnClick?: () => void;
+};
+
 const CarouselContext = React.createContext<CarouselContextProps | null>(null);
 
 function useCarousel() {
@@ -235,9 +239,14 @@ CarouselItem.displayName = 'CarouselItem';
 
 const CarouselPrevious = React.forwardRef<
   HTMLButtonElement,
-  React.ComponentProps<typeof Button>
->(({ className, variant = 'transparent', size = 'icon', ...props }, ref) => {
+  React.ComponentProps<typeof Button> & CarouselNavProps
+>(({ className, variant = 'transparent', size = 'icon', customOnClick, ...props }, ref) => {
   const { orientation, scrollPrev, canScrollPrev } = useCarousel();
+
+  const handleClick = () => {
+    scrollPrev();
+    if (customOnClick) customOnClick();
+  };
 
   return (
     <Button
@@ -252,7 +261,7 @@ const CarouselPrevious = React.forwardRef<
         className
       )}
       disabled={!canScrollPrev}
-      onClick={scrollPrev}
+      onClick={handleClick}
       {...props}
     >
       <ChevronLeft className="!h-full !w-full text-primary" />
@@ -264,9 +273,14 @@ CarouselPrevious.displayName = 'CarouselPrevious';
 
 const CarouselNext = React.forwardRef<
   HTMLButtonElement,
-  React.ComponentProps<typeof Button>
->(({ className, variant = 'transparent', size = 'icon', ...props }, ref) => {
+  React.ComponentProps<typeof Button> & CarouselNavProps
+>(({ className, variant = 'transparent', size = 'icon', customOnClick, ...props }, ref) => {
   const { orientation, scrollNext, canScrollNext } = useCarousel();
+
+  const handleClick = () => {
+    scrollNext();
+    if (customOnClick) customOnClick();
+  }
 
   return (
     <Button
@@ -281,7 +295,7 @@ const CarouselNext = React.forwardRef<
         className
       )}
       disabled={!canScrollNext}
-      onClick={scrollNext}
+      onClick={handleClick}
       {...props}
     >
       <ChevronRight className="!h-full !w-full text-primary" />

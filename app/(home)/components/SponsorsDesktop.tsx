@@ -176,9 +176,10 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
             }}
           >
             {/* Previous Button */}
-            <a onClick={autoPlayInteraction}>
-              <CarouselPrevious className="absolute left-[-64px] z-10 h-16 w-16 sm:w-20 sm:h-20" />
-            </a>
+            <CarouselPrevious
+              className="absolute left-[-64px] z-10 h-16 w-16 sm:w-20 sm:h-20"
+              customOnClick={autoPlayInteraction}
+            />
 
             {/* Carousel Content */}
             <CarouselContent>
@@ -220,9 +221,10 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
             </CarouselContent>
 
             {/* Next Button */}
-            <a onClick={autoPlayInteraction}>
-              <CarouselNext className="absolute right-[-64px] z-10 h-16 w-16 sm:w-20 sm:h-20" />
-            </a>
+            <CarouselNext
+              className="absolute right-[-64px] z-10 h-16 w-16 sm:w-20 sm:h-20"
+              customOnClick={autoPlayInteraction}
+            />
           </Carousel>
         </div>
         {/* Dots Navigation */}
