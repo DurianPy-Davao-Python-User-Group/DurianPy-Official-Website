@@ -34,8 +34,9 @@ export default function MobileView() {
   return (
     <div className="w-full flex justify-end items-center">
       <Sheet>
-        <SheetTrigger>
+        <SheetTrigger aria-label="Open navigation menu">
           <Menu className="text-primary" size={36} />
+          <span className="sr-only">Open navigation menu</span>
         </SheetTrigger>
         <SheetContent
           side={'right'}
