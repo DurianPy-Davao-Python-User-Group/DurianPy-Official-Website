@@ -34,10 +34,10 @@ export const metadata: Metadata = {
     ...head,
   },
   facebook: {
-    appId: '864906083053298',
+    appId: process.env.NEXT_PUBLIC_FB_APP_ID || '',
   },
   twitter: {
-    card: 'summary_large_image',
+    card: 'summary_large_image',  
     ...head,
   },
 };
