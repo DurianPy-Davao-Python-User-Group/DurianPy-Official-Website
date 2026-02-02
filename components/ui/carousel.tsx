@@ -240,69 +240,91 @@ CarouselItem.displayName = 'CarouselItem';
 const CarouselPrevious = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button> & CarouselNavProps
->(({ className, variant = 'transparent', size = 'icon', customOnClick, ...props }, ref) => {
-  const { orientation, scrollPrev, canScrollPrev } = useCarousel();
+>(
+  (
+    {
+      className,
+      variant = 'transparent',
+      size = 'icon',
+      customOnClick,
+      ...props
+    },
+    ref
+  ) => {
+    const { orientation, scrollPrev, canScrollPrev } = useCarousel();
 
-  const handleClick = () => {
-    scrollPrev();
-    if (customOnClick) customOnClick();
-  };
+    const handleClick = () => {
+      scrollPrev();
+      if (customOnClick) customOnClick();
+    };
 
-  return (
-    <Button
-      ref={ref}
-      variant={variant}
-      size={size}
-      className={cn(
-        'absolute',
-        orientation === 'horizontal'
-          ? '-left-12 top-1/2 -translate-y-1/2'
-          : '-top-12 left-1/2 -translate-x-1/2 rotate-90',
-        className
-      )}
-      disabled={!canScrollPrev}
-      onClick={handleClick}
-      {...props}
-    >
-      <ChevronLeft className="!h-full !w-full text-primary" />
-      <span className="sr-only">Previous slide</span>
-    </Button>
-  );
-});
+    return (
+      <Button
+        ref={ref}
+        variant={variant}
+        size={size}
+        className={cn(
+          'absolute',
+          orientation === 'horizontal'
+            ? '-left-12 top-1/2 -translate-y-1/2'
+            : '-top-12 left-1/2 -translate-x-1/2 rotate-90',
+          className
+        )}
+        disabled={!canScrollPrev}
+        onClick={handleClick}
+        {...props}
+      >
+        <ChevronLeft className="!h-full !w-full text-primary" />
+        <span className="sr-only">Previous slide</span>
+      </Button>
+    );
+  }
+);
 CarouselPrevious.displayName = 'CarouselPrevious';
 
 const CarouselNext = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button> & CarouselNavProps
->(({ className, variant = 'transparent', size = 'icon', customOnClick, ...props }, ref) => {
-  const { orientation, scrollNext, canScrollNext } = useCarousel();
+>(
+  (
+    {
+      className,
+      variant = 'transparent',
+      size = 'icon',
+      customOnClick,
+      ...props
+    },
+    ref
+  ) => {
+    const { orientation, scrollNext, canScrollNext } = useCarousel();
 
-  const handleClick = () => {
-    scrollNext();
-    if (customOnClick) customOnClick();
+    const handleClick = () => {
+      scrollNext();
+      if (customOnClick) customOnClick();
+    };
+
+    return (
+      <Button
+        ref={ref}
+        variant={variant}
+        size={size}
+        className={cn(
+          'absolute',
+          orientation === 'horizontal'
+            ? '-right-12 top-1/2 -translate-y-1/2'
+            : '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',
+          className
+        )}
+        disabled={!canScrollNext}
+        onClick={handleClick}
+        {...props}
+      >
+        <ChevronRight className="!h-full !w-full text-primary" />
+        <span className="sr-only">Next slide</span>
+      </Button>
+    );
   }
-
-  return (
-    <Button
-      ref={ref}
-      variant={variant}
-      size={size}
-      className={cn(
-        'absolute',
-        orientation === 'horizontal'
-          ? '-right-12 top-1/2 -translate-y-1/2'
-          : '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',
-        className
-      )}
-      disabled={!canScrollNext}
-      onClick={handleClick}
-      {...props}
-    >
-      <ChevronRight className="!h-full !w-full text-primary" />
-      <span className="sr-only">Next slide</span>
-    </Button>
-  );
-});
+);
 CarouselNext.displayName = 'CarouselNext';
 
 const CarouselDots = React.forwardRef<
