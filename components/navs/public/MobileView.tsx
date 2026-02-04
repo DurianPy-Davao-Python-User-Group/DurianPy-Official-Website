@@ -36,7 +36,6 @@ export default function MobileView() {
       <Sheet>
         <SheetTrigger aria-label="Open navigation menu">
           <Menu className="text-primary" size={36} />
-          <span className="sr-only">Open navigation menu</span>
         </SheetTrigger>
         <SheetContent
           side={'right'}
