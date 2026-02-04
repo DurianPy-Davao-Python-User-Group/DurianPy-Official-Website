@@ -26,7 +26,8 @@ export const metadata: Metadata = {
   ],
   description: head.description,
   alternates: {
-    canonical: baseUrl,
+    // use relative canonical url 
+    canonical: '/',
   },
   openGraph: {
     type: 'website',
