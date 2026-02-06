@@ -14,7 +14,7 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: `
               default-src 'self';
-              script-src 'report-sample' 'self';
+              script-src 'report-sample' 'self' 'unsafe-inline' 'unsafe-eval';
               style-src 'report-sample' 'self' https://fonts.googleapis.com;
               object-src 'none';
               base-uri 'self';
