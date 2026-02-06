@@ -25,22 +25,24 @@ const nextConfig = {
               manifest-src 'self';
               media-src 'self';
               worker-src 'none';
-            `.replace(/\s+/g, ' ').trim(),
+            `
+              .replace(/\s+/g, ' ')
+              .trim(),
           },
           {
             key: 'x-frame-options',
             value: 'SAMEORIGIN',
           },
           {
-            key: "x-content-type-options",
-            value: "nosniff",
+            key: 'x-content-type-options',
+            value: 'nosniff',
           },
           {
-            key: "referrer-policy",
-            value: "strict-origin-when-cross-origin",
+            key: 'referrer-policy',
+            value: 'strict-origin-when-cross-origin',
           },
           {
-            key: "Permissions-Policy",
+            key: 'Permissions-Policy',
             value: `
               camera=(),
               microphone=(),
@@ -48,8 +50,10 @@ const nextConfig = {
               interest-cohort=(),
               usb=(),
               payment=()
-            `.replace(/\s+/g, " ").trim(),
-          },                          
+            `
+              .replace(/\s+/g, ' ')
+              .trim(),
+          },
         ],
       },
     ];
