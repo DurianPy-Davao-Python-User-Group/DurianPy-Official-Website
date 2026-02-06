@@ -15,7 +15,7 @@ const nextConfig = {
             value: `
               default-src 'self';
               script-src 'report-sample' 'self' 'unsafe-inline' 'unsafe-eval';
-              style-src 'report-sample' 'self' https://fonts.googleapis.com;
+              style-src 'report-sample' 'self' 'unsafe-inline' https://fonts.googleapis.com;
               object-src 'none';
               base-uri 'self';
               connect-src 'self';
@@ -47,7 +47,6 @@ const nextConfig = {
               camera=(),
               microphone=(),
               geolocation=(),
-              interest-cohort=(),
               usb=(),
               payment=()
             `
