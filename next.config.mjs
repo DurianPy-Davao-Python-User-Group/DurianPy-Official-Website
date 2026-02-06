@@ -14,15 +14,17 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: `
               default-src 'self';
-              script-src 'self' 'unsafe-inline' 'unsafe-eval' https:;
-              style-src 'self' 'unsafe-inline' https:;
-              img-src 'self' data: https: blob:;
-              font-src 'self' data: https:;
-              connect-src 'self' https:;
+              script-src 'report-sample' 'self';
+              style-src 'report-sample' 'self' https://fonts.googleapis.com;
               object-src 'none';
               base-uri 'self';
-              form-action 'self';
-              frame-ancestors 'self';
+              connect-src 'self';
+              font-src 'self' https://fonts.gstatic.com;
+              frame-src 'self' https://docs.google.com;
+              img-src 'self';
+              manifest-src 'self';
+              media-src 'self';
+              worker-src 'none';
             `.replace(/\s+/g, ' ').trim(),
           },
           {
