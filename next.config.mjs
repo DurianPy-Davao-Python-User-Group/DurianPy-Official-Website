@@ -11,7 +11,7 @@ const nextConfig = {
             value: 'max-age=31536000; includeSubDomains; preload',
           },
           {
-            key: 'Content-Security-Policy',
+            key: 'content-security-policy',
             value: `
               default-src 'self';
               script-src 'report-sample' 'self' 'unsafe-inline' 'unsafe-eval';
@@ -42,7 +42,7 @@ const nextConfig = {
             value: 'strict-origin-when-cross-origin',
           },
           {
-            key: 'Permissions-Policy',
+            key: 'permissions-policy',
             value: `
               camera=(),
               microphone=(),
