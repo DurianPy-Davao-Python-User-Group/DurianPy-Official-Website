@@ -112,7 +112,7 @@ export function Footer() {
 
           {/* Newsletter Section */}
           <div className="text-center md:text-left mt-12">
-            <h4 className="text-primary text-xl font-bold mb-4">Newsletter</h4>
+            <h2 className="text-primary text-xl font-bold mb-4">Newsletter</h2>
             <Input
               placeholder="Your Email"
               type="email"
@@ -158,7 +158,7 @@ export function Footer() {
 
           {/* Navigation Links */}
           <div className="text-center md:text-left mt-12 md:w-[75%]">
-            <h4 className="text-primary text-xl font-bold mb-4">Navigation</h4>
+            <h2 className="text-primary text-xl font-bold mb-4">Navigation</h2>
             <div className="grid grid-cols-2  md:text-sm gap-4">
               {links.map(({ label, href, external }) => (
                 <Link

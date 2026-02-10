@@ -32,6 +32,10 @@ type CarouselContextProps = {
   canScrollNext: boolean;
 } & CarouselProps;
 
+type CarouselNavProps = {
+  customOnClick?: () => void;
+};
+
 const CarouselContext = React.createContext<CarouselContextProps | null>(null);
 
 function useCarousel() {
@@ -235,60 +239,92 @@ CarouselItem.displayName = 'CarouselItem';
 
 const CarouselPrevious = React.forwardRef<
   HTMLButtonElement,
-  React.ComponentProps<typeof Button>
->(({ className, variant = 'transparent', size = 'icon', ...props }, ref) => {
-  const { orientation, scrollPrev, canScrollPrev } = useCarousel();
+  React.ComponentProps<typeof Button> & CarouselNavProps
+>(
+  (
+    {
+      className,
+      variant = 'transparent',
+      size = 'icon',
+      customOnClick,
+      ...props
+    },
+    ref
+  ) => {
+    const { orientation, scrollPrev, canScrollPrev } = useCarousel();
 
-  return (
-    <Button
-      ref={ref}
-      variant={variant}
-      size={size}
-      className={cn(
-        'absolute',
-        orientation === 'horizontal'
-          ? '-left-12 top-1/2 -translate-y-1/2'
-          : '-top-12 left-1/2 -translate-x-1/2 rotate-90',
-        className
-      )}
-      disabled={!canScrollPrev}
-      onClick={scrollPrev}
-      {...props}
-    >
-      <ChevronLeft className="!h-full !w-full text-primary" />
-      <span className="sr-only">Previous slide</span>
-    </Button>
-  );
-});
+    const handleClick = () => {
+      scrollPrev();
+      if (customOnClick) customOnClick();
+    };
+
+    return (
+      <Button
+        ref={ref}
+        variant={variant}
+        size={size}
+        className={cn(
+          'absolute h-11 w-11 p-2',
+          orientation === 'horizontal'
+            ? '-left-14 top-1/2 -translate-y-1/2'
+            : '-top-14 left-1/2 -translate-x-1/2 rotate-90',
+          className
+        )}
+        disabled={!canScrollPrev}
+        onClick={handleClick}
+        {...props}
+      >
+        <ChevronLeft className="!h-full !w-full text-primary" />
+        <span className="sr-only">Previous slide</span>
+      </Button>
+    );
+  }
+);
 CarouselPrevious.displayName = 'CarouselPrevious';
 
 const CarouselNext = React.forwardRef<
   HTMLButtonElement,
-  React.ComponentProps<typeof Button>
->(({ className, variant = 'transparent', size = 'icon', ...props }, ref) => {
-  const { orientation, scrollNext, canScrollNext } = useCarousel();
+  React.ComponentProps<typeof Button> & CarouselNavProps
+>(
+  (
+    {
+      className,
+      variant = 'transparent',
+      size = 'icon',
+      customOnClick,
+      ...props
+    },
+    ref
+  ) => {
+    const { orientation, scrollNext, canScrollNext } = useCarousel();
 
-  return (
-    <Button
-      ref={ref}
-      variant={variant}
-      size={size}
-      className={cn(
-        'absolute',
-        orientation === 'horizontal'
-          ? '-right-12 top-1/2 -translate-y-1/2'
-          : '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',
-        className
-      )}
-      disabled={!canScrollNext}
-      onClick={scrollNext}
-      {...props}
-    >
-      <ChevronRight className="!h-full !w-full text-primary" />
-      <span className="sr-only">Next slide</span>
-    </Button>
-  );
-});
+    const handleClick = () => {
+      scrollNext();
+      if (customOnClick) customOnClick();
+    };
+
+    return (
+      <Button
+        ref={ref}
+        variant={variant}
+        size={size}
+        className={cn(
+          'absolute h-11 w-11 p-2',
+          orientation === 'horizontal'
+            ? '-right-14 top-1/2 -translate-y-1/2'
+            : '-bottom-14 left-1/2 -translate-x-1/2 rotate-90',
+          className
+        )}
+        disabled={!canScrollNext}
+        onClick={handleClick}
+        {...props}
+      >
+        <ChevronRight className="!h-full !w-full text-primary" />
+        <span className="sr-only">Next slide</span>
+      </Button>
+    );
+  }
+);
 CarouselNext.displayName = 'CarouselNext';
 
 const CarouselDots = React.forwardRef<
@@ -319,11 +355,11 @@ const CarouselDots = React.forwardRef<
 
   if (numberOfSlides > 1) {
     return (
-      <div ref={ref} className={`flex justify-center ${props.className}`}>
+      <div ref={ref} className={`flex justify-center gap-3 ${props.className}`}>
         {Array.from({ length: numberOfSlides }, (_, i) => (
           <Button
             key={i}
-            className={`mx-1 h-2.5 w-2.5 rounded-full p-0 ${
+            className={`h-3.5 w-3.5 rounded-full p-2 ${
               i === currentSlide
                 ? 'scale-125 transform bg-primary hover:bg-gray-500'
                 : 'bg-gray-300 hover:bg-gray-300'
