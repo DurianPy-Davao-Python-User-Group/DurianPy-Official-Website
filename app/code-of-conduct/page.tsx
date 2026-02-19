@@ -1,3 +1,7 @@
+const COC_REPORT_FORM_URL =
+  process.env.NEXT_PUBLIC_COC_REPORT_FORM_URL ??
+  'https://forms.gle/R4MXsc2brwHEmgrE7';
+
 export default function CodeOfConductPage() {
   return (
     <main className="bg-dark-green text-white min-h-[70vh] py-8 md:px-36 px-10 flex flex-col justify-center">
@@ -27,6 +31,20 @@ export default function CodeOfConductPage() {
           className="text-[#F5B041] hover:underline"
         >
           Code of Conduct
+        </a>
+        .
+      </p>
+
+      <p className="text-xl max-w-3xl leading-relaxed mt-8">
+        If you witness or experience any violations of the Code of Conduct,
+        please report them using the{' '}
+        <a
+          href={COC_REPORT_FORM_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#F5B041] hover:underline"
+        >
+          Code of Conduct Report Form
         </a>
         .
       </p>
