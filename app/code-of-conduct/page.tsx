@@ -35,7 +35,7 @@ export default function CodeOfConductPage() {
         .
       </p>
 
-      <p className="text-xl max-w-3xl leading-relaxed mt-8">
+      <p className="text-xl max-w-3xl leading-relaxed mt-8 font-semibold">
         If you witness or experience any violations of the Code of Conduct,
         please report them using the{' '}
         <a
