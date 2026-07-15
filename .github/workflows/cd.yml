@@ -54,11 +54,11 @@ jobs:
           mask-values: true
           recursive: true
 
-      - name: Determine and Apply Version Bump
-        id: version-bump
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./scripts/bump-version.sh
+      # - name: Determine and Apply Version Bump
+      #   id: version-bump
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   run: ./scripts/bump-version.sh
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
