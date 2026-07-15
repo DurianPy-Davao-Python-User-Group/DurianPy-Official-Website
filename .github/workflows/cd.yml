@@ -1,9 +1,6 @@
 name: Production CD Pipeline
 
 on:
-  push:
-    branches:
-      - release/production
   workflow_dispatch:
 
 permissions:
@@ -14,9 +11,9 @@ permissions:
 
 jobs:
   deploy:
-    name: Build & Production Deploy
+    name: Build & staging Deploy
     runs-on: ubuntu-latest
-    environment: production
+    environment: staging
     env:
       ENVIRONMENT: ${{ vars.ENVIRONMENT }}
     steps:
