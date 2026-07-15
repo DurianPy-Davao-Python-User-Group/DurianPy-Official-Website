@@ -40,8 +40,8 @@ node -e "
   require('fs').writeFileSync('./package.json', JSON.stringify(pkg, null, 2) + '\n');
 "
 
-# 4. Bump version using npm
-NEW_VERSION=$(npm version "$BUMP_TYPE" --no-git-tag-version)
+# 4. Bump version using pnpm
+NEW_VERSION=$(pnpm version "$BUMP_TYPE" --no-git-tag-version)
 TAG_NAME="$NEW_VERSION"
 echo "New Version: $TAG_NAME"
 
