@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+
+
+/* ─── Design Tokens ─── */
+@theme {
+  /* Colors */
+  --color-midori-green: #36FF90;
+  --color-mint-bliss: #8AFFBE;
+  --color-mint-bliss-50: #009643;
+  --color-primary: #FFC200;
+  --color-dark-green: #112018;
+  --color-saturated-light-green: #00FF00;
+  --color-light-dark-green: #00401C;
+  --color-medium-dark-green: #1A3E2A;
+  --color-black-30-opacity: rgba(0, 0, 0, 0.3);
+  --color-saturated-light-green-opacity-50: #36FF9050;
+
+  /* Font Family */
+  --font-montserrat: 'Montserrat', sans-serif;
+
+  /* Font Size (custom named sizes) */
+  --text-web-title-font: var(--web-title-font);
+  --text-web-medium-font: var(--web-medium-font);
+  --text-web-body-font: var(--web-body-font);
+  --text-tabs-navbar: var(--tabs-navbar);
+  --text-button-default: var(--button-default);
+  --text-button-hovered: var(--button-hovered);
+
+  /* Background Images (Gradients) */
+  --background-image-radial-custom: radial-gradient(at top right, #FFC201 0%, #1A3E2A 84%);
+  --background-image-gradient-ltr-lightgreen-transparent: linear-gradient(to right, #36FF90, rgba(115, 115, 115, 0));
+  --background-image-gradient-utd-lightgreen-darkgreen: linear-gradient(to bottom, #1C653B, #113620);
+  --background-image-gradient-ltr-darkgreen-lightgreen: linear-gradient(to right, #1A3E2A, #3EB372);
+  --background-image-gradient-ltr-solid-yellow-lightyellow: linear-gradient(to right, #FFC200, #FFDC6C);
+  --background-image-gradient-ltr-transparent-yellow: linear-gradient(to right, rgba(138, 255, 191, 0), #FFC201);
+  --background-image-gradient-utd-transparent-black: linear-gradient(180deg, rgba(102, 102, 102, 0) 0%, rgba(0, 0, 0, 0.49) 18%, rgba(0, 0, 0, 1) 48%);
+  --background-image-gradient-middle-green-transparent: linear-gradient(180deg, rgba(17,32,24,0) 0%, rgba(17,32,24,0.66) 23%, rgba(17,32,24,1) 44%, rgba(17,32,24,1) 66%, rgba(17,32,24,0) 100%);
+  --background-image-gradient-ltr-green-transparent: linear-gradient(to right, #1A3E2A, rgba(26, 62, 42, 0));
+  --background-image-gradient-utd-saturatedGreen-transparent: linear-gradient(to bottom, rgba(62, 179, 115, 0), #00833A);
+  --background-image-gradient-utd-nav-transparent: linear-gradient(to bottom, rgba(62,179,114,0.63), rgba(166,255,205,0.63));
+  --background-image-gradient-utd-green-transparent: linear-gradient(180deg, rgba(0,64,28,1), rgba(17,32,24,0.8));
+  --background-image-gradient-circle-green: radial-gradient(circle, #009643 0%, rgba(0, 150, 67, 0) 100%);
+
+  /* Border Radius */
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  /* Animations (accordion) */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from { height: 0; }
+    to { height: var(--radix-accordion-content-height); }
+  }
+
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height); }
+    to { height: 0; }
+  }
+
+}
+
+/* ─── Custom Breakpoints (via @custom-variant for TW v4) ─── */
+@custom-variant height-1000 (@media (min-height: 1000px));
+@custom-variant height-1366 (@media (min-height: 1366px));
+@custom-variant width-1912 (@media (min-width: 1912px));
+@custom-variant width-1440 (@media (min-width: 1440px));
+
+/* ─── Custom Utilities ─── */
+@utility text-shadow-sm {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+@utility text-shadow-md {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+@utility text-shadow-lg {
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+@utility text-shadow-xl {
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* ─── Base Styles ─── */
+* {
+  box-sizing: border-box;
+}
+
+html, body, #app {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+
+:root {
+  --radius: 0.5rem;
+  --web-title-font: 5rem;
+  --web-medium-font: 2.5rem;
+  --web-body-font: 1.25rem;
+  --tabs-navbar: 1rem;
+  --button-default: 1.5rem;
+  --button-hovered: 1.625rem;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --web-title-font: 1.5rem;
+    --web-medium-font: 0.875rem;
+    --web-body-font: 0.875rem;
+    --tabs-navbar: 1.4375rem;
+    --button-default: 0.75rem;
+    --button-hovered: 0.875rem;
+  }
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  opacity: 0.5;
+}
+
+/* ─── Autofill Reset ─── */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border-bottom: 1px solid #ffffff;
+  -webkit-text-fill-color: rgb(255, 255, 255);
+  -webkit-box-shadow: 0 0 0px 1000px #25334100 inset;
+  box-shadow: 0 0 0px 1000px #25334100 inset;
+  transition: background-color 5000s ease-in-out 0s;
+  color: white;
+}
