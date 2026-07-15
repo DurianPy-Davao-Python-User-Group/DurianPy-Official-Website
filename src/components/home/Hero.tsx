@@ -46,17 +46,17 @@ export function Hero() {
       <section className="relative bg-dark-green overflow-clip">
         {/* All Background elements */}
         <div>
-          <div className="absolute inset-0 bg-[url('/image/rectangle.svg')] bg-cover bg-no-repeat bg-center top-[45%] blur-md scale-x-[2] md:scale-y-[1.3] lg:top-[65%] lg:scale-y-[1.7] height-1000:top-[50%]" />
-          <div className="absolute inset-0 bg-[url('/image/ellipse.svg')] bg-no-repeat bg-contain bg-center scale-x-[1.8] scale-y-[2.4] top-[72%] md:top-[73%] md:bg-contain md:scale-x-[3.5] height-1000:top-[71%]" />
+          <div className="absolute inset-0 bg-[url('/assets/images/rectangle.svg')] bg-cover bg-no-repeat bg-center top-[45%] blur-md scale-x-[2] md:scale-y-[1.3] lg:top-[65%] lg:scale-y-[1.7] height-1000:top-[50%]" />
+          <div className="absolute inset-0 bg-[url('/assets/images/ellipse.svg')] bg-no-repeat bg-contain bg-center scale-x-[1.8] scale-y-[2.4] top-[72%] md:top-[73%] md:bg-contain md:scale-x-[3.5] height-1000:top-[71%]" />
           <img
-            src="/image/gear.svg"
+            src="/assets/images/gear.svg"
             height={600}
             width={600}
             alt="a"
             className="absolute right-[90%] top-[30%] scale-[135%] md:scale-[105%] lg:scale-[120%] md:hidden lg:block lg:top-[5%] lg:right-[80%] -rotate-12 blur-sm w-auto h-auto xl:scale-[140%] xl:right-0 xl:left-[-28%] xl:top-[10%] width-1912:left-[-22%]"
           />
           <img
-            src="/image/gear.svg"
+            src="/assets/images/gear.svg"
             height={600}
             width={600}
             alt="a"
@@ -121,7 +121,7 @@ export function Hero() {
           <div className="relative flex flex-col place-items-center justify-center text-center gap-8">
             <div className="flex flex-col">
               <img
-                src="/assets/logo.svg"
+                src="/assets/images/logo.svg"
                 height={64}
                 width={64}
                 className="w-auto h-32 md:h-44"

@@ -13,8 +13,8 @@ export const Route = createFileRoute('/sigs')({
 })
 
 const sigsData = [
-  { image: '/assets/sigsIcons/Group125.png', title: 'Data' },
-  { image: '/assets/sigsIcons/Group122.png', title: 'Backend' },
+  { image: '/assets/images/sigsIcons/Group125.png', title: 'Data' },
+  { image: '/assets/images/sigsIcons/Group122.png', title: 'Backend' },
 ]
 
 function Sigs() {

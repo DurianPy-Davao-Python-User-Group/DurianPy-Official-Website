@@ -9,7 +9,7 @@ export default function Navbar() {
     <nav className="bg-gradient-utd-green-transparent backdrop-blur-sm h-[79px] px-[16px] sticky w-full top-0 z-50 flex justify-center items-center rounded-b-[20px]">
       <div className="max-w-7xl w-full flex justify-between items-center lg:gap-[169px]">
         <img
-          src="/assets/logo.svg"
+          src="/assets/images/logo.svg"
           alt="UTD Logo"
           width={160.95}
           height={44.72}

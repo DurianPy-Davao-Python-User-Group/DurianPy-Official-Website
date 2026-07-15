@@ -11,9 +11,9 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 
-const YellowStar = '/assets/testimonials/yellow-star.svg';
-const WhiteStar = '/assets/testimonials/white-star.svg';
-const ChatBubble = '/assets/testimonials/chat-bubble.svg';
+const YellowStar = '/assets/images/testimonials/yellow-star.svg';
+const WhiteStar = '/assets/images/testimonials/white-star.svg';
+const ChatBubble = '/assets/images/testimonials/chat-bubble.svg';
 
 type TestimonialProps = {
   text: string;
@@ -73,7 +73,7 @@ export function Testimonials() {
             <div className="-space-y-4">
               <div className="flex items-center gap-x-2">
                 <img
-                  src="/assets/logo.svg"
+                  src="/assets/images/logo.svg"
                   className="h-16 sm:h-24 w-auto"
                   alt="Durianpy Logo"
                 />
@@ -137,7 +137,7 @@ export function Testimonials() {
                 <div className="flex flex-col justify-center items-center mt-5 select-none md:mt-10 lg:mt-14">
                   <Avatar className="h-[46px] w-[46px] sm:h-20 sm:w-20 md:h-[68px] md:w-[68px]">
                     <AvatarImage
-                      src={'/assets/testimonials/' + test.avatar}
+                      src={'/assets/images/testimonials/' + test.avatar}
                       className="object-cover"
                     />
                     <AvatarFallback>{test.name[0]}</AvatarFallback>

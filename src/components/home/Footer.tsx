@@ -70,7 +70,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-start w-full md:gap-12 lg:gap-16">
           {/* Logo and CTA Buttons */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left md:w-[60%]">
-            <img src="/assets/logo.svg" alt="UTD logo" className="mb-4 h-12 w-auto" />
+            <img src="/assets/images/logo.svg" alt="UTD logo" className="mb-4 h-12 w-auto" />
             <p className="text-white text-sm mb-6 max-w-[280px]">
               Accelerating Davao&apos;s Tech Growth with Python
             </p>

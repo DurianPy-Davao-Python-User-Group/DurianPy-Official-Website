@@ -31,7 +31,7 @@ export function Carousel() {
               className="relative flex items-center justify-center"
             >
               <img
-                src={'/assets/carousel/' + photo.image}
+                src={'/assets/images/carousel/' + photo.image}
                 alt={photo.name}
                 className="object-cover w-full h-full"
                 width={1960}

@@ -32,7 +32,7 @@ function SpeakDetails() {
               <div className="flex items-center space-x-2 md:space-x-5">
                 <span>with</span>
                 <img
-                  src="/assets/speakIcons/logoName.svg"
+                  src="/assets/images/speakIcons/logoName.svg"
                   alt="DurianPy"
                   className="mt-1 sm:mt-1 md:mt-1 w-auto [@media(max-width:380px)]:h-6 h-8 sm:h-14 md:h-15 lg:h-20"
                 />
@@ -56,7 +56,7 @@ function SpeakDetails() {
           <div className="w-1/2">
             <div className="ml-4 flex justify-end md:mt-5 lg:mt-10 relative ">
               <img
-                src="/assets/speakIcons/glowBg.svg"
+                src="/assets/images/speakIcons/glowBg.svg"
                 alt="Glow BG"
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[700px] md:h-[700px] lg:w-[800px] lg:h-[1000px] rounded-full blur-3xl saturate-100 brightness-150 z-0"
               />
@@ -64,7 +64,7 @@ function SpeakDetails() {
 
               {/* Logo */}
               <img
-                src="/assets/speakIcons/logoIcon.svg"
+                src="/assets/images/speakIcons/logoIcon.svg"
                 alt="DurianPy Logo"
                 className="w-[250px] sm:w-[350px] md:w-[400px] lg:w-[500px] relative z-10"
               />

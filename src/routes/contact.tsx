@@ -124,7 +124,7 @@ function ContactPage() {
             }`}
           >
             <img
-              src="/assets/icons/email-us.svg"
+              src="/assets/images/icons/email-us.svg"
               width={63}
               height={63}
               alt=""

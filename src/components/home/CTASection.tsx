@@ -1,8 +1,8 @@
 import { Container } from '@/components/ui/container';
 
-const joinOurCommunityIcon = '/assets/ctaIcons/join-our-community.svg';
-const attendEventsIcon = '/assets/ctaIcons/attend-events.svg';
-const giveATalkIcon = '/assets/ctaIcons/give-a-talk.svg';
+const joinOurCommunityIcon = '/assets/images/ctaIcons/join-our-community.svg';
+const attendEventsIcon = '/assets/images/ctaIcons/attend-events.svg';
+const giveATalkIcon = '/assets/images/ctaIcons/give-a-talk.svg';
 
 type CardProps = {
   link: string;

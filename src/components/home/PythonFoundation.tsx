@@ -1,8 +1,8 @@
 import { Container } from '@/components/ui/container';
 
-const logo = '/assets/ctaIcons/psf-logo.svg';
-const gradient = '/assets/ctaIcons/gradient.svg';
-const gradient2 = '/assets/ctaIcons/gradient2.svg';
+const logo = '/assets/images/ctaIcons/psf-logo.svg';
+const gradient = '/assets/images/ctaIcons/gradient.svg';
+const gradient2 = '/assets/images/ctaIcons/gradient2.svg';
 
 export function PythonFoundation() {
   return (
