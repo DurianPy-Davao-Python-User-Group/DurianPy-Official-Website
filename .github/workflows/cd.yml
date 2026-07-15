@@ -89,6 +89,7 @@ jobs:
           context: .
           file: Dockerfile
           load: true
+          provenance: false
           tags: |
             ${{ steps.login-ecr.outputs.registry }}/durianpy-website-tanstack-start-${{ env.ENVIRONMENT }}
           build-args: |
