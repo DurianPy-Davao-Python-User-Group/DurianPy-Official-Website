@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: staging
     env:
-      ENVIRONMENT: ${{ vars.ENVIRONMENT }}
+      ENVIRONMENT: ${{ vars.ENVIRONMENT || 'staging' }}
     steps:
       - name: Checkout Source Code
         uses: actions/checkout@v4
@@ -91,18 +91,18 @@ jobs:
           load: true
           provenance: false
           tags: |
-            ${{ steps.login-ecr.outputs.registry }}/durianpy-website-tanstack-start-${{ env.ENVIRONMENT }}
+            ${{ steps.login-ecr.outputs.registry }}/durianpy-website-tanstack-start-${{ env.ENVIRONMENT }}:latest
           build-args: |
             LAYER_URL=${{ steps.layer-url.outputs.url }}
 
       - name: Push Image
         if: success()
         run: |
-          docker push ${{ steps.login-ecr.outputs.registry }}/durianpy-website-tanstack-start-${{ env.ENVIRONMENT }}
+          docker push ${{ steps.login-ecr.outputs.registry }}/durianpy-website-tanstack-start-${{ env.ENVIRONMENT }}:latest
 
       - name: Deploy to AWS Lambda
         if: success()
         run: |
           aws lambda update-function-code \
-            --function-name durianpy-website-lambda-${{ env.ENVIRONMENT }} \
-            --image-uri ${{ steps.login-ecr.outputs.registry }}/durianpy-website-tanstack-start-${{ env.ENVIRONMENT }}
+            --function-name durianpy-website-tanstack-start-${{ env.ENVIRONMENT }} \
+            --image-uri ${{ steps.login-ecr.outputs.registry }}/durianpy-website-tanstack-start-${{ env.ENVIRONMENT }}:latest
