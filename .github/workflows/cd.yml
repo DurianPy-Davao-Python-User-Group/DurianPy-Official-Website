@@ -32,10 +32,11 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
+      - name: Enable pnpm
+        run: |
+          npm install -g corepack@0.31.0
+          corepack enable
+          corepack prepare pnpm@10.32.1 --activate
 
       - name: Set up Node.js Environment
         uses: actions/setup-node@v4
