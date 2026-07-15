@@ -13,45 +13,11 @@ RUN if [ -z "$LAYER_URL" ]; then \
         rm layer.zip; \
     fi
 
-# ─── Step 2: Base Image ───────────────────────────────────────────
-# Leverages a slim Alpine footprint and sets up the pnpm environment globally
-FROM public.ecr.aws/docker/library/node:22-alpine AS base
+# ─── Step 2: Final Lambda Runtime ─────────────────────────────────
+# Standardized, secure runtime environment executing as a non-root user
+FROM public.ecr.aws/docker/library/node:22-alpine AS runner
 RUN apk add --no-cache libc6-compat
 
-# Install and activate pnpm via Corepack
-RUN corepack enable && corepack prepare pnpm@latest --activate
-
-# ─── Step 3: Dependencies Isolation ───────────────────────────────
-# Installs and caches node_modules separately to optimize layer rebuilding
-FROM base AS deps
-WORKDIR /app
-
-# Copy lockfiles, manifests, and workspace files required by pnpm v11
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
-RUN pnpm install --frozen-lockfile
-
-# ─── Step 4: Application Builder ──────────────────────────────────
-# Pulls in cached modules, maps build-time secrets, and runs the Nitro bundler
-FROM base AS builder
-WORKDIR /app
-
-# Mount dependencies from the previous stage
-COPY --from=deps /app/node_modules ./node_modules
-COPY . .
-
-ENV NODE_ENV=production
-
-# NOTE: If your TanStack app requires build-time secrets (like your Next.js project),
-# you can uncomment and adapt the secret mounts below:
-# RUN --mount=type=secret,id=database_url \
-#     export DATABASE_URL=$(cat /run/secrets/database_url) && \
-#     pnpm build
-
-RUN pnpm build
-
-# ─── Step 5: Final Lambda Runtime ─────────────────────────────────
-# Standardized, secure runtime environment executing as a non-root user
-FROM base AS runner
 WORKDIR /app
 
 # Copy the AWS Lambda Web Adapter extension
@@ -77,8 +43,8 @@ ENV SECRETS_MANAGER_TTL=300
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 tanstackjs
 
-# Copy the standalone Nitro output with explicitly isolated ownership
-COPY --from=builder --chown=tanstackjs:nodejs /app/.output/server ./.output/server
+# Copy the standalone Nitro output from the host machine (built by CI/CD pipeline)
+COPY --chown=tanstackjs:nodejs .output/server ./.output/server
 
 USER tanstackjs
 

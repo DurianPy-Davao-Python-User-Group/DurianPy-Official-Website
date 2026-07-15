@@ -11,7 +11,8 @@ dist-ssr
 .nitro
 .tanstack
 .wrangler
-.output
+.output/*
+!.output/server
 .vinxi
 __unconfig*
 *.local
