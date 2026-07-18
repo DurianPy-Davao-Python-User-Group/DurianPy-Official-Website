@@ -1,3 +1,4 @@
+import { Image } from "@unpic/react";
 import { Button } from '@/components/ui/button';
 import { Container } from '@/components/ui/container';
 import { CarouselDots, type CarouselApi } from '@/components/ui/carousel';
@@ -72,7 +73,7 @@ export function Testimonials() {
           <div className="flex flex-col items-center xl:items-start xl:text-left w-full lg:items-start">
             <div className="-space-y-4">
               <div className="flex items-center gap-x-2">
-                <img
+                <Image
                   src="/assets/images/logo.svg"
                   className="h-16 sm:h-24 w-auto"
                   alt="Durianpy Logo"
@@ -87,14 +88,14 @@ export function Testimonials() {
                 <span className="font-semibold mt-1">4.8</span>
                 <div className="flex -space-x-3 sm:-space-x-1">
                   {[...Array(4)].map((_, i) => (
-                    <img
+                    <Image
                       src={YellowStar}
                       alt="yellow star"
                       key={i}
                       className="p-2 sm:p-[6px]"
                     />
                   ))}
-                  <img
+                  <Image
                     src={WhiteStar}
                     alt="yellow star"
                     className="p-2 sm:p-[6px]"
@@ -185,11 +186,11 @@ function ChatBubbleWithText({ text, rate, active }: TestimonialProps) {
   const starRate = Array.from({ length: 5 }, (_, i) => {
     if (i < rate) {
       return (
-        <img src={YellowStar} alt="yellow star" key={i} className="lg:p-1" />
+        <Image src={YellowStar} alt="yellow star" key={i} className="lg:p-1" />
       );
     } else {
       return (
-        <img src={WhiteStar} alt="yellow star" key={i} className="lg:p-1" />
+        <Image src={WhiteStar} alt="yellow star" key={i} className="lg:p-1" />
       );
     }
   });
@@ -221,7 +222,7 @@ function ChatBubbleWithText({ text, rate, active }: TestimonialProps) {
             : 'hidden sm:block relative transition-all duration-300 ease-in-out'
         }
       >
-        <img src={ChatBubble} alt="chat-bubble" />
+        <Image src={ChatBubble} alt="chat-bubble" />
         <div className="flex absolute top-5 inset-x-0 justify-center space-x-2.5 lg:space-x-0.5">
           {starRate}
         </div>

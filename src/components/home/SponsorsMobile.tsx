@@ -1,3 +1,4 @@
+import { Image } from "@unpic/react";
 import {
   Carousel,
   CarouselContent,
@@ -96,24 +97,21 @@ const SponsorsMobile = ({ sponsors }: { sponsors: SponsorsProps[] }) => {
       <div className="relative">
         {/* Carousel or Full View */}
         <div
-          className={`relative w-full overflow-hidden transition-all duration-500 ${
-            showAll ? 'h-auto' : 'h-[540px]'
-          }`}
+          className={`relative w-full overflow-hidden transition-all duration-500 ${showAll ? 'h-auto' : 'h-[540px]'
+            }`}
         >
           <div
             id="sponsors-carousel-container"
-            className={`overflow-y-auto no-scrollbar transition-all duration-500 ${
-              showAll ? 'flex flex-col gap-1' : 'h-full'
-            }`}
+            className={`overflow-y-auto no-scrollbar transition-all duration-500 ${showAll ? 'flex flex-col gap-1' : 'h-full'
+              }`}
             style={{
               paddingBottom: showAll ? '20px' : '100px',
             }}
           >
             <Carousel className="h-full">
               <CarouselContent
-                className={`flex flex-col items-center ${
-                  showAll ? 'gap-4 mb-2' : 'gap-4 mt-4 mb-6'
-                }`}
+                className={`flex flex-col items-center ${showAll ? 'gap-4 mb-2' : 'gap-4 mt-4 mb-6'
+                  }`}
               >
                 {sponsors.map((sponsor, index) => {
                   const isActive = activeIndex === index;
@@ -127,13 +125,12 @@ const SponsorsMobile = ({ sponsors }: { sponsors: SponsorsProps[] }) => {
                       className="flex justify-center w-[190px]"
                     >
                       <div
-                        className={`bg-transparent mt-2 mb-2 rounded-lg w-[190px] h-[240px] flex flex-col items-center border border-[#ffffff] transition-all duration-500 ${
-                          showAll
+                        className={`bg-transparent mt-2 mb-2 rounded-lg w-[190px] h-[240px] flex flex-col items-center border border-[#ffffff] transition-all duration-500 ${showAll
                             ? 'opacity-100 scale-100'
                             : shouldScale
                               ? `opacity-100 ${scaleSize}`
                               : 'opacity-50'
-                        }`}
+                          }`}
                       >
                         {/* Sponsor Logo */}
                         <div className="w-full flex items-center justify-center h-[100px] mt-2">
@@ -142,7 +139,7 @@ const SponsorsMobile = ({ sponsors }: { sponsors: SponsorsProps[] }) => {
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            <img
+                            <Image
                               src={sponsor.logoMobile}
                               alt={sponsor.name}
                               width={100}
@@ -199,11 +196,10 @@ const SponsorsMobile = ({ sponsors }: { sponsors: SponsorsProps[] }) => {
             {sponsors.map((_, index) => (
               <span
                 key={index}
-                className={`w-[5px] h-[5px] rounded-full transition-all duration-300 ${
-                  activeIndex === index
+                className={`w-[5px] h-[5px] rounded-full transition-all duration-300 ${activeIndex === index
                     ? 'bg-[#ffc200]'
                     : 'bg-gray-500 opacity-50'
-                }`}
+                  }`}
               />
             ))}
           </div>
@@ -211,9 +207,8 @@ const SponsorsMobile = ({ sponsors }: { sponsors: SponsorsProps[] }) => {
 
         {/* Show All Button */}
         <div
-          className={`bg-[#ffc200] w-[130px] py-[4px] flex justify-center items-center text-black text-sm font-semibold rounded-2xl mx-auto cursor-pointer mt-8 transition-all duration-500 ${
-            showAll ? 'scale-105' : 'scale-100'
-          }`}
+          className={`bg-[#ffc200] w-[130px] py-[4px] flex justify-center items-center text-black text-sm font-semibold rounded-2xl mx-auto cursor-pointer mt-8 transition-all duration-500 ${showAll ? 'scale-105' : 'scale-100'
+            }`}
           onClick={() => setShowAll(!showAll)}
         >
           {showAll ? 'Collapse' : 'Show all'}

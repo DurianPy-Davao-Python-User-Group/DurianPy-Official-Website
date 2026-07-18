@@ -1,3 +1,4 @@
+import { Image } from "@unpic/react";
 import { useRouter } from '@tanstack/react-router';
 import React from 'react';
 
@@ -17,7 +18,7 @@ export default function Card({ image, title }: CardProps) {
     >
       <div className="relative w-16 h-16 md:w-40 md:h-40 mb-2">
         {typeof image === 'string' ? (
-          <img src={image} alt={title} className="object-contain w-full h-full absolute inset-0" />
+          <Image src={image} alt={title} className="object-contain w-full h-full absolute inset-0" />
         ) : (
           image
         )}

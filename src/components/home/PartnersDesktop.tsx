@@ -1,3 +1,4 @@
+import { Image } from "@unpic/react";
 import React from 'react';
 import { cn } from '@/lib/utils';
 import Autoplay from 'embla-carousel-autoplay';
@@ -140,7 +141,7 @@ const PartnersDesktop = ({ partners }: { partners: PartnersProps[] }) => {
               >
                 {/* Logo Container */}
                 <div className="w-full h-full xl:min-h-0 lg:min-h-[200px] md:min-h-[160px] relative flex justify-center items-center transition-transform duration-500 ease-in-out hover:scale-105">
-                  <img
+                  <Image
                     src={partner.logo}
                     alt={partner.name}
                     loading="lazy"

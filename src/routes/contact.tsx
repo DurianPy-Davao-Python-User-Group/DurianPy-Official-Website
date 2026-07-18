@@ -1,3 +1,4 @@
+import { Image } from "@unpic/react";
 import { createFileRoute } from '@tanstack/react-router'
 import useWindowWidth from '@/components/csr/useWindowWidth'
 import { Container } from '@/components/ui/container'
@@ -95,16 +96,14 @@ function ContactPage() {
         </defs>
       </svg>
       <Container
-        className={`relative p-[64px] w-full justify-between max-x-7xl items-center flex gap-[46px] ${
-          width < 1024 ? 'flex-col' : 'flex-row'
-        }`}
+        className={`relative p-[64px] w-full justify-between max-x-7xl items-center flex gap-[46px] ${width < 1024 ? 'flex-col' : 'flex-row'
+          }`}
       >
         <div
-          className={`flex flex-col gap-4 sm:gap-[80px] items-start justify-start ${
-            width < 1024
+          className={`flex flex-col gap-4 sm:gap-[80px] items-start justify-start ${width < 1024
               ? 'text-center justify-center sw-[531px] items-center'
               : ''
-          }`}
+            }`}
         >
           <div className="flex flex-col gap-2 sm:gap-[20px] text-white sm:items-center lg:items-start">
             <h1 className="text-web-title-font font-bold">Contact Us</h1>
@@ -117,13 +116,12 @@ function ContactPage() {
             href="mailto:durianpy.davao@gmail.com"
             target="_blank"
             rel="noopener noreferrer"
-            className={`flex gap-2 sm:gap-[28px] ${
-              width < 768
+            className={`flex gap-2 sm:gap-[28px] ${width < 768
                 ? 'flex-col items-center gap-[0px] '
                 : 'flex-row items-center'
-            }`}
+              }`}
           >
-            <img
+            <Image
               src="/assets/images/icons/email-us.svg"
               width={63}
               height={63}

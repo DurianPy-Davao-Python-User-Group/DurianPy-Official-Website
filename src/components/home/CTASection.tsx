@@ -1,3 +1,4 @@
+import { Image } from "@unpic/react";
 import { Container } from '@/components/ui/container';
 
 const joinOurCommunityIcon = '/assets/images/ctaIcons/join-our-community.svg';
@@ -35,7 +36,7 @@ const Card = ({ link, whiteText, yellowText, svg }: CardProps) => {
       </div>
 
       <div className="flex justify-center">
-        <img
+        <Image
           src={svg}
           alt="UTD Logo"
           className="absolute bottom-0 px-2 z-20 max-h-64"

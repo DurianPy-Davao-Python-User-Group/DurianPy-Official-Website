@@ -1,3 +1,4 @@
+import { Image } from "@unpic/react";
 import {
   Carousel as CarouselContainer,
   CarouselContent,
@@ -30,7 +31,7 @@ export function Carousel() {
               key={idx}
               className="relative flex items-center justify-center"
             >
-              <img
+              <Image
                 src={'/assets/images/carousel/' + photo.image}
                 alt={photo.name}
                 className="object-cover w-full h-full"

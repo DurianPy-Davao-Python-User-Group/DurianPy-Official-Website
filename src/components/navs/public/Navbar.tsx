@@ -1,3 +1,4 @@
+import { Image } from "@unpic/react";
 import useWindowWidth from '@/components/csr/useWindowWidth';
 import DesktopView from './DesktopView';
 import MobileView from './MobileView';
@@ -8,7 +9,7 @@ export default function Navbar() {
   return (
     <nav className="bg-gradient-utd-green-transparent backdrop-blur-sm h-[79px] px-[16px] sticky w-full top-0 z-50 flex justify-center items-center rounded-b-[20px]">
       <div className="max-w-7xl w-full flex justify-between items-center lg:gap-[169px]">
-        <img
+        <Image
           src="/assets/images/logo.svg"
           alt="UTD Logo"
           width={160.95}

@@ -1,3 +1,4 @@
+import { Image } from "@unpic/react";
 import { useEffect, useState, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import Autoplay from 'embla-carousel-autoplay';
@@ -115,7 +116,7 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
               className="border border-[#ffffff] rounded-lg xl:px-10 xl:py-4 lg:p-6 w-full h-full flex flex-col justify-center items-center overflow-hidden"
             >
               <div className="w-full h-[200px] relative flex justify-center items-center transition-transform duration-500 ease-in-out hover:scale-105">
-                <img
+                <Image
                   src={featuredSponsor.logo}
                   alt={featuredSponsor.name}
                   loading="lazy"
@@ -195,7 +196,7 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
                       {/* Logo Container */}
                       <div className="min-h-[160px] min-w-[160px] relative flex justify-center items-center transition-transform duration-500 ease-in-out hover:scale-105">
                         <div className="">
-                          <img
+                          <Image
                             src={sponsor.logoMobile}
                             alt={sponsor.name}
                             loading="lazy"

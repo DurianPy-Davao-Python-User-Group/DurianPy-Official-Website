@@ -1,3 +1,4 @@
+import { Image } from "@unpic/react";
 import { createFileRoute } from '@tanstack/react-router';
 import { Button } from '@/components/ui/button';
 
@@ -31,7 +32,7 @@ function SpeakDetails() {
               Knowledge <br />
               <div className="flex items-center space-x-2 md:space-x-5">
                 <span>with</span>
-                <img
+                <Image
                   src="/assets/images/speakIcons/logoName.svg"
                   alt="DurianPy"
                   className="mt-1 sm:mt-1 md:mt-1 w-auto [@media(max-width:380px)]:h-6 h-8 sm:h-14 md:h-15 lg:h-20"
@@ -55,7 +56,7 @@ function SpeakDetails() {
           {/* Right Section - Large Logo */}
           <div className="w-1/2">
             <div className="ml-4 flex justify-end md:mt-5 lg:mt-10 relative ">
-              <img
+              <Image
                 src="/assets/images/speakIcons/glowBg.svg"
                 alt="Glow BG"
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[700px] md:h-[700px] lg:w-[800px] lg:h-[1000px] rounded-full blur-3xl saturate-100 brightness-150 z-0"
@@ -63,7 +64,7 @@ function SpeakDetails() {
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[125px] h-[150px] md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[400px] bg-green-600/20 rounded-full blur-3xl z-0"></div>
 
               {/* Logo */}
-              <img
+              <Image
                 src="/assets/images/speakIcons/logoIcon.svg"
                 alt="DurianPy Logo"
                 className="w-[250px] sm:w-[350px] md:w-[400px] lg:w-[500px] relative z-10"
