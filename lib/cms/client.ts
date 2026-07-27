@@ -38,7 +38,9 @@ export async function cmsFetch<T>(
     });
 
     if (!res.ok) {
-      throw new Error(`CMS fetch failed: ${res.status} ${res.statusText} on ${path}`);
+      throw new Error(
+        `CMS fetch failed: ${res.status} ${res.statusText} on ${path}`
+      );
     }
 
     return res.json() as Promise<T>;
