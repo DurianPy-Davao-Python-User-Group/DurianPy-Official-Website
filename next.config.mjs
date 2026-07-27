@@ -1,6 +1,19 @@
+const cmsHostName = process.env.NEXT_PUBLIC_CMS_URL || 'cms.durianpy.com'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '*.cloudfront.net',
+      },
+      {
+        protocol: 'https',
+        hostname: cmsHostName,
+      },
+    ],
+  },
   async headers() {
     return [
       {
