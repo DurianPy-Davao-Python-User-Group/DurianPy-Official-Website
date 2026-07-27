@@ -1,4 +1,4 @@
-const cmsHostName = process.env.NEXT_PUBLIC_CMS_URL || 'cms.durianpy.com'
+const cmsHostName = process.env.NEXT_PUBLIC_CMS_URL || 'cms.durianpy.com';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,

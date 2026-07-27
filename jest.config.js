@@ -4,4 +4,4 @@ module.exports = {
   testEnvironment: 'node',
   clearMocks: true,
   testMatch: ['**/*.test.ts', '**/*.test.tsx'],
-}
+};
