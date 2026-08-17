@@ -9,7 +9,7 @@ import {
   FALLBACK_EVENTS,
   FALLBACK_PARTNERS,
   FALLBACK_SPONSORS,
-} from '@/lib/graphql/cms-fallbacks';
+} from '@/lib/graphql/fallbacks';
 import { CODE_OF_CONDUCT_QUERY, HOMEPAGE_QUERY } from '@/lib/graphql/queries';
 import type {
   CmsCodeOfConductData,
