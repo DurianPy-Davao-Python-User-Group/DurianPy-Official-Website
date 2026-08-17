@@ -129,6 +129,11 @@ export interface CmsCodeOfConduct {
 	createdAt?: string | null;
 }
 
+export interface CmsCodeOfConductData {
+	reportFormUrl: string;
+	content: string[];
+}
+
 export interface CodeOfConductQuery {
 	DurianpyWebsiteCodeOfConduct?: CmsCodeOfConduct | null;
 }

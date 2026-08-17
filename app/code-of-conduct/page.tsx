@@ -1,8 +1,8 @@
-const COC_REPORT_FORM_URL =
-  process.env.NEXT_PUBLIC_COC_REPORT_FORM_URL ??
-  'https://forms.gle/R4MXsc2brwHEmgrE7';
+import { getCodeOfConductData } from '@/lib/graphql/cms';
 
-export default function CodeOfConductPage() {
+export default async function CodeOfConductPage() {
+  const codeOfConductData = await getCodeOfConductData();
+
   return (
     <main className="bg-dark-green text-white min-h-[70vh] py-8 md:px-36 px-10 flex flex-col justify-center">
       <h1 className="text-4xl md:text-6xl font-bold mb-8">
@@ -10,20 +10,15 @@ export default function CodeOfConductPage() {
       </h1>
 
       <h2 className="text-xl md:text-4xl font-medium mb-8">
-        We value respect and inclusivity in all events.
+        {codeOfConductData.content[0]}
       </h2>
 
       <p className="text-xl max-w-3xl leading-relaxed mb-8">
-        The Python community is made up of members from around the globe with a
-        diverse set of skills, personalities, and experiences. It is through
-        these differences that our community experiences great successes and
-        continued growth.
+        {codeOfConductData.content[1]}
       </p>
 
       <p className="text-xl max-w-3xl leading-relaxed">
-        To clarify our expectations, all participants, including attendees,
-        speakers, exhibitors, organizers, and volunteers at any DurianPy event,
-        must adhere to the following{' '}
+        {codeOfConductData.content[2]}{' '}
         <a
           href="https://policies.python.org/python.org/code-of-conduct/"
           target="_blank"
@@ -39,7 +34,7 @@ export default function CodeOfConductPage() {
         If you witness or experience any violations of the Code of Conduct,
         please report them using the{' '}
         <a
-          href={COC_REPORT_FORM_URL}
+          href={codeOfConductData.reportFormUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="text-[#F5B041] hover:underline"

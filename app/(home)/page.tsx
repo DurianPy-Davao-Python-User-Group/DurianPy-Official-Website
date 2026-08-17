@@ -7,7 +7,7 @@ import { Partners } from './components//Partners';
 import UpcomingEvents from './components//UpcomingEvents';
 import { Sponsors } from './components/Sponsors';
 import { type Event } from './components/EventCard';
-import { getHomePageData } from '@/lib/graphql/homepage';
+import { getHomePageData } from '@/lib/graphql/cms';
 // import { Testimonials } from './components/Testimonials';
 
 export default async function HomePage() {

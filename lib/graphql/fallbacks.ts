@@ -1,76 +1,11 @@
-/*
-  For this not sure we need to have fallback data and also have the requests on their own separate file.
-  we may do a more generalized approach to this and rename it from homepage.ts to cms.ts or something like that and have the requests for the other pages in there as well.
-  for fallbacks we can have a separate file for that as well and import it here if ever we do need it.
-*/
-import { queryPayloadGraphQL } from '@/lib/client';
-import { CMS_CACHE_TAGS, HOMEPAGE_CACHE_TAGS } from '@/lib/graphql/cache';
-import { HOMEPAGE_QUERY } from '@/lib/graphql/queries';
 import type {
+  CmsCodeOfConductData,
   CmsEvent,
-  CmsHomePageData,
   CmsPartner,
   CmsSponsor,
-  HomePageQuery,
 } from '@/lib/graphql/types';
 
-type HomeDocs<T> = {
-  docs?: T[] | null;
-};
-
-function isNonEmptyString(value: unknown): value is string {
-  return typeof value === 'string' && value.length > 0;
-}
-
-function isCmsEvent(value: unknown): value is CmsEvent {
-  if (!value || typeof value !== 'object') {
-    return false;
-  }
-
-  const event = value as Partial<CmsEvent>;
-  const hasValidDate =
-    typeof event.date === 'string' ||
-    (Array.isArray(event.date) && event.date.every(isNonEmptyString));
-
-  return (
-    isNonEmptyString(event.title) &&
-    hasValidDate &&
-    isNonEmptyString(event.location) &&
-    isNonEmptyString(event.link)
-  );
-}
-
-function isCmsPartner(value: unknown): value is CmsPartner {
-  if (!value || typeof value !== 'object') {
-    return false;
-  }
-
-  const partner = value as Partial<CmsPartner>;
-  return (
-    isNonEmptyString(partner.name) &&
-    isNonEmptyString(partner.logo) &&
-    isNonEmptyString(partner.logoMobile) &&
-    isNonEmptyString(partner.desc) &&
-    isNonEmptyString(partner.url)
-  );
-}
-
-function isCmsSponsor(value: unknown): value is CmsSponsor {
-  if (!value || typeof value !== 'object') {
-    return false;
-  }
-
-  const sponsor = value as Partial<CmsSponsor>;
-  return (
-    isNonEmptyString(sponsor.name) &&
-    isNonEmptyString(sponsor.logo) &&
-    isNonEmptyString(sponsor.logoMobile) &&
-    isNonEmptyString(sponsor.description) &&
-    isNonEmptyString(sponsor.url)
-  );
-}
-
-const FALLBACK_EVENTS: CmsEvent[] = [
+export const FALLBACK_EVENTS: CmsEvent[] = [
   {
     title: 'PyCon Davao 2025',
     date: ['October 25, 2025', 'October 26, 2025'],
@@ -79,7 +14,7 @@ const FALLBACK_EVENTS: CmsEvent[] = [
   },
 ];
 
-const FALLBACK_PARTNERS: CmsPartner[] = [
+export const FALLBACK_PARTNERS: CmsPartner[] = [
   {
     name: 'PizzaPy',
     logo: '/partner-logos/pizzapy-logo.png',
@@ -112,7 +47,7 @@ const FALLBACK_PARTNERS: CmsPartner[] = [
     name: 'ADDVentures',
     logo: '/partner-logos/addventures-logo.png',
     logoMobile: '/partner-logos/addventures-logo.png',
-    desc: 'Ateneo de Davao\'s startup incubator providing mentorship, resources, and support. Helping startups accelerate growth and innovation.',
+    desc: "Ateneo de Davao's startup incubator providing mentorship, resources, and support. Helping startups accelerate growth and innovation.",
     url: 'https://www.facebook.com/profile.php?id=61565389521650',
   },
   {
@@ -131,7 +66,7 @@ const FALLBACK_PARTNERS: CmsPartner[] = [
   },
 ];
 
-const FALLBACK_SPONSORS: CmsSponsor[] = [
+export const FALLBACK_SPONSORS: CmsSponsor[] = [
   {
     name: 'Mugna Tech',
     logo: '/sponsor-logos/mugna-logo.png',
@@ -174,42 +109,13 @@ const FALLBACK_SPONSORS: CmsSponsor[] = [
   },
 ];
 
-function readDocs<T>(
-  source: HomeDocs<T> | null | undefined,
-  fallback: T[],
-  validator?: (value: unknown) => value is T
-) {
-  if (!source?.docs || source.docs.length === 0) {
-    return fallback;
-  }
-
-  if (validator && !source.docs.every((entry) => validator(entry))) {
-    return fallback;
-  }
-
-  return source.docs;
-}
-
-export async function getHomePageData(): Promise<CmsHomePageData> {
-  const data = await queryPayloadGraphQL<HomePageQuery>({
-    query: HOMEPAGE_QUERY,
-    tags: HOMEPAGE_CACHE_TAGS,
-    revalidate: 300,
-  });
-
-  const events = readDocs(data?.events, FALLBACK_EVENTS, isCmsEvent);
-  const partners = readDocs(data?.partners, FALLBACK_PARTNERS, isCmsPartner);
-  const sponsors = readDocs(data?.sponsors, FALLBACK_SPONSORS, isCmsSponsor);
-
-  return {
-    tags: [
-      CMS_CACHE_TAGS.home,
-      CMS_CACHE_TAGS.events,
-      CMS_CACHE_TAGS.partners,
-      CMS_CACHE_TAGS.sponsors,
-    ],
-    events,
-    partners,
-    sponsors,
-  };
-}
+export const FALLBACK_CODE_OF_CONDUCT: CmsCodeOfConductData = {
+  reportFormUrl:
+    process.env.NEXT_PUBLIC_COC_REPORT_FORM_URL ??
+    'https://forms.gle/R4MXsc2brwHEmgrE7',
+  content: [
+    'We value respect and inclusivity in all events.',
+    'The Python community is made up of members from around the globe with a diverse set of skills, personalities, and experiences. It is through these differences that our community experiences great successes and continued growth.',
+    'To clarify our expectations, all participants, including attendees, speakers, exhibitors, organizers, and volunteers at any DurianPy event, must adhere to the Python Software Foundation Code of Conduct.',
+  ],
+};
