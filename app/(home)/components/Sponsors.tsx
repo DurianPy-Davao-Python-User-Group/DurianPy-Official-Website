@@ -11,8 +11,11 @@ interface SponsorshipProps {
   url: string;
 }
 
-export function Sponsors() {
-  const sponsors: SponsorshipProps[] = [
+interface SponsorsSectionProps {
+  sponsors?: SponsorshipProps[];
+}
+
+const DEFAULT_SPONSORS: SponsorshipProps[] = [
     {
       name: 'Mugna Tech',
       logo: '/sponsor-logos/mugna-logo.png',
@@ -55,17 +58,21 @@ export function Sponsors() {
     },
   ];
 
+export function Sponsors({ sponsors }: SponsorsSectionProps) {
+  const resolvedSponsors =
+    sponsors && sponsors.length > 0 ? sponsors : DEFAULT_SPONSORS;
+
   return (
     <section className="bg-[#112018] py-16 font-montserrat lg:mb-[-90px] md:mb-[-70px] sm:mb-0">
       <Container className="overflow-x-clip">
         {/* Desktop View (768px and up) */}
         <section className="hidden md:block">
-          <SponsorsDesktop sponsors={sponsors} />
+          <SponsorsDesktop sponsors={resolvedSponsors} />
         </section>
 
         {/* Mobile View (Below 768px) */}
         <section className="md:hidden">
-          <SponsorsMobile sponsors={sponsors} />
+          <SponsorsMobile sponsors={resolvedSponsors} />
         </section>
       </Container>
     </section>

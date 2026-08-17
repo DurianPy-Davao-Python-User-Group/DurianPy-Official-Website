@@ -11,8 +11,11 @@ interface PartnersProps {
   url: string;
 }
 
-export function Partners() {
-  const partners: PartnersProps[] = [
+interface PartnersSectionProps {
+  partners?: PartnersProps[];
+}
+
+const DEFAULT_PARTNERS: PartnersProps[] = [
     {
       name: 'PizzaPy',
       logo: '/partner-logos/pizzapy-logo.png',
@@ -64,17 +67,21 @@ export function Partners() {
     },
   ];
 
+export function Partners({ partners }: PartnersSectionProps) {
+  const resolvedPartners =
+    partners && partners.length > 0 ? partners : DEFAULT_PARTNERS;
+
   return (
     <section className="bg-[#112018] py-16 font-montserrat lg:mb-[-90px] md:mb-[-70px] sm:mb-0">
       <Container>
         {/* Desktop View (768px and up) */}
         <section className="hidden md:block">
-          <PartnersDesktop partners={partners} />
+          <PartnersDesktop partners={resolvedPartners} />
         </section>
 
         {/* Mobile View (Below 768px) */}
         <section className="md:hidden">
-          <PartnersMobile partners={partners} />
+          <PartnersMobile partners={resolvedPartners} />
         </section>
       </Container>
     </section>

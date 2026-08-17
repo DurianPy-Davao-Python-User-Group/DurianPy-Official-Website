@@ -16,7 +16,18 @@ const EVENTS: Event[] = [
   },
 ];
 
-const UpcomingEvents = () => {
+interface UpcomingEventsProps {
+  events?: Event[];
+}
+
+const UpcomingEvents = ({ events }: UpcomingEventsProps) => {
+  const resolvedEvents = events && events.length > 0 ? events : EVENTS;
+  const [featuredEvent, ...otherEvents] = resolvedEvents;
+
+  if (!featuredEvent) {
+    return null;
+  }
+
   return (
     <Container className="text-white space-y-4 lg:space-y-8">
       {/* Title */}
@@ -25,22 +36,22 @@ const UpcomingEvents = () => {
       </h1>
 
       {/* Featured */}
-      <EventCard event={EVENTS[0]} />
+      <EventCard event={featuredEvent} />
 
       {/* Countdown Timer */}
       <div className="block lg:block xl:hidden">
         <CountdownTimer
           eventDate={
-            Array.isArray(EVENTS[0].date)
-              ? (EVENTS[0].date[0] ?? '')
-              : EVENTS[0].date
+            Array.isArray(featuredEvent.date)
+              ? (featuredEvent.date[0] ?? '')
+              : featuredEvent.date
           }
         />
       </div>
 
       {/* Other events */}
       <div className="grid grid-cols-1 gap-5 max-w-[40%] lg:max-w-[80%] md:max-w-[80%] mx-auto md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 xl:max-w-full">
-        {EVENTS.slice(1).map((event, idx) => (
+        {otherEvents.map((event, idx) => (
           <EventCard key={idx} event={event} />
         ))}
       </div>
