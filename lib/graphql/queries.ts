@@ -22,18 +22,15 @@ export const EVENTS_QUERY = /* GraphQL */ `
 
 export const PARTNERS_QUERY = /* GraphQL */ `
   query PartnersContent {
-    DurianpyWebsiteSponsors(
-      where: {
-        _status: { equals: published }
-        tier: { equals: community }
-      }
+    DurianpyWebsitePartners(
+      where: { _status: { equals: published } }
       sort: "name"
     ) {
       docs {
         id
         name
         websiteUrl
-        tier
+        description
         logo {
           url
           alt
@@ -65,7 +62,20 @@ export const SPONSORS_QUERY = /* GraphQL */ `
         name
         websiteUrl
         tier
+        description
         logo {
+          url
+          alt
+          sizes {
+            small {
+              url
+            }
+            medium {
+              url
+            }
+          }
+        }
+        banner {
           url
           alt
           sizes {
@@ -185,16 +195,18 @@ export const HOMEPAGE_QUERY = /* GraphQL */ `
       }
     }
 
-    partners: DurianpyWebsiteSponsors(
-      where: {
-        _status: { equals: published }
-        tier: { equals: community }
-      }
+    partners: DurianpyWebsitePartners(
+      where: { _status: { equals: published } }
       sort: "name"
     ) {
       docs {
         name
         url: websiteUrl
+        description
+        logo {
+          url
+          alt
+        }
       }
     }
 
@@ -207,8 +219,30 @@ export const HOMEPAGE_QUERY = /* GraphQL */ `
     ) {
       docs {
         name
+        description
         url: websiteUrl
+        logo {
+          url
+          alt
+        }
+        banner {
+          url
+          alt
+        }
       }
     }
   }
 `;
+
+
+export const STATISTICS_QUERY = /* GraphQL */ `
+  query StatisticsContent {
+    DurianpyWebsiteStatisticsConfig {
+      metrics {
+        label
+        value
+        large
+      }
+    }
+  }
+`; 

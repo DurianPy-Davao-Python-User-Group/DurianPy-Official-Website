@@ -46,8 +46,8 @@ export async function queryPayloadGraphQL<TData>({
 	};
 
 	if (process.env.PAYLOAD_API_KEY) {
-		headers.Authorization = `Bearer ${process.env.PAYLOAD_API_KEY}`;
-	}
+		headers.Authorization = `service-accounts API-Key ${process.env.PAYLOAD_API_KEY}`;
+    } //added line, changed from bearer
 
 	try {
 		const response = await fetch(endpoint, {

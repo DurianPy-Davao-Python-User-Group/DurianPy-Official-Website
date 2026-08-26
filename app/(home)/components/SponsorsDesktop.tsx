@@ -18,7 +18,7 @@ import { Button } from '@/components/ui/button';
 interface SponsorshipProps {
   name: string;
   logo: string;
-  logoMobile: string;
+  logoMobile?: string;
   description: string;
   url: string;
 }
@@ -28,7 +28,7 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
 
-  // State to hold the featured sponsor
+  
   const [featuredSponsor, setfeaturedSponsor] = useState<SponsorshipProps>(
     sponsors[0]
   );
@@ -39,7 +39,7 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
     }
     setCount(api.scrollSnapList().length);
 
-    // Set the current index to the first item
+    
     api.scrollTo(2);
 
     api.on('select', () => {
@@ -54,10 +54,15 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
 
   const autoPlayInteraction = () => {
     plugin.current.stop();
-    // Wait for 5 seconds before resuming autoplay but when the user clicks it cancel the autoplay
+    
     setTimeout(() => {
-      if (api) {
-        plugin.current.play();
+      try {
+        
+        if (api && api.slideNodes && api.slideNodes().length > 0) {
+          plugin.current?.play?.();
+        }
+      } catch {
+        
       }
     }, 5000);
   };
@@ -199,7 +204,7 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
                       <div className="min-h-[160px] min-w-[160px] relative flex justify-center items-center transition-transform duration-500 ease-in-out hover:scale-105">
                         <div className="">
                           <Image
-                            src={sponsor.logoMobile}
+                            src={sponsor.logoMobile || sponsor.logo}
                             alt={sponsor.name}
                             loading="lazy"
                             fill

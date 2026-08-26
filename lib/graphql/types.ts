@@ -5,18 +5,22 @@ export interface CmsEvent {
 	link: string;
 }
 
-export interface CmsPartner {
+export interface CmsPartner { //added string, removed logomobile
+	id: string;
 	name: string;
 	logo: string;
-	logoMobile: string;
+	websiteUrl?: string;
+	//logoMobile: string;
 	desc: string;
 	url: string;
 }
 
-export interface CmsSponsor {
+export interface CmsSponsor { //added id, banner, removed logomobile
+	id:string;
 	name: string;
 	logo: string;
-	logoMobile: string;
+	banner?: string;
+	//logoMobile: string;
 	description: string;
 	url: string;
 }

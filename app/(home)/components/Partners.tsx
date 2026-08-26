@@ -6,7 +6,7 @@ const PartnersMobile = dynamic(() => import('./PartnersMobile'));
 interface PartnersProps {
   name: string;
   logo: string;
-  logoMobile: string;
+  logoMobile?: string;
   desc: string;
   url: string;
 }

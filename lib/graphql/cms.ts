@@ -10,7 +10,7 @@ import {
   FALLBACK_PARTNERS,
   FALLBACK_SPONSORS,
 } from '@/lib/graphql/fallbacks';
-import { CODE_OF_CONDUCT_QUERY, HOMEPAGE_QUERY } from '@/lib/graphql/queries';
+import { CODE_OF_CONDUCT_QUERY, HOMEPAGE_QUERY, STATISTICS_QUERY } from '@/lib/graphql/queries';
 import type {
   CmsCodeOfConductData,
   CmsEvent,
@@ -57,12 +57,10 @@ function isCmsPartner(value: unknown): value is CmsPartner {
   }
 
   const partner = value as Partial<CmsPartner>;
+  // Name and logo are the only strictly required fields in the new CMS schema
   return (
     isNonEmptyString(partner.name) &&
-    isNonEmptyString(partner.logo) &&
-    isNonEmptyString(partner.logoMobile) &&
-    isNonEmptyString(partner.desc) &&
-    isNonEmptyString(partner.url)
+    typeof partner.logo !== 'undefined'
   );
 }
 
@@ -72,12 +70,10 @@ function isCmsSponsor(value: unknown): value is CmsSponsor {
   }
 
   const sponsor = value as Partial<CmsSponsor>;
+  // Name and logo are the only strictly required fields in the new CMS schema
   return (
     isNonEmptyString(sponsor.name) &&
-    isNonEmptyString(sponsor.logo) &&
-    isNonEmptyString(sponsor.logoMobile) &&
-    isNonEmptyString(sponsor.description) &&
-    isNonEmptyString(sponsor.url)
+    typeof sponsor.logo !== 'undefined'
   );
 }
 
@@ -126,9 +122,47 @@ export async function getHomePageData(): Promise<CmsHomePageData> {
     revalidate: 300,
   });
 
-  const events = readDocs(data?.events, FALLBACK_EVENTS, isCmsEvent);
-  const partners = readDocs(data?.partners, FALLBACK_PARTNERS, isCmsPartner);
-  const sponsors = readDocs(data?.sponsors, FALLBACK_SPONSORS, isCmsSponsor);
+  const rawEvents = readDocs(data?.events, FALLBACK_EVENTS, isCmsEvent);
+  const rawPartners = readDocs(data?.partners, FALLBACK_PARTNERS, isCmsPartner);
+  const rawSponsors = readDocs(data?.sponsors, FALLBACK_SPONSORS, isCmsSponsor);
+
+  const rawBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://127.0.0.1:3000';
+  const baseUrl = rawBaseUrl.replace('localhost', '127.0.0.1');
+
+ // Smart URL formatter: Prevents Next.js Image Optimization crash
+  const formatUrl = (urlPath?: string) => {
+    if (!urlPath) return '';
+    const fullUrl = urlPath.startsWith('http') ? urlPath : `${baseUrl}${urlPath}`;
+    return fullUrl.replace('localhost', '127.0.0.1');
+  };
+
+  // ADAPTER: Format CMS Partners for the React Component
+  const partners = rawPartners.map((p) => {
+    const pData = (p as unknown) as Record<string, unknown>;
+    const logoData = pData.logo as { url?: string } | undefined;
+    
+    return {
+      ...p,
+      desc: (pData.description as string) || (pData.desc as string) || '', 
+      logo: formatUrl(logoData?.url || (typeof pData.logo === 'string' ? pData.logo : ''))
+    };
+  }) as CmsPartner[];
+
+  // ADAPTER: Format CMS Sponsors for the React Component
+  const sponsors = rawSponsors.map((s) => {
+    const sData = (s as unknown) as Record<string, unknown>;
+    const logoData = sData.logo as { url?: string } | undefined;
+    const bannerData = sData.banner as { url?: string } | undefined;
+
+    const fallbackBanner = typeof sData.banner === 'string' ? sData.banner : (typeof sData.logoMobile === 'string' ? sData.logoMobile : '');
+    const fallbackLogo = typeof sData.logo === 'string' ? sData.logo : '';
+
+    return {
+      ...s,
+      logo: formatUrl(logoData?.url || fallbackLogo),
+      logoMobile: formatUrl(bannerData?.url || fallbackBanner || logoData?.url || fallbackLogo)
+    };
+  }) as CmsSponsor[];
 
   return {
     tags: [
@@ -137,7 +171,7 @@ export async function getHomePageData(): Promise<CmsHomePageData> {
       CMS_CACHE_TAGS.partners,
       CMS_CACHE_TAGS.sponsors,
     ],
-    events,
+    events: rawEvents,
     partners,
     sponsors,
   };
@@ -159,4 +193,37 @@ export async function getCodeOfConductData(): Promise<CmsCodeOfConductData> {
     reportFormUrl,
     content: normalizeCodeOfConductContent(cmsEntry?.content),
   };
+}
+
+
+export type CmsStatistic = {
+  label: string;
+  value: number;
+  large?: boolean | null;
+};
+
+type StatisticsQueryResponse = {
+  DurianpyWebsiteStatisticsConfig: {
+    metrics: CmsStatistic[] | null;
+  };
+};
+
+export async function getStatisticsData(): Promise<CmsStatistic[]> {
+  const data = await queryPayloadGraphQL<StatisticsQueryResponse>({
+    query: STATISTICS_QUERY,
+    tags: ['statistics'],
+    revalidate: 300,
+  });
+
+  const metrics = data?.DurianpyWebsiteStatisticsConfig?.metrics;
+
+  // If the CMS is empty or un-published, return a safe fallback
+  if (!metrics || metrics.length === 0) {
+    return [
+      { label: 'Community Members', value: 100 },
+      { label: 'Events Hosted', value: 5 },
+    ];
+  }
+
+  return metrics;
 }

@@ -6,7 +6,7 @@ const SponsorsMobile = dynamic(() => import('./SponsorsMobile'));
 interface SponsorshipProps {
   name: string;
   logo: string;
-  logoMobile: string;
+  logoMobile?: string;
   description: string;
   url: string;
 }
