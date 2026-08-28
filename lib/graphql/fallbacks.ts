@@ -1,9 +1,35 @@
 import type {
+  CarouselData,
+  CtaCardData,
   CmsCodeOfConductData,
   CmsEvent,
   CmsPartner,
   CmsSponsor,
 } from '@/lib/graphql/types';
+
+export const FALLBACK_CTA: CtaCardData[] = [
+  {
+    link: 'https://www.meetup.com/durianpy/',
+    whiteText: 'Join Our',
+    yellowText: 'Community',
+    icon: '/assets/ctaIcons/join-our-community.svg',
+    iconAlt: 'Join our community',
+  },
+  {
+    link: 'https://www.meetup.com/durianpy/events/',
+    whiteText: 'Attend',
+    yellowText: 'Events',
+    icon: '/assets/ctaIcons/attend-events.svg',
+    iconAlt: 'Attend events',
+  },
+  {
+    link: 'https://forms.gle/x2cc6CrRhbhDeaxe9',
+    whiteText: 'Give a',
+    yellowText: 'Talk',
+    icon: '/assets/ctaIcons/give-a-talk.svg',
+    iconAlt: 'Give a talk',
+  },
+];
 
 export const FALLBACK_EVENTS: CmsEvent[] = [
   {
@@ -13,6 +39,15 @@ export const FALLBACK_EVENTS: CmsEvent[] = [
     link: 'https://techtix.durianpy.org/pycon-davao-2025/register',
   },
 ];
+
+export const FALLBACK_CAROUSEL: CarouselData = {
+  photos: [
+    { name: 'pyconf 2024', image: '/assets/carousel/1.png' },
+    { name: 'meetup #1', image: '/assets/carousel/2.png' },
+    { name: 'meetup #2', image: '/assets/carousel/3.png' },
+    { name: 'meetup #3', image: '/assets/carousel/4.png' },
+  ],
+};
 
 export const FALLBACK_PARTNERS: CmsPartner[] = [
   {

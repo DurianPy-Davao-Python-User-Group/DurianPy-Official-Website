@@ -43,9 +43,33 @@ export const PARTNERS_QUERY = /* GraphQL */ `
             }
           }
         }
+        logoMobile {
+          url
+          alt
+          sizes {
+            small {
+              url
+            }
+            medium {
+              url
+            }
+          }
+        }
       }
     }
   }
+`;
+
+export const ORGANIZATION_STATUS = /* GraphQL */ `
+  query OrganizationStatus {
+    DurianpyWebsiteOrganizationStatus{
+      isPSFPartner
+      psfPartnerLogo {
+        url
+        alt
+      }
+    }
+  } 
 `;
 
 export const SPONSORS_QUERY = /* GraphQL */ `
@@ -75,7 +99,7 @@ export const SPONSORS_QUERY = /* GraphQL */ `
             }
           }
         }
-        banner {
+        logoMobile {
           url
           alt
           sizes {
@@ -207,6 +231,10 @@ export const HOMEPAGE_QUERY = /* GraphQL */ `
           url
           alt
         }
+        logoMobile {
+          url
+          alt
+        }
       }
     }
 
@@ -225,11 +253,69 @@ export const HOMEPAGE_QUERY = /* GraphQL */ `
           url
           alt
         }
-        banner {
+        logoMobile {
           url
           alt
         }
       }
+    }
+
+    organizationStatus: DurianpyWebsiteOrganizationStatus{
+      isPSFPartner
+      psfPartnerLogo {
+        url
+        alt
+      }
+    }
+    
+    carousel: DurianpyWebsiteCarousel {
+      title
+      subtitle
+      photos {
+        id
+        image {
+          url
+          alt
+          sizes {
+            small {
+              url
+            }
+            medium {
+              url
+            }
+            large {
+              url
+            }
+          }
+        }
+      }
+      _status
+      updatedAt
+      createdAt
+    }
+
+    cta: DurianpyWebsiteCtaSection {
+      cards {
+        id
+        link
+        whiteText
+        yellowText
+        icon {
+          url
+          alt
+          sizes {
+            small {
+              url
+            }
+            medium {
+              url
+            }
+          }
+        }
+      }
+      _status
+      updatedAt
+      createdAt
     }
   }
 `;

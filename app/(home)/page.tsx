@@ -12,7 +12,6 @@ import { getHomePageData, getStatisticsData } from '@/lib/graphql/cms';
 export default async function HomePage() {
   const homePageData = await getHomePageData();
   const statisticsData = await getStatisticsData();
-  console.log(statisticsData)
   
   const events: Event[] = homePageData.events.map((event, index) => ({
     ...event,
@@ -22,10 +21,10 @@ export default async function HomePage() {
   return (
     <main>
       <Hero />
-      <Carousel />
-      <CTASection />
+      <Carousel photos={homePageData.carousel.photos} />
+      <CTASection cards={homePageData.cta} />
       <StatsAndReviews statistics={statisticsData} />
-      <PythonFoundation />
+      <PythonFoundation organizationStatus={homePageData.organizationStatus} />
       <Partners partners={homePageData.partners} />
       <UpcomingEvents events={events} />
       <Sponsors sponsors={homePageData.sponsors} />

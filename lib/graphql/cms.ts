@@ -1,20 +1,23 @@
 import { queryPayloadGraphQL } from '@/lib/client';
+import { CMS_CACHE_TAGS } from '@/lib/graphql/cache';
 import {
-  CMS_CACHE_TAGS,
-  CODE_OF_CONDUCT_CACHE_TAGS,
-  HOMEPAGE_CACHE_TAGS,
-} from '@/lib/graphql/cache';
-import {
+  FALLBACK_CAROUSEL,
   FALLBACK_CODE_OF_CONDUCT,
+  FALLBACK_CTA,
   FALLBACK_EVENTS,
   FALLBACK_PARTNERS,
   FALLBACK_SPONSORS,
 } from '@/lib/graphql/fallbacks';
 import { CODE_OF_CONDUCT_QUERY, HOMEPAGE_QUERY, STATISTICS_QUERY } from '@/lib/graphql/queries';
 import type {
+  CarouselData,
+  CtaCardData,
+  CmsCtaCard,
+  CmsCarousel,
   CmsCodeOfConductData,
   CmsEvent,
   CmsHomePageData,
+  CmsOrganizationStatus,
   CmsPartner,
   CmsSponsor,
   CodeOfConductQuery,
@@ -33,63 +36,14 @@ function isStringArray(value: unknown): value is string[] {
   return Array.isArray(value) && value.every(isNonEmptyString);
 }
 
-function isCmsEvent(value: unknown): value is CmsEvent {
-  if (!value || typeof value !== 'object') {
-    return false;
-  }
-
-  const event = value as Partial<CmsEvent>;
-  const hasValidDate =
-    typeof event.date === 'string' ||
-    (Array.isArray(event.date) && event.date.every(isNonEmptyString));
-
-  return (
-    isNonEmptyString(event.title) &&
-    hasValidDate &&
-    isNonEmptyString(event.location) &&
-    isNonEmptyString(event.link)
-  );
-}
-
-function isCmsPartner(value: unknown): value is CmsPartner {
-  if (!value || typeof value !== 'object') {
-    return false;
-  }
-
-  const partner = value as Partial<CmsPartner>;
-  // Name and logo are the only strictly required fields in the new CMS schema
-  return (
-    isNonEmptyString(partner.name) &&
-    typeof partner.logo !== 'undefined'
-  );
-}
-
-function isCmsSponsor(value: unknown): value is CmsSponsor {
-  if (!value || typeof value !== 'object') {
-    return false;
-  }
-
-  const sponsor = value as Partial<CmsSponsor>;
-  // Name and logo are the only strictly required fields in the new CMS schema
-  return (
-    isNonEmptyString(sponsor.name) &&
-    typeof sponsor.logo !== 'undefined'
-  );
-}
 
 function readDocs<T>(
   source: DocsEnvelope<T> | null | undefined,
   fallback: T[],
-  validator?: (value: unknown) => value is T
 ) {
   if (!source?.docs || source.docs.length === 0) {
     return fallback;
   }
-
-  if (validator && !source.docs.every((entry) => validator(entry))) {
-    return fallback;
-  }
-
   return source.docs;
 }
 
@@ -118,49 +72,108 @@ function normalizeCodeOfConductContent(content: unknown): string[] {
 export async function getHomePageData(): Promise<CmsHomePageData> {
   const data = await queryPayloadGraphQL<HomePageQuery>({
     query: HOMEPAGE_QUERY,
-    tags: HOMEPAGE_CACHE_TAGS,
-    revalidate: 300,
   });
 
-  const rawEvents = readDocs(data?.events, FALLBACK_EVENTS, isCmsEvent);
-  const rawPartners = readDocs(data?.partners, FALLBACK_PARTNERS, isCmsPartner);
-  const rawSponsors = readDocs(data?.sponsors, FALLBACK_SPONSORS, isCmsSponsor);
+  const rawEvents = readDocs(
+    data?.events,
+    FALLBACK_EVENTS as unknown as Parameters<typeof readDocs>[1]
+  ) as unknown as CmsEvent[];
+  const rawPartners = readDocs(
+    data?.partners,
+    FALLBACK_PARTNERS as unknown as Parameters<typeof readDocs>[1]
+  ) as unknown as CmsPartner[];
+  const rawSponsors = readDocs(
+    data?.sponsors,
+    FALLBACK_SPONSORS as unknown as Parameters<typeof readDocs>[1]
+  ) as unknown as CmsSponsor[];
+  const rawCarousel: CmsCarousel = data?.carousel || ({} as CmsCarousel);
 
-  const rawBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://127.0.0.1:3000';
-  const baseUrl = rawBaseUrl.replace('localhost', '127.0.0.1');
+  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://127.0.0.1:3000';
+  const mediaVersion =
+    process.env.VERCEL_URL ||
+    process.env.VERCEL_GIT_COMMIT_SHA ||
+    'development';
 
- // Smart URL formatter: Prevents Next.js Image Optimization crash
-  const formatUrl = (urlPath?: string) => {
-    if (!urlPath) return '';
-    const fullUrl = urlPath.startsWith('http') ? urlPath : `${baseUrl}${urlPath}`;
-    return fullUrl.replace('localhost', '127.0.0.1');
+  const proxyCmsImage = (urlPath: string) => {
+    const sourceUrl = new URL(urlPath, cmsBaseUrl).href;
+    return `/api/cms-image?url=${encodeURIComponent(sourceUrl)}&v=${encodeURIComponent(mediaVersion)}`;
   };
 
-  // ADAPTER: Format CMS Partners for the React Component
+  const rawOrganizationStatus = data?.organizationStatus || ({} as CmsOrganizationStatus);
+  const organizationStatus: CmsOrganizationStatus = {
+    ...rawOrganizationStatus,
+    psfPartnerLogo: {
+      ...rawOrganizationStatus.psfPartnerLogo,
+      url: rawOrganizationStatus.psfPartnerLogo?.url
+        ? proxyCmsImage(rawOrganizationStatus.psfPartnerLogo.url)
+        : undefined,
+    },
+  };
+
+  const carouselPhotos = rawCarousel.photos
+    ?.map((photo) => {
+      const imageUrl = photo.image?.url;
+
+      if (!imageUrl) {
+        return null;
+      }
+
+      return {
+        name: photo.image?.alt || photo.id || 'Community photo',
+        image: proxyCmsImage(imageUrl),
+      };
+    })
+    .filter((photo): photo is CarouselData['photos'][number] => photo !== null);
+
+  const carousel: CarouselData = {
+    photos: carouselPhotos?.length ? carouselPhotos : FALLBACK_CAROUSEL.photos,
+  };
+
+  const ctaCards = data?.cta?.cards
+    ?.map((card: CmsCtaCard): CtaCardData | null => {
+      if (!card.link || !card.whiteText || !card.yellowText || !card.icon?.url) {
+        return null;
+      }
+
+      return {
+        link: card.link,
+        whiteText: card.whiteText,
+        yellowText: card.yellowText,
+        icon: proxyCmsImage(card.icon.url),
+        iconAlt: card.icon.alt || `${card.whiteText} ${card.yellowText}`,
+      };
+    })
+    .filter((card): card is CtaCardData => card !== null);
+
   const partners = rawPartners.map((p) => {
     const pData = (p as unknown) as Record<string, unknown>;
     const logoData = pData.logo as { url?: string } | undefined;
+    const logoMobileData = pData.logoMobile as { url?: string } | undefined;
     
     return {
       ...p,
       desc: (pData.description as string) || (pData.desc as string) || '', 
-      logo: formatUrl(logoData?.url || (typeof pData.logo === 'string' ? pData.logo : ''))
+      logo: logoData?.url
+        ? proxyCmsImage(logoData.url)
+        : (typeof pData.logo === 'string' ? pData.logo : ''),
+      logoMobile: logoMobileData?.url
+        ? proxyCmsImage(logoMobileData.url)
+        : (typeof pData.logoMobile === 'string' ? pData.logoMobile : undefined),
     };
   }) as CmsPartner[];
 
-  // ADAPTER: Format CMS Sponsors for the React Component
   const sponsors = rawSponsors.map((s) => {
     const sData = (s as unknown) as Record<string, unknown>;
     const logoData = sData.logo as { url?: string } | undefined;
-    const bannerData = sData.banner as { url?: string } | undefined;
-
-    const fallbackBanner = typeof sData.banner === 'string' ? sData.banner : (typeof sData.logoMobile === 'string' ? sData.logoMobile : '');
+    const logoMobileData = sData.logoMobile as { url?: string } | undefined;
     const fallbackLogo = typeof sData.logo === 'string' ? sData.logo : '';
 
     return {
       ...s,
-      logo: formatUrl(logoData?.url || fallbackLogo),
-      logoMobile: formatUrl(bannerData?.url || fallbackBanner || logoData?.url || fallbackLogo)
+      logo: logoData?.url ? proxyCmsImage(logoData.url) : fallbackLogo,
+      logoMobile: logoMobileData?.url
+        ? proxyCmsImage(logoMobileData.url)
+        : (typeof sData.logoMobile === 'string' ? sData.logoMobile : fallbackLogo),
     };
   }) as CmsSponsor[];
 
@@ -174,14 +187,15 @@ export async function getHomePageData(): Promise<CmsHomePageData> {
     events: rawEvents,
     partners,
     sponsors,
+    carousel,
+    organizationStatus,
+    cta: ctaCards?.length ? ctaCards : FALLBACK_CTA,
   };
 }
 
 export async function getCodeOfConductData(): Promise<CmsCodeOfConductData> {
   const data = await queryPayloadGraphQL<CodeOfConductQuery>({
     query: CODE_OF_CONDUCT_QUERY,
-    tags: CODE_OF_CONDUCT_CACHE_TAGS,
-    revalidate: 300,
   });
 
   const cmsEntry = data?.DurianpyWebsiteCodeOfConduct;
@@ -211,8 +225,6 @@ type StatisticsQueryResponse = {
 export async function getStatisticsData(): Promise<CmsStatistic[]> {
   const data = await queryPayloadGraphQL<StatisticsQueryResponse>({
     query: STATISTICS_QUERY,
-    tags: ['statistics'],
-    revalidate: 300,
   });
 
   const metrics = data?.DurianpyWebsiteStatisticsConfig?.metrics;

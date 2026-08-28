@@ -5,22 +5,25 @@ export interface CmsEvent {
 	link: string;
 }
 
-export interface CmsPartner { //added string, removed logomobile
-	id: string;
+export interface CmsOrganizationStatus {
+	isPSFPartner: boolean;
+	psfPartnerLogo: CmsMedia
+}
+export interface CmsPartner {
+	id?: string;
 	name: string;
 	logo: string;
+	logoMobile?: string;
 	websiteUrl?: string;
-	//logoMobile: string;
 	desc: string;
 	url: string;
 }
 
-export interface CmsSponsor { //added id, banner, removed logomobile
-	id:string;
+export interface CmsSponsor {
+	id?: string;
 	name: string;
 	logo: string;
-	banner?: string;
-	//logoMobile: string;
+	logoMobile?: string;
 	description: string;
 	url: string;
 }
@@ -61,16 +64,36 @@ export interface EventsQuery {
 
 export type SponsorTier = 'gold' | 'silver' | 'venue' | 'community';
 
+export interface CmsPartnerDoc {
+	id?: string | null;
+	name?: string | null;
+	websiteUrl?: string | null;
+	description?: string | null;
+	logo?: CmsMedia | null;
+	logoMobile?: CmsMedia | null;
+}
+
+export interface CmsPartnerDoc {
+	id?: string | null;
+	name?: string | null;
+	websiteUrl?: string | null;
+	description?: string | null;
+	logo?: CmsMedia | null;
+	logoMobile?: CmsMedia | null;
+}
+
 export interface CmsSponsorDoc {
 	id?: string | null;
 	name?: string | null;
 	websiteUrl?: string | null;
 	tier?: SponsorTier | null;
+	description?: string | null;
 	logo?: CmsMedia | null;
+	logoMobile?: CmsMedia | null;
 }
 
 export interface PartnersQuery {
-	DurianpyWebsiteSponsors?: DocsEnvelope<CmsSponsorDoc> | null;
+	DurianpyWebsitePartners?: DocsEnvelope<CmsPartnerDoc> | null;
 }
 
 export interface SponsorsQuery {
@@ -102,6 +125,15 @@ export interface CmsCarousel {
 	createdAt?: string | null;
 }
 
+export interface CarouselPhoto {
+	name: string;
+	image: string;
+}
+
+export interface CarouselData {
+	photos: CarouselPhoto[];
+}
+
 export interface CarouselQuery {
 	DurianpyWebsiteCarousel?: CmsCarousel | null;
 }
@@ -119,6 +151,14 @@ export interface CmsCtaSection {
 	_status?: 'draft' | 'published' | null;
 	updatedAt?: string | null;
 	createdAt?: string | null;
+}
+
+export interface CtaCardData {
+	link: string;
+	whiteText: string;
+	yellowText: string;
+	icon: string;
+	iconAlt: string;
 }
 
 export interface CtaSectionQuery {
@@ -149,9 +189,16 @@ export interface HomePageEventDoc {
 	link?: string | null;
 }
 
-export interface HomePageSponsorDoc {
+export interface HomePagePartnerDoc {
 	name?: string | null;
 	url?: string | null;
+	description?: string | null;
+	logo?: CmsMedia | null;
+	logoMobile?: CmsMedia | null;
+}
+
+export interface HomePageSponsorDoc extends HomePagePartnerDoc {
+	tier?: SponsorTier | null;
 }
 
 export interface HomePageContentQuery {
@@ -161,9 +208,12 @@ export interface HomePageContentQuery {
 }
 
 export interface HomePageQuery {
-	events?: DocsEnvelope<CmsEvent> | null;
-	partners?: DocsEnvelope<CmsPartner> | null;
-	sponsors?: DocsEnvelope<CmsSponsor> | null;
+	events?: DocsEnvelope<HomePageEventDoc> | null;
+	partners?: DocsEnvelope<HomePagePartnerDoc> | null;
+	sponsors?: DocsEnvelope<HomePageSponsorDoc> | null;
+	carousel?: CmsCarousel | null;
+	organizationStatus?: CmsOrganizationStatus | null;
+	cta?: CmsCtaSection | null;
 }
 
 export interface CmsHomePageData {
@@ -171,4 +221,7 @@ export interface CmsHomePageData {
 	events: CmsEvent[];
 	partners: CmsPartner[];
 	sponsors: CmsSponsor[];
+	carousel: CarouselData;
+	organizationStatus: CmsOrganizationStatus;
+	cta: CtaCardData[];
 }

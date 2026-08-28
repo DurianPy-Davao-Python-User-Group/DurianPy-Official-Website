@@ -7,16 +7,14 @@ import {
   CarouselDots,
 } from '@/components/ui/carousel';
 
+import type { CarouselPhoto } from '@/lib/graphql/types';
 import Image from 'next/image';
 
-export function Carousel() {
-  const photos = [
-    { name: 'pyconf 2024', image: '1.png' },
-    { name: 'meetup #1', image: '2.png' },
-    { name: 'meetup #2', image: '3.png' },
-    { name: 'meetup #3', image: '4.png' },
-  ];
+type CarouselProps = {
+  photos: CarouselPhoto[];
+};
 
+export function Carousel({ photos }: CarouselProps) {
   return (
     <section className="relative w-full overflow-clip">
       {/* CAROUSEL */}
@@ -33,7 +31,7 @@ export function Carousel() {
               className="relative flex items-center justify-center"
             >
               <Image
-                src={'/assets/carousel/' + photo.image}
+                src={photo.image}
                 alt={photo.name}
                 className="object-cover w-full h-full"
                 width={1960}

@@ -3,8 +3,6 @@ type GraphQLVariables = Record<string, unknown>;
 interface GraphQLRequestOptions {
 	query: string;
 	variables?: GraphQLVariables;
-	tags?: string[];
-	revalidate?: number;
 }
 
 interface GraphQLError {
@@ -15,8 +13,6 @@ interface GraphQLResponse<TData> {
 	data?: TData;
 	errors?: GraphQLError[];
 }
-
-const DEFAULT_REVALIDATE_SECONDS = 300;
 
 function getPayloadGraphQLEndpoint() {
 	const endpoint = process.env.PAYLOAD_GRAPHQL_ENDPOINT;
@@ -31,11 +27,8 @@ function getPayloadGraphQLEndpoint() {
 export async function queryPayloadGraphQL<TData>({
 	query,
 	variables,
-	tags,
-	revalidate = DEFAULT_REVALIDATE_SECONDS,
 }: GraphQLRequestOptions): Promise<TData | null> {
 	const endpoint = getPayloadGraphQLEndpoint();
-	console.log('Payload GraphQL endpoint:', endpoint);
 
 	if (!endpoint) {
 		return null;
@@ -47,7 +40,7 @@ export async function queryPayloadGraphQL<TData>({
 
 	if (process.env.PAYLOAD_API_KEY) {
 		headers.Authorization = `service-accounts API-Key ${process.env.PAYLOAD_API_KEY}`;
-    } //added line, changed from bearer
+	}
 
 	try {
 		const response = await fetch(endpoint, {
@@ -57,10 +50,7 @@ export async function queryPayloadGraphQL<TData>({
 				query,
 				variables,
 			}),
-			next: {
-				revalidate,
-				tags,
-			},
+			cache: 'force-cache',
 		});
 
 		if (!response.ok) {
