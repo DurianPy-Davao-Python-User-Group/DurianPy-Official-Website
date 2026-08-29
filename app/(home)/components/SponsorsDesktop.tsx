@@ -28,7 +28,6 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
 
-  
   const [featuredSponsor, setfeaturedSponsor] = useState<SponsorshipProps>(
     sponsors[0]
   );
@@ -39,7 +38,6 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
     }
     setCount(api.scrollSnapList().length);
 
-    
     api.scrollTo(2);
 
     api.on('select', () => {
@@ -54,16 +52,13 @@ const SponsorsDesktop = ({ sponsors }: { sponsors: SponsorshipProps[] }) => {
 
   const autoPlayInteraction = () => {
     plugin.current.stop();
-    
+
     setTimeout(() => {
       try {
-        
         if (api && api.slideNodes && api.slideNodes().length > 0) {
           plugin.current?.play?.();
         }
-      } catch {
-        
-      }
+      } catch {}
     }, 5000);
   };
 

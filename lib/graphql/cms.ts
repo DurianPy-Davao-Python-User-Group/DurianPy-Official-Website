@@ -9,7 +9,12 @@ import {
   FALLBACK_SIGS,
   FALLBACK_SPONSORS,
 } from '@/lib/graphql/fallbacks';
-import { CODE_OF_CONDUCT_QUERY, HOMEPAGE_QUERY, STATISTICS_QUERY, SIGS_QUERY } from '@/lib/graphql/queries';
+import {
+  CODE_OF_CONDUCT_QUERY,
+  HOMEPAGE_QUERY,
+  STATISTICS_QUERY,
+  SIGS_QUERY,
+} from '@/lib/graphql/queries';
 import type {
   CarouselData,
   CtaCardData,
@@ -47,7 +52,7 @@ function isNonEmptyString(value: unknown): value is string {
 
 function readDocs<T>(
   source: DocsEnvelope<T> | null | undefined,
-  fallback: T[],
+  fallback: T[]
 ) {
   if (!source?.docs || source.docs.length === 0) {
     return fallback;
@@ -73,7 +78,8 @@ export async function getHomePageData(): Promise<CmsHomePageData> {
     FALLBACK_SPONSORS as unknown as Parameters<typeof readDocs>[1]
   ) as unknown as CmsSponsor[];
   const rawCarousel: CmsCarousel = data?.carousel || ({} as CmsCarousel);
-  const rawConfig: CmsHomepageConfig = data?.config || ({} as CmsHomepageConfig);
+  const rawConfig: CmsHomepageConfig =
+    data?.config || ({} as CmsHomepageConfig);
 
   const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://127.0.0.1:3000';
   const mediaVersion =
@@ -86,20 +92,24 @@ export async function getHomePageData(): Promise<CmsHomePageData> {
     return `/api/cms-image?url=${encodeURIComponent(sourceUrl)}&v=${encodeURIComponent(mediaVersion)}`;
   };
 
-  const rawOrganizationStatus = data?.organizationStatus || ({} as CmsOrganizationStatus);
+  const rawOrganizationStatus =
+    data?.organizationStatus || ({} as CmsOrganizationStatus);
   const config = {
     heroTitle: rawConfig.heroTitle || FALLBACK_HOME_HERO_CONFIG.heroTitle,
-    heroSubtitle: rawConfig.heroSubtitle || FALLBACK_HOME_HERO_CONFIG.heroSubtitle,
+    heroSubtitle:
+      rawConfig.heroSubtitle || FALLBACK_HOME_HERO_CONFIG.heroSubtitle,
     heroImageDesktop: rawConfig.heroImageDesktop?.url
       ? proxyCmsImage(rawConfig.heroImageDesktop.url)
       : FALLBACK_HOME_HERO_CONFIG.heroImageDesktop,
     heroImageDesktopAlt:
-      rawConfig.heroImageDesktop?.alt || FALLBACK_HOME_HERO_CONFIG.heroImageDesktopAlt,
+      rawConfig.heroImageDesktop?.alt ||
+      FALLBACK_HOME_HERO_CONFIG.heroImageDesktopAlt,
     heroImageMobile: rawConfig.heroImageMobile?.url
       ? proxyCmsImage(rawConfig.heroImageMobile.url)
       : FALLBACK_HOME_HERO_CONFIG.heroImageMobile,
     heroImageMobileAlt:
-      rawConfig.heroImageMobile?.alt || FALLBACK_HOME_HERO_CONFIG.heroImageMobileAlt,
+      rawConfig.heroImageMobile?.alt ||
+      FALLBACK_HOME_HERO_CONFIG.heroImageMobileAlt,
   };
 
   const organizationStatus: CmsOrganizationStatus = {
@@ -133,7 +143,12 @@ export async function getHomePageData(): Promise<CmsHomePageData> {
 
   const ctaCards = data?.cta?.cards
     ?.map((card: CmsCtaCard): CtaCardData | null => {
-      if (!card.link || !card.whiteText || !card.yellowText || !card.icon?.url) {
+      if (
+        !card.link ||
+        !card.whiteText ||
+        !card.yellowText ||
+        !card.icon?.url
+      ) {
         return null;
       }
 
@@ -148,24 +163,28 @@ export async function getHomePageData(): Promise<CmsHomePageData> {
     .filter((card): card is CtaCardData => card !== null);
 
   const partners = rawPartners.map((p) => {
-    const pData = (p as unknown) as Record<string, unknown>;
+    const pData = p as unknown as Record<string, unknown>;
     const logoData = pData.logo as { url?: string } | undefined;
     const logoMobileData = pData.logoMobile as { url?: string } | undefined;
-    
+
     return {
       ...p,
-      desc: (pData.description as string) || (pData.desc as string) || '', 
+      desc: (pData.description as string) || (pData.desc as string) || '',
       logo: logoData?.url
         ? proxyCmsImage(logoData.url)
-        : (typeof pData.logo === 'string' ? pData.logo : ''),
+        : typeof pData.logo === 'string'
+          ? pData.logo
+          : '',
       logoMobile: logoMobileData?.url
         ? proxyCmsImage(logoMobileData.url)
-        : (typeof pData.logoMobile === 'string' ? pData.logoMobile : undefined),
+        : typeof pData.logoMobile === 'string'
+          ? pData.logoMobile
+          : undefined,
     };
   }) as CmsPartner[];
 
   const sponsors = rawSponsors.map((s) => {
-    const sData = (s as unknown) as Record<string, unknown>;
+    const sData = s as unknown as Record<string, unknown>;
     const logoData = sData.logo as { url?: string } | undefined;
     const logoMobileData = sData.logoMobile as { url?: string } | undefined;
     const fallbackLogo = typeof sData.logo === 'string' ? sData.logo : '';
@@ -175,7 +194,9 @@ export async function getHomePageData(): Promise<CmsHomePageData> {
       logo: logoData?.url ? proxyCmsImage(logoData.url) : fallbackLogo,
       logoMobile: logoMobileData?.url
         ? proxyCmsImage(logoMobileData.url)
-        : (typeof sData.logoMobile === 'string' ? sData.logoMobile : fallbackLogo),
+        : typeof sData.logoMobile === 'string'
+          ? sData.logoMobile
+          : fallbackLogo,
     };
   }) as CmsSponsor[];
 
@@ -211,7 +232,6 @@ export async function getCodeOfConductData(): Promise<CmsCodeOfConductData> {
     root: cmsEntry?.root?.root || FALLBACK_CODE_OF_CONDUCT.root,
   };
 }
-
 
 export type CmsStatistic = {
   label: string;
@@ -249,7 +269,7 @@ export async function getSigsData(): Promise<CmsSigDoc[]> {
   });
   const sigs = readDocs(
     data?.DurianpyWebsiteSigs,
-    FALLBACK_SIGS,
+    FALLBACK_SIGS
   ) as CmsSigDoc[];
   const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://127.0.0.1:3000';
   const mediaVersion =
@@ -263,7 +283,6 @@ export async function getSigsData(): Promise<CmsSigDoc[]> {
     }
 
     const sourceUrl = new URL(sig.icon.url, cmsBaseUrl).href;
-
 
     return {
       ...sig,

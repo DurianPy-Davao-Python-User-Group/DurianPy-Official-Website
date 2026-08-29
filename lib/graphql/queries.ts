@@ -62,23 +62,20 @@ export const PARTNERS_QUERY = /* GraphQL */ `
 
 export const ORGANIZATION_STATUS = /* GraphQL */ `
   query OrganizationStatus {
-    DurianpyWebsiteOrganizationStatus{
+    DurianpyWebsiteOrganizationStatus {
       isPSFPartner
       psfPartnerLogo {
         url
         alt
       }
     }
-  } 
+  }
 `;
 
 export const SPONSORS_QUERY = /* GraphQL */ `
   query SponsorsContent {
     DurianpyWebsiteSponsors(
-      where: {
-        _status: { equals: published }
-        tier: { not_equals: community }
-      }
+      where: { _status: { equals: published }, tier: { not_equals: community } }
       sort: "tier"
     ) {
       docs {
@@ -207,15 +204,14 @@ export const CODE_OF_CONDUCT_QUERY = /* GraphQL */ `
 
 export const HOMEPAGE_QUERY = /* GraphQL */ `
   query HomePageContent {
-
-    config:	DurianpyWebsiteHomepageConfig{
+    config: DurianpyWebsiteHomepageConfig {
       heroTitle
       heroSubtitle
-      heroImageDesktop{
+      heroImageDesktop {
         alt
         url
       }
-      heroImageMobile{
+      heroImageMobile {
         alt
         url
       }
@@ -253,10 +249,7 @@ export const HOMEPAGE_QUERY = /* GraphQL */ `
     }
 
     sponsors: DurianpyWebsiteSponsors(
-      where: {
-        _status: { equals: published }
-        tier: { not_equals: community }
-      }
+      where: { _status: { equals: published }, tier: { not_equals: community } }
       sort: "tier"
     ) {
       docs {
@@ -274,14 +267,14 @@ export const HOMEPAGE_QUERY = /* GraphQL */ `
       }
     }
 
-    organizationStatus: DurianpyWebsiteOrganizationStatus{
+    organizationStatus: DurianpyWebsiteOrganizationStatus {
       isPSFPartner
       psfPartnerLogo {
         url
         alt
       }
     }
-    
+
     carousel: DurianpyWebsiteCarousel {
       title
       subtitle
@@ -334,7 +327,6 @@ export const HOMEPAGE_QUERY = /* GraphQL */ `
   }
 `;
 
-
 export const STATISTICS_QUERY = /* GraphQL */ `
   query StatisticsContent {
     DurianpyWebsiteStatisticsConfig {
@@ -345,4 +337,4 @@ export const STATISTICS_QUERY = /* GraphQL */ `
       }
     }
   }
-`; 
+`;

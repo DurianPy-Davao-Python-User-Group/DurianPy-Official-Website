@@ -12,7 +12,7 @@ import { getHomePageData, getStatisticsData } from '@/lib/graphql/cms';
 export default async function HomePage() {
   const homePageData = await getHomePageData();
   const statisticsData = await getStatisticsData();
-  
+
   const events: Event[] = homePageData.events.map((event, index) => ({
     ...event,
     variant: index === 0 ? 'main' : 'regular',

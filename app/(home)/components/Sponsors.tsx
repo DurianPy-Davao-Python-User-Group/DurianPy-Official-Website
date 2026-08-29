@@ -16,47 +16,47 @@ interface SponsorsSectionProps {
 }
 
 const DEFAULT_SPONSORS: SponsorshipProps[] = [
-    {
-      name: 'Mugna Tech',
-      logo: '/sponsor-logos/mugna-logo.png',
-      logoMobile: '/sponsor-logos/mugna-logo.png',
-      description:
-        'Mugna Tech specializes in Web, Software, and Mobile Development, UI/UX Design, and more, with 75+ projects for diverse businesses.',
-      url: 'https://mugna.tech',
-    },
-    {
-      name: 'Codev',
-      logo: '/sponsor-logos/codev-logo.png',
-      logoMobile: '/sponsor-logos/codev-logo.png',
-      description:
-        'Hire top offshore developers with CoDev—skilled professionals dedicated to your success.',
-      url: 'https://codev.com',
-    },
-    {
-      name: 'Ingenuity Software',
-      logo: '/sponsor-logos/ingenuity-logo.png',
-      logoMobile: '/sponsor-logos/ingenuity-logo-mobile.png',
-      description:
-        'Ingenuity Software is a Davao-based software development company that turns ideas into impactful digital solutions. ',
-      url: 'https://ingenuity.ph',
-    },
-    {
-      name: 'PythonPH',
-      logo: '/sponsor-logos/pythonph-logo.png',
-      logoMobile: '/sponsor-logos/pythonph-logo-mobile.png',
-      description:
-        'Python Philippines is a volunteer-run non-profit supporting the growth of the Python community in the country.',
-      url: 'https://python.ph',
-    },
-    {
-      name: 'Stace',
-      logo: '/sponsor-logos/stace-logo.svg',
-      logoMobile: '/sponsor-logos/stace-logo.svg',
-      description:
-        'Stace is a comprehensive platform designed to enhance and simplify the rental experience for both renters and landlords.',
-      url: 'https://www.stace.app',
-    },
-  ];
+  {
+    name: 'Mugna Tech',
+    logo: '/sponsor-logos/mugna-logo.png',
+    logoMobile: '/sponsor-logos/mugna-logo.png',
+    description:
+      'Mugna Tech specializes in Web, Software, and Mobile Development, UI/UX Design, and more, with 75+ projects for diverse businesses.',
+    url: 'https://mugna.tech',
+  },
+  {
+    name: 'Codev',
+    logo: '/sponsor-logos/codev-logo.png',
+    logoMobile: '/sponsor-logos/codev-logo.png',
+    description:
+      'Hire top offshore developers with CoDev—skilled professionals dedicated to your success.',
+    url: 'https://codev.com',
+  },
+  {
+    name: 'Ingenuity Software',
+    logo: '/sponsor-logos/ingenuity-logo.png',
+    logoMobile: '/sponsor-logos/ingenuity-logo-mobile.png',
+    description:
+      'Ingenuity Software is a Davao-based software development company that turns ideas into impactful digital solutions. ',
+    url: 'https://ingenuity.ph',
+  },
+  {
+    name: 'PythonPH',
+    logo: '/sponsor-logos/pythonph-logo.png',
+    logoMobile: '/sponsor-logos/pythonph-logo-mobile.png',
+    description:
+      'Python Philippines is a volunteer-run non-profit supporting the growth of the Python community in the country.',
+    url: 'https://python.ph',
+  },
+  {
+    name: 'Stace',
+    logo: '/sponsor-logos/stace-logo.svg',
+    logoMobile: '/sponsor-logos/stace-logo.svg',
+    description:
+      'Stace is a comprehensive platform designed to enhance and simplify the rental experience for both renters and landlords.',
+    url: 'https://www.stace.app',
+  },
+];
 
 export function Sponsors({ sponsors }: SponsorsSectionProps) {
   const resolvedSponsors =

@@ -43,7 +43,7 @@ const PartnersDesktop = ({ partners }: { partners: PartnersProps[] }) => {
 
   const onMouseLeave = () => {
     if (api) {
-      if (plugin){
+      if (plugin) {
         plugin.current?.play?.();
       }
     }

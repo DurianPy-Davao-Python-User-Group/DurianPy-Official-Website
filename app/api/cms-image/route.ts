@@ -104,7 +104,7 @@ export async function GET(request: NextRequest) {
       // content-type header for SVGs, so we don't rely on whitelisting every
       // possible upstream value.
       if (isSvg) {
-        return  new NextResponse(response.body, {
+        return new NextResponse(response.body, {
           headers: {
             'Cache-Control':
               'public, max-age=31536000, s-maxage=31536000, immutable',

@@ -13,6 +13,4 @@ export const HOMEPAGE_CACHE_TAGS = [
   CMS_CACHE_TAGS.sponsors,
 ];
 
-export const CODE_OF_CONDUCT_CACHE_TAGS = [
-  CMS_CACHE_TAGS.codeOfConduct,
-];
+export const CODE_OF_CONDUCT_CACHE_TAGS = [CMS_CACHE_TAGS.codeOfConduct];

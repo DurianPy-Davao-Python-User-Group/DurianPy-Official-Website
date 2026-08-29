@@ -5,7 +5,7 @@ import { LexicalNode } from './graphql/types';
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
-export function lexicalToHtml(node: LexicalNode ): string {
+export function lexicalToHtml(node: LexicalNode): string {
   if (!node) return '';
 
   // Text node — apply formatting bitmask
@@ -13,18 +13,18 @@ export function lexicalToHtml(node: LexicalNode ): string {
     let text = escapeHtml(node.text);
     const format = node.format || 0;
 
-    if (format & 1) text = `<strong>${text}</strong>`;      // bold
-    if (format & 2) text = `<em>${text}</em>`;               // italic
-    if (format & 4) text = `<s>${text}</s>`;                 // strikethrough
-    if (format & 8) text = `<u>${text}</u>`;                 // underline
-    if (format & 16) text = `<code>${text}</code>`;          // code
-    if (format & 32) text = `<sub>${text}</sub>`;            // subscript
-    if (format & 64) text = `<sup>${text}</sup>`;            // superscript
+    if (format & 1) text = `<strong>${text}</strong>`; // bold
+    if (format & 2) text = `<em>${text}</em>`; // italic
+    if (format & 4) text = `<s>${text}</s>`; // strikethrough
+    if (format & 8) text = `<u>${text}</u>`; // underline
+    if (format & 16) text = `<code>${text}</code>`; // code
+    if (format & 32) text = `<sub>${text}</sub>`; // subscript
+    if (format & 64) text = `<sup>${text}</sup>`; // superscript
 
     return text;
   }
 
-  const children = ('children' in node ? node.children ?? [] : [])
+  const children = ('children' in node ? (node.children ?? []) : [])
     .map(lexicalToHtml)
     .join('');
 
@@ -42,7 +42,9 @@ export function lexicalToHtml(node: LexicalNode ): string {
 
     case 'link': {
       const url = node.fields?.url || '#';
-      const target = node.fields?.newTab ? ' target="_blank" rel="noopener noreferrer"' : '';
+      const target = node.fields?.newTab
+        ? ' target="_blank" rel="noopener noreferrer"'
+        : '';
       return `<a href="${escapeHtml(url)}"${target}>${children}</a>`;
     }
 

@@ -9,13 +9,16 @@ type PythonFoundationProps = {
   organizationStatus: CmsOrganizationStatus;
 };
 
-export function PythonFoundation({ organizationStatus }: PythonFoundationProps) {
+export function PythonFoundation({
+  organizationStatus,
+}: PythonFoundationProps) {
   if (!organizationStatus.isPSFPartner) {
     return null;
   }
 
   const logoSource = organizationStatus.psfPartnerLogo?.url || logo;
-  const logoAlt = organizationStatus.psfPartnerLogo?.alt || 'Python Software Foundation';
+  const logoAlt =
+    organizationStatus.psfPartnerLogo?.alt || 'Python Software Foundation';
 
   return (
     <section className="bg-dark-green relative min-h-[360px] sm:min-h-screen flex items-center justify-center">

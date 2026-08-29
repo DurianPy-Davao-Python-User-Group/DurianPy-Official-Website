@@ -45,7 +45,11 @@ const Card = ({ card }: CardProps) => {
   );
 };
 
-export function CTASection({ cards = FALLBACK_CTA }: { cards?: CtaCardData[] }) {
+export function CTASection({
+  cards = FALLBACK_CTA,
+}: {
+  cards?: CtaCardData[];
+}) {
   return (
     <section className="py-16 bg-dark-green">
       <Container>

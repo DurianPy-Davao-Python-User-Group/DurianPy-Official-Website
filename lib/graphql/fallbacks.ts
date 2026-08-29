@@ -266,7 +266,9 @@ export const FALLBACK_CODE_OF_CONDUCT: CmsCodeOfConductData = {
             fields: {
               linkType: 'custom',
               newTab: true,
-              url: process.env.NEXT_PUBLIC_COC_REPORT_FORM_URL ?? 'https://forms.gle/R4MXsc2brwHEmgrE7',
+              url:
+                process.env.NEXT_PUBLIC_COC_REPORT_FORM_URL ??
+                'https://forms.gle/R4MXsc2brwHEmgrE7',
             },
             children: [
               {
