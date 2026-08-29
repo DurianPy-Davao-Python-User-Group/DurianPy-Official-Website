@@ -4,6 +4,7 @@ import type {
   CmsCodeOfConductData,
   CmsEvent,
   CmsPartner,
+  CmsSigDoc,
   CmsSponsor,
 } from '@/lib/graphql/types';
 
@@ -141,6 +142,23 @@ export const FALLBACK_SPONSORS: CmsSponsor[] = [
     description:
       'Stace is a comprehensive platform designed to enhance and simplify the rental experience for both renters and landlords.',
     url: 'https://www.stace.app',
+  },
+];
+
+export const FALLBACK_SIGS: CmsSigDoc[] = [
+  {
+    title: 'Data',
+    icon: {
+      url: '/assets/sigsIcons/Group125.png',
+      alt: 'Data SIG',
+    },
+  },
+  {
+    title: 'Backend',
+    icon: {
+      url: '/assets/sigsIcons/Group122.png',
+      alt: 'Backend SIG',
+    },
   },
 ];
 

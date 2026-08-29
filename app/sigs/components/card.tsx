@@ -20,7 +20,7 @@ export default function Card({ image, title }: CardProps) {
     >
       <div className="relative w-16 h-16 md:w-40 md:h-40 mb-2">
         {typeof image === 'string' ? (
-          <Image src={image} alt={title} layout="fill" objectFit="contain" />
+          <Image src={image} alt={title} unoptimized layout="fill" objectFit="contain" />
         ) : (
           image
         )}

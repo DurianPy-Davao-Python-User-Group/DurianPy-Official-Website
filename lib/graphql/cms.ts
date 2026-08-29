@@ -6,9 +6,10 @@ import {
   FALLBACK_CTA,
   FALLBACK_EVENTS,
   FALLBACK_PARTNERS,
+  FALLBACK_SIGS,
   FALLBACK_SPONSORS,
 } from '@/lib/graphql/fallbacks';
-import { CODE_OF_CONDUCT_QUERY, HOMEPAGE_QUERY, STATISTICS_QUERY } from '@/lib/graphql/queries';
+import { CODE_OF_CONDUCT_QUERY, HOMEPAGE_QUERY, STATISTICS_QUERY, SIGS_QUERY } from '@/lib/graphql/queries';
 import type {
   CarouselData,
   CtaCardData,
@@ -20,9 +21,11 @@ import type {
   CmsHomePageData,
   CmsOrganizationStatus,
   CmsPartner,
+  CmsSigDoc,
   CmsSponsor,
   CodeOfConductQuery,
   HomePageQuery,
+  SigsQuery,
 } from '@/lib/graphql/types';
 
 const FALLBACK_HOME_HERO_CONFIG = {
@@ -238,4 +241,36 @@ export async function getStatisticsData(): Promise<CmsStatistic[]> {
   }
 
   return metrics;
+}
+
+export async function getSigsData(): Promise<CmsSigDoc[]> {
+  const data = await queryPayloadGraphQL<SigsQuery>({
+    query: SIGS_QUERY,
+  });
+  const sigs = readDocs(
+    data?.DurianpyWebsiteSigs,
+    FALLBACK_SIGS,
+  ) as CmsSigDoc[];
+  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://127.0.0.1:3000';
+  const mediaVersion =
+    process.env.VERCEL_URL ||
+    process.env.VERCEL_GIT_COMMIT_SHA ||
+    'development';
+
+  return sigs.map((sig) => {
+    if (!sig.icon?.url) {
+      return sig;
+    }
+
+    const sourceUrl = new URL(sig.icon.url, cmsBaseUrl).href;
+
+
+    return {
+      ...sig,
+      icon: {
+        ...sig.icon,
+        url: `/api/cms-image?url=${encodeURIComponent(sourceUrl)}&v=${encodeURIComponent(mediaVersion)}`,
+      },
+    };
+  });
 }

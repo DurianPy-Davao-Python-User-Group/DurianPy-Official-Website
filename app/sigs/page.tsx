@@ -1,14 +1,9 @@
-'use client';
-
-import React from 'react';
+import { getSigsData } from '@/lib/graphql/cms';
 import Card from './components/card';
 
-const sigsData = [
-  { image: '/assets/sigsIcons/Group125.png', title: 'Data' },
-  { image: '/assets/sigsIcons/Group122.png', title: 'Backend' },
-];
+export default async function Sigs() {
+  const sigsData = await getSigsData();
 
-export default function Sigs() {
   return (
     <div className="max-w-7xl mx-auto px-">
       <div className="relative flex flex-col justify-center mt-28 2xl:mt-60">
@@ -33,14 +28,12 @@ export default function Sigs() {
             collaboration.
           </p>
 
-          <button
+          <a
             className="my-6 md:my-8 lg:my-10 mx-auto block bg-primary text-black text-[8px] md:text-xl leading-3 md:leading-none font-bold rounded-full px-2 md:px-4 lg:px-8 py-1 md:py-2 lg:py-4 border border-transparent hover:bg-opacity-50 hover:border-primary hover:text-primary transition-colors"
-            onClick={() =>
-              (window.location.href = 'https://forms.gle/XxDJZebqbJB6tJo27')
-            }
+            href="https://forms.gle/XxDJZebqbJB6tJo27"
           >
             Join a SIG today
-          </button>
+          </a>
           <div className="relative w-full h-[250px] md:h-[350px] -mt-20 -mb-20 flex flex-col items-center -z-10">
             <div className="absolute top-0 w-[50%] md:w-[80%] h-[100px] md:h-[150px] bg-[#36FF90] rounded-b-full blur-2xl md:blur-3xl opacity-10 z-[-1] -mt-5"></div>
             <div className="absolute top-1/2 -translate-y-1/2 w-full md:w-[85%] h-[80%] md:h-[71%] bg-[#36FF90] rounded-full blur-[80px] md:blur-[120px] opacity-30 z-[-2]"></div>
@@ -54,7 +47,11 @@ export default function Sigs() {
 
           <div className="flex flex-wrap justify-center gap-3 md:gap-8 xl:gap-20 mt-6">
             {sigsData.map((sig, index) => (
-              <Card key={index} image={sig.image} title={sig.title} />
+              <Card
+                key={sig.id || sig.title || index}
+                image={sig.icon?.url || '/assets/sigsIcons/Group125.png'}
+                title={sig.title || 'Special Interest Group'}
+              />
             ))}
           </div>
         </div>
