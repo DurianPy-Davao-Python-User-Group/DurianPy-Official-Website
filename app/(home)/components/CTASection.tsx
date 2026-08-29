@@ -38,6 +38,7 @@ const Card = ({ card }: CardProps) => {
           height={256}
           className="absolute bottom-0 px-2 z-20 max-h-64"
           priority={true}
+          unoptimized={true}
         />
       </div>
     </a>

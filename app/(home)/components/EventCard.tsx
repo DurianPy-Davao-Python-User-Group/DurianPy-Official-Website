@@ -18,7 +18,8 @@ export default function EventCard({ event }: { event: Event }) {
       if (date.length === 1) return date[0];
       return `${date[0]} - ${date[date.length - 1]}`;
     }
-    return date;
+    const parsedDate = new Date(date);
+    return `${parsedDate.toDateString()} ${parsedDate.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}`;
   };
 
   const getFirstDateString = (date: string | string[]) => {

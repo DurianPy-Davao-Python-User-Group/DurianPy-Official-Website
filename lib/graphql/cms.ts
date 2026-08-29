@@ -16,6 +16,7 @@ import type {
   CmsCarousel,
   CmsCodeOfConductData,
   CmsEvent,
+  CmsHomepageConfig,
   CmsHomePageData,
   CmsOrganizationStatus,
   CmsPartner,
@@ -23,6 +24,15 @@ import type {
   CodeOfConductQuery,
   HomePageQuery,
 } from '@/lib/graphql/types';
+
+const FALLBACK_HOME_HERO_CONFIG = {
+  heroTitle: 'DurianPy',
+  heroSubtitle: "Accelerating Davao's Tech Growth with Python",
+  heroImageDesktop: '/assets/logo.svg',
+  heroImageDesktopAlt: 'Durianpy Logo',
+  heroImageMobile: '/assets/logo.svg',
+  heroImageMobileAlt: 'Durianpy Logo',
+} as const;
 
 type DocsEnvelope<T> = {
   docs?: T[] | null;
@@ -32,11 +42,6 @@ function isNonEmptyString(value: unknown): value is string {
   return typeof value === 'string' && value.length > 0;
 }
 
-function isStringArray(value: unknown): value is string[] {
-  return Array.isArray(value) && value.every(isNonEmptyString);
-}
-
-
 function readDocs<T>(
   source: DocsEnvelope<T> | null | undefined,
   fallback: T[],
@@ -45,28 +50,6 @@ function readDocs<T>(
     return fallback;
   }
   return source.docs;
-}
-
-function normalizeCodeOfConductContent(content: unknown): string[] {
-  if (isStringArray(content)) {
-    return content;
-  }
-
-  if (isNonEmptyString(content)) {
-    return [content];
-  }
-
-  if (
-    content &&
-    typeof content === 'object' &&
-    'root' in content &&
-    content.root &&
-    typeof content.root === 'object'
-  ) {
-    return FALLBACK_CODE_OF_CONDUCT.content;
-  }
-
-  return FALLBACK_CODE_OF_CONDUCT.content;
 }
 
 export async function getHomePageData(): Promise<CmsHomePageData> {
@@ -87,6 +70,7 @@ export async function getHomePageData(): Promise<CmsHomePageData> {
     FALLBACK_SPONSORS as unknown as Parameters<typeof readDocs>[1]
   ) as unknown as CmsSponsor[];
   const rawCarousel: CmsCarousel = data?.carousel || ({} as CmsCarousel);
+  const rawConfig: CmsHomepageConfig = data?.config || ({} as CmsHomepageConfig);
 
   const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://127.0.0.1:3000';
   const mediaVersion =
@@ -100,6 +84,21 @@ export async function getHomePageData(): Promise<CmsHomePageData> {
   };
 
   const rawOrganizationStatus = data?.organizationStatus || ({} as CmsOrganizationStatus);
+  const config = {
+    heroTitle: rawConfig.heroTitle || FALLBACK_HOME_HERO_CONFIG.heroTitle,
+    heroSubtitle: rawConfig.heroSubtitle || FALLBACK_HOME_HERO_CONFIG.heroSubtitle,
+    heroImageDesktop: rawConfig.heroImageDesktop?.url
+      ? proxyCmsImage(rawConfig.heroImageDesktop.url)
+      : FALLBACK_HOME_HERO_CONFIG.heroImageDesktop,
+    heroImageDesktopAlt:
+      rawConfig.heroImageDesktop?.alt || FALLBACK_HOME_HERO_CONFIG.heroImageDesktopAlt,
+    heroImageMobile: rawConfig.heroImageMobile?.url
+      ? proxyCmsImage(rawConfig.heroImageMobile.url)
+      : FALLBACK_HOME_HERO_CONFIG.heroImageMobile,
+    heroImageMobileAlt:
+      rawConfig.heroImageMobile?.alt || FALLBACK_HOME_HERO_CONFIG.heroImageMobileAlt,
+  };
+
   const organizationStatus: CmsOrganizationStatus = {
     ...rawOrganizationStatus,
     psfPartnerLogo: {
@@ -184,6 +183,7 @@ export async function getHomePageData(): Promise<CmsHomePageData> {
       CMS_CACHE_TAGS.partners,
       CMS_CACHE_TAGS.sponsors,
     ],
+    config,
     events: rawEvents,
     partners,
     sponsors,
@@ -205,7 +205,7 @@ export async function getCodeOfConductData(): Promise<CmsCodeOfConductData> {
 
   return {
     reportFormUrl,
-    content: normalizeCodeOfConductContent(cmsEntry?.content),
+    root: cmsEntry?.root?.root || FALLBACK_CODE_OF_CONDUCT.root,
   };
 }
 

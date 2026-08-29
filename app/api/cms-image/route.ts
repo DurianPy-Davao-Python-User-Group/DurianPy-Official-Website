@@ -87,14 +87,23 @@ export async function GET(request: NextRequest) {
       const contentType =
         responseContentType?.split(';', 1)[0].trim().toLowerCase() || '';
       const isSvg = imageUrl.pathname.toLowerCase().endsWith('.svg');
-      const isSvgContentType =
-        contentType === 'image/svg+xml' ||
-        (isSvg &&
-          ['application/octet-stream', 'application/xml', 'text/xml'].includes(
-            contentType
-          ));
 
-      if (!contentType?.startsWith('image/') && !isSvgContentType) {
+      // Trust the .svg extension for files served from the validated CMS
+      // origin — local/dev media servers often send a missing or incorrect
+      // content-type header for SVGs, so we don't rely on whitelisting every
+      // possible upstream value.
+      if (isSvg) {
+        return  new NextResponse(response.body, {
+          headers: {
+            'Cache-Control':
+              'public, max-age=31536000, s-maxage=31536000, immutable',
+            'Content-Type': 'image/svg+xml',
+            'X-Content-Type-Options': 'nosniff',
+          },
+        });
+      }
+
+      if (!contentType.startsWith('image/')) {
         return NextResponse.json(
           { error: 'CMS response is not an image' },
           { status: 415 }
@@ -105,7 +114,7 @@ export async function GET(request: NextRequest) {
         headers: {
           'Cache-Control':
             'public, max-age=31536000, s-maxage=31536000, immutable',
-          'Content-Type': isSvgContentType ? 'image/svg+xml' : contentType,
+          'Content-Type': contentType,
           'X-Content-Type-Options': 'nosniff',
         },
       });

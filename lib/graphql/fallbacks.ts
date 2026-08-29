@@ -148,9 +148,131 @@ export const FALLBACK_CODE_OF_CONDUCT: CmsCodeOfConductData = {
   reportFormUrl:
     process.env.NEXT_PUBLIC_COC_REPORT_FORM_URL ??
     'https://forms.gle/R4MXsc2brwHEmgrE7',
-  content: [
-    'We value respect and inclusivity in all events.',
-    'The Python community is made up of members from around the globe with a diverse set of skills, personalities, and experiences. It is through these differences that our community experiences great successes and continued growth.',
-    'To clarify our expectations, all participants, including attendees, speakers, exhibitors, organizers, and volunteers at any DurianPy event, must adhere to the Python Software Foundation Code of Conduct.',
-  ],
+  root: {
+    type: 'root',
+    version: 1,
+    children: [
+      {
+        type: 'heading',
+        version: 1,
+        tag: 'h2',
+        children: [
+          {
+            type: 'text',
+            version: 1,
+            text: 'We value respect and inclusivity in all events.',
+            detail: 0,
+            mode: 'normal',
+            style: '',
+            format: 0,
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        version: 1,
+        children: [
+          {
+            type: 'text',
+            version: 1,
+            text: 'The Python community is made up of members from around the globe with a diverse set of skills, personalities, and experiences. It is through these differences that our community experiences great successes and continued growth.',
+            detail: 0,
+            mode: 'normal',
+            style: '',
+            format: 0,
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        version: 1,
+        children: [
+          {
+            type: 'text',
+            version: 1,
+            text: 'To clarify our expectations, all participants, including attendees, speakers, exhibitors, organizers, and volunteers at any DurianPy event, must adhere to the Python Software Foundation ',
+            detail: 0,
+            mode: 'normal',
+            style: '',
+            format: 0,
+          },
+          {
+            type: 'link',
+            version: 3,
+            id: 'fallback-code-of-conduct',
+            fields: {
+              linkType: 'custom',
+              newTab: true,
+              url: 'https://policies.python.org/python.org/code-of-conduct/',
+            },
+            children: [
+              {
+                type: 'text',
+                version: 1,
+                text: 'Code of Conduct',
+                detail: 0,
+                mode: 'normal',
+                style: '',
+                format: 0,
+              },
+            ],
+          },
+          {
+            type: 'text',
+            version: 1,
+            text: '.',
+            detail: 0,
+            mode: 'normal',
+            style: '',
+            format: 0,
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        version: 1,
+        children: [
+          {
+            type: 'text',
+            version: 1,
+            text: 'If you witness or experience any violations of the Code of Conduct, please report them using the ',
+            detail: 0,
+            mode: 'normal',
+            style: '',
+            format: 0,
+          },
+          {
+            type: 'link',
+            version: 3,
+            id: 'fallback-report-form',
+            fields: {
+              linkType: 'custom',
+              newTab: true,
+              url: process.env.NEXT_PUBLIC_COC_REPORT_FORM_URL ?? 'https://forms.gle/R4MXsc2brwHEmgrE7',
+            },
+            children: [
+              {
+                type: 'text',
+                version: 1,
+                text: 'Code of Conduct Report Form',
+                detail: 0,
+                mode: 'normal',
+                style: '',
+                format: 0,
+              },
+            ],
+          },
+          {
+            type: 'text',
+            version: 1,
+            text: '.',
+            detail: 0,
+            mode: 'normal',
+            style: '',
+            format: 0,
+          },
+        ],
+      },
+    ],
+  },
 };

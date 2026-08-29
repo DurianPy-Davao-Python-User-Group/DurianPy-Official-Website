@@ -196,7 +196,7 @@ export const CTA_SECTION_QUERY = /* GraphQL */ `
 export const CODE_OF_CONDUCT_QUERY = /* GraphQL */ `
   query CodeOfConductContent {
     DurianpyWebsiteCodeOfConduct {
-      content
+      root: content
       reportFormUrl
       _status
       updatedAt
@@ -207,6 +207,20 @@ export const CODE_OF_CONDUCT_QUERY = /* GraphQL */ `
 
 export const HOMEPAGE_QUERY = /* GraphQL */ `
   query HomePageContent {
+
+    config:	DurianpyWebsiteHomepageConfig{
+      heroTitle
+      heroSubtitle
+      heroImageDesktop{
+        alt
+        url
+      }
+      heroImageMobile{
+        alt
+        url
+      }
+    }
+
     events: DurianpyWebsiteEvents(
       where: { _status: { equals: published } }
       sort: "-date"

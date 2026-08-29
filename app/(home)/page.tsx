@@ -20,7 +20,7 @@ export default async function HomePage() {
 
   return (
     <main>
-      <Hero />
+      <Hero config={homePageData.config} />
       <Carousel photos={homePageData.carousel.photos} />
       <CTASection cards={homePageData.cta} />
       <StatsAndReviews statistics={statisticsData} />
