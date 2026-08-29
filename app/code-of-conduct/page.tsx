@@ -4,7 +4,6 @@ import { lexicalToHtml } from '@/lib/utils';
 export default async function CodeOfConductPage() {
   const codeOfConductData = await getCodeOfConductData();
   const contentHtml = lexicalToHtml(codeOfConductData.root);
-  console.log(`CodeOfConductPage: Rendered content HTML: ${contentHtml}`);
 
   return (
     <main className="bg-dark-green text-white min-h-[70vh] py-8 md:px-36 px-10 flex flex-col justify-center">
