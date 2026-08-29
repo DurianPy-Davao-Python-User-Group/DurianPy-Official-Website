@@ -25,6 +25,17 @@ function validateCmsImageUrl(value: string, cmsOrigin: string) {
     throw new Error('Invalid CMS image URL');
   }
 
+  // Restrict requests to CMS-hosted media assets only.
+  // This prevents user-controlled targeting of arbitrary CMS endpoints.
+  if (!url.pathname.startsWith('/media/')) {
+    throw new Error('Invalid CMS image URL');
+  }
+
+  // Disallow query/hash to avoid user-controlled parameterization of upstream requests.
+  if (url.search || url.hash) {
+    throw new Error('Invalid CMS image URL');
+  }
+
   return url;
 }
 
