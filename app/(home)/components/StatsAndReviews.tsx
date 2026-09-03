@@ -4,28 +4,16 @@ import { Container } from '@/components/ui/container';
 import CountUp from 'react-countup';
 
 type Statistic = {
-  id: number;
-  value: number;
   label: string;
-  large?: boolean;
+  value: number;
+  large?: boolean | null;
 };
-
-const statistics: Statistic[] = [
-  { id: 1, value: 350, label: 'Active Members' },
-  {
-    id: 2,
-    value: 150,
-    label: 'Participants at PyConf Mini Davao 2024',
-    large: true,
-  },
-  { id: 3, value: 20, label: 'Monthly Meetups' },
-];
 
 type StatsCardProps = {
   value: number;
   label: string;
   isVisible: boolean;
-  large?: boolean;
+  large?: boolean | null;
 };
 
 function StatsCard({ value, label, isVisible, large }: StatsCardProps) {
@@ -47,14 +35,15 @@ function StatsCard({ value, label, isVisible, large }: StatsCardProps) {
 
 type StatisticsSectionProps = {
   isVisible: boolean;
+  statistics: Statistic[];
 };
 
-function StatisticsSection({ isVisible }: StatisticsSectionProps) {
+function StatisticsSection({ isVisible, statistics }: StatisticsSectionProps) {
   return (
     <div className="text-white grid grid-cols-2 grid-rows-2 gap-4 max-w-[311px] md:max-w-[630px] w-full max-h-[205px] md:max-h-[416px] width-1440:h-[346px] !h-full select-none">
-      {statistics.map((stat) => (
+      {statistics.map((stat, index) => (
         <StatsCard
-          key={stat.id}
+          key={index}
           value={stat.value}
           label={stat.label}
           isVisible={isVisible}
@@ -65,7 +54,11 @@ function StatisticsSection({ isVisible }: StatisticsSectionProps) {
   );
 }
 
-export function StatsAndReviews() {
+type StatsAndReviewsProps = {
+  statistics: Statistic[];
+};
+
+export function StatsAndReviews({ statistics }: StatsAndReviewsProps) {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement | null>(null);
 
@@ -91,7 +84,6 @@ export function StatsAndReviews() {
       <Container>
         <div className="flex flex-col justify-center items-center width-1440:flex-row gap-[29px]">
           <div className="width-1440:w-full flex flex-col gap-[16px] width-1440:gap-[52px]">
-            {/* Section Title */}
             <div className="text-center md:max-w-[630px] md:text-left text-web-title-font font-bold md:leading-[98px]">
               <h2>
                 Statistics <span className="text-midori-green">&</span> <br />
@@ -99,7 +91,6 @@ export function StatsAndReviews() {
               </h2>
             </div>
 
-            {/* Section Description */}
             <div className="text-white text-web-body-font mx-auto text-center md:text-left width-1440:mx-0 max-w-[300px] md:max-w-[630px] width-1440:max-w-[485px]">
               <p>
                 <span className="font-bold">DurianPy</span> is a community for
@@ -111,8 +102,7 @@ export function StatsAndReviews() {
             </div>
           </div>
 
-          {/* Section Statistics */}
-          <StatisticsSection isVisible={isVisible} />
+          <StatisticsSection isVisible={isVisible} statistics={statistics} />
         </div>
       </Container>
     </section>

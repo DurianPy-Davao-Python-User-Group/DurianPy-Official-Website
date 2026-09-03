@@ -43,7 +43,9 @@ const PartnersDesktop = ({ partners }: { partners: PartnersProps[] }) => {
 
   const onMouseLeave = () => {
     if (api) {
-      plugin.current.play();
+      if (plugin) {
+        plugin.current?.play?.();
+      }
     }
   };
 
@@ -56,7 +58,7 @@ const PartnersDesktop = ({ partners }: { partners: PartnersProps[] }) => {
       api.scrollTo(index);
     }
 
-    plugin.current.stop();
+    plugin.current?.stop?.();
   };
 
   return (

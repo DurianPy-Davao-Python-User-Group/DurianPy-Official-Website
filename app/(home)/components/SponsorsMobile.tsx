@@ -13,7 +13,8 @@ import { cn } from '@/lib/utils';
 
 interface SponsorsProps {
   name: string;
-  logoMobile: string;
+  logo: string;
+  logoMobile?: string;
   description: string;
   url: string;
 }
@@ -147,7 +148,7 @@ const SponsorsMobile = ({ sponsors }: { sponsors: SponsorsProps[] }) => {
                             rel="noopener noreferrer"
                           >
                             <Image
-                              src={sponsor.logoMobile}
+                              src={sponsor.logoMobile || sponsor.logo}
                               alt={sponsor.name}
                               width={100}
                               height={100}

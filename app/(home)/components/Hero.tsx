@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import type { HomeHeroConfigData } from '@/lib/graphql/types';
 
 gsap.registerPlugin(useGSAP);
 
@@ -21,7 +22,20 @@ const handleRedirect = (url: string) => {
   }
 };
 
-export function Hero() {
+type HeroProps = {
+  config?: HomeHeroConfigData;
+};
+
+const FALLBACK_HERO_CONFIG: HomeHeroConfigData = {
+  heroTitle: 'DurianPy',
+  heroSubtitle: "Accelerating Davao's Tech Growth with Python",
+  heroImageDesktop: '/assets/logo.svg',
+  heroImageDesktopAlt: 'Durianpy Logo',
+  heroImageMobile: '/assets/logo.svg',
+  heroImageMobileAlt: 'Durianpy Logo',
+};
+
+export function Hero({ config = FALLBACK_HERO_CONFIG }: HeroProps) {
   const circleRefs = useRef<(SVGSVGElement | null)[]>([]);
 
   useGSAP(() => {
@@ -123,18 +137,30 @@ export function Hero() {
         {/* Hero section */}
         <Container className="justify-center flex items-center min-h-screen">
           <div className="relative flex flex-col place-items-center justify-center text-center gap-8">
-            <div className="flex flex-col">
-              <Image
-                src="/assets/logo.svg"
-                height={64}
-                width={64}
-                className="w-auto h-32 md:h-44"
-                alt="Durianpy Logo"
-                priority={true}
-              />
+            <div className="flex flex-col items-center">
+              <div className="relative h-32 w-32 md:h-44 md:w-44">
+                <Image
+                  src={config.heroImageDesktop}
+                  fill
+                  className="hidden object-contain md:block"
+                  alt={config.heroImageDesktopAlt}
+                  priority={true}
+                  unoptimized={true}
+                />
+                <Image
+                  src={config.heroImageMobile}
+                  fill
+                  className="object-contain md:hidden"
+                  alt={config.heroImageMobileAlt}
+                  priority={true}
+                  unoptimized={true}
+                />
+              </div>
+              <h1 className="font-montserrat text-white text-2xl md:text-3xl tracking-wide">
+                {config.heroTitle}
+              </h1>
               <p className="font-montserrat text-sm scale-[1.20] w-[80%] md:scale-[1.25] md:text-xl mb-7 md:w-full mx-auto tracking-wider text-white">
-                Accelerating <span className="text-primary">Davao&apos;s</span>{' '}
-                Tech Growth with <br /> <span>Python</span>
+                {config.heroSubtitle}
               </p>
             </div>
 

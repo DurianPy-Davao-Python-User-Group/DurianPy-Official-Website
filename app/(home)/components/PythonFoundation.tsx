@@ -3,8 +3,23 @@ import Image from 'next/image';
 import logo from '@/public/assets/ctaIcons/psf-logo.svg';
 import gradient from '@/public/assets/ctaIcons/gradient.svg';
 import gradient2 from '@/public/assets/ctaIcons/gradient2.svg';
+import type { CmsOrganizationStatus } from '@/lib/graphql/types';
 
-export function PythonFoundation() {
+type PythonFoundationProps = {
+  organizationStatus: CmsOrganizationStatus;
+};
+
+export function PythonFoundation({
+  organizationStatus,
+}: PythonFoundationProps) {
+  if (!organizationStatus.isPSFPartner) {
+    return null;
+  }
+
+  const logoSource = organizationStatus.psfPartnerLogo?.url || logo;
+  const logoAlt =
+    organizationStatus.psfPartnerLogo?.alt || 'Python Software Foundation';
+
   return (
     <section className="bg-dark-green relative min-h-[360px] sm:min-h-screen flex items-center justify-center">
       <Image
@@ -19,12 +34,13 @@ export function PythonFoundation() {
             Recognized by
           </h2>
 
-          <div className="flex justify-center items-center">
+          <div className="relative h-[158px] w-full max-w-[640px]">
             <Image
-              src={logo}
-              alt="Python Software Foundation"
-              height={158}
-              className="max-h-[158px] h-full w-auto"
+              src={logoSource}
+              alt={logoAlt}
+              fill
+              sizes="(max-width: 640px) 100vw, 640px"
+              className="object-contain"
             />
           </div>
         </div>

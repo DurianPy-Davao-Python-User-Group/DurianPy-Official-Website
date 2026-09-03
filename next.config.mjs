@@ -1,6 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '3000',
+      },
+      {
+        protocol: 'http',
+        hostname: '127.0.0.1',
+        port: '3000',
+      },
+    ],
+  },
   async headers() {
     return [
       {
@@ -21,7 +35,7 @@ const nextConfig = {
               connect-src 'self';
               font-src 'self' https://fonts.gstatic.com;
               frame-src 'self' https://docs.google.com;
-              img-src 'self';
+              img-src 'self' data: http://localhost:3000 http://127.0.0.1:3000;
               manifest-src 'self';
               media-src 'self';
               worker-src 'none';

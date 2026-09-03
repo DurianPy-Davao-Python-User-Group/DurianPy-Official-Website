@@ -11,7 +11,8 @@ import Link from 'next/link';
 
 interface PartnersProps {
   name: string;
-  logoMobile: string;
+  logo: string;
+  logoMobile?: string;
   desc: string;
   url: string;
 }
@@ -136,7 +137,7 @@ const PartnersMobile = ({ partners }: { partners: PartnersProps[] }) => {
                               rel="noopener noreferrer"
                             >
                               <Image
-                                src={partner.logoMobile}
+                                src={partner.logoMobile || partner.logo}
                                 alt={partner.name}
                                 width={100}
                                 height={100}
